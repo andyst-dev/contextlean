@@ -1,0 +1,4 @@
+{
+  "traits": ["node-typescript", "large-claude"],
+  "product_files": ["package.json", "src/index.ts"]
+}

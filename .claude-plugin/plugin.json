@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "contextlean",
+  "displayName": "ContextLean",
+  "version": "0.1.0",
+  "description": "Bootstrap, maintain, and honestly measure repository context for focused coding-agent work.",
+  "author": {
+    "name": "ContextLean contributors"
+  },
+  "license": "MIT",
+  "keywords": [
+    "agents",
+    "architecture",
+    "context",
+    "developer-tools"
+  ]
+}

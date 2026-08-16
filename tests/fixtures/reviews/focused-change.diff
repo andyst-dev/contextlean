@@ -1,0 +1,8 @@
+diff --git a/src/shared/slug.py b/src/shared/slug.py
+index 3333333..4444444 100644
+--- a/src/shared/slug.py
++++ b/src/shared/slug.py
+@@ -1,2 +1,2 @@
+ def slugify(value: str) -> str:
+-    return value.strip().lower().replace(" ", "-")
++    return "-".join(value.strip().lower().split())

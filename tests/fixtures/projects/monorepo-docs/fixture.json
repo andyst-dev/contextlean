@@ -1,0 +1,4 @@
+{
+  "traits": ["monorepo", "nested-structure", "large-docs"],
+  "product_files": ["package.json", "apps/web/src/index.ts", "packages/shared/src/id.ts"]
+}

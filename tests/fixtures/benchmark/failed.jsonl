@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"thread-failed"}
+{"type":"turn.started"}
+{"type":"item.started","item":{"id":"cmd-1","type":"command_execution","command":"rg missing","status":"in_progress"}}
+{"type":"turn.failed","error":{"message":"fixture failure"}}

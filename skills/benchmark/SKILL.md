@@ -1,0 +1,49 @@
+---
+name: benchmark
+description: Measure ContextLean's context impact with a no-Codex static estimate or a real controlled Codex A/B benchmark. Use when asked for "benchmark estimate", "benchmark ab", context/token measurements, bootstrap impact, or a reproducible baseline-versus-optimized comparison; never invent gains and always separate exact measurements, estimates, and heuristics.
+---
+
+# Benchmark ContextLean
+
+Keep every result honest: label exact measurements, estimates, and heuristics separately. Never turn an estimate into measured token savings or claim a gain when the comparison does not support it.
+
+## Static estimate
+
+Run:
+
+```bash
+python3 skills/benchmark/scripts/benchmark.py estimate --repo .
+```
+
+This reads `.contextlean/bootstrap-report.json` when bootstrap captured a baseline. It never runs Codex. If the baseline is absent, report only the current state and say that no true static before/after is available.
+
+During `$bootstrap`, follow the capture procedure in the bootstrap specification: run `bootstrap-start` before any repository change and `bootstrap-finish` after verification. Keep the resulting report local and out of automatic instruction context.
+
+## Codex A/B
+
+Read `references/methodology.md` before running a live benchmark. Live runs consume model usage, so state the planned task count and repeats before executing. Never run them as part of ordinary tests.
+
+Require an explicit model and reasoning effort:
+
+```bash
+python3 skills/benchmark/scripts/benchmark.py ab \
+  --repo . \
+  --model MODEL \
+  --reasoning EFFORT
+```
+
+Use `--task` repeatedly or `--tasks-file` for user-supplied read-only tasks. Without either, use the generated five-task repository-navigation suite. Use `--repeat 3` for higher confidence.
+
+The runner must retain these invariants:
+
+- independent fresh `codex exec --json --ephemeral` conversations;
+- identical model, reasoning, prompts, sandbox, options, and repository code;
+- read-only sandbox, disabled web search, ignored user config and exec rules;
+- temporary A/B copies only; never neutralize instructions in the working repository;
+- balanced deterministic A→B / B→A ordering;
+- reports written locally as Markdown and JSON;
+- no hooks, telemetry, or report upload.
+
+Report `turn.completed.usage` fields and exact event-derived command counts. Treat `cached_input_tokens` as a subset of `input_tokens`. Report reasoning tokens separately but do not add them to billed output because they are already included in `output_tokens`. Do not report file-open counts unless a future Codex event makes them directly measurable.
+
+If authentication or a current model rate cannot be classified safely, show tokens only. Call a dated ChatGPT-rate calculation “credit-equivalent”, never actual credits spent. For API-key authentication, do not apply ChatGPT credit rates.

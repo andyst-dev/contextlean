@@ -1,0 +1,4 @@
+{
+  "traits": ["already-clean"],
+  "product_files": ["src/tool.py"]
+}

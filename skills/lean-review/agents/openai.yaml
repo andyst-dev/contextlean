@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lean Change Review"
+  short_description: "Review changes for unnecessary complexity"
+  default_prompt: "Use $lean-review to review the current change without editing it."

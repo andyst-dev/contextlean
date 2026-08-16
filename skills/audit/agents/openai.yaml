@@ -1,0 +1,4 @@
+interface:
+  display_name: "Audit Context Locality"
+  short_description: "Audit agent maps and architecture locality"
+  default_prompt: "Use $audit to inspect this repository without changing it."

@@ -1,0 +1,8 @@
+{"type":"thread.started","thread_id":"thread-success"}
+{"type":"turn.started"}
+{"type":"item.started","item":{"id":"cmd-1","type":"command_execution","command":"rg owner","status":"in_progress"}}
+{"type":"item.completed","item":{"id":"cmd-1","type":"command_execution","command":"rg owner","status":"completed"}}
+{"type":"item.started","item":{"id":"search-1","type":"web_search","status":"in_progress"}}
+{"type":"item.completed","item":{"id":"search-1","type":"web_search","status":"completed"}}
+{"type":"item.completed","item":{"id":"message-1","type":"agent_message","text":"Done."}}
+{"type":"turn.completed","usage":{"input_tokens":1000,"cached_input_tokens":400,"output_tokens":200,"reasoning_output_tokens":100}}

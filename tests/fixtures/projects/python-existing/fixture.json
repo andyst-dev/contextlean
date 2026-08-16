@@ -1,0 +1,4 @@
+{
+  "traits": ["small-python", "existing-agents"],
+  "product_files": ["pyproject.toml", "src/greeting.py", "tests/test_greeting.py"]
+}

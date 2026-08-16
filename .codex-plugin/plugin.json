@@ -1,0 +1,32 @@
+{
+  "name": "contextlean",
+  "version": "0.1.0",
+  "description": "Bootstrap, maintain, and honestly measure repository context for focused coding-agent work.",
+  "author": {
+    "name": "ContextLean contributors"
+  },
+  "license": "MIT",
+  "keywords": [
+    "agents",
+    "architecture",
+    "context",
+    "developer-tools"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "ContextLean",
+    "shortDescription": "Bootstrap once. Read less. Change locally.",
+    "longDescription": "Configure repository maps once, audit them over time, review changes for unnecessary complexity, and measure context impact with static or controlled A/B benchmarks.",
+    "developerName": "ContextLean contributors",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Bootstrap this repository with ContextLean.",
+      "Audit this repository's agent context.",
+      "Review my current change or benchmark its context impact."
+    ]
+  }
+}
