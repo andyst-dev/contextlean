@@ -39,52 +39,50 @@ ContextLean does not guarantee savings or make a model inherently smarter.
 
 ## Before vs After
 
-**Historical preliminary validation batch — 1 run per condition per task.**
+**Clean final 0.2.0 preliminary validation — one run per condition per task.**
 
-The [final 0.2.0 candidate batch](benchmarks/results/2026-09-30-final-0.2.0/README.md)
-completed ten new runs, all passing task checks. ContextLean used **22.7% more total
-tokens** in that batch. Its generated map also contains a known configuration-path
-error, so it is diagnostic evidence, not a clean final-bootstrap validation. The table
-below retains the earlier historical results; it does not describe the final bootstrap.
-
-[Offline root-cause analysis and harness repair](benchmarks/analysis/2026-09-30-final-0.2.0/README.md)
-identify a manual preparation error. Only documentation/config visibly accessed the
-bad path; the Feature regression has other recorded exploration, patch and verification
-differences. The diagnostic batch is invalid for headline performance comparison.
-
-Five tasks in a small Python expense-report project, using `gpt-5.6-terra` with low
-reasoning on 2026-09-30. Vanilla had no repository instructions; ContextLean had the
-same starting code plus a frozen repository map. Both runs in every pair passed the
-acceptance checks and original regression tests.
+Five tasks in a small Python expense-report fixture, tested on 2026-09-30 using
+`gpt-5.6-terra` with low reasoning. Vanilla had no repository instructions; ContextLean
+had the same starting code plus a freshly bootstrapped, validated frozen map from
+release candidate `52a2c34`. All ten runs pass acceptance, original regression and
+submitted-test checks, including offline regrading.
 
 | Task | Vanilla tokens | ContextLean tokens | Difference | Success |
 |---|---:|---:|---:|---|
-| Navigation | 48,156 | 26,441 | −45.1% | Both pass |
-| Bug fix | 88,404 | 59,206 | −33.0% | Both pass |
-| Feature | 109,417 | 97,114 | −11.2% | Both pass |
-| Refactor | 72,376 | 84,130 | **+16.2% more** | Both pass |
-| Documentation/config | 85,019 | 88,416 | **+4.0% more** | Both pass |
+| Navigation | 48,099 | 43,928 | -8.7% | Both pass |
+| Bug fix | 71,021 | 94,026 | +32.4% | Both pass |
+| Feature | 94,825 | 99,162 | +4.6% | Both pass |
+| Refactor | 88,466 | 111,039 | +25.5% | Both pass |
+| Documentation/config | 83,018 | 75,260 | -9.3% | Both pass |
 
-Across these five single-run task pairs:
-
-| Aggregate metric | Vanilla | ContextLean | Difference |
+| Metric | Vanilla | ContextLean | Difference |
 |---|---:|---:|---:|
-| Total tokens | 403,372 | 355,307 | −11.9% |
-| Input tokens | 396,727 | 350,329 | −11.7% |
-| Output tokens | 6,645 | 4,978 | −25.1% |
-| Wall time | 188.28 s | 149.85 s | −20.4% |
-| Command calls | 15 | 13 | −13.3% |
-| Task success | 5/5 | 5/5 | Same |
+| Input tokens | 380,321 | 417,257 | +9.7% |
+| Cached input tokens (included in input) | 311,552 | 361,216 | +15.9% |
+| Output tokens | 5,108 | 6,158 | +20.6% |
+| Total tokens | 385,429 | 423,415 | +9.9% |
+| Wall time (s) | 144.12 | 169.59 | +17.7% |
+| Command calls | 16 | 15 | -6.2% |
+| Task / acceptance / regression / submitted-test success | 5/5 each | 5/5 each | Same |
 
-In this 10-run batch, total tokens were 11.9% lower in aggregate, but **two tasks
-used more tokens**. Refactor also took longer; documentation/config used one extra
-command call. This is preliminary evidence, with no variance estimate or statistical
-confidence. Additional repeated trials are needed for stronger conclusions.
+ContextLean used **9.9% more aggregate tokens** and **17.7% more wall time** in this
+batch, with one fewer command call. Bug fix, Feature and Refactor use more tokens and
+time; Navigation uses fewer tokens but more time; Documentation/config improves both.
+No task uses more command calls. All failures/recovered commands and outcomes are
+retained. These are **preliminary results for the tested configuration**, with no
+statistical-confidence claim and **no universal savings claim**.
 
-CLI cache warnings, recovered patch errors and failed Git checks in the non-Git
-sample copies could affect the comparison. File-read counts and total tool-call counts
-were unavailable. An incorrect solution is not a win, even if it uses fewer tokens.
-[Exact methodology, all ten raw runs and limitations](benchmarks/results/2026-09-30-validation/README.md).
+Provider caching, service load, CLI warnings and failing Git checks in the non-Git
+samples remain limitations. File reads and total tool calls are unavailable.
+[Clean final results and all raw evidence](benchmarks/results/2026-09-30-clean-final-0.2.0/README.md) ·
+[methodology](benchmarks/results/2026-09-30-clean-final-0.2.0/methodology.md) ·
+[comparison with the historical batch](benchmarks/results/2026-09-30-clean-final-0.2.0/comparison.json).
+
+The [historical validation](benchmarks/results/2026-09-30-validation/README.md) is
+preserved separately. The [diagnostic batch](benchmarks/results/2026-09-30-final-0.2.0/README.md)
+contained a manual map-preparation error and is **invalid for headline performance
+comparison**. It is never pooled with the clean results.
+[Root-cause analysis and harness repair](benchmarks/analysis/2026-09-30-final-0.2.0/README.md).
 
 ## Quick start
 
@@ -237,7 +235,7 @@ There are two kinds of evidence:
   correctness unverified; it cannot support a gain claim.
 
 Live runs consume provider usage and are never part of CI.
-The [public validation record](benchmarks/results/2026-09-30-validation/README.md)
+The [clean final validation record](benchmarks/results/2026-09-30-clean-final-0.2.0/README.md)
 records the identical prompts, source snapshot, evaluator, ordering and raw outcomes.
 Provider caching and service load were uncontrolled; the plugin itself was excluded
 from both conditions to isolate the generated guidance. For reproduction and grading,

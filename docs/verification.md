@@ -172,3 +172,15 @@ Repeated benchmarks and independent paid workflow sessions are **not prerequisit
 for this scoped release and were not authorized at this stage. Remote CI and a
 committed-revision install check remained subsequent release verification steps.
 No universal performance claim, v1.0 claim or public marketplace listing is made. The [release notes](release-notes.md) now describe the published release.
+
+## Historical clean-final benchmark verification — 2026-09-30
+
+The [clean final evidence](../benchmarks/results/2026-09-30-clean-final-0.2.0/README.md)
+uses unchanged product commit `52a2c34` and the repaired preparation harness. All
+five paired preparations pass before model execution; all ten saved solutions pass
+offline regrading. The offline suite at this stage passed **92 tests**, with Ruff 0.15.7
+lint/format, all four Skill validators and both platform package validators passing.
+[Detailed quality record](../benchmarks/results/2026-09-30-clean-final-0.2.0/quality-checks.json)
+retains link, hygiene and preservation checks. At this stage the README used this
+preliminary batch and disclosed its resource regressions. Historical and invalid diagnostic
+files remain unchanged. No tag, release or further repetition was created.

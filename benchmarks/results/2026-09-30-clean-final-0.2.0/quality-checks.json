@@ -1,0 +1,42 @@
+{
+  "authentication": "chatgpt",
+  "hygiene": {
+    "generated_junk_in_archives": 0,
+    "secrets_or_personal_paths": 0,
+    "text_artifacts_scanned": 306
+  },
+  "lean_review": "No material findings; preparation validation stays in the development harness, grading/metrics and product Skills unchanged; shared offline checks avoid duplicating batch tests.",
+  "no_tag_or_release_created": true,
+  "offline_tests": {
+    "live_calls": 0,
+    "passed": 92
+  },
+  "plugin_validators": {
+    "claude_manifest": "PASS with expected root-wrapper warning",
+    "claude_marketplace": "PASS with expected ignored Codex policy warning",
+    "codex": "PASS"
+  },
+  "preserved_old_evidence_files": {
+    "benchmarks/results/2026-09-30-final-0.2.0": 64,
+    "benchmarks/results/2026-09-30-validation": 46
+  },
+  "product_files_unchanged": 17,
+  "relative_links": {
+    "broken": 0,
+    "checked": 71
+  },
+  "remote_ci": "Not run; commits retained locally as requested.",
+  "ruff": {
+    "format": "PASS",
+    "lint": "PASS",
+    "version": "0.15.7"
+  },
+  "skill_validators": {
+    "audit": "PASS",
+    "benchmark": "PASS",
+    "bootstrap": "PASS",
+    "lean-review": "PASS"
+  },
+  "status": "PASS",
+  "svg_xml": "PASS"
+}

@@ -19,8 +19,10 @@ SPEC.loader.exec_module(suite)
 
 
 class FinalValidationTests(unittest.TestCase):
+    data = DATA
+
     def test_artifacts_and_raw_measurements(self):
-        report = json.loads((DATA / "summary.json").read_text())
+        report = json.loads((self.data / "summary.json").read_text())
         self.assertEqual(len(report["runs"]), 10)
         self.assertEqual(report["git_commit"], "52a2c34c091f9720076cc9685fb858347d9f6dcf")
         previous = json.loads(
@@ -28,17 +30,17 @@ class FinalValidationTests(unittest.TestCase):
         )
         for key in ("tasks", "configuration", "environment", "model", "reasoning", "repeats"):
             self.assertEqual(report[key], previous[key])
-        checksums = json.loads((DATA / "checksums.json").read_text())
+        checksums = json.loads((self.data / "checksums.json").read_text())
         observed = {
-            p.relative_to(DATA).as_posix()
-            for p in DATA.rglob("*")
+            p.relative_to(self.data).as_posix()
+            for p in self.data.rglob("*")
             if p.is_file() and p.name not in {"README.md", "checksums.json"}
         }
         self.assertEqual(observed, set(checksums))
         for name, digest in checksums.items():
-            self.assertEqual(hashlib.sha256((DATA / name).read_bytes()).hexdigest(), digest)
+            self.assertEqual(hashlib.sha256((self.data / name).read_bytes()).hexdigest(), digest)
         for run in report["runs"]:
-            directory = DATA / run["raw_directory"]
+            directory = self.data / run["raw_directory"]
             self.assertEqual(json.loads((directory / "run.json").read_text()), run)
             parsed = suite.core.parse_jsonl((directory / "events.jsonl").read_text())
             self.assertTrue(parsed["success"])
@@ -53,14 +55,14 @@ class FinalValidationTests(unittest.TestCase):
                 self.assertIsNone(run["metrics"][key])
 
     def test_frozen_solutions_regrade_and_fair_start(self):
-        report = json.loads((DATA / "summary.json").read_text())
+        report = json.loads((self.data / "summary.json").read_text())
         with tempfile.TemporaryDirectory() as temporary:
             source, solutions = Path(temporary) / "source", Path(temporary) / "solutions"
             for name, destination in (
                 ("source-snapshot.zip", source),
                 ("solutions.zip", solutions),
             ):
-                with zipfile.ZipFile(DATA / name) as archive:
+                with zipfile.ZipFile(self.data / name) as archive:
                     for member in archive.infolist():
                         path = Path(member.filename)
                         self.assertFalse(path.is_absolute())
@@ -78,7 +80,7 @@ class FinalValidationTests(unittest.TestCase):
                 ),
             ):
                 for run in report["runs"]:
-                    directory = DATA / run["raw_directory"]
+                    directory = self.data / run["raw_directory"]
                     parsed = suite.core.parse_jsonl((directory / "events.jsonl").read_text())
                     solution = solutions / Path(run["raw_directory"]).name / "solution"
                     self.assertEqual(
@@ -110,8 +112,8 @@ class FinalValidationTests(unittest.TestCase):
                         self.assertEqual(suite.core.tree_digest(solution), run["initial_digest"])
 
     def test_aggregate_cost_and_quality_limitation(self):
-        report = json.loads((DATA / "summary.json").read_text())
-        review = json.loads((DATA / "measurement-review.json").read_text())
+        report = json.loads((self.data / "summary.json").read_text())
+        review = json.loads((self.data / "measurement-review.json").read_text())
         for condition, aggregate in review["aggregate"].items():
             runs = [r for r in report["runs"] if r["condition"] == condition]
             for key in (

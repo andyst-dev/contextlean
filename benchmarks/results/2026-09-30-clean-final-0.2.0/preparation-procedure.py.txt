@@ -1,0 +1,115 @@
+import ast, hashlib, importlib.util, json, shutil, subprocess
+from pathlib import Path
+base=Path(__file__).resolve().parent
+repo=Path('<contextlean>')
+candidate=base/'candidate'
+RC='52a2c34c091f9720076cc9685fb858347d9f6dcf'
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def load(name,p):
+ s=importlib.util.spec_from_file_location(name,p); m=importlib.util.module_from_spec(s); s.loader.exec_module(m); return m
+def command(args,cwd=candidate):
+ r=subprocess.run(args,cwd=cwd,capture_output=True,text=True)
+ if r.returncode: raise RuntimeError(r.stdout+r.stderr)
+ return r.stdout+r.stderr
+for name in ['benchmarks/run_benchmark.py','benchmarks/prepare_fixture.py']:
+ shutil.copy2(repo/name,candidate/name)
+prep=load('clean_prep',candidate/'benchmarks/prepare_fixture.py')
+transfer=load('clean_transfer',candidate/'skills/bootstrap/scripts/verify_transfer.py')
+core=prep.core
+rules=json.loads((candidate/'skills/bootstrap/references/permanent-rules.json').read_text())['groups']
+# Review ownership from the actual final-candidate source. No prior generated map is read.
+entries={
+ 'expense_report/cli.py':('CLI arguments, configuration loading and orchestration','def main():'),
+ 'expense_report/storage.py':('CSV loading and decimal amount conversion','Decimal(row["amount"])'),
+ 'expense_report/filters.py':('Category normalization and category selection','def select_category(expenses, category):'),
+ 'expense_report/report.py':('Report totals and normalized category grouping','def build_report(expenses, currency):'),
+ 'config.json':('Default currency configuration','"currency": "USD"'),
+ 'tests/test_expenses.py':('Standard-library regression tests for loading, filtering, reports and CLI','class ExpenseTests(unittest.TestCase):'),
+ 'README.md':('Usage and development commands','python3 -m expense_report.cli data/sample.csv'),
+ 'data/sample.csv':('Example CSV expense input','category,amount'),
+}
+review={'semantics_reviewed':True,'entries':{p:{'responsibility':d,'evidence':[{'path':p,'contains':s}]} for p,(d,s) in entries.items()}}
+intro='''# Expense report repository guidance
+
+A dependency-free Python CLI reads CSV expenses, converts amounts with Decimal,
+selects categories and produces a JSON report. Use the standard library and the
+existing unittest suite; no package manager, build, lint or type-check setup is present.
+
+## Project map
+
+'''
+intro+=''.join(f'- `{p}`: {d}\n' for p,(d,s) in entries.items())
+intro+='''
+## Data flow
+
+CLI arguments and root configuration feed CSV loading, category selection and report
+construction. Storage owns CSV parsing; selection belongs in filters; aggregation
+belongs in report; cli connects these owners. Decimal values remain decimal through
+totalling. README is optional usage context: search the relevant command or topic,
+then read that section. The small fixture needs only a root map and wrapper.
+'''
+bodies={g['id']:g['guidance']+'\n' for g in rules}
+bodies['verification']+='''
+Targeted expense tests: `python3 -m unittest discover -s tests -p test_expenses.py -v`.
+Full suite: `python3 -m unittest discover -s tests -v` (currently the same module).
+CLI smoke checks: `python3 -m expense_report.cli data/sample.csv` and
+`python3 -m expense_report.cli data/sample.csv --category food --currency GBP`.
+These commands have been verified. No other validation command is established.
+'''
+bodies['context']+='''
+`.contextlean/` contains local bootstrap evidence and is ignored by the existing
+project Git rules. Python `__pycache__/` is generated; omit it during ordinary source
+navigation unless the task concerns it. Do not exclude data/sample.csv or tests.
+'''
+bodies['project-skills']+='''
+This small repository has no recurring non-trivial procedure requiring a project
+Skill, so none is created. Packaged ContextLean workflows remain explicit opt-in.
+'''
+text=intro+'\n'+''.join('## '+g['heading']+'\n\n'+bodies[g['id']]+'\n' for g in rules)
+pristine=base/'pristine'
+core.copy_repository(candidate/'benchmarks/fixtures/expense-report',pristine)
+for p in core.instruction_files(pristine): p.unlink()
+# Capture the unchanged fixture before creating fresh guidance in each target.
+records=[]
+tasks=json.loads((candidate/'benchmarks/tasks/suite.json').read_text())['tasks']
+for task in tasks:
+ tid=task['id']; vanilla=base/'prepared'/tid/'vanilla'; prepared=base/'prepared'/tid/'contextlean'
+ core.copy_repository(pristine,vanilla); core.copy_repository(pristine,prepared)
+ command(['python3','skills/benchmark/scripts/benchmark.py','bootstrap-start','--repo',str(prepared)])
+ (prepared/'AGENTS.md').write_text(text); (prepared/'CLAUDE.md').write_text('@AGENTS.md\n')
+ ledger={'schema_version':1,'rules':{g['id']:{'facets':g['facets'],'semantics_reviewed':True,'kind':'guidance','path':'AGENTS.md','section':g['heading'],'sha256':hashlib.sha256(transfer.section_text(prepared/'AGENTS.md',g['heading']).encode()).hexdigest()} for g in rules}}
+ core.write_json(prepared/'.contextlean/bootstrap-transfer.json',ledger)
+ check=transfer.verify(prepared,ledger,candidate)
+ assert check['facets']==71 and check['setup_specification_required'] is False
+ logs=[]
+ for args in [['python3','-m','unittest','discover','-s','tests','-p','test_expenses.py','-v'],['python3','-m','unittest','discover','-s','tests','-v'],['python3','-m','expense_report.cli','data/sample.csv'],['python3','-m','expense_report.cli','data/sample.csv','--category','food','--currency','GBP']]:
+  logs.append({'command':args,'output':command(args,prepared)})
+ command(['python3','skills/benchmark/scripts/benchmark.py','bootstrap-finish','--repo',str(prepared),'--project-type','dependency-free Python CSV CLI','--created','AGENTS.md','--created','CLAUDE.md','--limit','Static byte estimates are not live token savings.'])
+ frozen=base/'frozen'/tid/'contextlean'; receipt=base/'receipts'/(tid+'.json')
+ record=prep.freeze(vanilla,prepared,review,frozen,receipt)
+ assert prep.validate_frozen(frozen,receipt)==record
+ assert not core.instruction_files(vanilla)
+ assert core.tree_digest(vanilla)==record['vanilla_digest']
+ records.append({'task':tid,'vanilla_digest':core.tree_digest(vanilla),'contextlean_digest':core.tree_digest(frozen),'record':record,'transfer':ledger,'transfer_check':check,'command_checks':logs,'static_report':core.read_json(prepared/'.contextlean/bootstrap-report.json'),'safe_removal_verified':True,'idempotence_reviewed':True,'responsibility_semantics_reviewed':True})
+assert len({r['contextlean_digest'] for r in records})==1
+assert len({r['vanilla_digest'] for r in records})==1
+# The unchanged runner uses one frozen fixture source and creates fresh paired workspaces.
+# All five independently prepared sources are identical and checked before any run.
+shutil.rmtree(candidate/'benchmarks/fixtures/expense-report')
+prep.freeze(base/'prepared/navigation/vanilla',base/'prepared/navigation/contextlean',review,candidate/'benchmarks/fixtures/expense-report',base/'runner-preparation.json')
+# Pin and compare protected sources and unchanged grading/measurement functions.
+protected=['benchmarks/tasks/suite.json','benchmarks/evaluate.py','skills/benchmark/scripts/benchmark.py']
+for name in protected:
+ assert (candidate/name).read_bytes()==subprocess.check_output(['git','show',RC+':'+name],cwd=repo)
+old=ast.parse(subprocess.check_output(['git','show',RC+':benchmarks/run_benchmark.py'],cwd=repo).decode()); new=ast.parse((candidate/'benchmarks/run_benchmark.py').read_text())
+for name in ['load_suite','task_prompt','capture','grade','distribution','summarize','render']:
+ get=lambda tree: ast.dump(next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name==name))
+ assert get(old)==get(new)
+for name in subprocess.check_output(['git','ls-tree','-r','--name-only',RC,'skills','.codex-plugin','.claude-plugin'],cwd=repo,text=True).splitlines():
+ assert (candidate/name).read_bytes()==subprocess.check_output(['git','show',RC+':'+name],cwd=repo)
+# Final pre-call revalidation of every fixture/receipt, not just the representative.
+for task in tasks:
+ tid=task['id']; prep.validate_frozen(base/'frozen'/tid/'contextlean',base/'receipts'/(tid+'.json'))
+ assert core.tree_digest(base/'prepared'/tid/'vanilla')==records[0]['vanilla_digest']
+core.write_json(base/'preflight.json',{'status':'PASS','fresh_preparation':True,'product_commit':RC,'harness_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip(),'prepared_at':core.utc_now(),'tasks':records,'protected_hashes':{n:sha(candidate/n) for n in protected},'harness_hashes':{n:sha(candidate/n) for n in ['benchmarks/prepare_fixture.py','benchmarks/run_benchmark.py']},'instructions_reauthored_from_final_canonical_rules':True,'previous_generated_guidance_reused':False,'five_separately_verified_sources_identical':True,'normal_context_requires_bootstrap_specification':False,'model_calls_before_preflight':0})
+print(json.dumps({'preflight':'PASS','vanilla_fixtures':5,'contextlean_fixtures':5,'mapped_paths_per_fixture':len(entries),'facets_per_fixture':71,'product_commit':RC,'contextlean_digest':records[0]['contextlean_digest'],'vanilla_digest':records[0]['vanilla_digest'],'instruction_bytes':len(text.encode())+10},indent=2))

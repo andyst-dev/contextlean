@@ -1,0 +1,83 @@
+{
+  "baseline_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+  "contextlean_digest": "65fe47f3f507ea337dc7571275a30ab142e2e2693880d3fcbc6e527a9c66d7ed",
+  "review": {
+    "entries": {
+      "README.md": {
+        "evidence": [
+          {
+            "contains": "python3 -m expense_report.cli data/sample.csv",
+            "path": "README.md"
+          }
+        ],
+        "responsibility": "Usage and development commands"
+      },
+      "config.json": {
+        "evidence": [
+          {
+            "contains": "\"currency\": \"USD\"",
+            "path": "config.json"
+          }
+        ],
+        "responsibility": "Default currency configuration"
+      },
+      "data/sample.csv": {
+        "evidence": [
+          {
+            "contains": "category,amount",
+            "path": "data/sample.csv"
+          }
+        ],
+        "responsibility": "Example CSV expense input"
+      },
+      "expense_report/cli.py": {
+        "evidence": [
+          {
+            "contains": "def main():",
+            "path": "expense_report/cli.py"
+          }
+        ],
+        "responsibility": "CLI arguments, configuration loading and orchestration"
+      },
+      "expense_report/filters.py": {
+        "evidence": [
+          {
+            "contains": "def select_category(expenses, category):",
+            "path": "expense_report/filters.py"
+          }
+        ],
+        "responsibility": "Category normalization and category selection"
+      },
+      "expense_report/report.py": {
+        "evidence": [
+          {
+            "contains": "def build_report(expenses, currency):",
+            "path": "expense_report/report.py"
+          }
+        ],
+        "responsibility": "Report totals and normalized category grouping"
+      },
+      "expense_report/storage.py": {
+        "evidence": [
+          {
+            "contains": "Decimal(row[\"amount\"])",
+            "path": "expense_report/storage.py"
+          }
+        ],
+        "responsibility": "CSV loading and decimal amount conversion"
+      },
+      "tests/test_expenses.py": {
+        "evidence": [
+          {
+            "contains": "class ExpenseTests(unittest.TestCase):",
+            "path": "tests/test_expenses.py"
+          }
+        ],
+        "responsibility": "Standard-library regression tests for loading, filtering, reports and CLI"
+      }
+    },
+    "semantics_reviewed": true
+  },
+  "schema_version": 1,
+  "vanilla_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2"
+}

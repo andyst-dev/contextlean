@@ -1,0 +1,36 @@
+{
+  "condition": "vanilla",
+  "error": null,
+  "evaluation": {
+    "acceptance_passed": true,
+    "agent_tests_passed": true,
+    "task_success": true,
+    "tests_passed": true
+  },
+  "execution_success": true,
+  "exit_code": 0,
+  "initial_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+  "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+  "metrics": {
+    "cached_input_tokens": 37120,
+    "command_calls": 2,
+    "duration_seconds": 12.937280250014737,
+    "estimated_cost": null,
+    "file_reads": null,
+    "input_tokens": 47777,
+    "output_tokens": 322,
+    "reasoning_output_tokens": 0,
+    "tool_calls": null,
+    "total_tokens": 48099,
+    "unique_files_inspected": null
+  },
+  "neutralized_instructions": [
+    "AGENTS.md",
+    "CLAUDE.md"
+  ],
+  "raw_directory": "raw/navigation-1-vanilla",
+  "repeat": 1,
+  "sequence": 1,
+  "task": "navigation",
+  "timestamp": "2026-09-30T13:18:58+00:00"
+}

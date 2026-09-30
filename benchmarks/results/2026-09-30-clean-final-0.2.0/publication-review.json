@@ -1,0 +1,18 @@
+{
+  "diagnostic_evidence_unchanged": true,
+  "frozen_preparations_rechecked_after_run": true,
+  "historical_evidence_unchanged": true,
+  "hygiene": "PASS",
+  "numeric_results_unchanged": true,
+  "raw_events_reconciled": 10,
+  "redactions": [
+    "temporary workspace and home prefixes",
+    "one xcrun cache pathname; original CLI error retained"
+  ],
+  "secrets_personal_paths_machine_paths_found": 0,
+  "solutions_offline_regraded": 10,
+  "synthetic_test_path_literals_retained": [
+    "/tmp/fixture",
+    "/tmp/sample"
+  ]
+}

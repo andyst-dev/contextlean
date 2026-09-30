@@ -1,11 +1,18 @@
 # Reproducing ContextLean measurements
 
+[Clean final 0.2.0 validation](results/2026-09-30-clean-final-0.2.0/README.md):
+ten fresh runs, one per condition per task, using the pinned final product and repaired
+harness. Preparation and all grading checks pass. ContextLean uses 9.9% more total
+tokens, 17.7% more time and one fewer command call; all regressions are disclosed.
+Preliminary validation only, no confidence or universal savings claim. No further
+live calls are authorized. Historical and invalid diagnostic evidence remain separate.
+
 [Final 0.2.0 candidate validation](results/2026-09-30-final-0.2.0/README.md):
 ten new live runs against commit `52a2c34c091f9720076cc9685fb858347d9f6dcf`,
 with five freshly bootstrapped fixture preparations. All task checks pass, but
 ContextLean uses more aggregate tokens/time/commands and the generated map has a
 known config-path error. Retain this as diagnostic evidence, not a clean bootstrap
-release validation. No further live runs are authorized.
+release validation. This diagnostic batch is invalid for headline comparison.
 
 [Offline root-cause analysis](analysis/2026-09-30-final-0.2.0/README.md) classifies the
 bad map as a manual preparation error. Product behavior remains unchanged. The runner
@@ -92,7 +99,7 @@ start a model. Use an empty output directory; existing results are not overwritt
 Provider/CLI failures stop the batch rather than repeatedly spending usage on a
 broken setup. Wrong solutions remain recorded and do not stop other tasks.
 
-Both batches are complete. Additional runs require separate approval. After approval,
+All recorded batches are complete. Additional runs require separate approval. After approval,
 `--repeat 2` in a **new** directory adds those 20 runs; combine all 30 only when prompts, fixture,
 evaluator, model/configuration and environment still match. Never replace or discard
 the first batch. A corrected setup is a separate series. A fresh `--repeat 3` means 30 new runs.
