@@ -1,0 +1,32 @@
+{
+  "task": "documentation-config",
+  "condition": "contextlean",
+  "repeat": 1,
+  "sequence": 10,
+  "metrics": {
+    "input_tokens": 59256,
+    "cached_input_tokens": 49152,
+    "output_tokens": 1222,
+    "reasoning_output_tokens": 249,
+    "total_tokens": 60478,
+    "command_calls": 5,
+    "duration_seconds": 31.675703292014077,
+    "tool_calls": null,
+    "file_reads": null,
+    "unique_files_inspected": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "execution_success": true,
+  "exit_code": 0,
+  "error": null,
+  "initial_digest": "1bfb660969f4394ee6bee9da44301451740bf133136ccf3897791743e05ada04",
+  "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+  "solution_digest": "85a5b503e0c80803da1b21da3fd4441d7340a90ff8fc3a54f3ef46d90842a6a4",
+  "raw_directory": "raw/documentation-config-1-contextlean",
+  "guidance_and_sample_intact": true
+}

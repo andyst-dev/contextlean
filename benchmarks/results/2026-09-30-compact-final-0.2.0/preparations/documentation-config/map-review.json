@@ -1,0 +1,77 @@
+{
+  "semantics_reviewed": true,
+  "entries": {
+    "expense_report/cli.py": {
+      "responsibility": "arguments/configuration and orchestration.",
+      "evidence": [
+        {
+          "path": "expense_report/cli.py",
+          "contains": "args.currency or config[\"currency\"]"
+        }
+      ]
+    },
+    "expense_report/storage.py": {
+      "responsibility": "CSV loading and Decimal conversion.",
+      "evidence": [
+        {
+          "path": "expense_report/storage.py",
+          "contains": "Decimal(row[\"amount\"])"
+        }
+      ]
+    },
+    "expense_report/filters.py": {
+      "responsibility": "category normalization/selection.",
+      "evidence": [
+        {
+          "path": "expense_report/filters.py",
+          "contains": "if normalize_category(expense[\"category\"]) == category"
+        }
+      ]
+    },
+    "expense_report/report.py": {
+      "responsibility": "normalized grouping and totals.",
+      "evidence": [
+        {
+          "path": "expense_report/report.py",
+          "contains": "categories[key] = categories.get(key, Decimal(\"0\")) + expense[\"amount\"]"
+        }
+      ]
+    },
+    "config.json": {
+      "responsibility": "default currency; CLI options override it.",
+      "evidence": [
+        {
+          "path": "config.json",
+          "contains": "{\"currency\": \"USD\"}"
+        }
+      ]
+    },
+    "tests/test_expenses.py": {
+      "responsibility": "loading, filtering, report and CLI regression tests.",
+      "evidence": [
+        {
+          "path": "tests/test_expenses.py",
+          "contains": "def test_configured_default(self):"
+        }
+      ]
+    },
+    "data/sample.csv": {
+      "responsibility": "runnable input.",
+      "evidence": [
+        {
+          "path": "data/sample.csv",
+          "contains": "Food,12.50"
+        }
+      ]
+    },
+    "README.md": {
+      "responsibility": "usage/development; search relevant sections when needed.",
+      "evidence": [
+        {
+          "path": "README.md",
+          "contains": "python3 -m unittest discover -s tests -v"
+        }
+      ]
+    }
+  }
+}

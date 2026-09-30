@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "offline_model_calls": 0,
+  "ruff": {
+    "version": "0.15.7",
+    "lint": "PASS",
+    "format": "PASS"
+  },
+  "skill_validators": {
+    "bootstrap": "PASS",
+    "audit": "PASS",
+    "lean-review": "PASS",
+    "benchmark": "PASS"
+  },
+  "plugin_validators": {
+    "codex": "PASS",
+    "claude_manifest": "PASS with expected plugin-root CLAUDE.md warning",
+    "claude_marketplace": "PASS with expected ignored Codex policy warning"
+  },
+  "evidence_validation": "PASS: frozen source, fixtures, 71 facets, ten unique conversations, metric/cost reconciliation and ten independent offline regrades",
+  "publication_checks": {
+    "status": "PASS",
+    "frozen_product_and_other_protected_files": 262,
+    "historical_evidence_files_unchanged": 175,
+    "original_bootstrap_lines": 714,
+    "links_checked": 96,
+    "broken_links": 0,
+    "text_artifacts_scanned": 418,
+    "secrets_or_personal_paths": 0,
+    "generated_junk_in_archives": 0,
+    "bug_fix_original_unchanged": true,
+    "no_tags_or_release": true
+  },
+  "initial_full_suite_issue": "New evidence README linked its checksum manifest before it was written; manifest now exists. No product/test changes.",
+  "offline_tests": {
+    "passed": 105,
+    "live_calls": 0
+  },
+  "git_diff_check": "PASS",
+  "product_commit": "90ed9a4a049af519a40c36424ed1ff8b6acefe48",
+  "no_tag_or_release_created": true
+}

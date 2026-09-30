@@ -184,3 +184,24 @@ lint/format, all four Skill validators and both platform package validators pass
 retains link, hygiene and preservation checks. At this stage the README used this
 preliminary batch and disclosed its resource regressions. Historical and invalid diagnostic
 files remain unchanged. No tag, release or further repetition was created.
+
+## Historical compact-final validation — 2026-09-30
+
+The [compact-final evidence](../benchmarks/results/2026-09-30-compact-final-0.2.0/README.md)
+uses frozen product `90ed9a4a049af519a40c36424ed1ff8b6acefe48`: the unchanged
+completed Bug Fix pair plus exactly eight new calls, one per condition for each
+remaining task. Every preparation passes before execution. All ten solutions pass
+independent offline regrading. No additional model calls, tag or release were made.
+
+ContextLean uses 16.84% fewer aggregate tokens and 5.97% less model-process time,
+with 20% more commands. Feature regresses in time/commands, Refactor in all three,
+and Documentation/config in commands. At this stage the README headlined this
+preliminary tested configuration; previous datasets remain unchanged and are never pooled.
+Between-batch differences establish neither causality nor statistical confidence.
+
+The [quality record](../benchmarks/results/2026-09-30-compact-final-0.2.0/quality-checks.json)
+retains final offline test, Ruff, Skill/plugin validator, evidence/checksum, relative-link,
+hygiene and frozen-content checks. The [standalone offline evidence validator](../benchmarks/results/2026-09-30-compact-final-0.2.0/verify_evidence.py)
+reconciles all ten conversations and independently regrades their archived solutions.
+Product implementation, benchmark tasks/prompts/graders and the historical bootstrap
+remain byte-identical to the frozen commit. Changes are documentation and evidence only.

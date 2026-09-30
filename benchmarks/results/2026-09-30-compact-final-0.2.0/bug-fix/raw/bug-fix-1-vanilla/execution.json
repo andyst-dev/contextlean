@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 86101,
+    "cached_input_tokens": 67328,
+    "output_tokens": 1222,
+    "reasoning_output_tokens": 46
+  },
+  "commands": 3,
+  "web_searches": 0,
+  "parse_errors": 0,
+  "error": null,
+  "thread_id": "01a0f2d8-25e5-7603-bdad-087b83e80bfa",
+  "event_count": 14,
+  "final_response": "Fixed category filtering to normalize the supplied `--category` value.\n\nAdded a CLI regression test for `--category ' FOOD '` verifying two expenses and total `20.00`.\n\nAll standard-library tests pass: 6/6.",
+  "duration_seconds": 33.846701708156615,
+  "exit_code": 0
+}

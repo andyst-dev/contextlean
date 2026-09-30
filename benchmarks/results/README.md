@@ -1,9 +1,17 @@
 # Public benchmark evidence
 
+- [Final compact-context 0.2.0 validation](2026-09-30-compact-final-0.2.0/README.md):
+  frozen product `90ed9a4`, existing Bug Fix pair plus exactly eight new calls, all
+  ten independently offline-regraded. ContextLean uses 16.84% fewer aggregate tokens,
+  5.97% less time and 20% more commands. Every unfavorable task result is disclosed.
+  Current preliminary README evidence, tested configuration only, no confidence or
+  universal token-savings claim.
+
 - [Clean final 0.2.0 validation](2026-09-30-clean-final-0.2.0/README.md): ten fresh
   runs against product commit `52a2c34`, repaired harness, validated preparations and
   offline regrading. 10/10 succeed; ContextLean uses 9.9% more tokens, 17.7% more time,
-  and one fewer command call. Current preliminary README evidence, no confidence claim.
+  and one fewer command call. Previous preliminary evidence, preserved without edits
+  and never pooled with the compact-final batch.
 
 - [2026-09-30 validation batch](2026-09-30-validation/README.md): `gpt-5.6-terra`,
   low reasoning, five tasks, one Vanilla and one ContextLean run each. Preliminary;

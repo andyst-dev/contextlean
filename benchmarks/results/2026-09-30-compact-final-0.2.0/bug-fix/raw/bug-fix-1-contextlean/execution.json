@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 73718,
+    "cached_input_tokens": 40192,
+    "output_tokens": 962,
+    "reasoning_output_tokens": 58
+  },
+  "commands": 3,
+  "web_searches": 0,
+  "parse_errors": 0,
+  "error": null,
+  "thread_id": "01a0f2d7-af33-7821-af9c-fb276b75308a",
+  "event_count": 14,
+  "final_response": "Fixed category filtering: requested `--category` values are now stripped and case-folded before comparison.\n\nAdded a CLI regression test verifying `--category ' FOOD '` produces a `20.00` total and only the `food` category.\n\nVerified with:\n\n`python3 -m unittest discover -s tests -p test_expenses.py -v` \u2014 6 tests passed.",
+  "duration_seconds": 28.095844166819006,
+  "exit_code": 0
+}

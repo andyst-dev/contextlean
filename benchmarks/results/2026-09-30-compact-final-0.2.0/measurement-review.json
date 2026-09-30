@@ -1,0 +1,371 @@
+{
+  "schema_version": 1,
+  "status": "preliminary-validation",
+  "headline_eligible": true,
+  "aggregate": {
+    "vanilla": {
+      "input_tokens": 428936,
+      "cached_input_tokens": 319744,
+      "output_tokens": 5957,
+      "total_tokens": 434893,
+      "duration_seconds": 167.80068249814212,
+      "command_calls": 15,
+      "task_successes": 5,
+      "runs": 5
+    },
+    "contextlean": {
+      "input_tokens": 356321,
+      "cached_input_tokens": 266240,
+      "output_tokens": 5329,
+      "total_tokens": 361650,
+      "duration_seconds": 157.79011070868,
+      "command_calls": 18,
+      "task_successes": 5,
+      "runs": 5
+    }
+  },
+  "contextlean_vs_vanilla": {
+    "input_tokens": {
+      "absolute": -72615,
+      "percent": -16.929098979801182
+    },
+    "cached_input_tokens": {
+      "absolute": -53504,
+      "percent": -16.733386709367494
+    },
+    "output_tokens": {
+      "absolute": -628,
+      "percent": -10.542219237871409
+    },
+    "total_tokens": {
+      "absolute": -73243,
+      "percent": -16.84161391422718
+    },
+    "duration_seconds": {
+      "absolute": -10.01057178946212,
+      "percent": -5.965751533563013
+    },
+    "command_calls": {
+      "absolute": 3,
+      "percent": 19.999999999999996
+    }
+  },
+  "paired_differences": {
+    "navigation": {
+      "input_tokens": {
+        "absolute": -36689,
+        "percent": -56.764241730358634
+      },
+      "cached_input_tokens": {
+        "absolute": -32256,
+        "percent": -71.1864406779661
+      },
+      "output_tokens": {
+        "absolute": -194,
+        "percent": -40.0
+      },
+      "total_tokens": {
+        "absolute": -36883,
+        "percent": -56.639383282912824
+      },
+      "duration_seconds": {
+        "absolute": -0.5953918739687651,
+        "percent": -3.7188946502375364
+      },
+      "command_calls": {
+        "absolute": -2,
+        "percent": -66.66666666666667
+      }
+    },
+    "bug-fix": {
+      "input_tokens": {
+        "absolute": -12383,
+        "percent": -14.381946783428766
+      },
+      "cached_input_tokens": {
+        "absolute": -27136,
+        "percent": -40.3041825095057
+      },
+      "output_tokens": {
+        "absolute": -260,
+        "percent": -21.276595744680847
+      },
+      "total_tokens": {
+        "absolute": -12643,
+        "percent": -14.478430654008678
+      },
+      "duration_seconds": {
+        "absolute": -5.750857541337609,
+        "percent": -16.990894979736616
+      },
+      "command_calls": {
+        "absolute": 0,
+        "percent": 0.0
+      }
+    },
+    "feature": {
+      "input_tokens": {
+        "absolute": -493,
+        "percent": -0.5342841351207883
+      },
+      "cached_input_tokens": {
+        "absolute": 14080,
+        "percent": 24.55357142857142
+      },
+      "output_tokens": {
+        "absolute": 0,
+        "percent": 0.0
+      },
+      "total_tokens": {
+        "absolute": -493,
+        "percent": -0.5245964438107209
+      },
+      "duration_seconds": {
+        "absolute": 3.1708064577542245,
+        "percent": 6.7218737439877385
+      },
+      "command_calls": {
+        "absolute": 1,
+        "percent": 33.33333333333333
+      }
+    },
+    "refactor": {
+      "input_tokens": {
+        "absolute": 19797,
+        "percent": 23.617059349835976
+      },
+      "cached_input_tokens": {
+        "absolute": 22016,
+        "percent": 31.272727272727273
+      },
+      "output_tokens": {
+        "absolute": 3,
+        "percent": 0.2615518744550904
+      },
+      "total_tokens": {
+        "absolute": 19800,
+        "percent": 23.301793531987002
+      },
+      "duration_seconds": {
+        "absolute": 2.046953541925177,
+        "percent": 6.774668898811931
+      },
+      "command_calls": {
+        "absolute": 2,
+        "percent": 66.66666666666667
+      }
+    },
+    "documentation-config": {
+      "input_tokens": {
+        "absolute": -42847,
+        "percent": -41.96448684171865
+      },
+      "cached_input_tokens": {
+        "absolute": -30208,
+        "percent": -38.064516129032256
+      },
+      "output_tokens": {
+        "absolute": -177,
+        "percent": -12.651894210150106
+      },
+      "total_tokens": {
+        "absolute": -43024,
+        "percent": -41.56827887383818
+      },
+      "duration_seconds": {
+        "absolute": -8.882082373835146,
+        "percent": -21.899820781670797
+      },
+      "command_calls": {
+        "absolute": 2,
+        "percent": 66.66666666666667
+      }
+    }
+  },
+  "negative_cases": {
+    "navigation": [],
+    "bug-fix": [],
+    "feature": [
+      "duration_seconds",
+      "command_calls"
+    ],
+    "refactor": [
+      "total_tokens",
+      "duration_seconds",
+      "command_calls"
+    ],
+    "documentation-config": [
+      "command_calls"
+    ]
+  },
+  "regrading": [
+    {
+      "task": "bug-fix",
+      "condition": "contextlean",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/bug-fix-1-contextlean/evaluation.txt"
+    },
+    {
+      "task": "bug-fix",
+      "condition": "vanilla",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/bug-fix-1-vanilla/evaluation.txt"
+    },
+    {
+      "task": "navigation",
+      "condition": "vanilla",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/navigation-1-vanilla/evaluation.txt"
+    },
+    {
+      "task": "navigation",
+      "condition": "contextlean",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/navigation-1-contextlean/evaluation.txt"
+    },
+    {
+      "task": "feature",
+      "condition": "vanilla",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/feature-1-vanilla/evaluation.txt"
+    },
+    {
+      "task": "feature",
+      "condition": "contextlean",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/feature-1-contextlean/evaluation.txt"
+    },
+    {
+      "task": "refactor",
+      "condition": "vanilla",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/refactor-1-vanilla/evaluation.txt"
+    },
+    {
+      "task": "refactor",
+      "condition": "contextlean",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/refactor-1-contextlean/evaluation.txt"
+    },
+    {
+      "task": "documentation-config",
+      "condition": "vanilla",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/documentation-config-1-vanilla/evaluation.txt"
+    },
+    {
+      "task": "documentation-config",
+      "condition": "contextlean",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/documentation-config-1-contextlean/evaluation.txt"
+    }
+  ],
+  "authentication": "ChatGPT (codex login status)",
+  "rate_card": {
+    "schema_version": 1,
+    "unit": "chatgpt_credits_per_1m_tokens",
+    "verified_on": "2026-09-30",
+    "source_url": "https://learn.chatgpt.com/docs/pricing",
+    "source_note": "Standard-speed credit-equivalent rates verified against official Codex pricing on the stated date; not actual subscription usage or credits spent.",
+    "models": [
+      {
+        "model": "gpt-5.6-sol",
+        "aliases": [
+          "gpt-5.6"
+        ],
+        "input": 100.0,
+        "cached_input": 10.0,
+        "output": 500.0
+      },
+      {
+        "model": "gpt-5.6-terra",
+        "aliases": [],
+        "input": 50.0,
+        "cached_input": 5.0,
+        "output": 300.0
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "aliases": [],
+        "input": 5.0,
+        "cached_input": 0.5,
+        "output": 30.0
+      },
+      {
+        "model": "gpt-5.5",
+        "aliases": [],
+        "input": 125.0,
+        "cached_input": 12.5,
+        "output": 750.0
+      }
+    ]
+  },
+  "new_eight_credit_equivalent": 12.47162,
+  "bug_fix_credit_equivalent": 3.80775,
+  "total_compact_credit_equivalent": 16.27937,
+  "condition_credit_equivalents": {
+    "vanilla": 8.84542,
+    "contextlean": 7.433949999999999
+  },
+  "actual_credits_spent": null,
+  "file_reads": null,
+  "all_tool_calls": null,
+  "new_live_calls": 8,
+  "bug_fix_reruns": 0,
+  "limitations": [
+    "One run per condition per task; preliminary validation, tested configuration only; no statistical-confidence or universal token-savings claim.",
+    "Bug Fix was measured earlier at the same frozen commit; remaining pairs were explicitly Vanilla first, unlike prior alternating ordering.",
+    "Provider caching, service load, CLI diagnostics and non-Git workspace checks are uncontrolled; between-batch changes do not establish causality.",
+    "Model process time only; bootstrap/grading excluded. Dated standard-speed credit-equivalents are not actual credits charged."
+  ]
+}

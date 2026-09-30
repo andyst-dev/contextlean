@@ -1,0 +1,17 @@
+{
+  "auxiliary_local_execution_summaries_excluded": [
+    "raw/documentation-config-1-contextlean/execution.json",
+    "raw/documentation-config-1-vanilla/execution.json",
+    "raw/feature-1-contextlean/execution.json",
+    "raw/feature-1-vanilla/execution.json",
+    "raw/navigation-1-contextlean/execution.json",
+    "raw/navigation-1-vanilla/execution.json",
+    "raw/refactor-1-contextlean/execution.json",
+    "raw/refactor-1-vanilla/execution.json"
+  ],
+  "reason": "Some parsed auxiliary results retained temporary paths; all originals remain local. Published events.jsonl and stderr are the original path-redacted captures, not edited after the run.",
+  "raw_events_changed": false,
+  "metrics_changed": false,
+  "bug_fix_imported_raw_changed": false,
+  "saved_solutions_retained": 10
+}

@@ -1,0 +1,201 @@
+"""Eight authorized calls only, using the frozen Bug Fix adapter's measurement logic."""
+import argparse
+import hashlib
+import importlib.util
+import io
+import json
+from pathlib import Path
+import platform
+import shutil
+import subprocess
+import tarfile
+import tempfile
+
+BASE = Path(__file__).resolve().parent
+REPO = BASE.parents[2]
+BUG = REPO / ".contextlean/validation/compact-bug-fix-20260930-90ed9a4a"
+SHA = "90ed9a4a049af519a40c36424ed1ff8b6acefe48"
+TASK_IDS = ("navigation", "feature", "refactor", "documentation-config")
+SOURCE = BASE / "frozen-source"
+
+
+def load(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+adapter = load("bug_adapter", BUG / "validate_pair.py")
+adapter.BASE = BASE
+adapter.SOURCE = SOURCE
+read, write, hash_file = adapter.read, adapter.write, adapter.hash_file
+
+
+def modules(task_id):
+    runner, core, prep, transfer = adapter.modules()
+    runner.FIXTURE = BASE / "preparations" / task_id / "fixtures/contextlean"
+    return runner, core, prep, transfer
+
+
+def artifact_hashes(root):
+    return {path.relative_to(root).as_posix(): hash_file(path) for path in sorted(root.rglob("*"))
+            if path.is_file() and "__pycache__" not in path.parts and path.suffix != ".pyc"}
+
+
+def prepare():
+    assert not SOURCE.exists()
+    assert subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=REPO, text=True).strip() == SHA
+    assert not subprocess.check_output(["git", "status", "--porcelain"], cwd=REPO, text=True).strip()
+    SOURCE.mkdir()
+    archive = subprocess.check_output(["git", "archive", SHA], cwd=REPO)
+    with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
+        tar.extractall(SOURCE, filter="data")
+    write(BASE / "source-hashes.json", adapter.source_integrity())
+    write(BASE / "bug-evidence-hashes.json", artifact_hashes(BUG))
+    # Validate the existing pair independently, without calling its live entry point.
+    original = load("original_bug_adapter", BUG / "validate_pair.py")
+    _, bug_core, bug_evidence = original.gates()
+    summary = read(BUG / "summary.json")
+    assert len(summary["runs"]) == 2
+    for run in summary["runs"]:
+        parsed = bug_core.parse_jsonl((BUG / "raw" / f"bug-fix-1-{run['condition']}" / "events.jsonl").read_text())
+        assert parsed["success"] and run["evaluation"]["task_success"]
+        assert parsed["usage"]["input_tokens"] == run["metrics"]["input_tokens"]
+        assert parsed["usage"]["output_tokens"] == run["metrics"]["output_tokens"]
+        assert parsed["commands"] == run["metrics"]["command_calls"]
+    suite = read(SOURCE / "benchmarks/tasks/suite.json")
+    snippets = {
+        "expense_report/cli.py": 'args.currency or config["currency"]',
+        "expense_report/storage.py": 'Decimal(row["amount"])',
+        "expense_report/filters.py": 'if normalize_category(expense["category"]) == category',
+        "expense_report/report.py": 'categories[key] = categories.get(key, Decimal("0")) + expense["amount"]',
+        "config.json": '{"currency": "USD"}',
+        "tests/test_expenses.py": 'def test_configured_default(self):',
+        "data/sample.csv": 'Food,12.50',
+        "README.md": 'python3 -m unittest discover -s tests -v',
+    }
+    for task_id in TASK_IDS:
+        runner, core, prep, transfer = modules(task_id)
+        root = runner.FIXTURE.parents[1]
+        root.mkdir(parents=True)
+        baseline, prepared = root / "baseline", root / "prepared"
+        core.copy_repository(SOURCE / "benchmarks/fixtures/expense-report", baseline)
+        core.neutralize_instructions(baseline)
+        core.copy_repository(baseline, prepared)
+        generator = load("fresh_generator", SOURCE / "tests/bootstrap_fixture.py")
+        receipt = generator.generate(prepared, transfer)
+        (prepared / "transfer.json").rename(root / "transfer.json")
+        entries = prep.project_map(prepared)
+        assert set(entries) == set(snippets)
+        review = {"semantics_reviewed": True, "entries": {
+            name: {"responsibility": description, "evidence": [{"path": name, "contains": snippets[name]}]}
+            for name, description in entries.items()}}
+        write(root / "map-review.json", review)
+        prep.freeze(baseline, prepared, review, runner.FIXTURE, root / "preparation.json")
+        vanilla = root / "fixtures/vanilla"
+        core.copy_repository(runner.FIXTURE, vanilla)
+        core.neutralize_instructions(vanilla)
+        (vanilla / "PROJECT_REFERENCE.md").unlink()
+        task = next(task for task in suite["tasks"] if task["id"] == task_id)
+        checks = {}
+        for condition in ("vanilla", "contextlean"):
+            fixture = root / "fixtures" / condition
+            for name in entries:
+                prep.local_path(fixture, name)
+            passed, log = runner.capture([__import__("sys").executable, "-m", "unittest", "discover", "-s", "tests", "-v"], fixture)
+            assert passed, log
+            (root / f"preflight-{condition}-tests.txt").write_text(log.replace(str(fixture), "<fixture>"))
+            checks[condition] = {"digest": core.tree_digest(fixture), "product_digest": core.tree_digest(fixture, True), "mapped_paths": list(entries), "baseline_tests_passed": passed}
+            assert checks[condition]["digest"] == bug_evidence["fixtures"][condition]["digest"]
+        assert checks["vanilla"]["product_digest"] == checks["contextlean"]["product_digest"]
+        evidence = {"source_commit": SHA, "task": task, "executed_prompt": runner.task_prompt(task), "order": ["vanilla", "contextlean"],
+                    "fixtures": checks, "transfer": transfer.verify(runner.FIXTURE, receipt), "preparation_sha256": hash_file(root / "preparation.json"),
+                    "guidance_bytes": bug_evidence["guidance_bytes"], "fresh_generation": True}
+        write(root / "preflight.json", evidence)
+        print(f"Fresh {task_id} preparation: all paths/responsibilities, equivalent state, 71 facets PASS", flush=True)
+    runner, _, _, _ = modules("navigation")
+    ok, version = runner.capture(["codex", "--version"], REPO)
+    version = next(line for line in version.splitlines() if line.startswith("codex-cli "))
+    environment = {"system": platform.system(), "machine": platform.machine(), "python": platform.python_version()}
+    assert ok and version == bug_evidence["codex_cli_version"] and environment == bug_evidence["environment"]
+    write(BASE / "preflight.json", {"source_commit": SHA, "model": "gpt-5.6-terra", "reasoning": "low", "environment": environment,
+         "codex_cli_version": version, "authorized_new_calls": 8, "driver_sha256": hash_file(Path(__file__)),
+         "adapter_sha256": hash_file(BUG / "validate_pair.py"), "bug_evidence": "../compact-bug-fix-20260930-90ed9a4a",
+         "pairs": list(TASK_IDS), "order": "Vanilla then ContextLean for every new pair, as explicitly requested"})
+
+
+def gates(task_id):
+    assert task_id in TASK_IDS
+    runner, core, prep, transfer = modules(task_id)
+    global_evidence = read(BASE / "preflight.json")
+    assert hash_file(Path(__file__)) == global_evidence["driver_sha256"]
+    assert hash_file(BUG / "validate_pair.py") == global_evidence["adapter_sha256"]
+    assert adapter.source_integrity() == read(BASE / "source-hashes.json")
+    assert artifact_hashes(BUG) == read(BASE / "bug-evidence-hashes.json")
+    root = runner.FIXTURE.parents[1]
+    evidence = read(root / "preflight.json")
+    assert hash_file(root / "preparation.json") == evidence["preparation_sha256"]
+    prep.validate_frozen(runner.FIXTURE, root / "preparation.json")
+    assert transfer.verify(runner.FIXTURE, read(root / "transfer.json")) == evidence["transfer"]
+    for condition in ("vanilla", "contextlean"):
+        fixture = root / "fixtures" / condition
+        assert core.tree_digest(fixture) == evidence["fixtures"][condition]["digest"]
+        assert core.tree_digest(fixture, True) == evidence["fixtures"][condition]["product_digest"]
+        for name in evidence["fixtures"][condition]["mapped_paths"]:
+            prep.local_path(fixture, name)
+    return runner, core, evidence
+
+
+def pair(task_id):
+    runner, core, evidence = gates(task_id)
+    counter = read(BASE / "call-journal.json") if (BASE / "call-journal.json").exists() else []
+    assert [item["task"] for item in counter] == [task for task in TASK_IDS[:TASK_IDS.index(task_id)] for _ in range(2)]
+    report = read(BASE / "new-runs.json") if (BASE / "new-runs.json").exists() else {"runs": []}
+    with tempfile.TemporaryDirectory(prefix="contextlean-suite-") as temporary:
+        workspace = Path(temporary) / "repo"
+        for condition in evidence["order"]:
+            gates(task_id)
+            assert len(counter) < 8 and not any(item["task"] == task_id and item["condition"] == condition for item in counter)
+            if workspace.exists():
+                shutil.rmtree(workspace)
+            core.copy_repository(runner.FIXTURE.parent / condition, workspace)
+            assert core.tree_digest(workspace) == evidence["fixtures"][condition]["digest"]
+            counter.append({"task": task_id, "condition": condition, "started_at": core.utc_now()})
+            write(BASE / "call-journal.json", counter)  # No retries after a paid call starts.
+            name = f"{task_id}-1-{condition}"
+            artifacts = BASE / "raw" / name
+            sandbox = "read-only" if task_id == "navigation" else "workspace-write"
+            print(f"Live new call {len(counter)}/8: {name}", flush=True)
+            result = core.execute_run("codex", workspace, "gpt-5.6-terra", "low", evidence["executed_prompt"], 600, sandbox, artifacts / "events.jsonl")
+            core.copy_repository(workspace, artifacts / "solution")
+            write(artifacts / "execution.json", result)
+            evaluation = runner.grade(evidence["task"], workspace, result, artifacts)
+            intact = adapter.guidance_intact(workspace, condition, runner)
+            if not intact or (task_id == "navigation" and core.tree_digest(workspace) != evidence["fixtures"][condition]["digest"]):
+                evaluation["task_success"] = False
+                evaluation["error"] = "protected guidance/sample or read-only workspace changed"
+            usage = result.get("usage") or {}
+            metrics = {key: usage.get(key) for key in ("input_tokens", "cached_input_tokens", "output_tokens", "reasoning_output_tokens")}
+            metrics.update(total_tokens=usage["input_tokens"] + usage["output_tokens"] if usage else None,
+                           command_calls=result.get("commands") if result.get("event_count") else None,
+                           duration_seconds=result["duration_seconds"], tool_calls=None, file_reads=None, unique_files_inspected=None)
+            record = {"task": task_id, "condition": condition, "repeat": 1, "sequence": len(counter) + 2,
+                      "metrics": metrics, "evaluation": evaluation, "execution_success": result["success"], "exit_code": result["exit_code"],
+                      "error": result.get("error"), "initial_digest": evidence["fixtures"][condition]["digest"],
+                      "initial_non_instruction_digest": evidence["fixtures"][condition]["product_digest"],
+                      "solution_digest": core.tree_digest(artifacts / "solution"), "raw_directory": f"raw/{name}", "guidance_and_sample_intact": intact}
+            write(artifacts / "run.json", record)
+            report["runs"].append(record)
+            write(BASE / "new-runs.json", report)
+            print(json.dumps(record), flush=True)
+            if not result["success"] and not usage:
+                raise RuntimeError("Provider failure: stop without additional paid calls")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("mode", choices=("prepare", "pair"))
+    parser.add_argument("task", nargs="?", choices=TASK_IDS)
+    args = parser.parse_args()
+    prepare() if args.mode == "prepare" else pair(args.task)

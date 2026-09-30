@@ -1,0 +1,250 @@
+"""Local two-run adapter; frozen product, task, execution and grader stay unchanged."""
+import hashlib
+import importlib.util
+import io
+import json
+from pathlib import Path
+import platform
+import shutil
+import subprocess
+import sys
+import tarfile
+import tempfile
+
+BASE = Path(__file__).resolve().parent
+REPO = BASE.parents[2]
+SHA = "90ed9a4a049af519a40c36424ed1ff8b6acefe48"
+SOURCE = BASE / "frozen-source"
+GUIDANCE = {"AGENTS.md", "CLAUDE.md", "PROJECT_REFERENCE.md"}
+
+
+def load(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def write(path, value):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, indent=2) + "\n")
+
+
+def read(path):
+    return json.loads(path.read_text())
+
+
+def hash_file(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def modules():
+    runner = load("frozen_runner", SOURCE / "benchmarks/run_benchmark.py")
+    core, prep = runner.core, runner.preparation
+    original_digest = core.tree_digest
+
+    def guidance_digest(root, ignore_instructions=False):
+        if not ignore_instructions:
+            return original_digest(root)
+        # Only this local experiment recognizes the root conditional reference
+        # as guidance for product-equivalence hashes. Startup discovery is unchanged.
+        digest = hashlib.sha256()
+        for path in core.iter_project_files(root):
+            relative = core.relative(path, root)
+            if relative in GUIDANCE or path.name in core.INSTRUCTION_NAMES:
+                continue
+            assert not path.is_symlink()
+            digest.update(relative.encode() + b"\0" + path.read_bytes() + b"\0")
+        return digest.hexdigest()
+
+    core.tree_digest = guidance_digest
+    runner.FIXTURE = BASE / "fixtures/contextlean"
+    transfer = load("frozen_transfer", SOURCE / "skills/bootstrap/scripts/verify_transfer.py")
+    return runner, core, prep, transfer
+
+
+def source_integrity():
+    files = subprocess.check_output(["git", "ls-tree", "-r", "--name-only", SHA], cwd=REPO, text=True).splitlines()
+    for name in files:
+        archived = SOURCE / name
+        assert archived.read_bytes() == subprocess.check_output(["git", "show", f"{SHA}:{name}"], cwd=REPO), name
+    return {name: hash_file(SOURCE / name) for name in files}
+
+
+def prepare():
+    assert not SOURCE.exists() and not (BASE / "preflight.json").exists()
+    assert subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=REPO, text=True).strip() == SHA
+    assert not subprocess.check_output(["git", "status", "--porcelain"], cwd=REPO, text=True).strip()
+    archive = subprocess.check_output(["git", "archive", SHA], cwd=REPO)
+    SOURCE.mkdir()
+    with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
+        tar.extractall(SOURCE, filter="data")
+    write(BASE / "source-hashes.json", source_integrity())
+    runner, core, prep, transfer = modules()
+    baseline = BASE / "preparation/baseline"
+    baseline.parent.mkdir(parents=True)
+    core.copy_repository(SOURCE / "benchmarks/fixtures/expense-report", baseline)
+    core.neutralize_instructions(baseline)
+    prepared = BASE / "preparation/prepared"
+    core.copy_repository(baseline, prepared)
+    generator = load("frozen_generator", SOURCE / "tests/bootstrap_fixture.py")
+    receipt = generator.generate(prepared, transfer)
+    (prepared / "transfer.json").rename(BASE / "transfer.json")
+    entries = prep.project_map(prepared)
+    snippets = {
+        "expense_report/cli.py": 'args.currency or config["currency"]',
+        "expense_report/storage.py": 'Decimal(row["amount"])',
+        "expense_report/filters.py": 'if normalize_category(expense["category"]) == category',
+        "expense_report/report.py": 'categories[key] = categories.get(key, Decimal("0")) + expense["amount"]',
+        "config.json": '{"currency": "USD"}',
+        "tests/test_expenses.py": 'def test_configured_default(self):',
+        "data/sample.csv": 'Food,12.50',
+        "README.md": 'python3 -m unittest discover -s tests -v',
+    }
+    assert set(entries) == set(snippets)
+    review = {"semantics_reviewed": True, "entries": {
+        name: {"responsibility": description, "evidence": [{"path": name, "contains": snippets[name]}]}
+        for name, description in entries.items()
+    }}
+    write(BASE / "map-review.json", review)
+    prep.freeze(baseline, prepared, review, runner.FIXTURE, BASE / "preparation.json")
+    vanilla = BASE / "fixtures/vanilla"
+    core.copy_repository(runner.FIXTURE, vanilla)
+    removed = core.neutralize_instructions(vanilla)
+    (vanilla / "PROJECT_REFERENCE.md").unlink()
+    assert set(removed) == {"AGENTS.md", "CLAUDE.md"}
+    checks = {}
+    for condition, fixture in (("contextlean", runner.FIXTURE), ("vanilla", vanilla)):
+        for name in entries:
+            prep.local_path(fixture, name)
+        passed, log = runner.capture([sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"], fixture)
+        assert passed, log
+        (BASE / f"preflight-{condition}-tests.txt").write_text(log.replace(str(fixture), "<fixture>"))
+        checks[condition] = {"digest": core.tree_digest(fixture), "product_digest": core.tree_digest(fixture, True),
+                             "mapped_paths": list(entries), "baseline_tests_passed": passed}
+    assert checks["vanilla"]["product_digest"] == checks["contextlean"]["product_digest"] == core.tree_digest(baseline, True)
+    # Require exact product equivalence to the prior clean-final series, without
+    # using any of its conversations, solutions or preparation record for this pair.
+    historical = read(SOURCE / "benchmarks/results/2026-09-30-clean-final-0.2.0/summary.json")
+    suite = read(SOURCE / "benchmarks/tasks/suite.json")
+    index, task = next((index, task) for index, task in enumerate(suite["tasks"]) if task["id"] == "bug-fix")
+    historical_task = next(task for task in historical["tasks"] if task["id"] == "bug-fix")
+    assert runner.task_prompt(task) == historical_task["executed_prompt"]
+    assert checks["vanilla"]["product_digest"] == read(SOURCE / "benchmarks/results/2026-09-30-clean-final-0.2.0/preparation.json")["baseline_non_instruction_digest"]
+    environment = {"system": platform.system(), "machine": platform.machine(), "python": platform.python_version()}
+    version_ok, version = runner.capture(["codex", "--version"], REPO)
+    version = next(line for line in version.splitlines() if line.startswith("codex-cli "))
+    assert version_ok and version == historical["codex_cli_version"] and environment == historical["environment"]
+    order = ["vanilla" if variant == "baseline" else "contextlean" for variant in core.variant_order(index, 0)]
+    evidence = {"source_commit": SHA, "adapter_sha256": hash_file(Path(__file__)), "model": "gpt-5.6-terra", "reasoning": "low",
+                "task": task, "executed_prompt": runner.task_prompt(task), "live_runs_authorized": 2, "order": order,
+                "environment": environment, "codex_cli_version": version, "fixtures": checks,
+                "transfer": transfer.verify(runner.FIXTURE, receipt), "preparation_sha256": hash_file(BASE / "preparation.json"),
+                "automatic_guidance": ["AGENTS.md", "CLAUDE.md"], "conditional_guidance": ["PROJECT_REFERENCE.md"],
+                "adaptation": "Exclude root PROJECT_REFERENCE.md from product-state hash and remove it from Vanilla; retain frozen execution, task, tests, grader unchanged.",
+                "guidance_bytes": {name: (runner.FIXTURE / name).stat().st_size for name in sorted(GUIDANCE)}}
+    prep.validate_frozen(runner.FIXTURE, BASE / "preparation.json")
+    write(BASE / "preflight.json", evidence)
+    print(json.dumps(evidence, indent=2))
+
+
+def gates():
+    runner, core, prep, transfer = modules()
+    evidence = read(BASE / "preflight.json")
+    assert evidence["adapter_sha256"] == hash_file(Path(__file__))
+    assert evidence["preparation_sha256"] == hash_file(BASE / "preparation.json")
+    assert source_integrity() == read(BASE / "source-hashes.json")
+    prep.validate_frozen(runner.FIXTURE, BASE / "preparation.json")
+    assert transfer.verify(runner.FIXTURE, read(BASE / "transfer.json")) == evidence["transfer"]
+    for condition in evidence["order"]:
+        fixture = BASE / "fixtures" / condition
+        assert core.tree_digest(fixture) == evidence["fixtures"][condition]["digest"]
+        assert core.tree_digest(fixture, True) == evidence["fixtures"][condition]["product_digest"]
+        for name in evidence["fixtures"][condition]["mapped_paths"]:
+            prep.local_path(fixture, name)
+    return runner, core, evidence
+
+
+def guidance_intact(solution, condition, runner):
+    for name in GUIDANCE:
+        if condition == "contextlean":
+            if not (solution / name).is_file() or (solution / name).read_bytes() != (runner.FIXTURE / name).read_bytes():
+                return False
+        elif (solution / name).exists():
+            return False
+    return not any(path.is_symlink() for path in solution.rglob("*")) and (solution / "data/sample.csv").read_bytes() == (runner.FIXTURE / "data/sample.csv").read_bytes()
+
+
+def live():
+    runner, core, evidence = gates()
+    assert not (BASE / "live-started.json").exists(), "Never reuse or retry this pair automatically"
+    write(BASE / "live-started.json", {"started_at": core.utc_now(), "authorized_calls": 2})
+    report = {"kind": "compact-context-bug-fix-validation", **evidence, "runs": []}
+    with tempfile.TemporaryDirectory(prefix="contextlean-suite-") as temporary:
+        workspace = Path(temporary) / "repo"
+        for condition in evidence["order"]:
+            gates()  # Both fixtures and preparation must still validate before each call.
+            if workspace.exists():
+                shutil.rmtree(workspace)
+            core.copy_repository(BASE / "fixtures" / condition, workspace)
+            assert core.tree_digest(workspace) == evidence["fixtures"][condition]["digest"]
+            artifacts = BASE / "raw" / f"bug-fix-1-{condition}"
+            print(f"Live run {len(report['runs']) + 1}/2: {condition}", flush=True)
+            result = core.execute_run("codex", workspace, "gpt-5.6-terra", "low", evidence["executed_prompt"], 600, "workspace-write", artifacts / "events.jsonl")
+            core.copy_repository(workspace, artifacts / "solution")
+            write(artifacts / "execution.json", result)
+            evaluation = runner.grade(evidence["task"], workspace, result, artifacts)
+            intact = guidance_intact(workspace, condition, runner)
+            if not intact:
+                evaluation["task_success"] = False
+                evaluation["error"] = "guidance/sample integrity changed"
+            usage = result.get("usage") or {}
+            metric = {key: usage.get(key) for key in ("input_tokens", "cached_input_tokens", "output_tokens", "reasoning_output_tokens")}
+            metric.update(total_tokens=usage["input_tokens"] + usage["output_tokens"] if usage else None,
+                          command_calls=result.get("commands") if result.get("event_count") else None,
+                          duration_seconds=result["duration_seconds"])
+            run = {"condition": condition, "sequence": len(report["runs"]) + 1, "execution_success": result["success"],
+                   "metrics": metric, "evaluation": evaluation, "guidance_and_sample_intact": intact,
+                   "exit_code": result["exit_code"], "error": result.get("error"), "solution_digest": core.tree_digest(artifacts / "solution")}
+            write(artifacts / "run.json", run)
+            report["runs"].append(run)
+            write(BASE / "summary.json", report)
+            print(json.dumps(run), flush=True)
+    assert len(report["runs"]) == 2
+    print("Exactly two new live calls completed. Offline regrade pending.", flush=True)
+
+
+def regrade():
+    runner, core, evidence = gates()
+    report = read(BASE / "summary.json")
+    assert len(report["runs"]) == 2 and {run["condition"] for run in report["runs"]} == {"vanilla", "contextlean"}
+    for run in report["runs"]:
+        condition = run["condition"]
+        artifacts = BASE / "raw" / f"bug-fix-1-{condition}"
+        assert core.tree_digest(artifacts / "solution") == run["solution_digest"]
+        run["offline_regrade"] = runner.grade(evidence["task"], artifacts / "solution", read(artifacts / "execution.json"), BASE / "offline-regrade" / condition)
+        assert run["offline_regrade"] == run["evaluation"]
+        assert guidance_intact(artifacts / "solution", condition, runner)
+    selected = {run["condition"]: run["metrics"] for run in report["runs"]}
+    report["contextlean_vs_vanilla_percent_change"] = {key: (selected["contextlean"][key] / value - 1) * 100 if value else None
+        for key, value in selected["vanilla"].items() if key != "reasoning_output_tokens"}
+    report["finished_at"] = core.utc_now()
+    report["tracked_tree_unchanged"] = not subprocess.check_output(["git", "status", "--porcelain"], cwd=REPO, text=True).strip()
+    assert report["tracked_tree_unchanged"]
+    write(BASE / "summary.json", report)
+    lines = ["# Compact-context Bug Fix validation", "", f"Frozen commit: `{SHA}`", "Model: `gpt-5.6-terra`; reasoning: `low`. Two fresh ephemeral runs only.", "",
+             "| Metric | Vanilla | ContextLean | ContextLean vs Vanilla |", "|---|---:|---:|---:|"]
+    for key, change in report["contextlean_vs_vanilla_percent_change"].items():
+        lines.append(f"| {key} | {selected['vanilla'][key]} | {selected['contextlean'][key]} | {change:+.2f}% |" if change is not None else f"| {key} | {selected['vanilla'][key]} | {selected['contextlean'][key]} | unavailable |")
+    lines.extend(["", "Both fixtures, every mapped path, equivalent product state, all 71 transferred facets and frozen preparation evidence validated before any model call.",
+                  "Existing prompt, evaluator, regression tests, model configuration and environment preserved. Local adapter excludes the conditional reference from product hashes and removes it from Vanilla.",
+                  "", "Cached input is included in input; total = input + output. Commands are unique command_execution events. Wall time is measured per Codex process.",
+                  "One pair does not establish statistical confidence. All other task pairs remain unrun; product and historical evidence remain unchanged."])
+    for run in report["runs"]:
+        lines.append(f"\n{run['condition']}: execution={run['execution_success']}, grade={run['evaluation']}, offline regrade={run['offline_regrade']}.")
+    (BASE / "report.md").write_text("\n".join(lines) + "\n")
+    print(json.dumps({"runs": report["runs"], "percentage_changes": report["contextlean_vs_vanilla_percent_change"], "tracked_tree_unchanged": True}, indent=2))
+
+
+if __name__ == "__main__":
+    {"prepare": prepare, "live": live, "regrade": regrade}[sys.argv[1]]()

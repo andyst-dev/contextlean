@@ -1,0 +1,24 @@
+{
+  "condition": "vanilla",
+  "sequence": 2,
+  "execution_success": true,
+  "metrics": {
+    "input_tokens": 86101,
+    "cached_input_tokens": 67328,
+    "output_tokens": 1222,
+    "reasoning_output_tokens": 46,
+    "total_tokens": 87323,
+    "command_calls": 3,
+    "duration_seconds": 33.846701708156615
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "guidance_and_sample_intact": true,
+  "exit_code": 0,
+  "error": null,
+  "solution_digest": "4378abc50f7fb773cc0764df32c17961a00e18777ccd543a62c9e119e7490d52"
+}

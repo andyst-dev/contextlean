@@ -1,0 +1,22 @@
+{
+  "source_commit": "90ed9a4a049af519a40c36424ed1ff8b6acefe48",
+  "model": "gpt-5.6-terra",
+  "reasoning": "low",
+  "environment": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.14.4"
+  },
+  "codex_cli_version": "codex-cli 0.147.0",
+  "authorized_new_calls": 8,
+  "driver_sha256": "d541d68b9b6c46f3b43ed0e7ce736eb2e63cf07f272a9fe04dac7004ba9a0c69",
+  "adapter_sha256": "da6d9d453e053ef8f084614d9bd4678cf9721a54766ada71bbda86dfbd127f71",
+  "bug_evidence": "../compact-bug-fix-20260930-90ed9a4a",
+  "pairs": [
+    "navigation",
+    "feature",
+    "refactor",
+    "documentation-config"
+  ],
+  "order": "Vanilla then ContextLean for every new pair, as explicitly requested"
+}

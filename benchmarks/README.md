@@ -1,6 +1,17 @@
 # Reproducing ContextLean measurements
 
-[Clean final 0.2.0 validation](results/2026-09-30-clean-final-0.2.0/README.md):
+[Final compact-context 0.2.0 validation](results/2026-09-30-compact-final-0.2.0/README.md):
+the completed frozen-commit Bug Fix pair plus exactly eight new calls, one per
+condition for each remaining task, against `90ed9a4`. All ten pass independent offline
+grading. ContextLean uses 16.84% fewer aggregate tokens, 5.97% less time and 20% more
+commands. Feature regresses in time/commands, Refactor in tokens/time/commands, and
+Documentation/config in commands. This is the current preliminary README evidence,
+for the tested configuration only, with no confidence or universal savings claim.
+The [methodology](results/2026-09-30-compact-final-0.2.0/methodology.md) records fresh
+preparation, conditional-reference handling and the explicitly requested pair order.
+No additional model calls are authorized.
+
+[Previous clean-final 0.2.0 validation](results/2026-09-30-clean-final-0.2.0/README.md):
 ten fresh runs, one per condition per task, using the pinned final product and repaired
 harness. Preparation and all grading checks pass. ContextLean uses 9.9% more total
 tokens, 17.7% more time and one fewer command call; all regressions are disclosed.
@@ -116,6 +127,10 @@ automatically authors guidance.
 - **Vanilla:** sample repository with its `AGENTS.md` and `CLAUDE.md` removed.
 - **ContextLean:** the same sample with a frozen map created using the bootstrap procedure.
 - Only those two instruction files differ initially. Non-instruction hashes are checked.
+- The compact-final series uses a documented local adapter to additionally remove
+  the optional `PROJECT_REFERENCE.md` from Vanilla and exclude it from product-state
+  hashes. Automatic startup discovery, task prompts, grading and metric logic are
+  unchanged. This adapter is retained with its evidence; the frozen runner is unchanged.
 - Each task/condition/repetition starts from a fresh copy. No edits or conversation
   carry over. Both conditions use the same temporary workspace path.
 - Prompt, model, reasoning, configured provider, sandbox and evaluator are identical
@@ -126,6 +141,9 @@ automatically authors guidance.
   guidance; it does not measure skill discovery or the cost of bootstrap itself.
 - Order alternates by task/repetition. With five tasks and one repetition, the
   first position cannot be perfectly balanced. Caching/service load are uncontrolled.
+- For compact-final, the owner explicitly requested Vanilla first for all eight new
+  calls; its existing Bug Fix pair was ContextLean first. This ordering is disclosed
+  and the previous dataset is never pooled with compact-final.
 - Sample copies omit Git metadata, so agent `git diff` checks cannot work. Any setup
   change to address this requires a separate, clearly identified measurement series.
 - The same Git HEAD is recorded for both conditions. Before an authorized commit,

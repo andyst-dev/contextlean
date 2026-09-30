@@ -1,0 +1,42 @@
+[
+  {
+    "task": "navigation",
+    "condition": "vanilla",
+    "started_at": "2026-09-30T15:12:57+00:00"
+  },
+  {
+    "task": "navigation",
+    "condition": "contextlean",
+    "started_at": "2026-09-30T15:13:15+00:00"
+  },
+  {
+    "task": "feature",
+    "condition": "vanilla",
+    "started_at": "2026-09-30T15:14:05+00:00"
+  },
+  {
+    "task": "feature",
+    "condition": "contextlean",
+    "started_at": "2026-09-30T15:14:54+00:00"
+  },
+  {
+    "task": "refactor",
+    "condition": "vanilla",
+    "started_at": "2026-09-30T15:20:48+00:00"
+  },
+  {
+    "task": "refactor",
+    "condition": "contextlean",
+    "started_at": "2026-09-30T15:21:21+00:00"
+  },
+  {
+    "task": "documentation-config",
+    "condition": "vanilla",
+    "started_at": "2026-09-30T15:25:00+00:00"
+  },
+  {
+    "task": "documentation-config",
+    "condition": "contextlean",
+    "started_at": "2026-09-30T15:25:42+00:00"
+  }
+]

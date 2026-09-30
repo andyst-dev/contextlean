@@ -1,0 +1,79 @@
+{
+  "source_commit": "90ed9a4a049af519a40c36424ed1ff8b6acefe48",
+  "adapter_sha256": "da6d9d453e053ef8f084614d9bd4678cf9721a54766ada71bbda86dfbd127f71",
+  "model": "gpt-5.6-terra",
+  "reasoning": "low",
+  "task": {
+    "id": "bug-fix",
+    "category": "small bug fix",
+    "prompt": "Fix category filtering so --category accepts mixed case and surrounding whitespace, just as stored category names do. For example --category ' FOOD ' must select both food expenses from data/sample.csv and produce total 20.00. Preserve unfiltered reports, decimal arithmetic and currency overrides. Add a regression test and run the tests."
+  },
+  "executed_prompt": "Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.\n\nFix category filtering so --category accepts mixed case and surrounding whitespace, just as stored category names do. For example --category ' FOOD ' must select both food expenses from data/sample.csv and produce total 20.00. Preserve unfiltered reports, decimal arithmetic and currency overrides. Add a regression test and run the tests.",
+  "live_runs_authorized": 2,
+  "order": [
+    "contextlean",
+    "vanilla"
+  ],
+  "environment": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.14.4"
+  },
+  "codex_cli_version": "codex-cli 0.147.0",
+  "fixtures": {
+    "contextlean": {
+      "digest": "1bfb660969f4394ee6bee9da44301451740bf133136ccf3897791743e05ada04",
+      "product_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "mapped_paths": [
+        "expense_report/cli.py",
+        "expense_report/storage.py",
+        "expense_report/filters.py",
+        "expense_report/report.py",
+        "config.json",
+        "tests/test_expenses.py",
+        "data/sample.csv",
+        "README.md"
+      ],
+      "baseline_tests_passed": true
+    },
+    "vanilla": {
+      "digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "product_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "mapped_paths": [
+        "expense_report/cli.py",
+        "expense_report/storage.py",
+        "expense_report/filters.py",
+        "expense_report/report.py",
+        "config.json",
+        "tests/test_expenses.py",
+        "data/sample.csv",
+        "README.md"
+      ],
+      "baseline_tests_passed": true
+    }
+  },
+  "transfer": {
+    "groups": 11,
+    "facets": 71,
+    "destinations": [
+      "AGENTS.md",
+      "PROJECT_REFERENCE.md",
+      "skills/lean-review/SKILL.md"
+    ],
+    "setup_specification_required": false
+  },
+  "preparation_sha256": "e9f99c63807e58b0774baf15bf36ee13969be26efe440753e9eb043cb89aa09a",
+  "automatic_guidance": [
+    "AGENTS.md",
+    "CLAUDE.md"
+  ],
+  "conditional_guidance": [
+    "PROJECT_REFERENCE.md"
+  ],
+  "adaptation": "Exclude root PROJECT_REFERENCE.md from product-state hash and remove it from Vanilla; retain frozen execution, task, tests, grader unchanged.",
+  "guidance_bytes": {
+    "AGENTS.md": 5478,
+    "CLAUDE.md": 11,
+    "PROJECT_REFERENCE.md": 2378
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "datasets_pooled": false,
+  "previous_clean_final": {
+    "aggregate": {
+      "contextlean": {
+        "cached_input_tokens": 361216,
+        "command_calls": 15,
+        "duration_seconds": 169.58739162469283,
+        "input_tokens": 417257,
+        "output_tokens": 6158,
+        "total_tokens": 423415
+      },
+      "vanilla": {
+        "cached_input_tokens": 311552,
+        "command_calls": 16,
+        "duration_seconds": 144.12425037496723,
+        "input_tokens": 380321,
+        "output_tokens": 5108,
+        "total_tokens": 385429
+      }
+    },
+    "contextlean_vs_vanilla": {
+      "input_tokens": {
+        "absolute": 36936,
+        "percent": 9.711796088041424
+      },
+      "cached_input_tokens": {
+        "absolute": 49664,
+        "percent": 15.94083812654068
+      },
+      "output_tokens": {
+        "absolute": 1050,
+        "percent": 20.555990602975726
+      },
+      "total_tokens": {
+        "absolute": 37986,
+        "percent": 9.855511650654215
+      },
+      "duration_seconds": {
+        "absolute": 25.463141249725595,
+        "percent": 17.66749258606952
+      },
+      "command_calls": {
+        "absolute": -1,
+        "percent": -6.25
+      }
+    }
+  },
+  "compact_final": {
+    "aggregate": {
+      "vanilla": {
+        "input_tokens": 428936,
+        "cached_input_tokens": 319744,
+        "output_tokens": 5957,
+        "total_tokens": 434893,
+        "duration_seconds": 167.80068249814212,
+        "command_calls": 15,
+        "task_successes": 5,
+        "runs": 5
+      },
+      "contextlean": {
+        "input_tokens": 356321,
+        "cached_input_tokens": 266240,
+        "output_tokens": 5329,
+        "total_tokens": 361650,
+        "duration_seconds": 157.79011070868,
+        "command_calls": 18,
+        "task_successes": 5,
+        "runs": 5
+      }
+    },
+    "contextlean_vs_vanilla": {
+      "input_tokens": {
+        "absolute": -72615,
+        "percent": -16.929098979801182
+      },
+      "cached_input_tokens": {
+        "absolute": -53504,
+        "percent": -16.733386709367494
+      },
+      "output_tokens": {
+        "absolute": -628,
+        "percent": -10.542219237871409
+      },
+      "total_tokens": {
+        "absolute": -73243,
+        "percent": -16.84161391422718
+      },
+      "duration_seconds": {
+        "absolute": -10.01057178946212,
+        "percent": -5.965751533563013
+      },
+      "command_calls": {
+        "absolute": 3,
+        "percent": 19.999999999999996
+      }
+    }
+  },
+  "contextlean_old_vs_compact": {
+    "input_tokens": {
+      "absolute": -60936,
+      "percent": -14.603949124879867
+    },
+    "cached_input_tokens": {
+      "absolute": -94976,
+      "percent": -26.293408929836993
+    },
+    "output_tokens": {
+      "absolute": -829,
+      "percent": -13.462163039948038
+    },
+    "total_tokens": {
+      "absolute": -61765,
+      "percent": -14.587343386512053
+    },
+    "duration_seconds": {
+      "absolute": -11.797280916012824,
+      "percent": -6.956461092414767
+    },
+    "command_calls": {
+      "absolute": 3,
+      "percent": 19.999999999999996
+    }
+  },
+  "causal_or_statistical_claim": false,
+  "note": "Independent one-run-per-condition datasets; caching, ordering and service load uncontrolled."
+}

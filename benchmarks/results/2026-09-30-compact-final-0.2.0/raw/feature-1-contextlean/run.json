@@ -1,0 +1,32 @@
+{
+  "task": "feature",
+  "condition": "contextlean",
+  "repeat": 1,
+  "sequence": 6,
+  "metrics": {
+    "input_tokens": 91780,
+    "cached_input_tokens": 71424,
+    "output_tokens": 1704,
+    "reasoning_output_tokens": 179,
+    "total_tokens": 93484,
+    "command_calls": 4,
+    "duration_seconds": 50.342273499816656,
+    "tool_calls": null,
+    "file_reads": null,
+    "unique_files_inspected": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "execution_success": true,
+  "exit_code": 0,
+  "error": null,
+  "initial_digest": "1bfb660969f4394ee6bee9da44301451740bf133136ccf3897791743e05ada04",
+  "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+  "solution_digest": "4ca09ce281670be6e44e1f73b8b6fcb79209d62db2d5598b74b176836d1117bc",
+  "raw_directory": "raw/feature-1-contextlean",
+  "guidance_and_sample_intact": true
+}
