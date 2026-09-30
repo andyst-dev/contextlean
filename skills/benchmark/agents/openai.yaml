@@ -1,4 +1,4 @@
 interface:
   display_name: "Benchmark Context Usage"
   short_description: "Measure static and live context impact"
-  default_prompt: "Use $benchmark to measure ContextLean context impact honestly."
+  default_prompt: "Use $contextlean:benchmark to measure ContextLean context impact honestly."

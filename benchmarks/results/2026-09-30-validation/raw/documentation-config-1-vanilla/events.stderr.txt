@@ -1,0 +1,5 @@
+Reading additional input from stdin...
+2026-09-30T07:50:55.517722Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-09-30T07:50:55.519075Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-09-30T07:50:55.519569Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-09-30T07:51:14.904495Z ERROR codex_core::tools::router: error=patch rejected: writing outside of the project; rejected by user approval settings

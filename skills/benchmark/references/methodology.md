@@ -33,10 +33,14 @@ baseline-first and optimized-first. Reports retain the wrapped tasks, options,
 ordering, versions, and digests needed to inspect or repeat the experiment.
 `danger-full-access` is never used.
 
-The stronger evidence is the completed A/B pair. ContextLean reads token usage from
+ContextLean reads token usage from
 `turn.completed.usage` and counts command events from Codex JSONL. It does not claim a
 file-open count because current events do not establish one reliably. Failed or
-unpaired runs suppress an overall gain claim.
+unpaired runs suppress an overall gain claim. This generic navigation runner has no
+answer grader: completion means execution completed with valid usage, not that the
+task was solved correctly. It therefore suppresses gain claims even for completed
+pairs. Use the [graded sample suite](../../../benchmarks/README.md) for independent
+task-success checks and retained raw logs.
 
 Live runs consume the usage of the configured Codex provider. They are opt-in and are
 never executed by the default tests.
@@ -73,9 +77,8 @@ results.
 - **Static metrics:** fewer instruction bytes are not the same as token savings or
   better answers.
 
-Use repeated, paired A/B measurements as the stronger evidence. One repetition is
-indicative; multiple complete repetitions provide a better view of variance but do
-not eliminate it.
+One repetition is indicative; multiple complete repetitions provide a better view
+of variance but do not establish statistical confidence by themselves.
 
 Official implementation references:
 

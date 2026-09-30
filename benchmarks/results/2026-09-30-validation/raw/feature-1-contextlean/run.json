@@ -1,0 +1,33 @@
+{
+  "condition": "contextlean",
+  "error": null,
+  "evaluation": {
+    "acceptance_passed": true,
+    "agent_tests_passed": true,
+    "task_success": true,
+    "tests_passed": true
+  },
+  "execution_success": true,
+  "exit_code": 0,
+  "initial_digest": "7642a99b1020d72fd33f9f6e23f53ed42d1f1b26bdb9a24d9b08ed25e8899dbe",
+  "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+  "metrics": {
+    "cached_input_tokens": 84480,
+    "command_calls": 3,
+    "duration_seconds": 44.391997541999444,
+    "estimated_cost": null,
+    "file_reads": null,
+    "input_tokens": 95357,
+    "output_tokens": 1757,
+    "reasoning_output_tokens": 173,
+    "tool_calls": null,
+    "total_tokens": 97114,
+    "unique_files_inspected": null
+  },
+  "neutralized_instructions": [],
+  "raw_directory": "raw/feature-1-contextlean",
+  "repeat": 1,
+  "sequence": 6,
+  "task": "feature",
+  "timestamp": "2026-09-30T07:49:43+00:00"
+}

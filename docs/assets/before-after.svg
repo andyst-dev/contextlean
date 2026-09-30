@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="392" viewBox="0 0 960 392" role="img" aria-labelledby="title desc">
+  <title id="title">Repository navigation before and after ContextLean</title>
+  <desc id="desc">Without a map, an agent explores documents, folders, source and tests to find relevant code. With a small repository map, it can use directions and rules to reach relevant code and tests. This is a conceptual illustration, not measured results.</desc>
+  <rect width="960" height="392" rx="20" fill="#101923"/>
+  <g font-family="system-ui, -apple-system, sans-serif">
+    <text x="40" y="46" font-size="16" font-weight="700" fill="#e5edf5">WITHOUT CONTEXTLEAN</text>
+    <text x="508" y="46" font-size="16" font-weight="700" fill="#77dfc4">WITH CONTEXTLEAN</text>
+    <path d="M480 34v302" stroke="#324354"/>
+    <rect x="40" y="66" width="410" height="48" rx="8" fill="#243341"/>
+    <rect x="508" y="66" width="410" height="48" rx="8" fill="#243341"/>
+    <text x="60" y="97" font-size="18" fill="#e5edf5">A task in an unfamiliar repository</text>
+    <text x="528" y="97" font-size="18" fill="#e5edf5">The same task and repository</text>
+    <path d="M245 124v24m-6-6 6 6 6-6M713 124v24m-6-6 6 6 6-6" stroke="#92a8bc" stroke-width="2" fill="none"/>
+    <rect x="40" y="160" width="410" height="92" rx="8" fill="#243341"/>
+    <rect x="508" y="160" width="410" height="92" rx="8" fill="#183b38" stroke="#2b7162"/>
+    <text x="60" y="190" font-size="18" fill="#e5edf5">Explore the repository</text>
+    <text x="60" y="220" font-size="15" fill="#b6c7d7">Docs · folders · searches · source · tests</text>
+    <text x="528" y="190" font-size="18" fill="#e5edf5">Use a small repository map</text>
+    <text x="528" y="220" font-size="15" fill="#b8d9d1">AGENTS.md · ownership · commands · rules</text>
+    <path d="M245 262v24m-6-6 6 6 6-6M713 262v24m-6-6 6 6 6-6" stroke="#92a8bc" stroke-width="2" fill="none"/>
+    <rect x="40" y="298" width="410" height="48" rx="8" fill="#243341"/>
+    <rect x="508" y="298" width="410" height="48" rx="8" fill="#243341"/>
+    <text x="60" y="329" font-size="18" fill="#e5edf5">Relevant modules and tests</text>
+    <text x="528" y="329" font-size="18" fill="#e5edf5">Relevant modules and tests</text>
+    <text x="480" y="376" text-anchor="middle" font-size="14" fill="#92a8bc">Conceptual workflow · agents may inspect more files in either case</text>
+  </g>
+</svg>

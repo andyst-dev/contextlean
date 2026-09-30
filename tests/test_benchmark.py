@@ -171,12 +171,8 @@ class RateCardTests(unittest.TestCase):
 
     def test_stale_and_current_rate_cards(self) -> None:
         today = dt.date(2026, 8, 16)
-        self.assertFalse(
-            benchmark.is_rate_stale({"verified_on": "2026-08-01"}, today=today)
-        )
-        self.assertTrue(
-            benchmark.is_rate_stale({"verified_on": "2026-01-01"}, today=today)
-        )
+        self.assertFalse(benchmark.is_rate_stale({"verified_on": "2026-08-01"}, today=today))
+        self.assertTrue(benchmark.is_rate_stale({"verified_on": "2026-01-01"}, today=today))
         self.assertTrue(benchmark.is_rate_stale({}, today=today))
 
 
@@ -262,7 +258,9 @@ class AbReportTests(unittest.TestCase):
                 "baseline": baseline,
                 "optimized": optimized,
             },
-            "result": benchmark.report_result_statement(baseline, optimized, complete),
+            "result": benchmark.report_result_statement(
+                baseline, optimized, complete, correctness_verified=True
+            ),
             "confidence": "Indicative",
         }
 
@@ -279,6 +277,16 @@ class AbReportTests(unittest.TestCase):
         report = self.report(complete=False)
         self.assertIn("No overall gain claim", report["result"])
 
+    def test_ungraded_turn_cannot_support_gain_claim(self) -> None:
+        report = self.report()
+        statement = benchmark.report_result_statement(
+            report["comparison"]["baseline"], report["comparison"]["optimized"], True
+        )
+        self.assertIn("task correctness was not evaluated", statement)
+
+    def test_three_repetitions_do_not_claim_statistical_confidence(self) -> None:
+        self.assertIn("not established", benchmark.confidence_label(3, 0, 15, 15))
+
     def test_json_and_markdown_are_machine_and_human_readable(self) -> None:
         report = self.report(complete=True)
         with tempfile.TemporaryDirectory() as temporary:
@@ -288,8 +296,12 @@ class AbReportTests(unittest.TestCase):
             benchmark.write_json(json_path, report)
             markdown_path.write_text(benchmark.render_ab_report(report), encoding="utf-8")
 
-            self.assertEqual(json.loads(json_path.read_text(encoding="utf-8"))["model"], "fixture-model")
-            self.assertTrue(markdown_path.read_text(encoding="utf-8").startswith("# ContextLean A/B Benchmark"))
+            self.assertEqual(
+                json.loads(json_path.read_text(encoding="utf-8"))["model"], "fixture-model"
+            )
+            self.assertTrue(
+                markdown_path.read_text(encoding="utf-8").startswith("# ContextLean A/B Benchmark")
+            )
 
 
 if __name__ == "__main__":

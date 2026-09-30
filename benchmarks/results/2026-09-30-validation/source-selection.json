@@ -1,0 +1,117 @@
+{
+  "omitted_generated_files": {
+    ".DS_Store": {
+      "bytes": 14340,
+      "sha256": "11febac7a9acf23bf16e2741f12086c0e6b1d7aefe534ecd00789a7a76dea0c9"
+    },
+    ".ruff_cache/.gitignore": {
+      "bytes": 35,
+      "sha256": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316"
+    },
+    ".ruff_cache/0.15.7/1170463579035674638": {
+      "bytes": 93,
+      "sha256": "fe7b929d22cb6a5b8406f7604148d40fd762635be0856443456cc6992ea18fb6"
+    },
+    ".ruff_cache/0.15.7/18317439257763315371": {
+      "bytes": 203,
+      "sha256": "062c86fb7fee7afe13018ef899a684277ee23c21430e9d10b6c25a25e3b85359"
+    },
+    ".ruff_cache/0.15.7/2429467171437912985": {
+      "bytes": 115,
+      "sha256": "b455bd0866adb179c3b706a984fb81087acd95a283dddd23e2387c9e30c4406b"
+    },
+    ".ruff_cache/CACHEDIR.TAG": {
+      "bytes": 43,
+      "sha256": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae"
+    },
+    "skills/.DS_Store": {
+      "bytes": 8196,
+      "sha256": "d53c9e9cc2ef1233615fea4db6c63f7fd7a7b6650faef71a07eb274d6cb530b4"
+    },
+    "skills/audit/.DS_Store": {
+      "bytes": 6148,
+      "sha256": "c736d107fa0943bcf1068160d3c0e6b58aa1187f06b8e2be3fd02d1c2043de91"
+    },
+    "skills/benchmark/.DS_Store": {
+      "bytes": 8196,
+      "sha256": "a068e95418471c48bb8d93780fa8f6890b2b0e1e0055baa302e883cb83f17690"
+    },
+    "skills/lean-review/.DS_Store": {
+      "bytes": 6148,
+      "sha256": "c736d107fa0943bcf1068160d3c0e6b58aa1187f06b8e2be3fd02d1c2043de91"
+    }
+  },
+  "original_candidate_digest": "6b51e8ab4e6c59571325c30afb932b49c9bf21ff9f01a7bd2463dd8dd6d9252b",
+  "public_source_tree_digest": "2445d06dbcb11d3be7ae136d56387e51a5e49996b424eac78bd8471478994437",
+  "reason": "Finder metadata and linter cache excluded from public evidence; original source/fixture/evaluator bytes retained. Original whole-tree hash includes the omitted files and cannot be recomputed from this selection.",
+  "retained_files": {
+    ".claude-plugin/marketplace.json": "8bb463923debf935335637d5887a95623be922aa32557f3482e80d85d3231e04",
+    ".claude-plugin/plugin.json": "de85ddfb21bbe7a68f3156473ec3b69a26b01318f2ba69e8c2e95cef0cd8d469",
+    ".codex-plugin/plugin.json": "95cd15bc725b7f289530116aa664b4811610bdb49bfcdce150b8f7d11de3adb1",
+    ".github/workflows/quality.yml": "667f5a15458d15c4e4b34310d425ccb98e7512dbb447090651192af43e0438ca",
+    ".gitignore": "cecda0b3b2a23abfa52dbbdc3fdf3df950c22351d896e420453327111274a9d4",
+    "AGENTS.md": "cdf9c6b15aa8797351420199d2b6004d33cc43261812cbce1e7d470ceedf09f0",
+    "CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "LICENSE": "be781af9b132fc140e31a71617d19ebd3906a271eb25927684b78e9088fbb40d",
+    "README.md": "dc444daf2031f6dc1be8d57552a8ccd78c9dcd8733f8b83f14ebb98e7b73d07b",
+    "benchmarks/README.md": "c7504f58da64b6e37704157c4c74fe5f3557d0f814ed33dd38f5cd15105219a9",
+    "benchmarks/evaluate.py": "3200e20da7522c1a063cda247433efcdcaf2e6f945c7cdf951dee35e624fd686",
+    "benchmarks/fixtures/expense-report/.gitignore": "66556d3cf14a84a8c025c4e396fa1842c41d1dd09c98dc25ec3f2ae6ac878db5",
+    "benchmarks/fixtures/expense-report/AGENTS.md": "4b1547fdba42a849d1558e54fbf8249213c7164644e8a501a309b631bdfdf1d3",
+    "benchmarks/fixtures/expense-report/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "benchmarks/fixtures/expense-report/README.md": "3bc7002182a17904d8435a5cb95fca7c0095d809d441f22a9f4572ac60c06722",
+    "benchmarks/fixtures/expense-report/config.json": "6a8c29bd630822a34ee4ed59e0d2591f9afa4b7a310db08b6aa528039a443da4",
+    "benchmarks/fixtures/expense-report/data/sample.csv": "c39faa15a1d1eefbf2ee2402f88cfe7d88e22aeddacfeedb538203044e60163e",
+    "benchmarks/fixtures/expense-report/expense_report/__init__.py": "f6b1efb33c8e51aa4ebf4d7ea4a1fade259d94b019ade83dd241271118529a47",
+    "benchmarks/fixtures/expense-report/expense_report/cli.py": "6a681929dc3b3fc7149084ce6d97db797dcabaee51e44e54f8f517c3fa8d89ab",
+    "benchmarks/fixtures/expense-report/expense_report/filters.py": "8825e48b6a21b716bc6b074284378bc42c13be48ca16c4450184d449cb65a9f7",
+    "benchmarks/fixtures/expense-report/expense_report/report.py": "a6054eafc61b537081ee06573065ecbe1d8ca0e0cd6712d6ffcce73c225e6b64",
+    "benchmarks/fixtures/expense-report/expense_report/storage.py": "97eb5325d6b0a78427875ad0774856b1b3249ed5f939fc22ccb0a43efd9f69b4",
+    "benchmarks/fixtures/expense-report/tests/test_expenses.py": "542ad1c532288b3c460269224ecf161dd560e6e0d5c9c783f83cec4e593a194b",
+    "benchmarks/results/README.md": "0bb74057c04b815203cc4912f390668519d87c5d6b6e3efdfcc76e3c2df2c80a",
+    "benchmarks/run_benchmark.py": "67e99aa21a9224088c69ad4390f8559c48f71f2ed5cb0ffda420a99ba89bcb50",
+    "benchmarks/tasks/suite.json": "bc40082c4e77dc11a268b5593f313d6b1b4b51062c3818effb64bfe03a744c62",
+    "docs/assets/before-after.svg": "aa6b69298835733cf0d605ec833fef05660b26b0a6f99a741c5515531c8fbace",
+    "pyproject.toml": "38f4b9b0680d63b06a52024c1e446146ae82d9df3e94156bbfb33368ced71f84",
+    "skills/audit/SKILL.md": "aa6ab683f563cdf14b785904d28bfdd50f212fb017e94a1004bf622be068ef79",
+    "skills/audit/agents/openai.yaml": "27d3e49e8926004aa28a2a11e6c95d01af96e3893c65160b54caf96289f68c81",
+    "skills/benchmark/SKILL.md": "6e12d54da11356588567f20e87933a652c9dd039e429bac26e8e91d8d9cb342a",
+    "skills/benchmark/agents/openai.yaml": "e1acb6b7b0d212b014c9c3934998260ed06e4f6920c75194217a4af22a177f2b",
+    "skills/benchmark/data/credit-rates.json": "3e7ec583ab344288c94606091a45c26dcb048ae2431715b2d57d830bbedbf08b",
+    "skills/benchmark/references/methodology.md": "e42c0647e709504edec611e2e2159526644d8c4a0ffdc52a1664f73479e73dd5",
+    "skills/benchmark/scripts/benchmark.py": "b087bb93a6264e0c36d44abfe40987b726504206bc20399ab2532ce4523a495a",
+    "skills/bootstrap/SKILL.md": "a2915193f359cf80ee4dccb76791089c6312509707d065581046095ac4719c37",
+    "skills/bootstrap/agents/openai.yaml": "dcac179641afdf29d85528611ce980965040a355f409a8602c3a166a323ac81e",
+    "skills/bootstrap/references/bootstrap-spec.md": "7af75e9c2d2559f5913dabbbe45e1c13d48816b4e1e8e358dd9915f7daa280ab",
+    "skills/lean-review/SKILL.md": "f31c0849a5c11757b8f200dd2c030b04d6cdf78c364a95ba7c5b329512aebed9",
+    "skills/lean-review/agents/openai.yaml": "d3ff8485a25f4fcd93d414fd27e4bfa75b285108dfabc29bb5f45a880b40b787",
+    "tests/fixtures/benchmark/failed.jsonl": "91e1ee47af5d7c750085442c567344b168fefae3959c3c86728f542798b2d51c",
+    "tests/fixtures/benchmark/invalid-usage.jsonl": "c07667bbb7c0f3f4968408a241d9b606d888d6e662355c2c8d9ab9a9aec4d601",
+    "tests/fixtures/benchmark/success.jsonl": "358e589e62ac2e9a742b8cb496408d2f18961d6fc0409abe6823d67725733be9",
+    "tests/fixtures/projects/clean/AGENTS.md": "ab86d63637f08d0f88cf6b75fc3eb61a9270e513369e39033598ef980776ce54",
+    "tests/fixtures/projects/clean/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "tests/fixtures/projects/clean/fixture.json": "c601253f3dbec1b805af0575cbb56d0429895eaa8d3e3b18aebea14534f8ca8e",
+    "tests/fixtures/projects/clean/src/tool.py": "a58a12d2f2ca0b214789dc81d173eba9d323a07372a183dd50728f95d6661bc7",
+    "tests/fixtures/projects/monorepo-docs/apps/web/src/index.ts": "a8e4ee6a4da7bdfbb866c5e8aa382db0ec8a430b762914cc719963f87552acd1",
+    "tests/fixtures/projects/monorepo-docs/docs/ARCHITECTURE.md": "e6034760a5c79db22f6bd2e076ea59954648160e60dbe42de712e65a1f4104fa",
+    "tests/fixtures/projects/monorepo-docs/fixture.json": "4103a93156b1f21f71eb4db5de568f6c55c25d35503dae6928be2dc51c0f8bf6",
+    "tests/fixtures/projects/monorepo-docs/package.json": "e51a8cca0d6cf83eacc4b92be9d8446914db0653e891c66d0d4956b86725ff16",
+    "tests/fixtures/projects/monorepo-docs/packages/shared/src/id.ts": "a9a3d36bc685c638ab079dfec75d93bc5df7fa7446853ac5bed355cb995a1a5e",
+    "tests/fixtures/projects/node-large-claude/CLAUDE.md": "3e355be79fd694285a0b8909e9b80cef4e513ba013cb706d3bebf5797f115ec9",
+    "tests/fixtures/projects/node-large-claude/fixture.json": "7feb333a5afeeebee80b23c392cb16387561ab35bda17206a59cf2f1bf875b74",
+    "tests/fixtures/projects/node-large-claude/package.json": "6543d375bd587880c70fce2e8463370a678d49b190890564d52363e4d6a6e0e0",
+    "tests/fixtures/projects/node-large-claude/src/index.ts": "0f9c87e792f741fdad86d910f28c8d54fbecc121ca80d6d57563fcf76246945f",
+    "tests/fixtures/projects/python-existing/AGENTS.md": "2def9d0a8b71cc56432addf567c24d8f002820f62c4bebb856312e2ac403553d",
+    "tests/fixtures/projects/python-existing/fixture.json": "6a471fb2ce76f14d3adbcc965572e5e28aa98573346bb5ce49087051c94254ac",
+    "tests/fixtures/projects/python-existing/pyproject.toml": "dd1fc8fbe3f1b9a4c4a2070756b15d62d5ebeaf9229fb0b69b4dd23ad2385c5b",
+    "tests/fixtures/projects/python-existing/src/greeting.py": "7d180e1afb7777ad22495996b5c0d3fa3cf8df9e420f400e2dc7782dcfaec91b",
+    "tests/fixtures/projects/python-existing/tests/test_greeting.py": "43dde3dd199b3b9758fa3f058e715c65ba1379d02e99e695f394f6a56a8a332f",
+    "tests/fixtures/reviews/duplicate-helper.diff": "e97196d736ff1caa50b9f6466bc3b4fdfa80430e4df321ff9afe790498ea8de8",
+    "tests/fixtures/reviews/expected.json": "588365bf9cfdfec9dcf3b2a543d0d2a2636c9db0ad875bd38d43a814a8adcad1",
+    "tests/fixtures/reviews/focused-change.diff": "6bfff36524d49afd2810234d706045b84539fae2168eb9a62d4c66b71a5e8322",
+    "tests/test_benchmark.py": "2dd3a9394f335046a5774948ead6e406371be6168f817cec78c9ba14cd568b36",
+    "tests/test_benchmark_suite.py": "086659d5cc09b400f5286b97b117197126e40b05b43ef8e7e515184f84d1effd",
+    "tests/test_package.py": "1ddf4ae04bc293b15efe2d83583617f6a5fdce84cba9e3fa7f404442b292a474",
+    "tests/test_skill_contracts.py": "10a335414bc2eb0bdd3e95c77928c294b815b2dff6fe9aaa3de54fd4e87f9b6d"
+  }
+}

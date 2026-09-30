@@ -1,0 +1,873 @@
+{
+  "candidate_digest": "6b51e8ab4e6c59571325c30afb932b49c9bf21ff9f01a7bd2463dd8dd6d9252b",
+  "candidate_has_uncommitted_changes": true,
+  "codex_cli_version": "codex-cli 0.147.0",
+  "configuration": {
+    "approval_policy": "never",
+    "ephemeral": true,
+    "ignore_rules": true,
+    "ignore_user_config": true,
+    "sandbox": "read-only for navigation; workspace-write for edits",
+    "service_tier": "default",
+    "web_search": "disabled"
+  },
+  "contextlean_version": "0.1.0",
+  "environment": {
+    "machine": "arm64",
+    "python": "3.14.4",
+    "system": "Darwin"
+  },
+  "evaluator_digest": "3200e20da7522c1a063cda247433efcdcaf2e6f945c7cdf951dee35e624fd686",
+  "expected_runs": 10,
+  "finished_at": "2026-09-30T07:52:04+00:00",
+  "fixture_digest": "7642a99b1020d72fd33f9f6e23f53ed42d1f1b26bdb9a24d9b08ed25e8899dbe",
+  "git_commit": "a7939df879f7b48a2f65c39270a0e7d3f157bded",
+  "kind": "contextlean-graded-validation",
+  "limitations": [
+    "Synthetic small Python repository; not representative of all projects.",
+    "Guidance produced by bootstrap procedure and frozen; only instruction files differ.",
+    "Plugin excluded from both conditions; this isolates generated guidance, not skill invocation.",
+    "Provider caching and service load are uncontrolled; ordering alternates by task/repetition.",
+    "Both conditions use the same commit and candidate snapshot; SHA alone cannot reproduce uncommitted validation changes.",
+    "Costs and file inspection counts are unavailable unless separately supported by provider evidence."
+  ],
+  "model": "gpt-5.6-terra",
+  "reasoning": "low",
+  "repeats": 1,
+  "result": "All tasks passed; this validation batch is eligible for measurement review, not a performance claim.",
+  "runs": [
+    {
+      "condition": "vanilla",
+      "error": null,
+      "evaluation": {
+        "acceptance_passed": true,
+        "agent_tests_passed": true,
+        "task_success": true,
+        "tests_passed": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "initial_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "metrics": {
+        "cached_input_tokens": 29184,
+        "command_calls": 2,
+        "duration_seconds": 17.158893458079547,
+        "estimated_cost": null,
+        "file_reads": null,
+        "input_tokens": 47765,
+        "output_tokens": 391,
+        "reasoning_output_tokens": 28,
+        "tool_calls": null,
+        "total_tokens": 48156,
+        "unique_files_inspected": null
+      },
+      "neutralized_instructions": [
+        "AGENTS.md",
+        "CLAUDE.md"
+      ],
+      "raw_directory": "raw/navigation-1-vanilla",
+      "repeat": 1,
+      "sequence": 1,
+      "task": "navigation",
+      "timestamp": "2026-09-30T07:46:39+00:00"
+    },
+    {
+      "condition": "contextlean",
+      "error": null,
+      "evaluation": {
+        "acceptance_passed": true,
+        "agent_tests_passed": true,
+        "task_success": true,
+        "tests_passed": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "initial_digest": "7642a99b1020d72fd33f9f6e23f53ed42d1f1b26bdb9a24d9b08ed25e8899dbe",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "metrics": {
+        "cached_input_tokens": 12032,
+        "command_calls": 1,
+        "duration_seconds": 10.161850166041404,
+        "estimated_cost": null,
+        "file_reads": null,
+        "input_tokens": 26175,
+        "output_tokens": 266,
+        "reasoning_output_tokens": 89,
+        "tool_calls": null,
+        "total_tokens": 26441,
+        "unique_files_inspected": null
+      },
+      "neutralized_instructions": [],
+      "raw_directory": "raw/navigation-1-contextlean",
+      "repeat": 1,
+      "sequence": 2,
+      "task": "navigation",
+      "timestamp": "2026-09-30T07:46:50+00:00"
+    },
+    {
+      "condition": "contextlean",
+      "error": null,
+      "evaluation": {
+        "acceptance_passed": true,
+        "agent_tests_passed": true,
+        "task_success": true,
+        "tests_passed": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "initial_digest": "7642a99b1020d72fd33f9f6e23f53ed42d1f1b26bdb9a24d9b08ed25e8899dbe",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "metrics": {
+        "cached_input_tokens": 34048,
+        "command_calls": 2,
+        "duration_seconds": 24.49145816708915,
+        "estimated_cost": null,
+        "file_reads": null,
+        "input_tokens": 58315,
+        "output_tokens": 891,
+        "reasoning_output_tokens": 63,
+        "tool_calls": null,
+        "total_tokens": 59206,
+        "unique_files_inspected": null
+      },
+      "neutralized_instructions": [],
+      "raw_directory": "raw/bug-fix-1-contextlean",
+      "repeat": 1,
+      "sequence": 3,
+      "task": "bug-fix",
+      "timestamp": "2026-09-30T07:47:15+00:00"
+    },
+    {
+      "condition": "vanilla",
+      "error": null,
+      "evaluation": {
+        "acceptance_passed": true,
+        "agent_tests_passed": true,
+        "task_success": true,
+        "tests_passed": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "initial_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "metrics": {
+        "cached_input_tokens": 67328,
+        "command_calls": 3,
+        "duration_seconds": 36.41088437498547,
+        "estimated_cost": null,
+        "file_reads": null,
+        "input_tokens": 87093,
+        "output_tokens": 1311,
+        "reasoning_output_tokens": 124,
+        "tool_calls": null,
+        "total_tokens": 88404,
+        "unique_files_inspected": null
+      },
+      "neutralized_instructions": [
+        "AGENTS.md",
+        "CLAUDE.md"
+      ],
+      "raw_directory": "raw/bug-fix-1-vanilla",
+      "repeat": 1,
+      "sequence": 4,
+      "task": "bug-fix",
+      "timestamp": "2026-09-30T07:47:51+00:00"
+    },
+    {
+      "condition": "vanilla",
+      "error": null,
+      "evaluation": {
+        "acceptance_passed": true,
+        "agent_tests_passed": true,
+        "task_success": true,
+        "tests_passed": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "initial_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "metrics": {
+        "cached_input_tokens": 83456,
+        "command_calls": 4,
+        "duration_seconds": 66.08334891707636,
+        "estimated_cost": null,
+        "file_reads": null,
+        "input_tokens": 106627,
+        "output_tokens": 2790,
+        "reasoning_output_tokens": 200,
+        "tool_calls": null,
+        "total_tokens": 109417,
+        "unique_files_inspected": null
+      },
+      "neutralized_instructions": [
+        "AGENTS.md",
+        "CLAUDE.md"
+      ],
+      "raw_directory": "raw/feature-1-vanilla",
+      "repeat": 1,
+      "sequence": 5,
+      "task": "feature",
+      "timestamp": "2026-09-30T07:48:58+00:00"
+    },
+    {
+      "condition": "contextlean",
+      "error": null,
+      "evaluation": {
+        "acceptance_passed": true,
+        "agent_tests_passed": true,
+        "task_success": true,
+        "tests_passed": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "initial_digest": "7642a99b1020d72fd33f9f6e23f53ed42d1f1b26bdb9a24d9b08ed25e8899dbe",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "metrics": {
+        "cached_input_tokens": 84480,
+        "command_calls": 3,
+        "duration_seconds": 44.391997541999444,
+        "estimated_cost": null,
+        "file_reads": null,
+        "input_tokens": 95357,
+        "output_tokens": 1757,
+        "reasoning_output_tokens": 173,
+        "tool_calls": null,
+        "total_tokens": 97114,
+        "unique_files_inspected": null
+      },
+      "neutralized_instructions": [],
+      "raw_directory": "raw/feature-1-contextlean",
+      "repeat": 1,
+      "sequence": 6,
+      "task": "feature",
+      "timestamp": "2026-09-30T07:49:43+00:00"
+    },
+    {
+      "condition": "contextlean",
+      "error": null,
+      "evaluation": {
+        "acceptance_passed": true,
+        "agent_tests_passed": true,
+        "task_success": true,
+        "tests_passed": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "initial_digest": "7642a99b1020d72fd33f9f6e23f53ed42d1f1b26bdb9a24d9b08ed25e8899dbe",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "metrics": {
+        "cached_input_tokens": 70400,
+        "command_calls": 3,
+        "duration_seconds": 38.035951915895566,
+        "estimated_cost": null,
+        "file_reads": null,
+        "input_tokens": 83116,
+        "output_tokens": 1014,
+        "reasoning_output_tokens": 49,
+        "tool_calls": null,
+        "total_tokens": 84130,
+        "unique_files_inspected": null
+      },
+      "neutralized_instructions": [],
+      "raw_directory": "raw/refactor-1-contextlean",
+      "repeat": 1,
+      "sequence": 7,
+      "task": "refactor",
+      "timestamp": "2026-09-30T07:50:21+00:00"
+    },
+    {
+      "condition": "vanilla",
+      "error": null,
+      "evaluation": {
+        "acceptance_passed": true,
+        "agent_tests_passed": true,
+        "task_success": true,
+        "tests_passed": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "initial_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "metrics": {
+        "cached_input_tokens": 52224,
+        "command_calls": 3,
+        "duration_seconds": 33.34189329086803,
+        "estimated_cost": null,
+        "file_reads": null,
+        "input_tokens": 71274,
+        "output_tokens": 1102,
+        "reasoning_output_tokens": 101,
+        "tool_calls": null,
+        "total_tokens": 72376,
+        "unique_files_inspected": null
+      },
+      "neutralized_instructions": [
+        "AGENTS.md",
+        "CLAUDE.md"
+      ],
+      "raw_directory": "raw/refactor-1-vanilla",
+      "repeat": 1,
+      "sequence": 8,
+      "task": "refactor",
+      "timestamp": "2026-09-30T07:50:55+00:00"
+    },
+    {
+      "condition": "vanilla",
+      "error": null,
+      "evaluation": {
+        "acceptance_passed": true,
+        "agent_tests_passed": true,
+        "task_success": true,
+        "tests_passed": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "initial_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "metrics": {
+        "cached_input_tokens": 62208,
+        "command_calls": 3,
+        "duration_seconds": 35.287692040903494,
+        "estimated_cost": null,
+        "file_reads": null,
+        "input_tokens": 83968,
+        "output_tokens": 1051,
+        "reasoning_output_tokens": 118,
+        "tool_calls": null,
+        "total_tokens": 85019,
+        "unique_files_inspected": null
+      },
+      "neutralized_instructions": [
+        "AGENTS.md",
+        "CLAUDE.md"
+      ],
+      "raw_directory": "raw/documentation-config-1-vanilla",
+      "repeat": 1,
+      "sequence": 9,
+      "task": "documentation-config",
+      "timestamp": "2026-09-30T07:51:31+00:00"
+    },
+    {
+      "condition": "contextlean",
+      "error": null,
+      "evaluation": {
+        "acceptance_passed": true,
+        "agent_tests_passed": true,
+        "task_success": true,
+        "tests_passed": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "initial_digest": "7642a99b1020d72fd33f9f6e23f53ed42d1f1b26bdb9a24d9b08ed25e8899dbe",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "metrics": {
+        "cached_input_tokens": 78336,
+        "command_calls": 4,
+        "duration_seconds": 32.77296320814639,
+        "estimated_cost": null,
+        "file_reads": null,
+        "input_tokens": 87366,
+        "output_tokens": 1050,
+        "reasoning_output_tokens": 266,
+        "tool_calls": null,
+        "total_tokens": 88416,
+        "unique_files_inspected": null
+      },
+      "neutralized_instructions": [],
+      "raw_directory": "raw/documentation-config-1-contextlean",
+      "repeat": 1,
+      "sequence": 10,
+      "task": "documentation-config",
+      "timestamp": "2026-09-30T07:52:04+00:00"
+    }
+  ],
+  "schema_version": 1,
+  "started_at": "2026-09-30T07:46:22+00:00",
+  "status": "validation-only",
+  "summary": [
+    {
+      "category": "repository understanding/navigation",
+      "contextlean": {
+        "expected_runs": 1,
+        "metrics": {
+          "cached_input_tokens": {
+            "max": 12032,
+            "mean": 12032,
+            "median": 12032,
+            "min": 12032
+          },
+          "command_calls": {
+            "max": 1,
+            "mean": 1,
+            "median": 1,
+            "min": 1
+          },
+          "duration_seconds": {
+            "max": 10.161850166041404,
+            "mean": 10.161850166041404,
+            "median": 10.161850166041404,
+            "min": 10.161850166041404
+          },
+          "input_tokens": {
+            "max": 26175,
+            "mean": 26175,
+            "median": 26175,
+            "min": 26175
+          },
+          "output_tokens": {
+            "max": 266,
+            "mean": 266,
+            "median": 266,
+            "min": 266
+          },
+          "total_tokens": {
+            "max": 26441,
+            "mean": 26441,
+            "median": 26441,
+            "min": 26441
+          }
+        },
+        "runs": 1,
+        "task_successes": 1
+      },
+      "task": "navigation",
+      "vanilla": {
+        "expected_runs": 1,
+        "metrics": {
+          "cached_input_tokens": {
+            "max": 29184,
+            "mean": 29184,
+            "median": 29184,
+            "min": 29184
+          },
+          "command_calls": {
+            "max": 2,
+            "mean": 2,
+            "median": 2,
+            "min": 2
+          },
+          "duration_seconds": {
+            "max": 17.158893458079547,
+            "mean": 17.158893458079547,
+            "median": 17.158893458079547,
+            "min": 17.158893458079547
+          },
+          "input_tokens": {
+            "max": 47765,
+            "mean": 47765,
+            "median": 47765,
+            "min": 47765
+          },
+          "output_tokens": {
+            "max": 391,
+            "mean": 391,
+            "median": 391,
+            "min": 391
+          },
+          "total_tokens": {
+            "max": 48156,
+            "mean": 48156,
+            "median": 48156,
+            "min": 48156
+          }
+        },
+        "runs": 1,
+        "task_successes": 1
+      }
+    },
+    {
+      "category": "small bug fix",
+      "contextlean": {
+        "expected_runs": 1,
+        "metrics": {
+          "cached_input_tokens": {
+            "max": 34048,
+            "mean": 34048,
+            "median": 34048,
+            "min": 34048
+          },
+          "command_calls": {
+            "max": 2,
+            "mean": 2,
+            "median": 2,
+            "min": 2
+          },
+          "duration_seconds": {
+            "max": 24.49145816708915,
+            "mean": 24.49145816708915,
+            "median": 24.49145816708915,
+            "min": 24.49145816708915
+          },
+          "input_tokens": {
+            "max": 58315,
+            "mean": 58315,
+            "median": 58315,
+            "min": 58315
+          },
+          "output_tokens": {
+            "max": 891,
+            "mean": 891,
+            "median": 891,
+            "min": 891
+          },
+          "total_tokens": {
+            "max": 59206,
+            "mean": 59206,
+            "median": 59206,
+            "min": 59206
+          }
+        },
+        "runs": 1,
+        "task_successes": 1
+      },
+      "task": "bug-fix",
+      "vanilla": {
+        "expected_runs": 1,
+        "metrics": {
+          "cached_input_tokens": {
+            "max": 67328,
+            "mean": 67328,
+            "median": 67328,
+            "min": 67328
+          },
+          "command_calls": {
+            "max": 3,
+            "mean": 3,
+            "median": 3,
+            "min": 3
+          },
+          "duration_seconds": {
+            "max": 36.41088437498547,
+            "mean": 36.41088437498547,
+            "median": 36.41088437498547,
+            "min": 36.41088437498547
+          },
+          "input_tokens": {
+            "max": 87093,
+            "mean": 87093,
+            "median": 87093,
+            "min": 87093
+          },
+          "output_tokens": {
+            "max": 1311,
+            "mean": 1311,
+            "median": 1311,
+            "min": 1311
+          },
+          "total_tokens": {
+            "max": 88404,
+            "mean": 88404,
+            "median": 88404,
+            "min": 88404
+          }
+        },
+        "runs": 1,
+        "task_successes": 1
+      }
+    },
+    {
+      "category": "small feature",
+      "contextlean": {
+        "expected_runs": 1,
+        "metrics": {
+          "cached_input_tokens": {
+            "max": 84480,
+            "mean": 84480,
+            "median": 84480,
+            "min": 84480
+          },
+          "command_calls": {
+            "max": 3,
+            "mean": 3,
+            "median": 3,
+            "min": 3
+          },
+          "duration_seconds": {
+            "max": 44.391997541999444,
+            "mean": 44.391997541999444,
+            "median": 44.391997541999444,
+            "min": 44.391997541999444
+          },
+          "input_tokens": {
+            "max": 95357,
+            "mean": 95357,
+            "median": 95357,
+            "min": 95357
+          },
+          "output_tokens": {
+            "max": 1757,
+            "mean": 1757,
+            "median": 1757,
+            "min": 1757
+          },
+          "total_tokens": {
+            "max": 97114,
+            "mean": 97114,
+            "median": 97114,
+            "min": 97114
+          }
+        },
+        "runs": 1,
+        "task_successes": 1
+      },
+      "task": "feature",
+      "vanilla": {
+        "expected_runs": 1,
+        "metrics": {
+          "cached_input_tokens": {
+            "max": 83456,
+            "mean": 83456,
+            "median": 83456,
+            "min": 83456
+          },
+          "command_calls": {
+            "max": 4,
+            "mean": 4,
+            "median": 4,
+            "min": 4
+          },
+          "duration_seconds": {
+            "max": 66.08334891707636,
+            "mean": 66.08334891707636,
+            "median": 66.08334891707636,
+            "min": 66.08334891707636
+          },
+          "input_tokens": {
+            "max": 106627,
+            "mean": 106627,
+            "median": 106627,
+            "min": 106627
+          },
+          "output_tokens": {
+            "max": 2790,
+            "mean": 2790,
+            "median": 2790,
+            "min": 2790
+          },
+          "total_tokens": {
+            "max": 109417,
+            "mean": 109417,
+            "median": 109417,
+            "min": 109417
+          }
+        },
+        "runs": 1,
+        "task_successes": 1
+      }
+    },
+    {
+      "category": "localized refactor",
+      "contextlean": {
+        "expected_runs": 1,
+        "metrics": {
+          "cached_input_tokens": {
+            "max": 70400,
+            "mean": 70400,
+            "median": 70400,
+            "min": 70400
+          },
+          "command_calls": {
+            "max": 3,
+            "mean": 3,
+            "median": 3,
+            "min": 3
+          },
+          "duration_seconds": {
+            "max": 38.035951915895566,
+            "mean": 38.035951915895566,
+            "median": 38.035951915895566,
+            "min": 38.035951915895566
+          },
+          "input_tokens": {
+            "max": 83116,
+            "mean": 83116,
+            "median": 83116,
+            "min": 83116
+          },
+          "output_tokens": {
+            "max": 1014,
+            "mean": 1014,
+            "median": 1014,
+            "min": 1014
+          },
+          "total_tokens": {
+            "max": 84130,
+            "mean": 84130,
+            "median": 84130,
+            "min": 84130
+          }
+        },
+        "runs": 1,
+        "task_successes": 1
+      },
+      "task": "refactor",
+      "vanilla": {
+        "expected_runs": 1,
+        "metrics": {
+          "cached_input_tokens": {
+            "max": 52224,
+            "mean": 52224,
+            "median": 52224,
+            "min": 52224
+          },
+          "command_calls": {
+            "max": 3,
+            "mean": 3,
+            "median": 3,
+            "min": 3
+          },
+          "duration_seconds": {
+            "max": 33.34189329086803,
+            "mean": 33.34189329086803,
+            "median": 33.34189329086803,
+            "min": 33.34189329086803
+          },
+          "input_tokens": {
+            "max": 71274,
+            "mean": 71274,
+            "median": 71274,
+            "min": 71274
+          },
+          "output_tokens": {
+            "max": 1102,
+            "mean": 1102,
+            "median": 1102,
+            "min": 1102
+          },
+          "total_tokens": {
+            "max": 72376,
+            "mean": 72376,
+            "median": 72376,
+            "min": 72376
+          }
+        },
+        "runs": 1,
+        "task_successes": 1
+      }
+    },
+    {
+      "category": "documentation/configuration",
+      "contextlean": {
+        "expected_runs": 1,
+        "metrics": {
+          "cached_input_tokens": {
+            "max": 78336,
+            "mean": 78336,
+            "median": 78336,
+            "min": 78336
+          },
+          "command_calls": {
+            "max": 4,
+            "mean": 4,
+            "median": 4,
+            "min": 4
+          },
+          "duration_seconds": {
+            "max": 32.77296320814639,
+            "mean": 32.77296320814639,
+            "median": 32.77296320814639,
+            "min": 32.77296320814639
+          },
+          "input_tokens": {
+            "max": 87366,
+            "mean": 87366,
+            "median": 87366,
+            "min": 87366
+          },
+          "output_tokens": {
+            "max": 1050,
+            "mean": 1050,
+            "median": 1050,
+            "min": 1050
+          },
+          "total_tokens": {
+            "max": 88416,
+            "mean": 88416,
+            "median": 88416,
+            "min": 88416
+          }
+        },
+        "runs": 1,
+        "task_successes": 1
+      },
+      "task": "documentation-config",
+      "vanilla": {
+        "expected_runs": 1,
+        "metrics": {
+          "cached_input_tokens": {
+            "max": 62208,
+            "mean": 62208,
+            "median": 62208,
+            "min": 62208
+          },
+          "command_calls": {
+            "max": 3,
+            "mean": 3,
+            "median": 3,
+            "min": 3
+          },
+          "duration_seconds": {
+            "max": 35.287692040903494,
+            "mean": 35.287692040903494,
+            "median": 35.287692040903494,
+            "min": 35.287692040903494
+          },
+          "input_tokens": {
+            "max": 83968,
+            "mean": 83968,
+            "median": 83968,
+            "min": 83968
+          },
+          "output_tokens": {
+            "max": 1051,
+            "mean": 1051,
+            "median": 1051,
+            "min": 1051
+          },
+          "total_tokens": {
+            "max": 85019,
+            "mean": 85019,
+            "median": 85019,
+            "min": 85019
+          }
+        },
+        "runs": 1,
+        "task_successes": 1
+      }
+    }
+  ],
+  "task_suite_digest": "bc40082c4e77dc11a268b5593f313d6b1b4b51062c3818effb64bfe03a744c62",
+  "tasks": [
+    {
+      "category": "repository understanding/navigation",
+      "executed_prompt": "Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.\n\nInspect this expense report repository without changing files. Identify the function that loads CSV amounts, the function that produces category totals, and the test file covering the CLI. Run the CLI on data/sample.csv. Return only a JSON object with keys loader (relative source path), reporter (relative source path), cli_tests (relative test path), total (string), count (integer), and currency (string). Verify from code and execution, not only guidance.",
+      "id": "navigation",
+      "prompt": "Inspect this expense report repository without changing files. Identify the function that loads CSV amounts, the function that produces category totals, and the test file covering the CLI. Run the CLI on data/sample.csv. Return only a JSON object with keys loader (relative source path), reporter (relative source path), cli_tests (relative test path), total (string), count (integer), and currency (string). Verify from code and execution, not only guidance."
+    },
+    {
+      "category": "small bug fix",
+      "executed_prompt": "Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.\n\nFix category filtering so --category accepts mixed case and surrounding whitespace, just as stored category names do. For example --category ' FOOD ' must select both food expenses from data/sample.csv and produce total 20.00. Preserve unfiltered reports, decimal arithmetic and currency overrides. Add a regression test and run the tests.",
+      "id": "bug-fix",
+      "prompt": "Fix category filtering so --category accepts mixed case and surrounding whitespace, just as stored category names do. For example --category ' FOOD ' must select both food expenses from data/sample.csv and produce total 20.00. Preserve unfiltered reports, decimal arithmetic and currency overrides. Add a regression test and run the tests."
+    },
+    {
+      "category": "small feature",
+      "executed_prompt": "Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.\n\nAdd optional --min-amount to the expense report CLI. Keep only expenses whose individual amount is greater than or equal to that decimal threshold before producing the report. It must combine with --category and leave existing behavior unchanged when omitted. With data/sample.csv, --min-amount 10 yields count 2 and total 32.50; --category food --min-amount 10 yields count 1 and total 12.50. Add tests and run them.",
+      "id": "feature",
+      "prompt": "Add optional --min-amount to the expense report CLI. Keep only expenses whose individual amount is greater than or equal to that decimal threshold before producing the report. It must combine with --category and leave existing behavior unchanged when omitted. With data/sample.csv, --min-amount 10 yields count 2 and total 32.50; --category food --min-amount 10 yields count 1 and total 12.50. Add tests and run them."
+    },
+    {
+      "category": "localized refactor",
+      "executed_prompt": "Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.\n\nConsolidate the duplicated normalize_category functions into one shared implementation used by filtering and category grouping. Preserve behavior, including current category filter query semantics; this task is not a bug fix. Keep the normalize_category names importable from both existing modules for compatibility. Do not add dependencies or unrelated abstractions. Run the existing tests.",
+      "id": "refactor",
+      "prompt": "Consolidate the duplicated normalize_category functions into one shared implementation used by filtering and category grouping. Preserve behavior, including current category filter query semantics; this task is not a bug fix. Keep the normalize_category names importable from both existing modules for compatibility. Do not add dependencies or unrelated abstractions. Run the existing tests."
+    },
+    {
+      "category": "documentation/configuration",
+      "executed_prompt": "Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.\n\nChange the configured default currency from USD to EUR and update the README to match. --currency GBP must still override the default. Keep expense amounts and grouping behavior unchanged. Verify the documented example commands and run the tests.",
+      "id": "documentation-config",
+      "prompt": "Change the configured default currency from USD to EUR and update the README to match. --currency GBP must still override the default. Keep expense amounts and grouping behavior unchanged. Verify the documented example commands and run the tests."
+    }
+  ]
+}

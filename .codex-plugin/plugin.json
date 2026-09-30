@@ -1,6 +1,6 @@
 {
   "name": "contextlean",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Bootstrap, maintain, and honestly measure repository context for focused coding-agent work.",
   "author": {
     "name": "ContextLean contributors"
@@ -24,9 +24,9 @@
       "Write"
     ],
     "defaultPrompt": [
-      "Bootstrap this repository with ContextLean.",
-      "Audit this repository's agent context.",
-      "Review my current change or benchmark its context impact."
+      "Use $contextlean:bootstrap to bootstrap this repository.",
+      "Use $contextlean:audit to audit this repository without changing it.",
+      "Use $contextlean:lean-review to review my current change without editing it."
     ]
   }
 }

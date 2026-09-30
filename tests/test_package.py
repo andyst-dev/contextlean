@@ -32,6 +32,7 @@ class PackageContractTests(unittest.TestCase):
         required = [
             ".codex-plugin/plugin.json",
             ".claude-plugin/plugin.json",
+            ".claude-plugin/marketplace.json",
             "skills/bootstrap/references/bootstrap-spec.md",
             "skills/benchmark/scripts/benchmark.py",
             "skills/benchmark/references/methodology.md",
@@ -43,6 +44,14 @@ class PackageContractTests(unittest.TestCase):
             "CLAUDE.md",
             "README.md",
             "LICENSE",
+            "benchmarks/run_benchmark.py",
+            "benchmarks/evaluate.py",
+            "benchmarks/tasks/suite.json",
+            "benchmarks/README.md",
+            "docs/assets/before-after.svg",
+            "docs/verification.md",
+            "docs/release-notes.md",
+            ".github/workflows/quality.yml",
         ]
         required.extend(f"skills/{name}/SKILL.md" for name in SKILLS)
         for relative_path in required:
@@ -57,7 +66,7 @@ class PackageContractTests(unittest.TestCase):
 
         for manifest in (codex, claude):
             self.assertEqual(manifest["name"], "contextlean")
-            self.assertEqual(manifest["version"], "0.1.0")
+            self.assertEqual(manifest["version"], "0.2.0")
             self.assertEqual(manifest["license"], "MIT")
             self.assertEqual(manifest["author"]["name"], "ContextLean contributors")
             self.assertNotIn("[TODO:", json.dumps(manifest))
@@ -67,9 +76,29 @@ class PackageContractTests(unittest.TestCase):
         benchmark_script = (ROOT / "skills/benchmark/scripts/benchmark.py").read_text(
             encoding="utf-8"
         )
-        self.assertIn('CONTEXTLEAN_VERSION = "0.1.0"', benchmark_script)
+        self.assertIn('CONTEXTLEAN_VERSION = "0.2.0"', benchmark_script)
 
         self.assertLessEqual(len(codex["interface"]["defaultPrompt"]), 3)
+
+    def test_local_catalog_resolves_to_plugin_and_exposes_safe_policy(self) -> None:
+        catalog = load_json(".claude-plugin/marketplace.json")
+        self.assertEqual(catalog["name"], "contextlean-local")
+        self.assertEqual(len(catalog["plugins"]), 1)
+        entry = catalog["plugins"][0]
+        self.assertEqual(entry["name"], "contextlean")
+        self.assertEqual((ROOT / entry["source"]).resolve(), ROOT)
+        self.assertEqual(entry["policy"]["installation"], "AVAILABLE")
+
+    def test_public_document_links_resolve(self) -> None:
+        documents = [ROOT / "README.md", ROOT / "benchmarks/README.md"]
+        documents.extend((ROOT / "docs").glob("*.md"))
+        documents.extend((ROOT / "benchmarks/results").rglob("*.md"))
+        for path in documents:
+            for target in re.findall(r"\]\(([^)]+)\)", path.read_text(encoding="utf-8")):
+                if "://" in target or target.startswith("#"):
+                    continue
+                with self.subTest(document=path.name, target=target):
+                    self.assertTrue((path.parent / target.split("#")[0]).exists())
 
     def test_skills_have_matching_names_and_no_placeholders(self) -> None:
         for name in SKILLS:
@@ -80,6 +109,10 @@ class PackageContractTests(unittest.TestCase):
                 self.assertTrue(values["description"])
                 self.assertNotIn("TODO", skill_path.read_text(encoding="utf-8"))
                 self.assertTrue((skill_path.parent / "agents/openai.yaml").is_file())
+                self.assertIn(
+                    f"$contextlean:{name}",
+                    (skill_path.parent / "agents/openai.yaml").read_text(encoding="utf-8"),
+                )
 
     def test_bootstrap_requires_explicit_invocation(self) -> None:
         skill = ROOT / "skills/bootstrap/SKILL.md"
@@ -90,7 +123,7 @@ class PackageContractTests(unittest.TestCase):
         self.assertIn("must never run implicitly", description)
         self.assertIn("allow_implicit_invocation: false", metadata.read_text(encoding="utf-8"))
 
-    def test_v01_has_no_mcp_hooks_or_session_scripts(self) -> None:
+    def test_has_no_mcp_hooks_or_session_scripts(self) -> None:
         forbidden_paths = (".mcp.json", ".app.json", "hooks", "scripts")
         for relative_path in forbidden_paths:
             with self.subTest(path=relative_path):
@@ -111,7 +144,7 @@ class PackageContractTests(unittest.TestCase):
         self.assertGreater(len(content.splitlines()), 100)
         self.assertLess(len(content.splitlines()), 250)
         self.assertEqual(
-            list(ROOT.rglob("bootstrap-spec.md")),
+            [path for path in ROOT.rglob("bootstrap-spec.md") if ".contextlean" not in path.parts],
             [spec],
             "bootstrap specification must have one canonical copy",
         )

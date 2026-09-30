@@ -20,7 +20,7 @@ import time
 from typing import Any, Iterable
 
 
-CONTEXTLEAN_VERSION = "0.1.0"
+CONTEXTLEAN_VERSION = "0.2.0"
 SCHEMA_VERSION = 1
 TOKEN_CHARS_ESTIMATE = 4
 LARGE_DOC_BYTES = 10_000
@@ -38,6 +38,7 @@ SKIP_DIRS = {
     "__pycache__",
 }
 INSTRUCTION_NAMES = {"AGENTS.md", "AGENTS.override.md", "CLAUDE.md", "CLAUDE.local.md"}
+COPY_SKIP_NAMES = {".git", ".contextlean", "__pycache__", ".DS_Store", ".ruff_cache", ".venv"}
 MANDATORY_WORDS = re.compile(
     r"\b(must|always|required|before (?:starting|doing|anything)|read completely|load)\b",
     re.IGNORECASE,
@@ -165,6 +166,7 @@ def static_snapshot(root: Path, project_type: str | None = None) -> dict[str, An
             "paths": maps,
         },
         "agents_hierarchy": maps,
+        "measurement_scope": "inventory across agents and subtrees, not the context loaded by any one session",
     }
 
 
@@ -268,7 +270,7 @@ def render_static_report(report: dict[str, Any]) -> str:
             [
                 "No ContextLean bootstrap baseline exists. Only the current state is shown; a true static before/after is not available.",
                 "",
-                "## Automatic instruction footprint [exact]",
+                "## Instruction file inventory [exact]",
                 "",
                 f"Current: {metric_value(after, 'automatic_instruction_bytes'):,} bytes",
                 "",
@@ -288,7 +290,7 @@ def render_static_report(report: dict[str, Any]) -> str:
         )
     else:
         rows = [
-            ("Automatic instruction footprint [exact, bytes]", "automatic_instruction_bytes"),
+            ("Instruction file inventory [exact, bytes]", "automatic_instruction_bytes"),
             ("Estimated instruction tokens [estimated]", "automatic_instruction_tokens"),
             ("Large mandatory startup docs [heuristic]", "large_mandatory_startup_docs"),
             ("Project maps [exact]", "project_maps"),
@@ -309,6 +311,7 @@ def render_static_report(report: dict[str, Any]) -> str:
     lines.extend(
         [
             "These are static structural metrics, not measured model-token savings.",
+            "The inventory spans agents and subtrees; it is not the context loaded by any one session.",
             "",
             "Classifications: exact = directly counted; estimated = byte approximation; heuristic = rule-based detection.",
         ]
@@ -338,16 +341,15 @@ def parse_jsonl(text: str) -> dict[str, Any]:
     validation_error: str | None = None
     if completed:
         raw_usage = completed[-1].get("usage")
-        required = (
-            "input_tokens",
-            "cached_input_tokens",
-            "output_tokens",
-            "reasoning_output_tokens",
-        )
+        required = ("input_tokens", "cached_input_tokens", "output_tokens")
         if isinstance(raw_usage, dict) and all(
-            isinstance(raw_usage.get(key), int) and raw_usage[key] >= 0 for key in required
+            type(raw_usage.get(key)) is int and raw_usage[key] >= 0 for key in required
         ):
             usage = {key: raw_usage[key] for key in required}
+            reasoning = raw_usage.get("reasoning_output_tokens")
+            usage["reasoning_output_tokens"] = (
+                reasoning if type(reasoning) is int and reasoning >= 0 else None
+            )
             if usage["cached_input_tokens"] > usage["input_tokens"]:
                 validation_error = "cached_input_tokens exceeds input_tokens"
         else:
@@ -386,19 +388,29 @@ def parse_jsonl(text: str) -> dict[str, Any]:
             else:
                 searches.add(str(item_id))
 
-    thread_ids = [event.get("thread_id") for event in events if event.get("type") == "thread.started"]
+    thread_ids = [
+        event.get("thread_id") for event in events if event.get("type") == "thread.started"
+    ]
     success = bool(usage) and validation_error is None and not failed_events and parse_errors == 0
     return {
         "success": success,
         "usage": usage,
-        "commands": len(commands)
-        + (command_fallback_started or command_fallback_completed),
-        "web_searches": len(searches)
-        + (search_fallback_started or search_fallback_completed),
+        "commands": len(commands) + (command_fallback_started or command_fallback_completed),
+        "web_searches": len(searches) + (search_fallback_started or search_fallback_completed),
         "parse_errors": parse_errors,
         "error": validation_error or ("Codex emitted a failure event" if failed_events else None),
         "thread_id": thread_ids[-1] if thread_ids else None,
         "event_count": len(events),
+        "final_response": next(
+            (
+                event["item"].get("text", "")
+                for event in reversed(events)
+                if event.get("type") == "item.completed"
+                and isinstance(event.get("item"), dict)
+                and event["item"].get("type") == "agent_message"
+            ),
+            "",
+        ),
     }
 
 
@@ -449,12 +461,18 @@ def load_tasks(path: Path) -> list[str]:
     try:
         value = json.loads(text)
     except json.JSONDecodeError:
-        tasks = [line.strip() for line in text.splitlines() if line.strip() and not line.lstrip().startswith("#")]
+        tasks = [
+            line.strip()
+            for line in text.splitlines()
+            if line.strip() and not line.lstrip().startswith("#")
+        ]
     else:
         if isinstance(value, dict):
             value = value.get("tasks")
         if not isinstance(value, list) or not all(isinstance(task, str) for task in value):
-            raise BenchmarkError("tasks file must contain a JSON string array, a {tasks: [...]} object, or one task per line")
+            raise BenchmarkError(
+                "tasks file must contain a JSON string array, a {tasks: [...]} object, or one task per line"
+            )
         tasks = [task.strip() for task in value if task.strip()]
     if not tasks:
         raise BenchmarkError("tasks file contains no tasks")
@@ -470,11 +488,16 @@ def automatic_tasks(root: Path) -> list[str]:
     hint = ", ".join(source_hints) if source_hints else "the main source directories"
     suffix = " Do not rely only on AGENTS.md; verify the answer in implementation, configuration, or tests and cite the relevant paths."
     return [
-        "Identify the implementation owner of the repository's central user-facing behavior and explain why it owns that responsibility." + suffix,
-        f"Trace one important execution or dependency flow across at least two subsystems (candidate areas: {hint}). Explain the boundary between them." + suffix,
-        "Find the tests that most directly verify the central behavior, and explain how those tests reach or exercise the implementation." + suffix,
-        "Locate where project configuration, persisted state, or package metadata is defined and consumed. If there is no runtime persistence, demonstrate that from the repository." + suffix,
-        "For a hypothetical small extension adjacent to the central behavior, identify the smallest coherent set of implementation, documentation, and test files that would likely need changes, and justify each." + suffix,
+        "Identify the implementation owner of the repository's central user-facing behavior and explain why it owns that responsibility."
+        + suffix,
+        f"Trace one important execution or dependency flow across at least two subsystems (candidate areas: {hint}). Explain the boundary between them."
+        + suffix,
+        "Find the tests that most directly verify the central behavior, and explain how those tests reach or exercise the implementation."
+        + suffix,
+        "Locate where project configuration, persisted state, or package metadata is defined and consumed. If there is no runtime persistence, demonstrate that from the repository."
+        + suffix,
+        "For a hypothetical small extension adjacent to the central behavior, identify the smallest coherent set of implementation, documentation, and test files that would likely need changes, and justify each."
+        + suffix,
     ]
 
 
@@ -496,7 +519,7 @@ def variant_order(task_index: int, repeat_index: int) -> tuple[str, str]:
 
 def copy_repository(source: Path, destination: Path) -> None:
     def ignore(_directory: str, names: list[str]) -> set[str]:
-        return {name for name in names if name in {".git", ".contextlean", "__pycache__"}}
+        return set(names) & COPY_SKIP_NAMES
 
     shutil.copytree(source, destination, symlinks=True, ignore=ignore)
 
@@ -562,7 +585,16 @@ def codex_version(codex: str) -> str | None:
     return value or None
 
 
-def codex_command(codex: str, workspace: Path, model: str, reasoning: str, prompt: str) -> list[str]:
+def codex_command(
+    codex: str,
+    workspace: Path,
+    model: str,
+    reasoning: str,
+    prompt: str,
+    sandbox: str = "read-only",
+) -> list[str]:
+    if sandbox not in {"read-only", "workspace-write"}:
+        raise BenchmarkError("benchmark sandbox must be read-only or workspace-write")
     return [
         codex,
         "exec",
@@ -572,7 +604,7 @@ def codex_command(codex: str, workspace: Path, model: str, reasoning: str, promp
         "--ignore-rules",
         "--strict-config",
         "--sandbox",
-        "read-only",
+        sandbox,
         "--model",
         model,
         "--config",
@@ -595,8 +627,10 @@ def execute_run(
     reasoning: str,
     prompt: str,
     timeout_seconds: int,
+    sandbox: str = "read-only",
+    raw_path: Path | None = None,
 ) -> dict[str, Any]:
-    command = codex_command(codex, workspace, model, reasoning, prompt)
+    command = codex_command(codex, workspace, model, reasoning, prompt, sandbox)
     started = time.perf_counter()
     try:
         result = subprocess.run(
@@ -608,6 +642,8 @@ def execute_run(
         )
         duration = time.perf_counter() - started
     except subprocess.TimeoutExpired as error:
+        if raw_path:
+            save_raw_run(raw_path, error.stdout or b"", error.stderr or b"", workspace)
         return {
             "success": False,
             "duration_seconds": time.perf_counter() - started,
@@ -620,6 +656,10 @@ def execute_run(
             "parse_errors": 0,
         }
     except OSError as error:
+        if raw_path:
+            save_raw_run(
+                raw_path, "", f"could not execute Codex: {error.__class__.__name__}", workspace
+            )
         return {
             "success": False,
             "duration_seconds": time.perf_counter() - started,
@@ -632,6 +672,8 @@ def execute_run(
             "parse_errors": 0,
         }
 
+    if raw_path:
+        save_raw_run(raw_path, result.stdout, result.stderr, workspace)
     parsed = parse_jsonl(result.stdout)
     parsed["duration_seconds"] = duration
     parsed["exit_code"] = result.returncode
@@ -641,7 +683,22 @@ def execute_run(
     return parsed
 
 
-def paired_successful_runs(runs: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+def save_raw_run(path: Path, stdout: str | bytes, stderr: str | bytes, workspace: Path) -> None:
+    """Retain auditable local logs; replace the temporary workspace and home paths."""
+
+    def clean(value: str | bytes) -> str:
+        if isinstance(value, bytes):
+            value = value.decode("utf-8", errors="replace")
+        return value.replace(str(workspace), "<workspace>").replace(str(Path.home()), "<home>")
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(clean(stdout), encoding="utf-8")
+    path.with_suffix(".stderr.txt").write_text(clean(stderr), encoding="utf-8")
+
+
+def paired_successful_runs(
+    runs: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     grouped: dict[tuple[int, int], dict[str, dict[str, Any]]] = {}
     for run in runs:
         grouped.setdefault((run["task_index"], run["repeat_index"]), {})[run["variant"]] = run
@@ -649,13 +706,17 @@ def paired_successful_runs(runs: list[dict[str, Any]]) -> tuple[list[dict[str, A
     optimized: list[dict[str, Any]] = []
     for key in sorted(grouped):
         pair = grouped[key]
-        if set(pair) == {"baseline", "optimized"} and all(item["success"] for item in pair.values()):
+        if set(pair) == {"baseline", "optimized"} and all(
+            item["success"] for item in pair.values()
+        ):
             baseline.append(pair["baseline"])
             optimized.append(pair["optimized"])
     return baseline, optimized
 
 
-def aggregate_runs(runs: list[dict[str, Any]], rate: dict[str, Any] | None = None) -> dict[str, Any]:
+def aggregate_runs(
+    runs: list[dict[str, Any]], rate: dict[str, Any] | None = None
+) -> dict[str, Any]:
     successful = [run for run in runs if run["success"] and run.get("usage")]
     usage_keys = ("input_tokens", "cached_input_tokens", "output_tokens", "reasoning_output_tokens")
     aggregate: dict[str, Any] = {
@@ -666,18 +727,17 @@ def aggregate_runs(runs: list[dict[str, Any]], rate: dict[str, Any] | None = Non
         "web_searches": sum(int(run["web_searches"]) for run in successful),
     }
     for key in usage_keys:
-        aggregate[key] = sum(int(run["usage"][key]) for run in successful)
-    aggregate["uncached_input_tokens"] = aggregate["input_tokens"] - aggregate["cached_input_tokens"]
+        values = [run["usage"].get(key) for run in successful]
+        aggregate[key] = sum(values) if all(value is not None for value in values) else None
+    aggregate["uncached_input_tokens"] = (
+        aggregate["input_tokens"] - aggregate["cached_input_tokens"]
+    )
     aggregate["billed_token_volume"] = aggregate["input_tokens"] + aggregate["output_tokens"]
     durations = [float(run["duration_seconds"]) for run in successful]
     aggregate["mean_elapsed_seconds"] = statistics.mean(durations) if durations else 0.0
     aggregate["stdev_elapsed_seconds"] = statistics.stdev(durations) if len(durations) > 1 else None
     aggregate["credit_equivalent"] = (
-        calculate_credits(
-            {key: int(aggregate[key]) for key in usage_keys}, rate
-        )
-        if rate and successful
-        else None
+        calculate_credits(aggregate, rate) if rate and successful else None
     )
     return aggregate
 
@@ -685,17 +745,23 @@ def aggregate_runs(runs: list[dict[str, Any]], rate: dict[str, Any] | None = Non
 def confidence_label(repeat: int, failures: int, paired: int, expected_pairs: int) -> str:
     if failures or paired != expected_pairs or repeat <= 1:
         return "Indicative"
-    if repeat == 2:
-        return "Moderate"
-    return "High"
+    return "Repeated observations; statistical confidence not established"
 
 
 def report_result_statement(
-    baseline: dict[str, Any], optimized: dict[str, Any], complete: bool
+    baseline: dict[str, Any],
+    optimized: dict[str, Any],
+    complete: bool,
+    correctness_verified: bool = False,
 ) -> str:
+    if not correctness_verified:
+        return "No overall gain claim: task correctness was not evaluated. Turn completion is not task success."
     if not complete:
         return "No overall gain claim: one or more A/B runs failed or were unpaired."
-    use_credits = baseline.get("credit_equivalent") is not None and optimized.get("credit_equivalent") is not None
+    use_credits = (
+        baseline.get("credit_equivalent") is not None
+        and optimized.get("credit_equivalent") is not None
+    )
     key = "credit_equivalent" if use_credits else "billed_token_volume"
     label = "measured credit-equivalent" if use_credits else "measured billed token volume"
     change = change_percent(float(baseline[key]), float(optimized[key]))
@@ -735,6 +801,9 @@ def render_ab_report(report: dict[str, Any]) -> str:
         "|---|---:|---:|---:|",
     ]
     for label, key, spec in rows:
+        if baseline[key] is None or optimized[key] is None:
+            lines.append(f"| {label} | unavailable | unavailable | n/a |")
+            continue
         before = float(baseline[key])
         after = float(optimized[key])
         lines.append(
@@ -759,7 +828,12 @@ def render_ab_report(report: dict[str, Any]) -> str:
             ]
         )
     elif report["authentication"] == "api":
-        lines.extend(["API-key authentication detected: ChatGPT credits were not applied; token metrics only.", ""])
+        lines.extend(
+            [
+                "API-key authentication detected: ChatGPT credits were not applied; token metrics only.",
+                "",
+            ]
+        )
     else:
         lines.extend(["No applicable dated rate card was available; token metrics only.", ""])
     lines.extend(
@@ -801,7 +875,7 @@ def run_ab(args: argparse.Namespace) -> tuple[dict[str, Any], Path, Path]:
     card_path = args.rate_card or Path(__file__).resolve().parents[1] / "data" / "credit-rates.json"
     if authentication == "chatgpt" and card_path.is_file():
         card = load_rate_card(card_path)
-        rate = find_rate(card, args.model)
+        rate = None if is_rate_stale(card) else find_rate(card, args.model)
 
     original_digest_before = tree_digest(repo)
     started_at = utc_now()
@@ -912,6 +986,7 @@ def run_ab(args: argparse.Namespace) -> tuple[dict[str, Any], Path, Path]:
             "commands": "exact unique command_execution JSONL items",
             "elapsed_time": "exact local monotonic process duration",
             "file_opens": "not reported; not reliably measurable from current events",
+            "task_success": "unverified; success flags indicate execution and usage availability only",
         },
     }
     report["result"] = report_result_statement(comparison_baseline, comparison_optimized, complete)
@@ -939,16 +1014,22 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    estimate = subparsers.add_parser("estimate", help="show static ContextLean metrics without running Codex")
+    estimate = subparsers.add_parser(
+        "estimate", help="show static ContextLean metrics without running Codex"
+    )
     estimate.add_argument("--repo", type=Path, default=Path.cwd())
     estimate.add_argument("--report", type=Path)
 
-    start = subparsers.add_parser("bootstrap-start", help="capture the pre-bootstrap static baseline")
+    start = subparsers.add_parser(
+        "bootstrap-start", help="capture the pre-bootstrap static baseline"
+    )
     start.add_argument("--repo", type=Path, default=Path.cwd())
     start.add_argument("--output", type=Path)
     start.add_argument("--project-type")
 
-    finish = subparsers.add_parser("bootstrap-finish", help="write the verified bootstrap before/after report")
+    finish = subparsers.add_parser(
+        "bootstrap-finish", help="write the verified bootstrap before/after report"
+    )
     finish.add_argument("--repo", type=Path, default=Path.cwd())
     finish.add_argument("--baseline", type=Path)
     finish.add_argument("--output", type=Path)
@@ -1001,7 +1082,9 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "bootstrap-finish":
             repo = args.repo.resolve()
-            baseline = (args.baseline or repo / ".contextlean" / ".bootstrap-baseline.json").resolve()
+            baseline = (
+                args.baseline or repo / ".contextlean" / ".bootstrap-baseline.json"
+            ).resolve()
             output = (args.output or repo / ".contextlean" / "bootstrap-report.json").resolve()
             report = bootstrap_finish(
                 repo,

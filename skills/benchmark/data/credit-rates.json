@@ -1,16 +1,18 @@
 {
   "schema_version": 1,
   "unit": "chatgpt_credits_per_1m_tokens",
-  "verified_on": "2026-08-16",
+  "verified_on": "2026-09-30",
   "source_url": "https://learn.chatgpt.com/docs/pricing",
-  "source_note": "Official Codex token-based credit rate card verified on the stated date.",
+  "source_note": "Standard-speed credit-equivalent rates verified against official Codex pricing on the stated date; not actual subscription usage or credits spent.",
   "models": [
     {
       "model": "gpt-5.6-sol",
-      "aliases": ["gpt-5.6"],
-      "input": 125.0,
-      "cached_input": 12.5,
-      "output": 750.0
+      "aliases": [
+        "gpt-5.6"
+      ],
+      "input": 100.0,
+      "cached_input": 10.0,
+      "output": 500.0
     },
     {
       "model": "gpt-5.6-terra",
@@ -32,20 +34,6 @@
       "input": 125.0,
       "cached_input": 12.5,
       "output": 750.0
-    },
-    {
-      "model": "gpt-5.4",
-      "aliases": [],
-      "input": 62.5,
-      "cached_input": 6.25,
-      "output": 375.0
-    },
-    {
-      "model": "gpt-5.4-mini",
-      "aliases": [],
-      "input": 18.75,
-      "cached_input": 1.875,
-      "output": 113.0
     }
   ]
 }

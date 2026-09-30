@@ -31,9 +31,7 @@ class ProjectFixtureTests(unittest.TestCase):
 
     def test_fixture_matrix_covers_requested_repository_shapes(self) -> None:
         traits = {
-            trait
-            for _root, manifest in self.fixture_manifests()
-            for trait in manifest["traits"]
+            trait for _root, manifest in self.fixture_manifests() for trait in manifest["traits"]
         }
         self.assertTrue(
             {
@@ -56,7 +54,10 @@ class ProjectFixtureTests(unittest.TestCase):
 
     def test_static_bootstrap_capture_never_modifies_fixture_product(self) -> None:
         for fixture_root, manifest in self.fixture_manifests():
-            with self.subTest(fixture=fixture_root.name), tempfile.TemporaryDirectory() as temporary:
+            with (
+                self.subTest(fixture=fixture_root.name),
+                tempfile.TemporaryDirectory() as temporary,
+            ):
                 copy = Path(temporary) / fixture_root.name
                 shutil.copytree(fixture_root, copy)
                 product = [copy / path for path in manifest["product_files"]]
@@ -83,9 +84,7 @@ class ProjectFixtureTests(unittest.TestCase):
 
 class SkillContractTests(unittest.TestCase):
     def test_bootstrap_contract_covers_preservation_idempotence_and_scope(self) -> None:
-        spec = (ROOT / "skills/bootstrap/references/bootstrap-spec.md").read_text(
-            encoding="utf-8"
-        )
+        spec = (ROOT / "skills/bootstrap/references/bootstrap-spec.md").read_text(encoding="utf-8")
         lowered = spec.lower()
         for required in (
             "do not overwrite or discard",
@@ -118,6 +117,7 @@ class SkillContractTests(unittest.TestCase):
         self.assertEqual(expected["focused-change.diff"], "no material finding")
         self.assertIn("duplicates existing behavior", lean_review)
         self.assertIn("If there are no material findings", lean_review)
+
 
 if __name__ == "__main__":
     unittest.main()
