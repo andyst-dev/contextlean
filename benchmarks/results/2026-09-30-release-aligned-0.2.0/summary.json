@@ -1,0 +1,525 @@
+{
+  "schema_version": 1,
+  "kind": "contextlean-release-aligned-v0.2.0-validation",
+  "source_commit": "86043499d5a375cc6a3b295bc7c03b0999eb458c",
+  "product_commit": "86043499d5a375cc6a3b295bc7c03b0999eb458c",
+  "model": "gpt-5.6-terra",
+  "reasoning": "low",
+  "environment": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.14.4"
+  },
+  "codex_cli_version": "codex-cli 0.147.0",
+  "authorized_new_calls": 10,
+  "driver_sha256": "cf3d72facaf110a28b10824ca3e4cb8ba31e84e88d73181dfad99169532d14fe",
+  "adapter_sha256": "da6d9d453e053ef8f084614d9bd4678cf9721a54766ada71bbda86dfbd127f71",
+  "configuration": {
+    "ephemeral": true,
+    "ignore_user_config": true,
+    "ignore_rules": true,
+    "web_search": "disabled",
+    "approval_policy": "never",
+    "service_tier": "default",
+    "sandbox": "read-only for navigation; workspace-write for edits"
+  },
+  "pairs": [
+    {
+      "task": "navigation",
+      "order": [
+        "vanilla",
+        "contextlean"
+      ]
+    },
+    {
+      "task": "bug-fix",
+      "order": [
+        "contextlean",
+        "vanilla"
+      ]
+    },
+    {
+      "task": "feature",
+      "order": [
+        "vanilla",
+        "contextlean"
+      ]
+    },
+    {
+      "task": "refactor",
+      "order": [
+        "contextlean",
+        "vanilla"
+      ]
+    },
+    {
+      "task": "documentation-config",
+      "order": [
+        "vanilla",
+        "contextlean"
+      ]
+    }
+  ],
+  "model_calls_before_preflight": 0,
+  "unchanged_harness_inputs": {
+    "benchmarks/run_benchmark.py": "1b94db52dcd93004b5a6b425a03cc968f740a752bb2c16ef99414d8ab73700ee",
+    "benchmarks/prepare_fixture.py": "2709f571c6cb9e36618db60fc2478cc19ae8dd571b572cf91111028359dfa075",
+    "benchmarks/evaluate.py": "3200e20da7522c1a063cda247433efcdcaf2e6f945c7cdf951dee35e624fd686",
+    "benchmarks/tasks/suite.json": "bc40082c4e77dc11a268b5593f313d6b1b4b51062c3818effb64bfe03a744c62",
+    "skills/benchmark/scripts/benchmark.py": "3f9f993cdd2f4d26a1eefc46cbed0f097580b4872d33294deab4332305fd32c5",
+    "benchmarks/fixtures/expense-report/tests/test_expenses.py": "542ad1c532288b3c460269224ecf161dd560e6e0d5c9c783f83cec4e593a194b"
+  },
+  "repeats": 1,
+  "expected_runs": 10,
+  "new_live_runs": 10,
+  "reused_runs": 0,
+  "tasks": [
+    {
+      "id": "navigation",
+      "category": "repository understanding/navigation",
+      "prompt": "Inspect this expense report repository without changing files. Identify the function that loads CSV amounts, the function that produces category totals, and the test file covering the CLI. Run the CLI on data/sample.csv. Return only a JSON object with keys loader (relative source path), reporter (relative source path), cli_tests (relative test path), total (string), count (integer), and currency (string). Verify from code and execution, not only guidance.",
+      "executed_prompt": "Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.\n\nInspect this expense report repository without changing files. Identify the function that loads CSV amounts, the function that produces category totals, and the test file covering the CLI. Run the CLI on data/sample.csv. Return only a JSON object with keys loader (relative source path), reporter (relative source path), cli_tests (relative test path), total (string), count (integer), and currency (string). Verify from code and execution, not only guidance."
+    },
+    {
+      "id": "bug-fix",
+      "category": "small bug fix",
+      "prompt": "Fix category filtering so --category accepts mixed case and surrounding whitespace, just as stored category names do. For example --category ' FOOD ' must select both food expenses from data/sample.csv and produce total 20.00. Preserve unfiltered reports, decimal arithmetic and currency overrides. Add a regression test and run the tests.",
+      "executed_prompt": "Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.\n\nFix category filtering so --category accepts mixed case and surrounding whitespace, just as stored category names do. For example --category ' FOOD ' must select both food expenses from data/sample.csv and produce total 20.00. Preserve unfiltered reports, decimal arithmetic and currency overrides. Add a regression test and run the tests."
+    },
+    {
+      "id": "feature",
+      "category": "small feature",
+      "prompt": "Add optional --min-amount to the expense report CLI. Keep only expenses whose individual amount is greater than or equal to that decimal threshold before producing the report. It must combine with --category and leave existing behavior unchanged when omitted. With data/sample.csv, --min-amount 10 yields count 2 and total 32.50; --category food --min-amount 10 yields count 1 and total 12.50. Add tests and run them.",
+      "executed_prompt": "Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.\n\nAdd optional --min-amount to the expense report CLI. Keep only expenses whose individual amount is greater than or equal to that decimal threshold before producing the report. It must combine with --category and leave existing behavior unchanged when omitted. With data/sample.csv, --min-amount 10 yields count 2 and total 32.50; --category food --min-amount 10 yields count 1 and total 12.50. Add tests and run them."
+    },
+    {
+      "id": "refactor",
+      "category": "localized refactor",
+      "prompt": "Consolidate the duplicated normalize_category functions into one shared implementation used by filtering and category grouping. Preserve behavior, including current category filter query semantics; this task is not a bug fix. Keep the normalize_category names importable from both existing modules for compatibility. Do not add dependencies or unrelated abstractions. Run the existing tests.",
+      "executed_prompt": "Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.\n\nConsolidate the duplicated normalize_category functions into one shared implementation used by filtering and category grouping. Preserve behavior, including current category filter query semantics; this task is not a bug fix. Keep the normalize_category names importable from both existing modules for compatibility. Do not add dependencies or unrelated abstractions. Run the existing tests."
+    },
+    {
+      "id": "documentation-config",
+      "category": "documentation/configuration",
+      "prompt": "Change the configured default currency from USD to EUR and update the README to match. --currency GBP must still override the default. Keep expense amounts and grouping behavior unchanged. Verify the documented example commands and run the tests.",
+      "executed_prompt": "Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.\n\nChange the configured default currency from USD to EUR and update the README to match. --currency GBP must still override the default. Keep expense amounts and grouping behavior unchanged. Verify the documented example commands and run the tests."
+    }
+  ],
+  "runs": [
+    {
+      "task": "navigation",
+      "condition": "vanilla",
+      "repeat": 1,
+      "sequence": 1,
+      "timestamp": "2026-09-30T16:37:03+00:00",
+      "metrics": {
+        "input_tokens": 54516,
+        "cached_input_tokens": 47104,
+        "output_tokens": 538,
+        "reasoning_output_tokens": 118,
+        "total_tokens": 55054,
+        "command_calls": 3,
+        "duration_seconds": 17.875044333050027,
+        "tool_calls": null,
+        "file_reads": null,
+        "unique_files_inspected": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "error": null,
+      "initial_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "solution_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "raw_directory": "raw/navigation-1-vanilla",
+      "guidance_and_sample_intact": true,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      }
+    },
+    {
+      "task": "navigation",
+      "condition": "contextlean",
+      "repeat": 1,
+      "sequence": 2,
+      "timestamp": "2026-09-30T16:37:22+00:00",
+      "metrics": {
+        "input_tokens": 50132,
+        "cached_input_tokens": 31232,
+        "output_tokens": 421,
+        "reasoning_output_tokens": 31,
+        "total_tokens": 50553,
+        "command_calls": 3,
+        "duration_seconds": 15.288440332980826,
+        "tool_calls": null,
+        "file_reads": null,
+        "unique_files_inspected": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "error": null,
+      "initial_digest": "f82edb2dd42a1d5e3f875cad13529bcd9cd2cd4275efc5813137cba0a5246bbe",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "solution_digest": "f82edb2dd42a1d5e3f875cad13529bcd9cd2cd4275efc5813137cba0a5246bbe",
+      "raw_directory": "raw/navigation-1-contextlean",
+      "guidance_and_sample_intact": true,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      }
+    },
+    {
+      "task": "bug-fix",
+      "condition": "contextlean",
+      "repeat": 1,
+      "sequence": 3,
+      "timestamp": "2026-09-30T16:37:58+00:00",
+      "metrics": {
+        "input_tokens": 77343,
+        "cached_input_tokens": 65280,
+        "output_tokens": 1080,
+        "reasoning_output_tokens": 27,
+        "total_tokens": 78423,
+        "command_calls": 5,
+        "duration_seconds": 28.500386208994314,
+        "tool_calls": null,
+        "file_reads": null,
+        "unique_files_inspected": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "error": null,
+      "initial_digest": "f82edb2dd42a1d5e3f875cad13529bcd9cd2cd4275efc5813137cba0a5246bbe",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "solution_digest": "df07ca5b99b21c969cbbfcfa4585e0fa090cf359060c4c7f99d91252d054633c",
+      "raw_directory": "raw/bug-fix-1-contextlean",
+      "guidance_and_sample_intact": true,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      }
+    },
+    {
+      "task": "bug-fix",
+      "condition": "vanilla",
+      "repeat": 1,
+      "sequence": 4,
+      "timestamp": "2026-09-30T16:38:31+00:00",
+      "metrics": {
+        "input_tokens": 87414,
+        "cached_input_tokens": 65536,
+        "output_tokens": 1045,
+        "reasoning_output_tokens": 34,
+        "total_tokens": 88459,
+        "command_calls": 3,
+        "duration_seconds": 29.180640707956627,
+        "tool_calls": null,
+        "file_reads": null,
+        "unique_files_inspected": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "error": null,
+      "initial_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "solution_digest": "633052c000bb78d498cfd31c94b3b55a51cdf7ad0756168324862ccfe9a6455e",
+      "raw_directory": "raw/bug-fix-1-vanilla",
+      "guidance_and_sample_intact": true,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      }
+    },
+    {
+      "task": "feature",
+      "condition": "vanilla",
+      "repeat": 1,
+      "sequence": 5,
+      "timestamp": "2026-09-30T16:39:38+00:00",
+      "metrics": {
+        "input_tokens": 92352,
+        "cached_input_tokens": 63232,
+        "output_tokens": 2524,
+        "reasoning_output_tokens": 173,
+        "total_tokens": 94876,
+        "command_calls": 3,
+        "duration_seconds": 60.41030891612172,
+        "tool_calls": null,
+        "file_reads": null,
+        "unique_files_inspected": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "error": null,
+      "initial_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "solution_digest": "c5f56f3253884d14b9c732f17c77a944ca3ba7cb5c0cac3862a7af9b19d02ba6",
+      "raw_directory": "raw/feature-1-vanilla",
+      "guidance_and_sample_intact": true,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      }
+    },
+    {
+      "task": "feature",
+      "condition": "contextlean",
+      "repeat": 1,
+      "sequence": 6,
+      "timestamp": "2026-09-30T16:40:22+00:00",
+      "metrics": {
+        "input_tokens": 76186,
+        "cached_input_tokens": 63232,
+        "output_tokens": 1637,
+        "reasoning_output_tokens": 174,
+        "total_tokens": 77823,
+        "command_calls": 3,
+        "duration_seconds": 39.6763887910638,
+        "tool_calls": null,
+        "file_reads": null,
+        "unique_files_inspected": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "error": null,
+      "initial_digest": "f82edb2dd42a1d5e3f875cad13529bcd9cd2cd4275efc5813137cba0a5246bbe",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "solution_digest": "5077e16b0922652eb91fc640e245593cdb733f3e79b5e54f6f86ab62e9eb79b1",
+      "raw_directory": "raw/feature-1-contextlean",
+      "guidance_and_sample_intact": true,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      }
+    },
+    {
+      "task": "refactor",
+      "condition": "contextlean",
+      "repeat": 1,
+      "sequence": 7,
+      "timestamp": "2026-09-30T16:40:56+00:00",
+      "metrics": {
+        "input_tokens": 74297,
+        "cached_input_tokens": 56320,
+        "output_tokens": 960,
+        "reasoning_output_tokens": 57,
+        "total_tokens": 75257,
+        "command_calls": 3,
+        "duration_seconds": 28.175023874966428,
+        "tool_calls": null,
+        "file_reads": null,
+        "unique_files_inspected": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "error": null,
+      "initial_digest": "f82edb2dd42a1d5e3f875cad13529bcd9cd2cd4275efc5813137cba0a5246bbe",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "solution_digest": "637eb2427982dcd222c8eef8037275ef1a9334fc7b1867e2196177cf04406b88",
+      "raw_directory": "raw/refactor-1-contextlean",
+      "guidance_and_sample_intact": true,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      }
+    },
+    {
+      "task": "refactor",
+      "condition": "vanilla",
+      "repeat": 1,
+      "sequence": 8,
+      "timestamp": "2026-09-30T16:41:36+00:00",
+      "metrics": {
+        "input_tokens": 97805,
+        "cached_input_tokens": 81152,
+        "output_tokens": 1244,
+        "reasoning_output_tokens": 90,
+        "total_tokens": 99049,
+        "command_calls": 5,
+        "duration_seconds": 37.17424304201268,
+        "tool_calls": null,
+        "file_reads": null,
+        "unique_files_inspected": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "error": null,
+      "initial_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "solution_digest": "8fc5ec01d66a8bf158e4b384b61db6bca0a377a7889c8b680c5054eded4cdb4b",
+      "raw_directory": "raw/refactor-1-vanilla",
+      "guidance_and_sample_intact": true,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      }
+    },
+    {
+      "task": "documentation-config",
+      "condition": "vanilla",
+      "repeat": 1,
+      "sequence": 9,
+      "timestamp": "2026-09-30T16:42:27+00:00",
+      "metrics": {
+        "input_tokens": 143111,
+        "cached_input_tokens": 112896,
+        "output_tokens": 1475,
+        "reasoning_output_tokens": 165,
+        "total_tokens": 144586,
+        "command_calls": 4,
+        "duration_seconds": 45.33344279206358,
+        "tool_calls": null,
+        "file_reads": null,
+        "unique_files_inspected": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "error": null,
+      "initial_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "solution_digest": "352d40a921b44768e8c66b736d5b9e4447fef1c3160fd7c8f1ee97d7251bf111",
+      "raw_directory": "raw/documentation-config-1-vanilla",
+      "guidance_and_sample_intact": true,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      }
+    },
+    {
+      "task": "documentation-config",
+      "condition": "contextlean",
+      "repeat": 1,
+      "sequence": 10,
+      "timestamp": "2026-09-30T16:42:53+00:00",
+      "metrics": {
+        "input_tokens": 59049,
+        "cached_input_tokens": 41216,
+        "output_tokens": 571,
+        "reasoning_output_tokens": 14,
+        "total_tokens": 59620,
+        "command_calls": 2,
+        "duration_seconds": 22.87560183298774,
+        "tool_calls": null,
+        "file_reads": null,
+        "unique_files_inspected": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "execution_success": true,
+      "exit_code": 0,
+      "error": null,
+      "initial_digest": "f82edb2dd42a1d5e3f875cad13529bcd9cd2cd4275efc5813137cba0a5246bbe",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "solution_digest": "3c7da995ff6e88547f9c245fdb9bf1b1fe905ab0c31c1f3d2c884433152b3af5",
+      "raw_directory": "raw/documentation-config-1-contextlean",
+      "guidance_and_sample_intact": true,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      }
+    }
+  ],
+  "task_suite_digest": "bc40082c4e77dc11a268b5593f313d6b1b4b51062c3818effb64bfe03a744c62",
+  "evaluator_digest": "3200e20da7522c1a063cda247433efcdcaf2e6f945c7cdf951dee35e624fd686",
+  "aggregate": {
+    "vanilla": {
+      "input_tokens": 475198,
+      "cached_input_tokens": 369920,
+      "output_tokens": 6826,
+      "total_tokens": 482024,
+      "duration_seconds": 189.97367979120463,
+      "command_calls": 18,
+      "task_successes": 5,
+      "runs": 5
+    },
+    "contextlean": {
+      "input_tokens": 337007,
+      "cached_input_tokens": 257280,
+      "output_tokens": 4669,
+      "total_tokens": 341676,
+      "duration_seconds": 134.5158410409931,
+      "command_calls": 16,
+      "task_successes": 5,
+      "runs": 5
+    }
+  },
+  "result": "All ten tasks pass"
+}

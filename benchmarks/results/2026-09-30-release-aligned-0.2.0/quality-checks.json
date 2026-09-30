@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "product_commit": "86043499d5a375cc6a3b295bc7c03b0999eb458c",
+  "offline_model_calls": 0,
+  "offline_tests": {
+    "passed": 114,
+    "live_calls": 0,
+    "command": "python3 -m unittest discover -s tests -v",
+    "log": "offline-tests.txt"
+  },
+  "ruff": {
+    "version": "0.15.7",
+    "lint": "PASS",
+    "format": "PASS",
+    "commands": [
+      "ruff check .",
+      "ruff format --check ."
+    ]
+  },
+  "skill_validators": {
+    "bootstrap": "PASS",
+    "audit": "PASS",
+    "lean-review": "PASS",
+    "benchmark": "PASS"
+  },
+  "plugin_validators": {
+    "codex": "PASS",
+    "claude_manifest": "PASS with documented plugin-root CLAUDE.md warning",
+    "claude_marketplace": "PASS with documented ignored Codex policy warning"
+  },
+  "validator_tools": {
+    "skills": "skill-creator/scripts/quick_validate.py",
+    "codex": "plugin-creator/scripts/validate_plugin.py",
+    "claude": [
+      "claude plugin validate .claude-plugin/plugin.json",
+      "claude plugin validate .claude-plugin/marketplace.json"
+    ]
+  },
+  "semantic_coverage": {
+    "PASS": 74,
+    "PARTIAL": 0,
+    "MISSING": 0,
+    "INTENTIONALLY_REPLACED": 2,
+    "preserved_permanent_facets": 71,
+    "total_permanent_facets": 71
+  },
+  "bootstrap_transfer_safe_removal_and_routing_contracts": "PASS in complete offline suite; all five preparation transfers retain 71 facets",
+  "evidence_validation": "PASS: checksums, frozen source, generated fixtures, valid mapped paths/responsibilities, ten unique fresh conversations, exact metrics/dated costs and all ten independently regraded solutions",
+  "publication_checks": {
+    "status": "PASS",
+    "frozen_product_and_other_protected_files": 362,
+    "historical_evidence_files_unchanged": 275,
+    "original_bootstrap_lines": 714,
+    "links_checked": 102,
+    "broken_links": 0,
+    "text_artifacts_scanned": 430,
+    "secrets_or_personal_paths": 0,
+    "generated_junk_in_archives": 0,
+    "all_prior_local_evidence_files_unchanged": 2251,
+    "benchmark_tasks_prompts_graders_measurement_unchanged": true,
+    "product_behavior_unchanged": true,
+    "no_tags_or_release": true
+  },
+  "initial_full_suite_issue": "Two new document links referenced checksums.json while publication was still writing it. Manifest now exists; full suite subsequently passes. No product or test changes.",
+  "git_diff_check": "PASS",
+  "new_model_calls": 10,
+  "reused_model_results": 0,
+  "additional_model_calls": 0,
+  "no_push_tag_or_release": true
+}

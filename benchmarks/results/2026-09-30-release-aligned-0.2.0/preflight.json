@@ -1,0 +1,70 @@
+{
+  "source_commit": "86043499d5a375cc6a3b295bc7c03b0999eb458c",
+  "product_commit": "86043499d5a375cc6a3b295bc7c03b0999eb458c",
+  "model": "gpt-5.6-terra",
+  "reasoning": "low",
+  "environment": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.14.4"
+  },
+  "codex_cli_version": "codex-cli 0.147.0",
+  "authorized_new_calls": 10,
+  "driver_sha256": "cf3d72facaf110a28b10824ca3e4cb8ba31e84e88d73181dfad99169532d14fe",
+  "adapter_sha256": "da6d9d453e053ef8f084614d9bd4678cf9721a54766ada71bbda86dfbd127f71",
+  "configuration": {
+    "ephemeral": true,
+    "ignore_user_config": true,
+    "ignore_rules": true,
+    "web_search": "disabled",
+    "approval_policy": "never",
+    "service_tier": "default",
+    "sandbox": "read-only for navigation; workspace-write for edits"
+  },
+  "pairs": [
+    {
+      "task": "navigation",
+      "order": [
+        "vanilla",
+        "contextlean"
+      ]
+    },
+    {
+      "task": "bug-fix",
+      "order": [
+        "contextlean",
+        "vanilla"
+      ]
+    },
+    {
+      "task": "feature",
+      "order": [
+        "vanilla",
+        "contextlean"
+      ]
+    },
+    {
+      "task": "refactor",
+      "order": [
+        "contextlean",
+        "vanilla"
+      ]
+    },
+    {
+      "task": "documentation-config",
+      "order": [
+        "vanilla",
+        "contextlean"
+      ]
+    }
+  ],
+  "model_calls_before_preflight": 0,
+  "unchanged_harness_inputs": {
+    "benchmarks/run_benchmark.py": "1b94db52dcd93004b5a6b425a03cc968f740a752bb2c16ef99414d8ab73700ee",
+    "benchmarks/prepare_fixture.py": "2709f571c6cb9e36618db60fc2478cc19ae8dd571b572cf91111028359dfa075",
+    "benchmarks/evaluate.py": "3200e20da7522c1a063cda247433efcdcaf2e6f945c7cdf951dee35e624fd686",
+    "benchmarks/tasks/suite.json": "bc40082c4e77dc11a268b5593f313d6b1b4b51062c3818effb64bfe03a744c62",
+    "skills/benchmark/scripts/benchmark.py": "3f9f993cdd2f4d26a1eefc46cbed0f097580b4872d33294deab4332305fd32c5",
+    "benchmarks/fixtures/expense-report/tests/test_expenses.py": "542ad1c532288b3c460269224ecf161dd560e6e0d5c9c783f83cec4e593a194b"
+  }
+}

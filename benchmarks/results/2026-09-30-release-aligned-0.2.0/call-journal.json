@@ -1,0 +1,52 @@
+[
+  {
+    "task": "navigation",
+    "condition": "vanilla",
+    "started_at": "2026-09-30T16:36:45+00:00"
+  },
+  {
+    "task": "navigation",
+    "condition": "contextlean",
+    "started_at": "2026-09-30T16:37:06+00:00"
+  },
+  {
+    "task": "bug-fix",
+    "condition": "contextlean",
+    "started_at": "2026-09-30T16:37:29+00:00"
+  },
+  {
+    "task": "bug-fix",
+    "condition": "vanilla",
+    "started_at": "2026-09-30T16:38:01+00:00"
+  },
+  {
+    "task": "feature",
+    "condition": "vanilla",
+    "started_at": "2026-09-30T16:38:38+00:00"
+  },
+  {
+    "task": "feature",
+    "condition": "contextlean",
+    "started_at": "2026-09-30T16:39:41+00:00"
+  },
+  {
+    "task": "refactor",
+    "condition": "contextlean",
+    "started_at": "2026-09-30T16:40:27+00:00"
+  },
+  {
+    "task": "refactor",
+    "condition": "vanilla",
+    "started_at": "2026-09-30T16:40:58+00:00"
+  },
+  {
+    "task": "documentation-config",
+    "condition": "vanilla",
+    "started_at": "2026-09-30T16:41:41+00:00"
+  },
+  {
+    "task": "documentation-config",
+    "condition": "contextlean",
+    "started_at": "2026-09-30T16:42:30+00:00"
+  }
+]

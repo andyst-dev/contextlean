@@ -1,0 +1,393 @@
+{
+  "schema_version": 2,
+  "rules": {
+    "navigation": {
+      "facets": [
+        "map-primary",
+        "no-rediscovery",
+        "owner-first",
+        "search-first",
+        "immediate-dependencies",
+        "evidence-expansion",
+        "no-ordinary-scan",
+        "no-unjustified-reread",
+        "repository-state",
+        "preserve-architecture"
+      ],
+      "semantics_reviewed": true,
+      "destinations": [
+        {
+          "facets": [
+            "map-primary",
+            "no-rediscovery",
+            "owner-first",
+            "search-first",
+            "immediate-dependencies",
+            "evidence-expansion",
+            "no-ordinary-scan",
+            "no-unjustified-reread",
+            "repository-state",
+            "preserve-architecture"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Navigation",
+          "sha256": "4bb7149cef5ae643f70a1c534ebbd621b7b3412d1eeb38333dc14a195a8cad98"
+        }
+      ]
+    },
+    "ownership": {
+      "facets": [
+        "clear-owner",
+        "cohesive-files-modules-classes",
+        "related-together",
+        "unrelated-separated",
+        "unique-state-behavior",
+        "owner-locality-unrelated-extraction",
+        "genuine-new-module"
+      ],
+      "semantics_reviewed": true,
+      "destinations": [
+        {
+          "facets": [
+            "clear-owner",
+            "cohesive-files-modules-classes",
+            "related-together",
+            "unrelated-separated",
+            "unique-state-behavior",
+            "genuine-new-module"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Ownership",
+          "sha256": "23671c641d9d218695a2546fff757d512bad190bcb300d1c49f6c777ad8b7dd5"
+        },
+        {
+          "facets": [
+            "owner-locality-unrelated-extraction"
+          ],
+          "kind": "reference",
+          "path": "PROJECT_REFERENCE.md",
+          "section": "Architecture decisions",
+          "sha256": "c2d1097a8057474d7ef257161b4ea52adc77d20b87d0a18e3c9fd4e241637e62",
+          "activation": {
+            "path": "AGENTS.md",
+            "section": "Ownership",
+            "sha256": "23671c641d9d218695a2546fff757d512bad190bcb300d1c49f6c777ad8b7dd5",
+            "when": "uncertain extraction/boundary/refactor scope"
+          }
+        }
+      ]
+    },
+    "structure": {
+      "facets": [
+        "no-arbitrary-size",
+        "cohesive-large-files",
+        "refactor-signals",
+        "refactor-current-need",
+        "no-fragmentation-wrappers"
+      ],
+      "semantics_reviewed": true,
+      "destinations": [
+        {
+          "facets": [
+            "no-arbitrary-size",
+            "cohesive-large-files",
+            "refactor-current-need"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Structure",
+          "sha256": "2f19581856c49eadfc977880b1c866ad88c84da893c5874d6bfc5f05688b26bc"
+        },
+        {
+          "facets": [
+            "refactor-signals"
+          ],
+          "kind": "reference",
+          "path": "PROJECT_REFERENCE.md",
+          "section": "Architecture decisions",
+          "sha256": "c2d1097a8057474d7ef257161b4ea52adc77d20b87d0a18e3c9fd4e241637e62",
+          "activation": {
+            "path": "AGENTS.md",
+            "section": "Ownership",
+            "sha256": "23671c641d9d218695a2546fff757d512bad190bcb300d1c49f6c777ad8b7dd5",
+            "when": "uncertain extraction/boundary/refactor scope"
+          }
+        },
+        {
+          "facets": [
+            "no-fragmentation-wrappers"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Ownership",
+          "sha256": "23671c641d9d218695a2546fff757d512bad190bcb300d1c49f6c777ad8b7dd5"
+        }
+      ]
+    },
+    "interfaces": {
+      "facets": [
+        "simple-direction-no-cycles-globals",
+        "focused-public-api",
+        "local-internals",
+        "distinct-boundaries",
+        "coupling-justifies-indirection"
+      ],
+      "semantics_reviewed": true,
+      "destinations": [
+        {
+          "facets": [
+            "simple-direction-no-cycles-globals",
+            "focused-public-api",
+            "local-internals"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Interfaces",
+          "sha256": "05cda65b07431d1f3df73f4a26b95a5d2d28f95f27066494292f438c0abee370"
+        },
+        {
+          "facets": [
+            "distinct-boundaries",
+            "coupling-justifies-indirection"
+          ],
+          "kind": "reference",
+          "path": "PROJECT_REFERENCE.md",
+          "section": "Architecture decisions",
+          "sha256": "c2d1097a8057474d7ef257161b4ea52adc77d20b87d0a18e3c9fd4e241637e62",
+          "activation": {
+            "path": "AGENTS.md",
+            "section": "Ownership",
+            "sha256": "23671c641d9d218695a2546fff757d512bad190bcb300d1c49f6c777ad8b7dd5",
+            "when": "uncertain extraction/boundary/refactor scope"
+          }
+        }
+      ]
+    },
+    "implementation": {
+      "facets": [
+        "reuse-supported",
+        "reuse-project",
+        "reuse-standard-library",
+        "reuse-framework-platform",
+        "reuse-installed-dependency",
+        "reuse-minimum-new-code",
+        "readable-coherent-shallow",
+        "focused-diff",
+        "no-style-rewrite",
+        "safe-obsolete-removal",
+        "no-speculation",
+        "preserve-safety",
+        "specific-helper-owner"
+      ],
+      "semantics_reviewed": true,
+      "destinations": [
+        {
+          "facets": [
+            "reuse-supported",
+            "reuse-project",
+            "reuse-standard-library",
+            "reuse-framework-platform",
+            "reuse-installed-dependency",
+            "reuse-minimum-new-code",
+            "readable-coherent-shallow",
+            "focused-diff",
+            "no-style-rewrite",
+            "safe-obsolete-removal",
+            "no-speculation",
+            "preserve-safety"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Implementation",
+          "sha256": "043b645cca5823be585482f188868e6fa9b01dec2699509838e22777a11dadf9"
+        },
+        {
+          "facets": [
+            "specific-helper-owner"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Ownership",
+          "sha256": "23671c641d9d218695a2546fff757d512bad190bcb300d1c49f6c777ad8b7dd5"
+        }
+      ]
+    },
+    "bug-fix": {
+      "facets": [
+        "root-cause-first",
+        "trace-flow-callers",
+        "responsible-shared-layer",
+        "no-repeated-workaround",
+        "no-unnecessary-broad-refactor",
+        "practical-regression"
+      ],
+      "semantics_reviewed": true,
+      "destinations": [
+        {
+          "facets": [
+            "root-cause-first",
+            "trace-flow-callers",
+            "responsible-shared-layer",
+            "no-repeated-workaround",
+            "no-unnecessary-broad-refactor"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Bug fixes",
+          "sha256": "70bf5a1ce9ea1bd1989753cb40cbdc246829695e68103d22fba427e6007cd740"
+        },
+        {
+          "facets": [
+            "practical-regression"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Verification",
+          "sha256": "19d829cf9b66fca5b5f0f76b4079080f6127c2eda296cd28c5060517bbeca451"
+        }
+      ]
+    },
+    "verification": {
+      "facets": [
+        "targeted-affected-full",
+        "smallest-meaningful",
+        "broaden-shared-core-or-rules",
+        "existing-infrastructure",
+        "runnable-regression",
+        "no-single-check-framework"
+      ],
+      "semantics_reviewed": true,
+      "destinations": [
+        {
+          "facets": [
+            "targeted-affected-full",
+            "smallest-meaningful",
+            "broaden-shared-core-or-rules",
+            "existing-infrastructure",
+            "runnable-regression",
+            "no-single-check-framework"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Verification",
+          "sha256": "19d829cf9b66fca5b5f0f76b4079080f6127c2eda296cd28c5060517bbeca451"
+        }
+      ]
+    },
+    "context": {
+      "facets": [
+        "large-documents-optional-search",
+        "proven-local-exclusions",
+        "task-relevant-generated-exception",
+        "preserve-useful-material",
+        "shared-claude-knowledge",
+        "protected-agent-settings"
+      ],
+      "semantics_reviewed": true,
+      "destinations": [
+        {
+          "facets": [
+            "large-documents-optional-search",
+            "proven-local-exclusions",
+            "task-relevant-generated-exception",
+            "preserve-useful-material",
+            "shared-claude-knowledge",
+            "protected-agent-settings"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Context",
+          "sha256": "87bebef1cca3676af8a39cc9aa01427ded8269643572c6e496e10b7a764bfad1"
+        }
+      ]
+    },
+    "maintenance": {
+      "facets": [
+        "after-every-task",
+        "paths-owners-subsystems-architecture-flows-commands-workflows",
+        "smallest-map-stale-removal",
+        "no-detail-churn",
+        "durable-concise-not-obvious",
+        "no-global-refresh"
+      ],
+      "semantics_reviewed": true,
+      "destinations": [
+        {
+          "facets": [
+            "after-every-task",
+            "paths-owners-subsystems-architecture-flows-commands-workflows",
+            "smallest-map-stale-removal",
+            "no-detail-churn",
+            "durable-concise-not-obvious",
+            "no-global-refresh"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Map maintenance",
+          "sha256": "c8a0d02d7fc7b1eb086fc56c4d9bca92f723d2761f22fb37e07ccfd25b380872"
+        }
+      ]
+    },
+    "project-skills": {
+      "facets": [
+        "repetitive-nontrivial-reusable",
+        "maps-versus-procedures",
+        "canonical-project-discovery",
+        "portable-verified-sharing"
+      ],
+      "semantics_reviewed": true,
+      "destinations": [
+        {
+          "facets": [
+            "repetitive-nontrivial-reusable"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Project Skills",
+          "sha256": "e59c8fbea27a07554eedbb85badb8b123e47275d76cd0f2d3e3181da046f016d"
+        },
+        {
+          "facets": [
+            "maps-versus-procedures",
+            "canonical-project-discovery",
+            "portable-verified-sharing"
+          ],
+          "kind": "reference",
+          "path": "PROJECT_REFERENCE.md",
+          "section": "Project Skills",
+          "sha256": "a3e26728cc295adbb147c9a2595784dd75344baf1b25247d021e37b2ecbae069",
+          "activation": {
+            "path": "AGENTS.md",
+            "section": "Project Skills",
+            "sha256": "e59c8fbea27a07554eedbb85badb8b123e47275d76cd0f2d3e3181da046f016d",
+            "when": "creating/modifying project Skills"
+          }
+        }
+      ]
+    },
+    "lean-review": {
+      "facets": [
+        "explicit-packaged-handoff",
+        "advisory-read-only",
+        "behavior-preserving-review"
+      ],
+      "semantics_reviewed": true,
+      "destinations": [
+        {
+          "facets": [
+            "explicit-packaged-handoff",
+            "advisory-read-only",
+            "behavior-preserving-review"
+          ],
+          "kind": "contextlean_skill",
+          "path": "skills/lean-review/SKILL.md",
+          "section": "Review workflow",
+          "sha256": "9245cfbc3ff7b26c3eb9c7604e0df0ced96fab4f9150a9b5674602f23278b8f5",
+          "skill": "contextlean:lean-review"
+        }
+      ]
+    }
+  }
+}

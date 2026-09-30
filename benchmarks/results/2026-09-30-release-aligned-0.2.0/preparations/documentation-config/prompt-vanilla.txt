@@ -1,0 +1,3 @@
+Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.
+
+Change the configured default currency from USD to EUR and update the README to match. --currency GBP must still override the default. Keep expense amounts and grouping behavior unchanged. Verify the documented example commands and run the tests.

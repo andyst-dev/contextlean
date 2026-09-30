@@ -1,0 +1,63 @@
+{
+  "source_commit": "86043499d5a375cc6a3b295bc7c03b0999eb458c",
+  "task": {
+    "id": "feature",
+    "category": "small feature",
+    "prompt": "Add optional --min-amount to the expense report CLI. Keep only expenses whose individual amount is greater than or equal to that decimal threshold before producing the report. It must combine with --category and leave existing behavior unchanged when omitted. With data/sample.csv, --min-amount 10 yields count 2 and total 32.50; --category food --min-amount 10 yields count 1 and total 12.50. Add tests and run them."
+  },
+  "executed_prompt": "Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.\n\nAdd optional --min-amount to the expense report CLI. Keep only expenses whose individual amount is greater than or equal to that decimal threshold before producing the report. It must combine with --category and leave existing behavior unchanged when omitted. With data/sample.csv, --min-amount 10 yields count 2 and total 32.50; --category food --min-amount 10 yields count 1 and total 12.50. Add tests and run them.",
+  "order": [
+    "vanilla",
+    "contextlean"
+  ],
+  "fixtures": {
+    "vanilla": {
+      "digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "product_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "mapped_paths": [
+        "expense_report/cli.py",
+        "expense_report/storage.py",
+        "expense_report/filters.py",
+        "expense_report/report.py",
+        "config.json",
+        "tests/test_expenses.py",
+        "data/sample.csv",
+        "README.md"
+      ],
+      "baseline_tests_passed": true
+    },
+    "contextlean": {
+      "digest": "f82edb2dd42a1d5e3f875cad13529bcd9cd2cd4275efc5813137cba0a5246bbe",
+      "product_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "mapped_paths": [
+        "expense_report/cli.py",
+        "expense_report/storage.py",
+        "expense_report/filters.py",
+        "expense_report/report.py",
+        "config.json",
+        "tests/test_expenses.py",
+        "data/sample.csv",
+        "README.md"
+      ],
+      "baseline_tests_passed": true
+    }
+  },
+  "transfer": {
+    "groups": 11,
+    "facets": 71,
+    "destinations": [
+      "AGENTS.md",
+      "PROJECT_REFERENCE.md",
+      "skills/lean-review/SKILL.md"
+    ],
+    "setup_specification_required": false
+  },
+  "preparation_sha256": "513245d3f7ba5fdabd5ca5405c6018085acda38f6fb554341bb37bebabf68651",
+  "fresh_generation": true,
+  "prompt_sha256": "9536be5c20cdb42ff3283091b2d6fd91616ae7294a779b2d55bd0e3b40f3d77d",
+  "guidance_bytes": {
+    "AGENTS.md": 5476,
+    "CLAUDE.md": 11,
+    "PROJECT_REFERENCE.md": 3564
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "task": "refactor",
+  "condition": "vanilla",
+  "repeat": 1,
+  "sequence": 8,
+  "timestamp": "2026-09-30T16:41:36+00:00",
+  "metrics": {
+    "input_tokens": 97805,
+    "cached_input_tokens": 81152,
+    "output_tokens": 1244,
+    "reasoning_output_tokens": 90,
+    "total_tokens": 99049,
+    "command_calls": 5,
+    "duration_seconds": 37.17424304201268,
+    "tool_calls": null,
+    "file_reads": null,
+    "unique_files_inspected": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "execution_success": true,
+  "exit_code": 0,
+  "error": null,
+  "initial_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+  "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+  "solution_digest": "8fc5ec01d66a8bf158e4b384b61db6bca0a377a7889c8b680c5054eded4cdb4b",
+  "raw_directory": "raw/refactor-1-vanilla",
+  "guidance_and_sample_intact": true
+}

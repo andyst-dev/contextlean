@@ -1,0 +1,3 @@
+Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.
+
+Inspect this expense report repository without changing files. Identify the function that loads CSV amounts, the function that produces category totals, and the test file covering the CLI. Run the CLI on data/sample.csv. Return only a JSON object with keys loader (relative source path), reporter (relative source path), cli_tests (relative test path), total (string), count (integer), and currency (string). Verify from code and execution, not only guidance.

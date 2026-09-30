@@ -1,0 +1,33 @@
+{
+  "task": "bug-fix",
+  "condition": "vanilla",
+  "repeat": 1,
+  "sequence": 4,
+  "timestamp": "2026-09-30T16:38:31+00:00",
+  "metrics": {
+    "input_tokens": 87414,
+    "cached_input_tokens": 65536,
+    "output_tokens": 1045,
+    "reasoning_output_tokens": 34,
+    "total_tokens": 88459,
+    "command_calls": 3,
+    "duration_seconds": 29.180640707956627,
+    "tool_calls": null,
+    "file_reads": null,
+    "unique_files_inspected": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "execution_success": true,
+  "exit_code": 0,
+  "error": null,
+  "initial_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+  "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+  "solution_digest": "633052c000bb78d498cfd31c94b3b55a51cdf7ad0756168324862ccfe9a6455e",
+  "raw_directory": "raw/bug-fix-1-vanilla",
+  "guidance_and_sample_intact": true
+}

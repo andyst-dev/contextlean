@@ -1,0 +1,63 @@
+{
+  "source_commit": "86043499d5a375cc6a3b295bc7c03b0999eb458c",
+  "task": {
+    "id": "navigation",
+    "category": "repository understanding/navigation",
+    "prompt": "Inspect this expense report repository without changing files. Identify the function that loads CSV amounts, the function that produces category totals, and the test file covering the CLI. Run the CLI on data/sample.csv. Return only a JSON object with keys loader (relative source path), reporter (relative source path), cli_tests (relative test path), total (string), count (integer), and currency (string). Verify from code and execution, not only guidance."
+  },
+  "executed_prompt": "Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.\n\nInspect this expense report repository without changing files. Identify the function that loads CSV amounts, the function that produces category totals, and the test file covering the CLI. Run the CLI on data/sample.csv. Return only a JSON object with keys loader (relative source path), reporter (relative source path), cli_tests (relative test path), total (string), count (integer), and currency (string). Verify from code and execution, not only guidance.",
+  "order": [
+    "vanilla",
+    "contextlean"
+  ],
+  "fixtures": {
+    "vanilla": {
+      "digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "product_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "mapped_paths": [
+        "expense_report/cli.py",
+        "expense_report/storage.py",
+        "expense_report/filters.py",
+        "expense_report/report.py",
+        "config.json",
+        "tests/test_expenses.py",
+        "data/sample.csv",
+        "README.md"
+      ],
+      "baseline_tests_passed": true
+    },
+    "contextlean": {
+      "digest": "f82edb2dd42a1d5e3f875cad13529bcd9cd2cd4275efc5813137cba0a5246bbe",
+      "product_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "mapped_paths": [
+        "expense_report/cli.py",
+        "expense_report/storage.py",
+        "expense_report/filters.py",
+        "expense_report/report.py",
+        "config.json",
+        "tests/test_expenses.py",
+        "data/sample.csv",
+        "README.md"
+      ],
+      "baseline_tests_passed": true
+    }
+  },
+  "transfer": {
+    "groups": 11,
+    "facets": 71,
+    "destinations": [
+      "AGENTS.md",
+      "PROJECT_REFERENCE.md",
+      "skills/lean-review/SKILL.md"
+    ],
+    "setup_specification_required": false
+  },
+  "preparation_sha256": "513245d3f7ba5fdabd5ca5405c6018085acda38f6fb554341bb37bebabf68651",
+  "fresh_generation": true,
+  "prompt_sha256": "819f61e39cf3c71a942a546c9c16079d9e3f196ad3af8b93724689f85816f88b",
+  "guidance_bytes": {
+    "AGENTS.md": 5476,
+    "CLAUDE.md": 11,
+    "PROJECT_REFERENCE.md": 3564
+  }
+}

@@ -39,55 +39,52 @@ ContextLean does not guarantee savings or make a model inherently smarter.
 
 ## Before vs After
 
-**Final compact-context 0.2.0 preliminary validation — one run per condition per task.**
+**Release-aligned v0.2.0 preliminary validation — one fresh run per condition per task.**
 
-Five tasks in a small Python expense-report fixture, tested on 2026-09-30 using
-`gpt-5.6-terra` with low reasoning. Vanilla had no repository instructions; ContextLean
-had the same starting code plus freshly generated, validated compact guidance from
-frozen release candidate `90ed9a4`. The completed Bug Fix pair and eight new runs
-form one ten-run batch. All pass acceptance, original regression and submitted-test
-checks, including independent offline regrading.
+Five existing tasks in a small Python expense-report fixture, tested on 2026-09-30 using
+`gpt-5.6-terra` with low reasoning. Product commit tested:
+`86043499d5a375cc6a3b295bc7c03b0999eb458c`. Vanilla contains no ContextLean guidance;
+ContextLean starts with equivalent code and fresh validated guidance from that commit.
+Exactly ten fresh calls; no historical or isolated Refactor result is reused. All ten
+pass acceptance, original regression and submitted tests, including independent offline regrading.
 
 | Task | Vanilla total | ContextLean total | Difference | V time | C time | Commands V/C | Success |
 |---|---:|---:|---:|---:|---:|---:|---|
-| Navigation | 65,119 | 28,236 | -56.64% | 16.01s | 15.41s | 3/1 | Both pass |
-| Bug fix | 87,323 | 74,680 | -14.48% | 33.85s | 28.10s | 3/3 | Both pass |
-| Feature | 93,977 | 93,484 | -0.52% | 47.17s | 50.34s | 3/4 | Both pass |
-| Refactor | 84,972 | 104,772 | +23.30% | 30.21s | 32.26s | 3/5 | Both pass |
-| Documentation/config | 103,502 | 60,478 | -41.57% | 40.56s | 31.68s | 3/5 | Both pass |
+| navigation | 55,054 | 50,553 | -8.18% | 17.88s | 15.29s | 3/3 | Both pass |
+| bug-fix | 88,459 | 78,423 | -11.35% | 29.18s | 28.50s | 3/5 | Both pass |
+| feature | 94,876 | 77,823 | -17.97% | 60.41s | 39.68s | 3/3 | Both pass |
+| refactor | 99,049 | 75,257 | -24.02% | 37.17s | 28.18s | 5/3 | Both pass |
+| documentation-config | 144,586 | 59,620 | -58.77% | 45.33s | 22.88s | 4/2 | Both pass |
 
-| Metric | Vanilla | ContextLean | Difference |
+| Aggregate | Vanilla | ContextLean | Difference |
 |---|---:|---:|---:|
-| Input tokens | 428,936 | 356,321 | -16.93% |
-| Cached input tokens (included in input) | 319,744 | 266,240 | -16.73% |
-| Output tokens | 5,957 | 5,329 | -10.54% |
-| Total tokens | 434,893 | 361,650 | -16.84% |
-| Wall time (s) | 167.80 | 157.79 | -5.97% |
-| Command calls | 15 | 18 | +20.00% |
-| Task / acceptance / regression / submitted-test success | 5/5 each | 5/5 each | Same |
+| Input tokens | 475,198 | 337,007 | -29.08% |
+| Cached input tokens (included in input) | 369,920 | 257,280 | -30.45% |
+| Output tokens | 6,826 | 4,669 | -31.60% |
+| Total tokens | 482,024 | 341,676 | -29.12% |
+| Wall time (s) | 189.97 | 134.52 | -29.19% |
+| Command calls | 18 | 16 | -11.11% |
+| Acceptance / original regression / submitted-test success | 5/5 each | 5/5 each | Same |
 
-ContextLean used **16.84% fewer aggregate tokens** and **5.97% less wall time**, with
-**20% more command calls**. Refactor uses more tokens, time and commands; Feature uses
-more time and commands; Documentation/config uses more commands. All failed/recovered
-commands and outcomes are
-retained. These are **preliminary results for the tested configuration**, with no
-statistical-confidence claim and **no universal savings claim**.
+ContextLean measured **29.12% fewer aggregate tokens**, **29.19% less wall time** and
+**11.11% fewer commands** in this batch. Unfavorable cases are preserved: Bug Fix uses
+35 more output tokens (+3.35%) and two more commands (3→5, +66.67%); Navigation's
+dated credit-equivalent is higher (0.76752→1.22746, +59.93%) because cache composition differs.
+All diagnostics and recoveries remain visible.
 
-Provider caching, service load, CLI warnings and failing Git checks in the non-Git
-samples remain limitations. File reads and total tool calls are unavailable.
-[Compact final results and all raw evidence](benchmarks/results/2026-09-30-compact-final-0.2.0/README.md) ·
-[methodology](benchmarks/results/2026-09-30-compact-final-0.2.0/methodology.md) ·
-[comparison with the previous clean-final batch](benchmarks/results/2026-09-30-compact-final-0.2.0/comparison.json).
+These are **preliminary results for this tested configuration**, with no
+statistical-confidence claim and **no universal token-savings claim**. Provider caching,
+service load and stochasticity are uncontrolled. File reads and total tool calls are unavailable.
+[Release-aligned results and raw evidence](benchmarks/results/2026-09-30-release-aligned-0.2.0/README.md) ·
+[methodology](benchmarks/results/2026-09-30-release-aligned-0.2.0/methodology.md) ·
+[measurement review](benchmarks/results/2026-09-30-release-aligned-0.2.0/measurement-review.json).
 
-The [previous clean-final batch](benchmarks/results/2026-09-30-clean-final-0.2.0/README.md)
-observed 9.9% more tokens and 17.7% more time with ContextLean. The compact batch
-changes that observed relationship, while command usage increases. The datasets are
-kept separate; differing caching, ordering and service load prevent causal conclusions.
-
-The [historical validation](benchmarks/results/2026-09-30-validation/README.md) is
-preserved separately. The [diagnostic batch](benchmarks/results/2026-09-30-final-0.2.0/README.md)
-contained a manual map-preparation error and is **invalid for headline performance
-comparison**. It is never pooled with the clean results.
+The [compact-final batch at `90ed9a4`](benchmarks/results/2026-09-30-compact-final-0.2.0/README.md),
+[previous clean-final batch](benchmarks/results/2026-09-30-clean-final-0.2.0/README.md) and
+[historical validation](benchmarks/results/2026-09-30-validation/README.md) remain separate,
+unchanged historical evidence. Between-batch differences establish no causal conclusion.
+The [diagnostic batch](benchmarks/results/2026-09-30-final-0.2.0/README.md) contains a map-preparation
+error and is **invalid for headline performance comparison**.
 [Root-cause analysis and harness repair](benchmarks/analysis/2026-09-30-final-0.2.0/README.md).
 
 ## Quick start
@@ -244,7 +241,7 @@ There are two kinds of evidence:
   correctness unverified; it cannot support a gain claim.
 
 Live runs consume provider usage and are never part of CI.
-The [compact final validation record](benchmarks/results/2026-09-30-compact-final-0.2.0/README.md)
+The [release-aligned validation record](benchmarks/results/2026-09-30-release-aligned-0.2.0/README.md)
 records the identical prompts, source snapshot, evaluator, ordering and raw outcomes.
 Provider caching and service load were uncontrolled; the plugin itself was excluded
 from both conditions to isolate the generated guidance. For reproduction and grading,

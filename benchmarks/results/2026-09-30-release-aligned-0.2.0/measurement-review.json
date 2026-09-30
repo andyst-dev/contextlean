@@ -1,0 +1,388 @@
+{
+  "schema_version": 1,
+  "status": "preliminary-validation",
+  "headline_eligible": true,
+  "aggregate": {
+    "vanilla": {
+      "input_tokens": 475198,
+      "cached_input_tokens": 369920,
+      "output_tokens": 6826,
+      "total_tokens": 482024,
+      "duration_seconds": 189.97367979120463,
+      "command_calls": 18,
+      "task_successes": 5,
+      "runs": 5
+    },
+    "contextlean": {
+      "input_tokens": 337007,
+      "cached_input_tokens": 257280,
+      "output_tokens": 4669,
+      "total_tokens": 341676,
+      "duration_seconds": 134.5158410409931,
+      "command_calls": 16,
+      "task_successes": 5,
+      "runs": 5
+    }
+  },
+  "contextlean_vs_vanilla": {
+    "input_tokens": {
+      "absolute": -138191,
+      "percent": -29.08072003670049
+    },
+    "cached_input_tokens": {
+      "absolute": -112640,
+      "percent": -30.44982698961938
+    },
+    "output_tokens": {
+      "absolute": -2157,
+      "percent": -31.599765602109585
+    },
+    "total_tokens": {
+      "absolute": -140348,
+      "percent": -29.116392544769553
+    },
+    "duration_seconds": {
+      "absolute": -55.45783875021152,
+      "percent": -29.192380129270468
+    },
+    "command_calls": {
+      "absolute": -2,
+      "percent": -11.111111111111116
+    }
+  },
+  "paired_differences": {
+    "navigation": {
+      "input_tokens": {
+        "absolute": -4384,
+        "percent": -8.041675838286011
+      },
+      "cached_input_tokens": {
+        "absolute": -15872,
+        "percent": -33.69565217391305
+      },
+      "output_tokens": {
+        "absolute": -117,
+        "percent": -21.74721189591078
+      },
+      "total_tokens": {
+        "absolute": -4501,
+        "percent": -8.175609401678352
+      },
+      "duration_seconds": {
+        "absolute": -2.586604000069201,
+        "percent": -14.470475999249432
+      },
+      "command_calls": {
+        "absolute": 0,
+        "percent": 0.0
+      }
+    },
+    "bug-fix": {
+      "input_tokens": {
+        "absolute": -10071,
+        "percent": -11.521037820028823
+      },
+      "cached_input_tokens": {
+        "absolute": -256,
+        "percent": -0.390625
+      },
+      "output_tokens": {
+        "absolute": 35,
+        "percent": 3.349282296650724
+      },
+      "total_tokens": {
+        "absolute": -10036,
+        "percent": -11.345369041024655
+      },
+      "duration_seconds": {
+        "absolute": -0.6802544989623129,
+        "percent": -2.3311842456455345
+      },
+      "command_calls": {
+        "absolute": 2,
+        "percent": 66.66666666666667
+      }
+    },
+    "feature": {
+      "input_tokens": {
+        "absolute": -16166,
+        "percent": -17.50476437976438
+      },
+      "cached_input_tokens": {
+        "absolute": 0,
+        "percent": 0.0
+      },
+      "output_tokens": {
+        "absolute": -887,
+        "percent": -35.14263074484945
+      },
+      "total_tokens": {
+        "absolute": -17053,
+        "percent": -17.973987098950207
+      },
+      "duration_seconds": {
+        "absolute": -20.73392012505792,
+        "percent": -34.32182436584868
+      },
+      "command_calls": {
+        "absolute": 0,
+        "percent": 0.0
+      }
+    },
+    "refactor": {
+      "input_tokens": {
+        "absolute": -23508,
+        "percent": -24.035581003016205
+      },
+      "cached_input_tokens": {
+        "absolute": -24832,
+        "percent": -30.5993690851735
+      },
+      "output_tokens": {
+        "absolute": -284,
+        "percent": -22.829581993569136
+      },
+      "total_tokens": {
+        "absolute": -23792,
+        "percent": -24.020434330482885
+      },
+      "duration_seconds": {
+        "absolute": -8.999219167046249,
+        "percent": -24.20821092947537
+      },
+      "command_calls": {
+        "absolute": -2,
+        "percent": -40.0
+      }
+    },
+    "documentation-config": {
+      "input_tokens": {
+        "absolute": -84062,
+        "percent": -58.739020760109284
+      },
+      "cached_input_tokens": {
+        "absolute": -71680,
+        "percent": -63.49206349206349
+      },
+      "output_tokens": {
+        "absolute": -904,
+        "percent": -61.28813559322034
+      },
+      "total_tokens": {
+        "absolute": -84966,
+        "percent": -58.7650256594691
+      },
+      "duration_seconds": {
+        "absolute": -22.45784095907584,
+        "percent": -49.53923544277444
+      },
+      "command_calls": {
+        "absolute": -2,
+        "percent": -50.0
+      }
+    }
+  },
+  "negative_cases": {
+    "navigation": [
+      "credit_equivalent"
+    ],
+    "bug-fix": [
+      "output_tokens",
+      "command_calls"
+    ],
+    "feature": [],
+    "refactor": [],
+    "documentation-config": []
+  },
+  "regrading": [
+    {
+      "task": "navigation",
+      "condition": "vanilla",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/navigation-1-vanilla/evaluation.txt"
+    },
+    {
+      "task": "navigation",
+      "condition": "contextlean",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/navigation-1-contextlean/evaluation.txt"
+    },
+    {
+      "task": "bug-fix",
+      "condition": "contextlean",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/bug-fix-1-contextlean/evaluation.txt"
+    },
+    {
+      "task": "bug-fix",
+      "condition": "vanilla",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/bug-fix-1-vanilla/evaluation.txt"
+    },
+    {
+      "task": "feature",
+      "condition": "vanilla",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/feature-1-vanilla/evaluation.txt"
+    },
+    {
+      "task": "feature",
+      "condition": "contextlean",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/feature-1-contextlean/evaluation.txt"
+    },
+    {
+      "task": "refactor",
+      "condition": "contextlean",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/refactor-1-contextlean/evaluation.txt"
+    },
+    {
+      "task": "refactor",
+      "condition": "vanilla",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/refactor-1-vanilla/evaluation.txt"
+    },
+    {
+      "task": "documentation-config",
+      "condition": "vanilla",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/documentation-config-1-vanilla/evaluation.txt"
+    },
+    {
+      "task": "documentation-config",
+      "condition": "contextlean",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "log": "offline-regrade/documentation-config-1-contextlean/evaluation.txt"
+    }
+  ],
+  "authentication": "ChatGPT (codex login status)",
+  "rate_card": {
+    "schema_version": 1,
+    "unit": "chatgpt_credits_per_1m_tokens",
+    "verified_on": "2026-09-30",
+    "source_url": "https://learn.chatgpt.com/docs/pricing",
+    "source_note": "Standard-speed credit-equivalent rates verified against official Codex pricing on the stated date; not actual subscription usage or credits spent.",
+    "models": [
+      {
+        "model": "gpt-5.6-sol",
+        "aliases": [
+          "gpt-5.6"
+        ],
+        "input": 100.0,
+        "cached_input": 10.0,
+        "output": 500.0
+      },
+      {
+        "model": "gpt-5.6-terra",
+        "aliases": [],
+        "input": 50.0,
+        "cached_input": 5.0,
+        "output": 300.0
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "aliases": [],
+        "input": 5.0,
+        "cached_input": 0.5,
+        "output": 30.0
+      },
+      {
+        "model": "gpt-5.5",
+        "aliases": [],
+        "input": 125.0,
+        "cached_input": 12.5,
+        "output": 750.0
+      }
+    ]
+  },
+  "total_standard_credit_equivalent": 15.83475,
+  "condition_credit_equivalents": {
+    "vanilla": 9.1613,
+    "contextlean": 6.673450000000001
+  },
+  "task_credit_equivalents": {
+    "navigation": {
+      "vanilla": 0.76752,
+      "contextlean": 1.2274600000000002
+    },
+    "bug-fix": {
+      "vanilla": 1.73508,
+      "contextlean": 1.2535500000000002
+    },
+    "feature": {
+      "vanilla": 2.52936,
+      "contextlean": 1.45496
+    },
+    "refactor": {
+      "vanilla": 1.61161,
+      "contextlean": 1.46845
+    },
+    "documentation-config": {
+      "vanilla": 2.51773,
+      "contextlean": 1.26903
+    }
+  },
+  "actual_credits_spent": null,
+  "file_reads": null,
+  "all_tool_calls": null,
+  "new_live_calls": 10,
+  "additional_runs": 0,
+  "limitations": [
+    "One fresh run per condition per task; preliminary validation for this configuration only.",
+    "No causal, statistical-confidence or universal token-savings claim.",
+    "Provider caching, service load, stochasticity and CLI diagnostics are uncontrolled.",
+    "Frozen repaired harness alternates order; prior datasets stay separate and no runs are reused.",
+    "Wall time excludes preparation and grading. Dated credit-equivalents are not actual credits charged."
+  ]
+}

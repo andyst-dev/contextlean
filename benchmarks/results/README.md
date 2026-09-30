@@ -1,10 +1,16 @@
 # Public benchmark evidence
 
+- [Release-aligned v0.2.0 validation](2026-09-30-release-aligned-0.2.0/README.md):
+  frozen product `86043499`, exactly ten fresh calls, 10/10 independent offline passes.
+  ContextLean -29.12% tokens, -29.19% time, 18→16 commands. Bug Fix has more output
+  tokens/commands; Navigation's credit-equivalent increases. Current preliminary README
+  evidence; no statistical-confidence or universal token-savings claim.
+
 - [Final compact-context 0.2.0 validation](2026-09-30-compact-final-0.2.0/README.md):
   frozen product `90ed9a4`, existing Bug Fix pair plus exactly eight new calls, all
   ten independently offline-regraded. ContextLean uses 16.84% fewer aggregate tokens,
   5.97% less time and 20% more commands. Every unfavorable task result is disclosed.
-  Current preliminary README evidence, tested configuration only, no confidence or
+  Historical preliminary evidence, tested configuration only, no confidence or
   universal token-savings claim.
 
 - [Clean final 0.2.0 validation](2026-09-30-clean-final-0.2.0/README.md): ten fresh

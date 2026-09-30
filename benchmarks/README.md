@@ -1,11 +1,19 @@
 # Reproducing ContextLean measurements
 
+[Release-aligned v0.2.0 validation](results/2026-09-30-release-aligned-0.2.0/README.md):
+exactly ten fresh calls at `86043499d5a375cc6a3b295bc7c03b0999eb458c`, one per condition
+per existing task, all independently regraded and passing. This is the current README
+headline: ContextLean -29.12% tokens, -29.19% time, 18→16 commands. Bug Fix uses more
+output tokens/commands; Navigation has a higher dated credit-equivalent. Preliminary
+validation only, no statistical-confidence or universal token-savings claim.
+All earlier batches are preserved separately. No additional calls are authorized.
+
 [Final compact-context 0.2.0 validation](results/2026-09-30-compact-final-0.2.0/README.md):
 the completed frozen-commit Bug Fix pair plus exactly eight new calls, one per
 condition for each remaining task, against `90ed9a4`. All ten pass independent offline
 grading. ContextLean uses 16.84% fewer aggregate tokens, 5.97% less time and 20% more
 commands. Feature regresses in time/commands, Refactor in tokens/time/commands, and
-Documentation/config in commands. This is the current preliminary README evidence,
+Documentation/config in commands. This is historical preliminary evidence,
 for the tested configuration only, with no confidence or universal savings claim.
 The [methodology](results/2026-09-30-compact-final-0.2.0/methodology.md) records fresh
 preparation, conditional-reference handling and the explicitly requested pair order.

@@ -1,0 +1,3 @@
+Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.
+
+Add optional --min-amount to the expense report CLI. Keep only expenses whose individual amount is greater than or equal to that decimal threshold before producing the report. It must combine with --category and leave existing behavior unchanged when omitted. With data/sample.csv, --min-amount 10 yields count 2 and total 32.50; --category food --min-amount 10 yields count 1 and total 12.50. Add tests and run them.

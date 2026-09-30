@@ -1,0 +1,7 @@
+{
+  "raw_jsonl_and_stderr_copies_byte_identical": true,
+  "all_ten_solutions_archived": true,
+  "omitted_execution_json": "Redundant parsed local execution records may contain unredacted temporary paths. Original JSONL/stderr and all recorded metrics remain preserved; local records unchanged.",
+  "models_called_during_publication": 0,
+  "prior_datasets_reused": false
+}

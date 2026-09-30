@@ -1,0 +1,33 @@
+{
+  "task": "bug-fix",
+  "condition": "contextlean",
+  "repeat": 1,
+  "sequence": 3,
+  "timestamp": "2026-09-30T16:37:58+00:00",
+  "metrics": {
+    "input_tokens": 77343,
+    "cached_input_tokens": 65280,
+    "output_tokens": 1080,
+    "reasoning_output_tokens": 27,
+    "total_tokens": 78423,
+    "command_calls": 5,
+    "duration_seconds": 28.500386208994314,
+    "tool_calls": null,
+    "file_reads": null,
+    "unique_files_inspected": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "execution_success": true,
+  "exit_code": 0,
+  "error": null,
+  "initial_digest": "f82edb2dd42a1d5e3f875cad13529bcd9cd2cd4275efc5813137cba0a5246bbe",
+  "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+  "solution_digest": "df07ca5b99b21c969cbbfcfa4585e0fa090cf359060c4c7f99d91252d054633c",
+  "raw_directory": "raw/bug-fix-1-contextlean",
+  "guidance_and_sample_intact": true
+}

@@ -205,3 +205,32 @@ hygiene and frozen-content checks. The [standalone offline evidence validator](.
 reconciles all ten conversations and independently regrades their archived solutions.
 Product implementation, benchmark tasks/prompts/graders and the historical bootstrap
 remain byte-identical to the frozen commit. Changes are documentation and evidence only.
+
+## Historical release-aligned validation — 2026-09-30
+
+The [release-aligned evidence](../benchmarks/results/2026-09-30-release-aligned-0.2.0/README.md)
+tests frozen product `86043499d5a375cc6a3b295bc7c03b0999eb458c` with exactly ten
+fresh `gpt-5.6-terra` / low-reasoning calls: one per condition for each existing task.
+All five paired preparations validate before execution, including mapped ownership,
+equivalent code, fresh guidance, 71 permanent facets and unchanged prompts/tests.
+No previous result is reused; all ten saved solutions pass independent offline regrading.
+
+Measured totals: 482,024→341,676 tokens (-29.12%), 189.97→134.52 seconds (-29.19%),
+and 18→16 commands. Bug Fix uses more output tokens/commands; Navigation has a
+higher dated credit-equivalent. Raw diagnostics and recoveries are retained. Refactor
+stays within mapped owners/tests with distinct searches, no Git inspection and
+behavior-preserving verification; wider-impact expansion was not exercised.
+One run per condition per task is preliminary validation, with no statistical-confidence,
+causal or universal token-savings claim. Earlier datasets remain unchanged and separate.
+
+The [quality record](../benchmarks/results/2026-09-30-release-aligned-0.2.0/quality-checks.json)
+records offline tests, Ruff, four Skill validators, Codex/Claude validators, semantic
+coverage, relative links, hygiene and protected-content hashes. The
+[standalone offline validator](../benchmarks/results/2026-09-30-release-aligned-0.2.0/verify_evidence.py)
+checks source/fixture provenance, checksums, ten unique fresh conversations, exact
+usage/cost aggregation and all ten independent regrades without model calls.
+Product behavior, benchmark tasks/prompts/graders/measurement and the original bootstrap
+remain unchanged. Only release-aligned evidence and documentation are committed;
+this validation stage did not include additional calls, a push, tag or release.
+The subsequent release gate completed publication without additional model benchmarks,
+as recorded above.
