@@ -1,10 +1,18 @@
 # Reproducing ContextLean measurements
 
+[Final 0.2.0 candidate validation](results/2026-09-30-final-0.2.0/README.md):
+ten new live runs against commit `52a2c34c091f9720076cc9685fb858347d9f6dcf`,
+with five freshly bootstrapped fixture preparations. All task checks pass, but
+ContextLean uses more aggregate tokens/time/commands and the generated map has a
+known config-path error. Retain this as diagnostic evidence, not a clean bootstrap
+release validation. No further live runs are authorized.
+
 [2026-09-30 preliminary validation](results/2026-09-30-validation/README.md):
 all ten live runs, one per condition for each of five tasks. Both conditions passed
 all task checks. Two task pairs used more total tokens with ContextLean. This checks
 the runner and grading; it is not a statistically robust final benchmark.
-No further live runs are authorized for this release preparation.
+The separately authorized final-candidate series above retains new evidence without
+overwriting this historical batch. No further repetitions are authorized.
 
 ## Graded sample suite
 
@@ -41,11 +49,16 @@ start a model. Use an empty output directory; existing results are not overwritt
 Provider/CLI failures stop the batch rather than repeatedly spending usage on a
 broken setup. Wrong solutions remain recorded and do not stop other tasks.
 
-The existing batch is complete. Additional runs require separate approval. After approval,
+Both batches are complete. Additional runs require separate approval. After approval,
 `--repeat 2` in a **new** directory adds those 20 runs; combine all 30 only when prompts, fixture,
 evaluator, model/configuration and environment still match. Never replace or discard
 the first batch. A corrected setup is a separate series. A fresh `--repeat 3` means 30 new runs.
 Every result retains its repetition and sequence; do not select favorable repetitions.
+
+The committed sample map remains the historical example. To reproduce the final
+candidate context, use the frozen source archive linked in its result set, or
+prepare fresh guidance with the specified bootstrap revision before a separately
+authorized run. The generic command above does not regenerate guidance.
 
 ## Conditions and fairness
 

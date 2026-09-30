@@ -7,3 +7,8 @@
 
 No statistically robust final benchmark is published. Repetitions need separate
 approval; ordinary tests and CI never start model runs. See the [benchmark guide](../README.md).
+
+[2026-09-30 final 0.2.0 candidate diagnostic validation](2026-09-30-final-0.2.0/README.md):
+ten runs, all task checks pass; aggregate ContextLean resource regressions and a known
+generated-map path error are retained. This does not establish a clean final-bootstrap
+validation or statistical confidence. The historical batch above remains unchanged.

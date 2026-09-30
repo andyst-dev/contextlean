@@ -39,7 +39,13 @@ ContextLean does not guarantee savings or make a model inherently smarter.
 
 ## Before vs After
 
-**Preliminary validation batch — 1 run per condition per task.**
+**Historical preliminary validation batch — 1 run per condition per task.**
+
+The [final 0.2.0 candidate batch](benchmarks/results/2026-09-30-final-0.2.0/README.md)
+completed ten new runs, all passing task checks. ContextLean used **22.7% more total
+tokens** in that batch. Its generated map also contains a known configuration-path
+error, so it is diagnostic evidence, not a clean final-bootstrap validation. The table
+below retains the earlier historical results; it does not describe the final bootstrap.
 
 Five tasks in a small Python expense-report project, using `gpt-5.6-terra` with low
 reasoning on 2026-09-30. Vanilla had no repository instructions; ContextLean had the
