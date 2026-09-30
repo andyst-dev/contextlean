@@ -1,0 +1,33 @@
+{
+  "condition": "contextlean",
+  "error": null,
+  "evaluation": {
+    "acceptance_passed": true,
+    "agent_tests_passed": true,
+    "task_success": true,
+    "tests_passed": true
+  },
+  "execution_success": true,
+  "exit_code": 0,
+  "initial_digest": "33d8f2817cceb5ff4f247748d0815224fc74a15b5a7bd4284dceb02b9d8b20ea",
+  "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+  "metrics": {
+    "cached_input_tokens": 42240,
+    "command_calls": 4,
+    "duration_seconds": 29.894206583034247,
+    "estimated_cost": null,
+    "file_reads": null,
+    "input_tokens": 60260,
+    "output_tokens": 968,
+    "reasoning_output_tokens": 43,
+    "tool_calls": null,
+    "total_tokens": 61228,
+    "unique_files_inspected": null
+  },
+  "neutralized_instructions": [],
+  "raw_directory": "raw/bug-fix-1-contextlean",
+  "repeat": 1,
+  "sequence": 3,
+  "task": "bug-fix",
+  "timestamp": "2026-09-30T12:16:40+00:00"
+}

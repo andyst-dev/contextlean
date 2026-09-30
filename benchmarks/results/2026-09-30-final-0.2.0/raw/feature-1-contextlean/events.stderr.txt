@@ -1,0 +1,7 @@
+Reading additional input from stdin...
+2026-09-30T12:18:02.741783Z ERROR codex_models_manager::manager: failed to load models cache: missing field `supports_parallel_tool_calls` at line 140 column 5
+2026-09-30T12:18:03.188212Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-09-30T12:18:03.188855Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-09-30T12:18:03.189362Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-09-30T12:18:03.190189Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-09-30T12:18:47.299956Z ERROR codex_core::tools::router: error=patch rejected: writing outside of the project; rejected by user approval settings

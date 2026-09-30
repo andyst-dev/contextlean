@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "rules": {
+    "navigation": {
+      "facets": [
+        "map-primary",
+        "no-rediscovery",
+        "owner-first",
+        "search-first",
+        "immediate-dependencies",
+        "evidence-expansion",
+        "no-ordinary-scan",
+        "no-unjustified-reread",
+        "repository-state",
+        "preserve-architecture"
+      ],
+      "semantics_reviewed": true,
+      "kind": "guidance",
+      "path": "AGENTS.md",
+      "section": "Navigation",
+      "sha256": "169da3d34b8a04535ed27c4ce177f88955ec45608cb6cac8eefab6145456f960"
+    },
+    "ownership": {
+      "facets": [
+        "clear-owner",
+        "cohesive-files-modules-classes",
+        "related-together",
+        "unrelated-separated",
+        "unique-state-behavior",
+        "owner-locality-unrelated-extraction",
+        "genuine-new-module"
+      ],
+      "semantics_reviewed": true,
+      "kind": "guidance",
+      "path": "AGENTS.md",
+      "section": "Ownership",
+      "sha256": "608a74e853541035a056d1abd37f0366f75d3ab16df44ac2887ecf4b8ac8c253"
+    },
+    "structure": {
+      "facets": [
+        "no-arbitrary-size",
+        "cohesive-large-files",
+        "refactor-signals",
+        "refactor-current-need",
+        "no-fragmentation-wrappers"
+      ],
+      "semantics_reviewed": true,
+      "kind": "guidance",
+      "path": "AGENTS.md",
+      "section": "Structure",
+      "sha256": "54ecdf79c0952929c631dc5a1420ed15f6c3d5149caa3f4e0a963998c25c1179"
+    },
+    "interfaces": {
+      "facets": [
+        "simple-direction-no-cycles-globals",
+        "focused-public-api",
+        "local-internals",
+        "distinct-boundaries",
+        "coupling-justifies-indirection"
+      ],
+      "semantics_reviewed": true,
+      "kind": "guidance",
+      "path": "AGENTS.md",
+      "section": "Interfaces",
+      "sha256": "1609d4f4a58c9c1572e0ae3961d4d6e73fe4732aa3a13029acf8f6741865ca12"
+    },
+    "implementation": {
+      "facets": [
+        "reuse-supported",
+        "reuse-project",
+        "reuse-standard-library",
+        "reuse-framework-platform",
+        "reuse-installed-dependency",
+        "reuse-minimum-new-code",
+        "readable-coherent-shallow",
+        "focused-diff",
+        "no-style-rewrite",
+        "safe-obsolete-removal",
+        "no-speculation",
+        "preserve-safety",
+        "specific-helper-owner"
+      ],
+      "semantics_reviewed": true,
+      "kind": "guidance",
+      "path": "AGENTS.md",
+      "section": "Implementation",
+      "sha256": "300c3e622bec67555a5b2744ff7f72744c27de0fbd308c006c9dc6fc02b0dd19"
+    },
+    "bug-fix": {
+      "facets": [
+        "root-cause-first",
+        "trace-flow-callers",
+        "responsible-shared-layer",
+        "no-repeated-workaround",
+        "no-unnecessary-broad-refactor",
+        "practical-regression"
+      ],
+      "semantics_reviewed": true,
+      "kind": "guidance",
+      "path": "AGENTS.md",
+      "section": "Bug fixes",
+      "sha256": "9d761e3640b96676066523505d1ab160aacf59edf72311fa0bd8dfa264f2eae0"
+    },
+    "verification": {
+      "facets": [
+        "targeted-affected-full",
+        "smallest-meaningful",
+        "broaden-shared-core-or-rules",
+        "existing-infrastructure",
+        "runnable-regression",
+        "no-single-check-framework"
+      ],
+      "semantics_reviewed": true,
+      "kind": "guidance",
+      "path": "AGENTS.md",
+      "section": "Verification",
+      "sha256": "c044da8b042fccf0ce928ff0479404cfc313d33dbbef2445ff416cef7d45c28e"
+    },
+    "context": {
+      "facets": [
+        "large-documents-optional-search",
+        "proven-local-exclusions",
+        "task-relevant-generated-exception",
+        "preserve-useful-material",
+        "shared-claude-knowledge",
+        "protected-agent-settings"
+      ],
+      "semantics_reviewed": true,
+      "kind": "guidance",
+      "path": "AGENTS.md",
+      "section": "Context",
+      "sha256": "b8955fddf096e2a480c56a8422c7481d2bc559c9501f318a25f23b5b284362a0"
+    },
+    "maintenance": {
+      "facets": [
+        "after-every-task",
+        "paths-owners-subsystems-architecture-flows-commands-workflows",
+        "smallest-map-stale-removal",
+        "no-detail-churn",
+        "durable-concise-not-obvious",
+        "no-global-refresh"
+      ],
+      "semantics_reviewed": true,
+      "kind": "guidance",
+      "path": "AGENTS.md",
+      "section": "Map maintenance",
+      "sha256": "a7662304a35f582105c3cf05aa0882f54d5cd98e3733e7b1601991c6b8be0f69"
+    },
+    "project-skills": {
+      "facets": [
+        "repetitive-nontrivial-reusable",
+        "maps-versus-procedures",
+        "canonical-project-discovery",
+        "portable-verified-sharing"
+      ],
+      "semantics_reviewed": true,
+      "kind": "guidance",
+      "path": "AGENTS.md",
+      "section": "Project Skills",
+      "sha256": "e4033787123560885ae73834149785d22c8aeb961532e9b4866d90b30d94ffb8"
+    },
+    "lean-review": {
+      "facets": [
+        "explicit-packaged-handoff",
+        "advisory-read-only",
+        "behavior-preserving-review"
+      ],
+      "semantics_reviewed": true,
+      "kind": "contextlean_skill",
+      "path": "skills/lean-review/SKILL.md",
+      "section": "Review workflow",
+      "sha256": "9245cfbc3ff7b26c3eb9c7604e0df0ced96fab4f9150a9b5674602f23278b8f5",
+      "skill": "contextlean:lean-review"
+    }
+  }
+}

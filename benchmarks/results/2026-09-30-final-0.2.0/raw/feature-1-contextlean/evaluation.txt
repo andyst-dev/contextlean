@@ -1,0 +1,32 @@
+test_cli_category_and_min_amount (test_expenses.ExpenseTests.test_cli_category_and_min_amount) ... ok
+test_cli_min_amount (test_expenses.ExpenseTests.test_cli_min_amount) ... ok
+test_cli_override (test_expenses.ExpenseTests.test_cli_override) ... ok
+test_configured_default (test_expenses.ExpenseTests.test_configured_default) ... ok
+test_filter (test_expenses.ExpenseTests.test_filter) ... ok
+test_filter_min_amount_combines_with_category (test_expenses.ExpenseTests.test_filter_min_amount_combines_with_category) ... ok
+test_load_decimal (test_expenses.ExpenseTests.test_load_decimal) ... ok
+test_report (test_expenses.ExpenseTests.test_report) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.136s
+
+OK
+
+test_cli_override (test_expenses.ExpenseTests.test_cli_override) ... ok
+test_configured_default (test_expenses.ExpenseTests.test_configured_default) ... ok
+test_filter (test_expenses.ExpenseTests.test_filter) ... ok
+test_load_decimal (test_expenses.ExpenseTests.test_load_decimal) ... ok
+test_report (test_expenses.ExpenseTests.test_report) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.063s
+
+OK
+
+test_preserved_behavior (__main__.evaluate.<locals>.Acceptance.test_preserved_behavior) ... ok
+test_task_contract (__main__.evaluate.<locals>.Acceptance.test_task_contract) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.189s
+
+OK

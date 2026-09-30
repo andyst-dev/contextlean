@@ -1,0 +1,169 @@
+{
+  "release_candidate_commit": "52a2c34c091f9720076cc9685fb858347d9f6dcf",
+  "bootstrap_method": "Current agent applies final committed procedure locally; five independent targets; no additional live calls. Identical outputs frozen for unchanged runner fresh copies.",
+  "preparation_not_measured": true,
+  "only_fixture_guidance_changed": true,
+  "records": [
+    {
+      "task": "navigation",
+      "source_commit": "52a2c34c091f9720076cc9685fb858347d9f6dcf",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "final_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "guidance_digest": "d816dd07b3dac2ef557b5b59590e2066fbbfe8285557572e775d1feb5b1bfdda",
+      "claude_digest": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "transfer": {
+        "groups": 11,
+        "facets": 71,
+        "destinations": [
+          "AGENTS.md",
+          "skills/lean-review/SKILL.md"
+        ],
+        "setup_specification_required": false
+      },
+      "commands_verified": true,
+      "safe_removal_verified": true,
+      "idempotent_review": false,
+      "created": [
+        "CLAUDE.md"
+      ],
+      "modified": [
+        "AGENTS.md"
+      ],
+      "skills_created": [],
+      "exclusions_added": [],
+      "optional_documents_moved": [],
+      "documented_paths_verified": false,
+      "bootstrap_complete": false
+    },
+    {
+      "task": "bug-fix",
+      "source_commit": "52a2c34c091f9720076cc9685fb858347d9f6dcf",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "final_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "guidance_digest": "d816dd07b3dac2ef557b5b59590e2066fbbfe8285557572e775d1feb5b1bfdda",
+      "claude_digest": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "transfer": {
+        "groups": 11,
+        "facets": 71,
+        "destinations": [
+          "AGENTS.md",
+          "skills/lean-review/SKILL.md"
+        ],
+        "setup_specification_required": false
+      },
+      "commands_verified": true,
+      "safe_removal_verified": true,
+      "idempotent_review": false,
+      "created": [
+        "CLAUDE.md"
+      ],
+      "modified": [
+        "AGENTS.md"
+      ],
+      "skills_created": [],
+      "exclusions_added": [],
+      "optional_documents_moved": [],
+      "documented_paths_verified": false,
+      "bootstrap_complete": false
+    },
+    {
+      "task": "feature",
+      "source_commit": "52a2c34c091f9720076cc9685fb858347d9f6dcf",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "final_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "guidance_digest": "d816dd07b3dac2ef557b5b59590e2066fbbfe8285557572e775d1feb5b1bfdda",
+      "claude_digest": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "transfer": {
+        "groups": 11,
+        "facets": 71,
+        "destinations": [
+          "AGENTS.md",
+          "skills/lean-review/SKILL.md"
+        ],
+        "setup_specification_required": false
+      },
+      "commands_verified": true,
+      "safe_removal_verified": true,
+      "idempotent_review": false,
+      "created": [
+        "CLAUDE.md"
+      ],
+      "modified": [
+        "AGENTS.md"
+      ],
+      "skills_created": [],
+      "exclusions_added": [],
+      "optional_documents_moved": [],
+      "documented_paths_verified": false,
+      "bootstrap_complete": false
+    },
+    {
+      "task": "refactor",
+      "source_commit": "52a2c34c091f9720076cc9685fb858347d9f6dcf",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "final_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "guidance_digest": "d816dd07b3dac2ef557b5b59590e2066fbbfe8285557572e775d1feb5b1bfdda",
+      "claude_digest": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "transfer": {
+        "groups": 11,
+        "facets": 71,
+        "destinations": [
+          "AGENTS.md",
+          "skills/lean-review/SKILL.md"
+        ],
+        "setup_specification_required": false
+      },
+      "commands_verified": true,
+      "safe_removal_verified": true,
+      "idempotent_review": false,
+      "created": [
+        "CLAUDE.md"
+      ],
+      "modified": [
+        "AGENTS.md"
+      ],
+      "skills_created": [],
+      "exclusions_added": [],
+      "optional_documents_moved": [],
+      "documented_paths_verified": false,
+      "bootstrap_complete": false
+    },
+    {
+      "task": "documentation-config",
+      "source_commit": "52a2c34c091f9720076cc9685fb858347d9f6dcf",
+      "initial_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "final_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "guidance_digest": "d816dd07b3dac2ef557b5b59590e2066fbbfe8285557572e775d1feb5b1bfdda",
+      "claude_digest": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "transfer": {
+        "groups": 11,
+        "facets": 71,
+        "destinations": [
+          "AGENTS.md",
+          "skills/lean-review/SKILL.md"
+        ],
+        "setup_specification_required": false
+      },
+      "commands_verified": true,
+      "safe_removal_verified": true,
+      "idempotent_review": false,
+      "created": [
+        "CLAUDE.md"
+      ],
+      "modified": [
+        "AGENTS.md"
+      ],
+      "skills_created": [],
+      "exclusions_added": [],
+      "optional_documents_moved": [],
+      "documented_paths_verified": false,
+      "bootstrap_complete": false
+    }
+  ],
+  "instruction_bytes": 7098,
+  "semantic_review": "All 71 facets retained in reachable guidance; advisory Lean Review explicitly delegated. No task-specific solutions or rubric hints. No target setup specification dependency.",
+  "skill_availability": "All four pinned plugin workflows available at the candidate root; benchmark exec intentionally excludes plugins in both conditions as before.",
+  "bootstrap_quality_warning": "Generated map incorrectly points to expense_report/config.json; actual config is config.json. Discovered after live execution began. Context frozen throughout all ten runs; no corrected or replacement run. Transfer checker passes structure/71 facets, but repository-path verification is incomplete. Not a clean bootstrap quality pass.",
+  "all_documented_paths_verified": false,
+  "bootstrap_completion_gate_passed": false
+}

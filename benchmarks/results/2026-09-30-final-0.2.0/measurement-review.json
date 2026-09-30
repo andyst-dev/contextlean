@@ -1,0 +1,438 @@
+{
+  "run_count": 10,
+  "additional_runs": 0,
+  "regrading": [
+    {
+      "task": "navigation",
+      "condition": "vanilla",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "matches_saved_result": true,
+      "raw_metrics_reconciled": true
+    },
+    {
+      "task": "navigation",
+      "condition": "contextlean",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "matches_saved_result": true,
+      "raw_metrics_reconciled": true
+    },
+    {
+      "task": "bug-fix",
+      "condition": "contextlean",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "matches_saved_result": true,
+      "raw_metrics_reconciled": true
+    },
+    {
+      "task": "bug-fix",
+      "condition": "vanilla",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "matches_saved_result": true,
+      "raw_metrics_reconciled": true
+    },
+    {
+      "task": "feature",
+      "condition": "vanilla",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "matches_saved_result": true,
+      "raw_metrics_reconciled": true
+    },
+    {
+      "task": "feature",
+      "condition": "contextlean",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "matches_saved_result": true,
+      "raw_metrics_reconciled": true
+    },
+    {
+      "task": "refactor",
+      "condition": "contextlean",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "matches_saved_result": true,
+      "raw_metrics_reconciled": true
+    },
+    {
+      "task": "refactor",
+      "condition": "vanilla",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "matches_saved_result": true,
+      "raw_metrics_reconciled": true
+    },
+    {
+      "task": "documentation-config",
+      "condition": "vanilla",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "matches_saved_result": true,
+      "raw_metrics_reconciled": true
+    },
+    {
+      "task": "documentation-config",
+      "condition": "contextlean",
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "matches_saved_result": true,
+      "raw_metrics_reconciled": true
+    }
+  ],
+  "rate_card": {
+    "schema_version": 1,
+    "unit": "chatgpt_credits_per_1m_tokens",
+    "verified_on": "2026-09-30",
+    "source_url": "https://learn.chatgpt.com/docs/pricing",
+    "source_note": "Standard-speed credit-equivalent rates verified against official Codex pricing on the stated date; not actual subscription usage or credits spent.",
+    "models": [
+      {
+        "model": "gpt-5.6-sol",
+        "aliases": [
+          "gpt-5.6"
+        ],
+        "input": 100.0,
+        "cached_input": 10.0,
+        "output": 500.0
+      },
+      {
+        "model": "gpt-5.6-terra",
+        "aliases": [],
+        "input": 50.0,
+        "cached_input": 5.0,
+        "output": 300.0
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "aliases": [],
+        "input": 5.0,
+        "cached_input": 0.5,
+        "output": 30.0
+      },
+      {
+        "model": "gpt-5.5",
+        "aliases": [],
+        "input": 125.0,
+        "cached_input": 12.5,
+        "output": 750.0
+      }
+    ]
+  },
+  "authentication": "ChatGPT login verified before execution; no API key authentication selected",
+  "actual_credits_spent": null,
+  "actual_subscription_usage": null,
+  "bootstrap_quality_warning": "Generated map incorrectly points to expense_report/config.json; actual config is config.json. Discovered after live execution began. Context frozen throughout all ten runs; no corrected or replacement run. Transfer checker passes structure/71 facets, but repository-path verification is incomplete. Not a clean bootstrap quality pass.",
+  "headline_eligible": false,
+  "aggregate": {
+    "vanilla": {
+      "input_tokens": 378295,
+      "cached_input_tokens": 299520,
+      "output_tokens": 4951,
+      "total_tokens": 383246,
+      "command_calls": 16,
+      "duration_seconds": 165.78472154214978,
+      "successes": 5,
+      "runs": 5
+    },
+    "contextlean": {
+      "input_tokens": 463316,
+      "cached_input_tokens": 383488,
+      "output_tokens": 7043,
+      "total_tokens": 470359,
+      "command_calls": 19,
+      "duration_seconds": 200.41419687471353,
+      "successes": 5,
+      "runs": 5
+    }
+  },
+  "previous_aggregate": {
+    "vanilla": {
+      "input_tokens": 396727,
+      "cached_input_tokens": 294400,
+      "output_tokens": 6645,
+      "total_tokens": 403372,
+      "command_calls": 15,
+      "duration_seconds": 188.2827120819129,
+      "successes": 5,
+      "runs": 5
+    },
+    "contextlean": {
+      "input_tokens": 350329,
+      "cached_input_tokens": 279296,
+      "output_tokens": 4978,
+      "total_tokens": 355307,
+      "command_calls": 13,
+      "duration_seconds": 149.85422099917196,
+      "successes": 5,
+      "runs": 5
+    }
+  },
+  "difference_from_previous": {
+    "vanilla": {
+      "input_tokens": {
+        "absolute": -18432,
+        "percent": -4.64601602613384
+      },
+      "cached_input_tokens": {
+        "absolute": 5120,
+        "percent": 1.7391304347826086
+      },
+      "output_tokens": {
+        "absolute": -1694,
+        "percent": -25.4928517682468
+      },
+      "total_tokens": {
+        "absolute": -20126,
+        "percent": -4.989439028985651
+      },
+      "command_calls": {
+        "absolute": 1,
+        "percent": 6.666666666666667
+      },
+      "duration_seconds": {
+        "absolute": -22.497990539763123,
+        "percent": -11.949047414387843
+      }
+    },
+    "contextlean": {
+      "input_tokens": {
+        "absolute": 112987,
+        "percent": 32.251683417587465
+      },
+      "cached_input_tokens": {
+        "absolute": 104192,
+        "percent": 37.305224564619614
+      },
+      "output_tokens": {
+        "absolute": 2065,
+        "percent": 41.482523101647246
+      },
+      "total_tokens": {
+        "absolute": 115052,
+        "percent": 32.38101135074738
+      },
+      "command_calls": {
+        "absolute": 6,
+        "percent": 46.15384615384615
+      },
+      "duration_seconds": {
+        "absolute": 50.55997587554157,
+        "percent": 33.73944059661886
+      }
+    }
+  },
+  "per_run_credit_equivalents": [
+    {
+      "task": "navigation",
+      "condition": "vanilla",
+      "standard_credit_equivalent": 1.83745
+    },
+    {
+      "task": "navigation",
+      "condition": "contextlean",
+      "standard_credit_equivalent": 1.02878
+    },
+    {
+      "task": "bug-fix",
+      "condition": "contextlean",
+      "standard_credit_equivalent": 1.4026
+    },
+    {
+      "task": "bug-fix",
+      "condition": "vanilla",
+      "standard_credit_equivalent": 0.9162100000000001
+    },
+    {
+      "task": "feature",
+      "condition": "vanilla",
+      "standard_credit_equivalent": 1.73431
+    },
+    {
+      "task": "feature",
+      "condition": "contextlean",
+      "standard_credit_equivalent": 2.59064
+    },
+    {
+      "task": "refactor",
+      "condition": "contextlean",
+      "standard_credit_equivalent": 1.54584
+    },
+    {
+      "task": "refactor",
+      "condition": "vanilla",
+      "standard_credit_equivalent": 1.1529399999999999
+    },
+    {
+      "task": "documentation-config",
+      "condition": "vanilla",
+      "standard_credit_equivalent": 1.28074
+    },
+    {
+      "task": "documentation-config",
+      "condition": "contextlean",
+      "standard_credit_equivalent": 1.4538800000000003
+    }
+  ],
+  "total_standard_credit_equivalent": 14.94339,
+  "all_raw_usage_and_command_counts_reconciled": true,
+  "all_saved_solutions_regraded": true,
+  "limitations": [
+    "One run per condition per task; preliminary validation; no statistical confidence claim.",
+    "Results apply only to the tested configuration; no universal savings claim.",
+    "Cross-batch changes cannot isolate bootstrap causality; Vanilla also varies, caches/service/model stochasticity uncontrolled.",
+    "File reads and all-tool counts unavailable; null retained.",
+    "Monotonic wall time recorded in run.json; not reconstructible from event logs.",
+    "Plugin invocation and bootstrap cost excluded in both batches.",
+    "Old candidate source uncommitted; final product commit pinned, newly generated fixture guidance uncommitted and archived.",
+    "Frozen candidate copy exclusions differ only for generated junk, absent from the product fixture.",
+    "Generated map has known incorrect config path; guidance not corrected mid-batch.",
+    "Model-cache/state-database warnings, recovered patch rejections on ContextLean feature/refactor/documentation, and failed Git checks remain in evidence; uneven noise can affect comparisons."
+  ],
+  "hygiene_scan_passed": true,
+  "diagnostic_review": [
+    {
+      "task": "navigation",
+      "condition": "vanilla",
+      "state_db_warning": true,
+      "model_cache_schema_warning": true,
+      "recovered_patch_rejection": false,
+      "sandbox_violation": false,
+      "nonzero_command_events": 0,
+      "git_command_failure": false
+    },
+    {
+      "task": "navigation",
+      "condition": "contextlean",
+      "state_db_warning": true,
+      "model_cache_schema_warning": false,
+      "recovered_patch_rejection": false,
+      "sandbox_violation": true,
+      "nonzero_command_events": 1,
+      "git_command_failure": true
+    },
+    {
+      "task": "bug-fix",
+      "condition": "contextlean",
+      "state_db_warning": true,
+      "model_cache_schema_warning": false,
+      "recovered_patch_rejection": false,
+      "sandbox_violation": false,
+      "nonzero_command_events": 1,
+      "git_command_failure": true
+    },
+    {
+      "task": "bug-fix",
+      "condition": "vanilla",
+      "state_db_warning": true,
+      "model_cache_schema_warning": false,
+      "recovered_patch_rejection": false,
+      "sandbox_violation": false,
+      "nonzero_command_events": 1,
+      "git_command_failure": true
+    },
+    {
+      "task": "feature",
+      "condition": "vanilla",
+      "state_db_warning": true,
+      "model_cache_schema_warning": true,
+      "recovered_patch_rejection": false,
+      "sandbox_violation": false,
+      "nonzero_command_events": 1,
+      "git_command_failure": false
+    },
+    {
+      "task": "feature",
+      "condition": "contextlean",
+      "state_db_warning": true,
+      "model_cache_schema_warning": true,
+      "recovered_patch_rejection": true,
+      "sandbox_violation": false,
+      "nonzero_command_events": 1,
+      "git_command_failure": true
+    },
+    {
+      "task": "refactor",
+      "condition": "contextlean",
+      "state_db_warning": true,
+      "model_cache_schema_warning": true,
+      "recovered_patch_rejection": true,
+      "sandbox_violation": false,
+      "nonzero_command_events": 1,
+      "git_command_failure": true
+    },
+    {
+      "task": "refactor",
+      "condition": "vanilla",
+      "state_db_warning": true,
+      "model_cache_schema_warning": true,
+      "recovered_patch_rejection": false,
+      "sandbox_violation": false,
+      "nonzero_command_events": 1,
+      "git_command_failure": true
+    },
+    {
+      "task": "documentation-config",
+      "condition": "vanilla",
+      "state_db_warning": true,
+      "model_cache_schema_warning": false,
+      "recovered_patch_rejection": false,
+      "sandbox_violation": false,
+      "nonzero_command_events": 1,
+      "git_command_failure": false
+    },
+    {
+      "task": "documentation-config",
+      "condition": "contextlean",
+      "state_db_warning": true,
+      "model_cache_schema_warning": false,
+      "recovered_patch_rejection": true,
+      "sandbox_violation": false,
+      "nonzero_command_events": 1,
+      "git_command_failure": true
+    }
+  ]
+}
