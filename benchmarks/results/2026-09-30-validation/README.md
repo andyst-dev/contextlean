@@ -27,7 +27,6 @@ runs are authorized for this release preparation.
 
 | State | SHA-256 |
 |---|---|
-
 | Candidate tree | `6b51e8ab4e6c59571325c30afb932b49c9bf21ff9f01a7bd2463dd8dd6d9252b` |
 | Fixture tree | `7642a99b1020d72fd33f9f6e23f53ed42d1f1b26bdb9a24d9b08ed25e8899dbe` |
 | Task suite bytes | `bc40082c4e77dc11a268b5593f313d6b1b4b51062c3818effb64bfe03a744c62` |
@@ -111,8 +110,7 @@ specific contracts, not every possible input or production behavior.
 
 ## Every raw result
 
-Cached input is a **subset of input**, already included in the total. Total = input
-+ output; optional reasoning usage is included in output, never added again.
+Cached input is a **subset of input**, already included in the total. Total = input + output; optional reasoning usage is included in output, never added again.
 Command calls count unique `command_execution` item ids, including unsuccessful
 commands; they do not count every tool invocation. Seconds measure local monotonic
 Codex process duration, excluding independent evaluator time. Duration is not
@@ -120,7 +118,6 @@ recoverable from JSONL alone; the full precision remains in each run record.
 
 | Task | Condition | Input | Cached input | Output | Total | Commands | Seconds | Task success | Raw evidence |
 |---|---|---:|---:|---:|---:|---:|---:|---|---|
-
 | navigation | vanilla | 47,765 | 29,184 | 391 | 48,156 | 2 | 17.15889 | PASS | [events](raw/navigation-1-vanilla/events.jsonl), [diagnostics](raw/navigation-1-vanilla/events.stderr.txt), [grading](raw/navigation-1-vanilla/evaluation.txt), [record](raw/navigation-1-vanilla/run.json) |
 | navigation | contextlean | 26,175 | 12,032 | 266 | 26,441 | 1 | 10.16185 | PASS | [events](raw/navigation-1-contextlean/events.jsonl), [diagnostics](raw/navigation-1-contextlean/events.stderr.txt), [grading](raw/navigation-1-contextlean/evaluation.txt), [record](raw/navigation-1-contextlean/run.json) |
 | bug-fix | contextlean | 58,315 | 34,048 | 891 | 59,206 | 2 | 24.49146 | PASS | [events](raw/bug-fix-1-contextlean/events.jsonl), [diagnostics](raw/bug-fix-1-contextlean/events.stderr.txt), [grading](raw/bug-fix-1-contextlean/evaluation.txt), [record](raw/bug-fix-1-contextlean/run.json) |
@@ -146,7 +143,6 @@ Round only for display; `summary.json` retains the measured values.
 
 | Metric | Vanilla sum | ContextLean sum | Difference |
 |---|---:|---:|---:|
-
 | Total tokens | 403,372 | 355,307 | -11.92% |
 | Input tokens | 396,727 | 350,329 | -11.70% |
 | Cached input tokens | 294,400 | 279,296 | -5.13% |
