@@ -7,6 +7,11 @@ ContextLean uses more aggregate tokens/time/commands and the generated map has a
 known config-path error. Retain this as diagnostic evidence, not a clean bootstrap
 release validation. No further live runs are authorized.
 
+[Offline root-cause analysis](analysis/2026-09-30-final-0.2.0/README.md) classifies the
+bad map as a manual preparation error. Product behavior remains unchanged. The runner
+now requires a validated offline preparation record before any model call; the
+diagnostic result folder remains immutable and invalid for headline comparison.
+
 [2026-09-30 preliminary validation](results/2026-09-30-validation/README.md):
 all ten live runs, one per condition for each of five tasks. Both conditions passed
 all task checks. Two task pairs used more total tokens with ContextLean. This checks
@@ -38,9 +43,47 @@ The prompts describe the requested behavior, equally for both conditions.
 
 ### Optional future live reproduction
 
+Before a future authorized run, apply the pinned Bootstrap procedure to a fresh
+fixture copy. Review every project-map path and responsibility against the actual
+source, then freeze it using the offline preparation command below. Do not copy
+guidance from the diagnostic batch or reduce valid permanent rules to improve scores.
+
+Use a **disposable candidate checkout**: move its original expense-report fixture to
+a separate baseline directory, bootstrap a fresh copy of that baseline, and freeze
+the reviewed copy back into the vacated fixture path. The output and record must be
+new paths outside both preparation inputs. This command itself makes no model calls:
+
+```sh
+python3 benchmarks/prepare_fixture.py \
+  --baseline /path/to/baseline \
+  --prepared /path/to/bootstrapped-copy \
+  --review /path/to/responsibility-review.json \
+  --output benchmarks/fixtures/expense-report \
+  --record .contextlean/preparation.json
+```
+
+The review is explicit human/agent evidence, not automatically inferred ownership:
+`semantics_reviewed: true`, with `entries` keyed by every map path. Each entry has
+the exact map `responsibility` and an `evidence` list of `{ "path": "relative-file",
+"contains": "reviewed exact source excerpt" }`. Evidence must reside in the mapped
+owner. See the [complete corrected review examples](analysis/2026-09-30-final-0.2.0/corrected-preparation.json).
+The root map must have a `## Project map` section using explicit
+`` `relative/path`: responsibility `` entries, and `CLAUDE.md` must import `AGENTS.md`.
+Unsupported syntax fails closed; future generic Skill paths outside the map section
+are not mistaken for existing project-map entries. The checker verifies paths,
+evidence and hashes; natural-language meaning still requires the preparing agent's
+source review.
+
+The live runner requires that receipt and checks it before CLI probing/snapshotting,
+after snapshotting, and before each fresh run. A nonexistent path, stale map/review,
+incorrect wrapper or changed product state blocks execution. It retains the receipt
+as `preparation.json` beside the results. Prompts, grading and token/timing logic are
+unchanged. For a future separately authorized run only:
+
 ```sh
 python3 benchmarks/run_benchmark.py \
   --model gpt-5.6-terra --reasoning low --repeat 1 \
+  --preparation-record .contextlean/preparation.json \
   --output-dir .contextlean/validation/first-batch
 ```
 
@@ -55,10 +98,11 @@ evaluator, model/configuration and environment still match. Never replace or dis
 the first batch. A corrected setup is a separate series. A fresh `--repeat 3` means 30 new runs.
 Every result retains its repetition and sequence; do not select favorable repetitions.
 
-The committed sample map remains the historical example. To reproduce the final
-candidate context, use the frozen source archive linked in its result set, or
-prepare fresh guidance with the specified bootstrap revision before a separately
-authorized run. The generic command above does not regenerate guidance.
+The committed sample map remains the historical example. The diagnostic source
+archive retains its invalid map for forensic reproduction only; do not use it for a
+new headline validation. Prepare fresh guidance with the pinned implementation and
+the offline checks above before any separately authorized run. Neither command
+automatically authors guidance.
 
 ## Conditions and fairness
 

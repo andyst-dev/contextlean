@@ -20,6 +20,13 @@ SPEC = importlib.util.spec_from_file_location(
 )
 core = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(core)
+PREPARATION_SPEC = importlib.util.spec_from_file_location(
+    "fixture_preparation", ROOT / "benchmarks/prepare_fixture.py"
+)
+preparation = importlib.util.module_from_spec(PREPARATION_SPEC)
+PREPARATION_SPEC.loader.exec_module(preparation)
+# Share the existing copier/digests/error type with the suite's measurement helper.
+preparation.core = core
 FIXTURE = ROOT / "benchmarks/fixtures/expense-report"
 TASKS = ROOT / "benchmarks/tasks/suite.json"
 
@@ -236,6 +243,10 @@ def run(args):
         raise core.BenchmarkError(
             "output directory must be empty; prior runs must not be overwritten"
         )
+    # Fail before CLI probing, snapshots or any paid model call.
+    prepared_record = preparation.validate_frozen(
+        FIXTURE, getattr(args, "preparation_record", None)
+    )
     source_digest = core.tree_digest(FIXTURE)
     suite_digest = hashlib.sha256(args.tasks_file.read_bytes()).hexdigest()
     version_ok, version = capture([args.codex, "--version"], ROOT)
@@ -255,6 +266,10 @@ def run(args):
             if name in core.COPY_SKIP_NAMES or (Path(directory) / name).resolve() == output
         },
     )
+    preparation.validate_frozen(
+        snapshot / "benchmarks/fixtures/expense-report", args.preparation_record, prepared_record
+    )
+    core.write_json(output / "preparation.json", prepared_record)
     report = {
         "schema_version": 1,
         "kind": "contextlean-graded-validation",
@@ -308,6 +323,7 @@ def run(args):
                     workspace = Path(temporary) / "repo"
                     shutil.rmtree(workspace, ignore_errors=True)
                     core.copy_repository(FIXTURE, workspace)
+                    preparation.validate_frozen(workspace, args.preparation_record, prepared_record)
                     neutralized = (
                         core.neutralize_instructions(workspace) if condition == "vanilla" else []
                     )
@@ -430,6 +446,7 @@ def main():
     parser.add_argument("--timeout", type=int, default=600)
     parser.add_argument("--tasks-file", type=Path, default=TASKS)
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--preparation-record", type=Path, required=True)
     parser.add_argument("--codex", default="codex")
     args = parser.parse_args()
     try:

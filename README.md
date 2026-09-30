@@ -47,6 +47,11 @@ tokens** in that batch. Its generated map also contains a known configuration-pa
 error, so it is diagnostic evidence, not a clean final-bootstrap validation. The table
 below retains the earlier historical results; it does not describe the final bootstrap.
 
+[Offline root-cause analysis and harness repair](benchmarks/analysis/2026-09-30-final-0.2.0/README.md)
+identify a manual preparation error. Only documentation/config visibly accessed the
+bad path; the Feature regression has other recorded exploration, patch and verification
+differences. The diagnostic batch is invalid for headline performance comparison.
+
 Five tasks in a small Python expense-report project, using `gpt-5.6-terra` with low
 reasoning on 2026-09-30. Vanilla had no repository instructions; ContextLean had the
 same starting code plus a frozen repository map. Both runs in every pair passed the

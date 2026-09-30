@@ -1,0 +1,50 @@
+{
+  "classification": "D. manual preparation error",
+  "original_file": "prepare_contextlean_final.py (ephemeral preparation script; retained locally under .contextlean/rca/original-preparation.py)",
+  "original_line": 33,
+  "original_sha256": "16b0eb034d39a87d9a685c6a78adcdaac5d7a4849902b90f5f1d74bd33a012a8",
+  "responsible_literal": "- `expense_report/config.json`: default currency; CLI options can override it.",
+  "flow": [
+    {
+      "source": "original script line 33",
+      "effect": "Agent-authored hard-coded intro contains wrong path; not generated from CLI or product logic."
+    },
+    {
+      "source": "line 36",
+      "effect": "Intro concatenated with final permanent guidance; no path transformation."
+    },
+    {
+      "source": "line 43",
+      "effect": "Exact same text written to AGENTS.md of five target fixtures."
+    },
+    {
+      "source": "lines 48-58",
+      "effect": "Transfer record covers permanent-rule section hashes, not map entries. Commands run product code and original tests, which resolve root config. These checks do not catch nonexistent map path."
+    },
+    {
+      "source": "line 62",
+      "effect": "Unchecked intro frozen into temporary candidate benchmark fixture."
+    },
+    {
+      "source": "run_benchmark.py at commit 52a2c34c",
+      "effect": "Copies fixture verbatim, neutralizes guidance only for Vanilla. Hash equality ensures same product state, not correctness of map paths."
+    },
+    {
+      "source": "source-snapshot.zip / benchmarks/fixtures/expense-report/AGENTS.md:11",
+      "effect": "Bad path retained exactly in frozen source and all five saved ContextLean solution maps."
+    },
+    {
+      "source": "task_prompt and suite.json",
+      "effect": "Identical prompts; neither contains wrong path. No preprocessing adds it."
+    },
+    {
+      "source": "save_raw_run",
+      "effect": "Redacts workspace/home prefixes only; does not construct or correct map paths."
+    }
+  ],
+  "product_requirement": "Final bootstrap-spec.md section 6 requires documented paths/responsibilities to be accurate; verify_transfer.py explicitly checks transfer structure, not natural-language map ownership. Manual preparation failed that required step.",
+  "product_fix_required": false,
+  "release_candidate_product_commit_valid": true,
+  "repair": "Corrected literal at true source; retired unchecked ad hoc script. New offline reviewed freezing + runner preflight rejects nonexistent/stale/unequal fixtures before CLI/model calls.",
+  "diagnostic_batch_headline_valid": false
+}

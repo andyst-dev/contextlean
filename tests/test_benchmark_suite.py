@@ -188,6 +188,24 @@ class SuiteTests(unittest.TestCase):
                 tasks_file=suite.TASKS,
                 output_dir=Path(tmp) / "output",
                 codex="unused",
+                preparation_record=Path(tmp) / "preparation.json",
+            )
+            # Fake semantic attestation for this mocked runner test only.
+            review = {
+                "semantics_reviewed": True,
+                "entries": {
+                    name: {
+                        "responsibility": description,
+                        "evidence": [
+                            {"path": name, "contains": (suite.FIXTURE / name).read_text()}
+                        ],
+                    }
+                    for name, description in suite.preparation.project_map(suite.FIXTURE).items()
+                },
+            }
+            suite.core.write_json(
+                args.preparation_record,
+                suite.preparation.validate(suite.FIXTURE, review, suite.FIXTURE),
             )
             original_capture = suite.capture
 

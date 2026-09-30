@@ -1,0 +1,641 @@
+{
+  "model_calls": 0,
+  "records": [
+    {
+      "task": "navigation",
+      "source_commit": "52a2c34c091f9720076cc9685fb858347d9f6dcf",
+      "record": {
+        "schema_version": 1,
+        "contextlean_digest": "4e81aac841f8a7de0b520ef65accf189813a7ace3fe0208e073e816004b034ca",
+        "vanilla_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+        "baseline_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+        "review": {
+          "entries": {
+            "README.md": {
+              "evidence": [
+                {
+                  "contains": "A dependency-free Python tool",
+                  "path": "README.md"
+                },
+                {
+                  "contains": "python3 -m expense_report.cli data/sample.csv",
+                  "path": "README.md"
+                }
+              ],
+              "responsibility": "user commands; consult relevant sections when needed."
+            },
+            "config.json": {
+              "evidence": [
+                {
+                  "contains": "\"currency\": \"USD\"",
+                  "path": "config.json"
+                }
+              ],
+              "responsibility": "default currency; CLI options can override it."
+            },
+            "data/sample.csv": {
+              "evidence": [
+                {
+                  "contains": "category,amount",
+                  "path": "data/sample.csv"
+                }
+              ],
+              "responsibility": "runnable sample input."
+            },
+            "expense_report/cli.py": {
+              "evidence": [
+                {
+                  "contains": "def main():",
+                  "path": "expense_report/cli.py"
+                },
+                {
+                  "contains": "select_category(load_expenses(args.path), args.category)",
+                  "path": "expense_report/cli.py"
+                },
+                {
+                  "contains": "args.currency or config[\"currency\"]",
+                  "path": "expense_report/cli.py"
+                }
+              ],
+              "responsibility": "CLI arguments and configuration; orchestrates storage, filtering and reporting."
+            },
+            "expense_report/filters.py": {
+              "evidence": [
+                {
+                  "contains": "def select_category(expenses, category):",
+                  "path": "expense_report/filters.py"
+                }
+              ],
+              "responsibility": "expense selection."
+            },
+            "expense_report/report.py": {
+              "evidence": [
+                {
+                  "contains": "def build_report(expenses, currency):",
+                  "path": "expense_report/report.py"
+                },
+                {
+                  "contains": "categories[key] = categories.get(key, Decimal(\"0\")) + expense[\"amount\"]",
+                  "path": "expense_report/report.py"
+                }
+              ],
+              "responsibility": "category grouping, totals and report representation."
+            },
+            "expense_report/storage.py": {
+              "evidence": [
+                {
+                  "contains": "def load_expenses(path):",
+                  "path": "expense_report/storage.py"
+                },
+                {
+                  "contains": "csv.DictReader(handle)",
+                  "path": "expense_report/storage.py"
+                },
+                {
+                  "contains": "Decimal(row[\"amount\"])",
+                  "path": "expense_report/storage.py"
+                }
+              ],
+              "responsibility": "CSV loading and Decimal conversion."
+            },
+            "tests/test_expenses.py": {
+              "evidence": [
+                {
+                  "contains": "class ExpenseTests(unittest.TestCase):",
+                  "path": "tests/test_expenses.py"
+                },
+                {
+                  "contains": "def test_cli_override(self):",
+                  "path": "tests/test_expenses.py"
+                }
+              ],
+              "responsibility": "standard-library regression checks."
+            }
+          },
+          "semantics_reviewed": true
+        }
+      },
+      "transfer": {
+        "groups": 11,
+        "facets": 71,
+        "destinations": [
+          "AGENTS.md",
+          "skills/lean-review/SKILL.md"
+        ],
+        "setup_specification_required": false
+      },
+      "verified_commands_pass": true,
+      "all_eight_responsibilities_reviewed": true,
+      "permanent_rules_unchanged": true
+    },
+    {
+      "task": "bug-fix",
+      "source_commit": "52a2c34c091f9720076cc9685fb858347d9f6dcf",
+      "record": {
+        "schema_version": 1,
+        "contextlean_digest": "4e81aac841f8a7de0b520ef65accf189813a7ace3fe0208e073e816004b034ca",
+        "vanilla_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+        "baseline_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+        "review": {
+          "entries": {
+            "README.md": {
+              "evidence": [
+                {
+                  "contains": "A dependency-free Python tool",
+                  "path": "README.md"
+                },
+                {
+                  "contains": "python3 -m expense_report.cli data/sample.csv",
+                  "path": "README.md"
+                }
+              ],
+              "responsibility": "user commands; consult relevant sections when needed."
+            },
+            "config.json": {
+              "evidence": [
+                {
+                  "contains": "\"currency\": \"USD\"",
+                  "path": "config.json"
+                }
+              ],
+              "responsibility": "default currency; CLI options can override it."
+            },
+            "data/sample.csv": {
+              "evidence": [
+                {
+                  "contains": "category,amount",
+                  "path": "data/sample.csv"
+                }
+              ],
+              "responsibility": "runnable sample input."
+            },
+            "expense_report/cli.py": {
+              "evidence": [
+                {
+                  "contains": "def main():",
+                  "path": "expense_report/cli.py"
+                },
+                {
+                  "contains": "select_category(load_expenses(args.path), args.category)",
+                  "path": "expense_report/cli.py"
+                },
+                {
+                  "contains": "args.currency or config[\"currency\"]",
+                  "path": "expense_report/cli.py"
+                }
+              ],
+              "responsibility": "CLI arguments and configuration; orchestrates storage, filtering and reporting."
+            },
+            "expense_report/filters.py": {
+              "evidence": [
+                {
+                  "contains": "def select_category(expenses, category):",
+                  "path": "expense_report/filters.py"
+                }
+              ],
+              "responsibility": "expense selection."
+            },
+            "expense_report/report.py": {
+              "evidence": [
+                {
+                  "contains": "def build_report(expenses, currency):",
+                  "path": "expense_report/report.py"
+                },
+                {
+                  "contains": "categories[key] = categories.get(key, Decimal(\"0\")) + expense[\"amount\"]",
+                  "path": "expense_report/report.py"
+                }
+              ],
+              "responsibility": "category grouping, totals and report representation."
+            },
+            "expense_report/storage.py": {
+              "evidence": [
+                {
+                  "contains": "def load_expenses(path):",
+                  "path": "expense_report/storage.py"
+                },
+                {
+                  "contains": "csv.DictReader(handle)",
+                  "path": "expense_report/storage.py"
+                },
+                {
+                  "contains": "Decimal(row[\"amount\"])",
+                  "path": "expense_report/storage.py"
+                }
+              ],
+              "responsibility": "CSV loading and Decimal conversion."
+            },
+            "tests/test_expenses.py": {
+              "evidence": [
+                {
+                  "contains": "class ExpenseTests(unittest.TestCase):",
+                  "path": "tests/test_expenses.py"
+                },
+                {
+                  "contains": "def test_cli_override(self):",
+                  "path": "tests/test_expenses.py"
+                }
+              ],
+              "responsibility": "standard-library regression checks."
+            }
+          },
+          "semantics_reviewed": true
+        }
+      },
+      "transfer": {
+        "groups": 11,
+        "facets": 71,
+        "destinations": [
+          "AGENTS.md",
+          "skills/lean-review/SKILL.md"
+        ],
+        "setup_specification_required": false
+      },
+      "verified_commands_pass": true,
+      "all_eight_responsibilities_reviewed": true,
+      "permanent_rules_unchanged": true
+    },
+    {
+      "task": "feature",
+      "source_commit": "52a2c34c091f9720076cc9685fb858347d9f6dcf",
+      "record": {
+        "schema_version": 1,
+        "contextlean_digest": "4e81aac841f8a7de0b520ef65accf189813a7ace3fe0208e073e816004b034ca",
+        "vanilla_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+        "baseline_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+        "review": {
+          "entries": {
+            "README.md": {
+              "evidence": [
+                {
+                  "contains": "A dependency-free Python tool",
+                  "path": "README.md"
+                },
+                {
+                  "contains": "python3 -m expense_report.cli data/sample.csv",
+                  "path": "README.md"
+                }
+              ],
+              "responsibility": "user commands; consult relevant sections when needed."
+            },
+            "config.json": {
+              "evidence": [
+                {
+                  "contains": "\"currency\": \"USD\"",
+                  "path": "config.json"
+                }
+              ],
+              "responsibility": "default currency; CLI options can override it."
+            },
+            "data/sample.csv": {
+              "evidence": [
+                {
+                  "contains": "category,amount",
+                  "path": "data/sample.csv"
+                }
+              ],
+              "responsibility": "runnable sample input."
+            },
+            "expense_report/cli.py": {
+              "evidence": [
+                {
+                  "contains": "def main():",
+                  "path": "expense_report/cli.py"
+                },
+                {
+                  "contains": "select_category(load_expenses(args.path), args.category)",
+                  "path": "expense_report/cli.py"
+                },
+                {
+                  "contains": "args.currency or config[\"currency\"]",
+                  "path": "expense_report/cli.py"
+                }
+              ],
+              "responsibility": "CLI arguments and configuration; orchestrates storage, filtering and reporting."
+            },
+            "expense_report/filters.py": {
+              "evidence": [
+                {
+                  "contains": "def select_category(expenses, category):",
+                  "path": "expense_report/filters.py"
+                }
+              ],
+              "responsibility": "expense selection."
+            },
+            "expense_report/report.py": {
+              "evidence": [
+                {
+                  "contains": "def build_report(expenses, currency):",
+                  "path": "expense_report/report.py"
+                },
+                {
+                  "contains": "categories[key] = categories.get(key, Decimal(\"0\")) + expense[\"amount\"]",
+                  "path": "expense_report/report.py"
+                }
+              ],
+              "responsibility": "category grouping, totals and report representation."
+            },
+            "expense_report/storage.py": {
+              "evidence": [
+                {
+                  "contains": "def load_expenses(path):",
+                  "path": "expense_report/storage.py"
+                },
+                {
+                  "contains": "csv.DictReader(handle)",
+                  "path": "expense_report/storage.py"
+                },
+                {
+                  "contains": "Decimal(row[\"amount\"])",
+                  "path": "expense_report/storage.py"
+                }
+              ],
+              "responsibility": "CSV loading and Decimal conversion."
+            },
+            "tests/test_expenses.py": {
+              "evidence": [
+                {
+                  "contains": "class ExpenseTests(unittest.TestCase):",
+                  "path": "tests/test_expenses.py"
+                },
+                {
+                  "contains": "def test_cli_override(self):",
+                  "path": "tests/test_expenses.py"
+                }
+              ],
+              "responsibility": "standard-library regression checks."
+            }
+          },
+          "semantics_reviewed": true
+        }
+      },
+      "transfer": {
+        "groups": 11,
+        "facets": 71,
+        "destinations": [
+          "AGENTS.md",
+          "skills/lean-review/SKILL.md"
+        ],
+        "setup_specification_required": false
+      },
+      "verified_commands_pass": true,
+      "all_eight_responsibilities_reviewed": true,
+      "permanent_rules_unchanged": true
+    },
+    {
+      "task": "refactor",
+      "source_commit": "52a2c34c091f9720076cc9685fb858347d9f6dcf",
+      "record": {
+        "schema_version": 1,
+        "contextlean_digest": "4e81aac841f8a7de0b520ef65accf189813a7ace3fe0208e073e816004b034ca",
+        "vanilla_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+        "baseline_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+        "review": {
+          "entries": {
+            "README.md": {
+              "evidence": [
+                {
+                  "contains": "A dependency-free Python tool",
+                  "path": "README.md"
+                },
+                {
+                  "contains": "python3 -m expense_report.cli data/sample.csv",
+                  "path": "README.md"
+                }
+              ],
+              "responsibility": "user commands; consult relevant sections when needed."
+            },
+            "config.json": {
+              "evidence": [
+                {
+                  "contains": "\"currency\": \"USD\"",
+                  "path": "config.json"
+                }
+              ],
+              "responsibility": "default currency; CLI options can override it."
+            },
+            "data/sample.csv": {
+              "evidence": [
+                {
+                  "contains": "category,amount",
+                  "path": "data/sample.csv"
+                }
+              ],
+              "responsibility": "runnable sample input."
+            },
+            "expense_report/cli.py": {
+              "evidence": [
+                {
+                  "contains": "def main():",
+                  "path": "expense_report/cli.py"
+                },
+                {
+                  "contains": "select_category(load_expenses(args.path), args.category)",
+                  "path": "expense_report/cli.py"
+                },
+                {
+                  "contains": "args.currency or config[\"currency\"]",
+                  "path": "expense_report/cli.py"
+                }
+              ],
+              "responsibility": "CLI arguments and configuration; orchestrates storage, filtering and reporting."
+            },
+            "expense_report/filters.py": {
+              "evidence": [
+                {
+                  "contains": "def select_category(expenses, category):",
+                  "path": "expense_report/filters.py"
+                }
+              ],
+              "responsibility": "expense selection."
+            },
+            "expense_report/report.py": {
+              "evidence": [
+                {
+                  "contains": "def build_report(expenses, currency):",
+                  "path": "expense_report/report.py"
+                },
+                {
+                  "contains": "categories[key] = categories.get(key, Decimal(\"0\")) + expense[\"amount\"]",
+                  "path": "expense_report/report.py"
+                }
+              ],
+              "responsibility": "category grouping, totals and report representation."
+            },
+            "expense_report/storage.py": {
+              "evidence": [
+                {
+                  "contains": "def load_expenses(path):",
+                  "path": "expense_report/storage.py"
+                },
+                {
+                  "contains": "csv.DictReader(handle)",
+                  "path": "expense_report/storage.py"
+                },
+                {
+                  "contains": "Decimal(row[\"amount\"])",
+                  "path": "expense_report/storage.py"
+                }
+              ],
+              "responsibility": "CSV loading and Decimal conversion."
+            },
+            "tests/test_expenses.py": {
+              "evidence": [
+                {
+                  "contains": "class ExpenseTests(unittest.TestCase):",
+                  "path": "tests/test_expenses.py"
+                },
+                {
+                  "contains": "def test_cli_override(self):",
+                  "path": "tests/test_expenses.py"
+                }
+              ],
+              "responsibility": "standard-library regression checks."
+            }
+          },
+          "semantics_reviewed": true
+        }
+      },
+      "transfer": {
+        "groups": 11,
+        "facets": 71,
+        "destinations": [
+          "AGENTS.md",
+          "skills/lean-review/SKILL.md"
+        ],
+        "setup_specification_required": false
+      },
+      "verified_commands_pass": true,
+      "all_eight_responsibilities_reviewed": true,
+      "permanent_rules_unchanged": true
+    },
+    {
+      "task": "documentation-config",
+      "source_commit": "52a2c34c091f9720076cc9685fb858347d9f6dcf",
+      "record": {
+        "schema_version": 1,
+        "contextlean_digest": "4e81aac841f8a7de0b520ef65accf189813a7ace3fe0208e073e816004b034ca",
+        "vanilla_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+        "baseline_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+        "review": {
+          "entries": {
+            "README.md": {
+              "evidence": [
+                {
+                  "contains": "A dependency-free Python tool",
+                  "path": "README.md"
+                },
+                {
+                  "contains": "python3 -m expense_report.cli data/sample.csv",
+                  "path": "README.md"
+                }
+              ],
+              "responsibility": "user commands; consult relevant sections when needed."
+            },
+            "config.json": {
+              "evidence": [
+                {
+                  "contains": "\"currency\": \"USD\"",
+                  "path": "config.json"
+                }
+              ],
+              "responsibility": "default currency; CLI options can override it."
+            },
+            "data/sample.csv": {
+              "evidence": [
+                {
+                  "contains": "category,amount",
+                  "path": "data/sample.csv"
+                }
+              ],
+              "responsibility": "runnable sample input."
+            },
+            "expense_report/cli.py": {
+              "evidence": [
+                {
+                  "contains": "def main():",
+                  "path": "expense_report/cli.py"
+                },
+                {
+                  "contains": "select_category(load_expenses(args.path), args.category)",
+                  "path": "expense_report/cli.py"
+                },
+                {
+                  "contains": "args.currency or config[\"currency\"]",
+                  "path": "expense_report/cli.py"
+                }
+              ],
+              "responsibility": "CLI arguments and configuration; orchestrates storage, filtering and reporting."
+            },
+            "expense_report/filters.py": {
+              "evidence": [
+                {
+                  "contains": "def select_category(expenses, category):",
+                  "path": "expense_report/filters.py"
+                }
+              ],
+              "responsibility": "expense selection."
+            },
+            "expense_report/report.py": {
+              "evidence": [
+                {
+                  "contains": "def build_report(expenses, currency):",
+                  "path": "expense_report/report.py"
+                },
+                {
+                  "contains": "categories[key] = categories.get(key, Decimal(\"0\")) + expense[\"amount\"]",
+                  "path": "expense_report/report.py"
+                }
+              ],
+              "responsibility": "category grouping, totals and report representation."
+            },
+            "expense_report/storage.py": {
+              "evidence": [
+                {
+                  "contains": "def load_expenses(path):",
+                  "path": "expense_report/storage.py"
+                },
+                {
+                  "contains": "csv.DictReader(handle)",
+                  "path": "expense_report/storage.py"
+                },
+                {
+                  "contains": "Decimal(row[\"amount\"])",
+                  "path": "expense_report/storage.py"
+                }
+              ],
+              "responsibility": "CSV loading and Decimal conversion."
+            },
+            "tests/test_expenses.py": {
+              "evidence": [
+                {
+                  "contains": "class ExpenseTests(unittest.TestCase):",
+                  "path": "tests/test_expenses.py"
+                },
+                {
+                  "contains": "def test_cli_override(self):",
+                  "path": "tests/test_expenses.py"
+                }
+              ],
+              "responsibility": "standard-library regression checks."
+            }
+          },
+          "semantics_reviewed": true
+        }
+      },
+      "transfer": {
+        "groups": 11,
+        "facets": 71,
+        "destinations": [
+          "AGENTS.md",
+          "skills/lean-review/SKILL.md"
+        ],
+        "setup_specification_required": false
+      },
+      "verified_commands_pass": true,
+      "all_eight_responsibilities_reviewed": true,
+      "permanent_rules_unchanged": true
+    }
+  ],
+  "correction": "Only incorrect config path corrected; all permanent rule bodies unchanged."
+}

@@ -1,0 +1,1214 @@
+{
+  "model_calls": 0,
+  "diagnostic_evidence_unchanged": true,
+  "tasks": [
+    {
+      "task": "navigation",
+      "bad_path_observed": false,
+      "impact": "No recorded bad-path access. ContextLean git-status command short-circuits search/CLI; second command repeats them without Git. Vanilla lists and searches the whole repository, reads storage/report/tests, then runs CLI; ContextLean targeted search plus CLI only. Same command count, less aggregate input but slightly more output. Causal token allocation unavailable.",
+      "map_related_recovery": "None for config path; one recovery command for absent Git metadata.",
+      "verification": "Both run the sample CLI; no agent test suite invocation.",
+      "solution": "Correct final navigation JSON, identical in both conditions.",
+      "conditions": {
+        "vanilla": {
+          "metrics": {
+            "cached_input_tokens": 14080,
+            "command_calls": 2,
+            "duration_seconds": 15.12761904206127,
+            "estimated_cost": null,
+            "file_reads": null,
+            "input_tokens": 47525,
+            "output_tokens": 316,
+            "reasoning_output_tokens": 11,
+            "tool_calls": null,
+            "total_tokens": 47841,
+            "unique_files_inspected": null
+          },
+          "uncached_input_tokens": 33445,
+          "cached_input_fraction": 0.2962651236191478,
+          "execution_success": true,
+          "evaluation": {
+            "acceptance_passed": true,
+            "agent_tests_passed": true,
+            "task_success": true,
+            "tests_passed": true
+          },
+          "raw_events": "raw/navigation-1-vanilla/events.jsonl",
+          "raw_stderr": "raw/navigation-1-vanilla/events.stderr.txt",
+          "commands": [
+            {
+              "line": 5,
+              "id": "item_1",
+              "command": "/bin/zsh -lc 'rg --files && rg -n \"csv|category|total|argparse|__main__|sample\" .'",
+              "exit_code": 0,
+              "captured_output_bytes": 2588,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 7,
+              "id": "item_2",
+              "command": "/bin/zsh -lc \"sed -n '1,160p' expense_report/storage.py && sed -n '1,200p' expense_report/report.py && sed -n '1,160p' tests/test_expenses.py && python3 -m expense_report.cli data/sample.csv\"",
+              "exit_code": 0,
+              "captured_output_bytes": 2515,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            }
+          ],
+          "file_changes": [],
+          "visible_agent_messages": [
+            {
+              "line": 3,
+              "id": "item_0",
+              "type": "agent_message",
+              "text": "I’ll inspect the repository and execute the existing CLI against `data/sample.csv`, without modifying anything."
+            },
+            {
+              "line": 8,
+              "id": "item_3",
+              "type": "agent_message",
+              "text": "{\"loader\":\"expense_report/storage.py\",\"reporter\":\"expense_report/report.py\",\"cli_tests\":\"tests/test_expenses.py\",\"total\":\"40.00\",\"count\":3,\"currency\":\"USD\"}"
+            }
+          ],
+          "diagnostics": {
+            "patch_rejections": 0,
+            "model_cache_schema_warnings": 1,
+            "state_db_warnings": 4,
+            "sandbox_warnings": 0
+          },
+          "captured_command_output_bytes": 5103
+        },
+        "contextlean": {
+          "metrics": {
+            "cached_input_tokens": 27136,
+            "command_calls": 2,
+            "duration_seconds": 14.520087208831683,
+            "estimated_cost": null,
+            "file_reads": null,
+            "input_tokens": 43006,
+            "output_tokens": 332,
+            "reasoning_output_tokens": 37,
+            "tool_calls": null,
+            "total_tokens": 43338,
+            "unique_files_inspected": null
+          },
+          "uncached_input_tokens": 15870,
+          "cached_input_fraction": 0.6309817234804446,
+          "execution_success": true,
+          "evaluation": {
+            "acceptance_passed": true,
+            "agent_tests_passed": true,
+            "task_success": true,
+            "tests_passed": true
+          },
+          "raw_events": "raw/navigation-1-contextlean/events.jsonl",
+          "raw_stderr": "raw/navigation-1-contextlean/events.stderr.txt",
+          "commands": [
+            {
+              "line": 5,
+              "id": "item_1",
+              "command": "/bin/zsh -lc 'git status --short && rg -n \"def |amount|total|cli\" expense_report tests/test_expenses.py && python3 -m expense_report.cli data/sample.csv'",
+              "exit_code": 128,
+              "captured_output_bytes": 963,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 7,
+              "id": "item_2",
+              "command": "/bin/zsh -lc 'rg -n \"def |amount|total|cli\" expense_report tests/test_expenses.py; python3 -m expense_report.cli data/sample.csv'",
+              "exit_code": 0,
+              "captured_output_bytes": 1444,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            }
+          ],
+          "file_changes": [],
+          "visible_agent_messages": [
+            {
+              "line": 3,
+              "id": "item_0",
+              "type": "agent_message",
+              "text": "I’ll inspect the relevant implementation and tests, then run the sample CLI to verify the reported values."
+            },
+            {
+              "line": 8,
+              "id": "item_3",
+              "type": "agent_message",
+              "text": "{\"loader\":\"expense_report/storage.py\",\"reporter\":\"expense_report/report.py\",\"cli_tests\":\"tests/test_expenses.py\",\"total\":\"40.00\",\"count\":3,\"currency\":\"USD\"}"
+            }
+          ],
+          "diagnostics": {
+            "patch_rejections": 0,
+            "model_cache_schema_warnings": 0,
+            "state_db_warnings": 4,
+            "sandbox_warnings": 1
+          },
+          "captured_command_output_bytes": 2407
+        }
+      },
+      "difference": {
+        "input_tokens": {
+          "absolute": -4519,
+          "percent": -9.50867964229353
+        },
+        "cached_input_tokens": {
+          "absolute": 13056,
+          "percent": 92.72727272727273
+        },
+        "output_tokens": {
+          "absolute": 16,
+          "percent": 5.063291139240507
+        },
+        "total_tokens": {
+          "absolute": -4503,
+          "percent": -9.412428669969273
+        },
+        "command_calls": {
+          "absolute": 0,
+          "percent": 0.0
+        },
+        "duration_seconds": {
+          "absolute": -0.6075318332295865,
+          "percent": -4.016043975858907
+        }
+      }
+    },
+    {
+      "task": "bug-fix",
+      "bad_path_observed": false,
+      "impact": "Both read cli.py and tests/test_expenses.py containing the actual root config resolution. ContextLean starts with targeted three-file reads; Vanilla starts with a broad listing/search and reads four files including sample CSV. Both fail one Git command; ContextLean does not rerun its blocked search, proceeding from already-read code. ContextLean runs three CLI examples vs one Vanilla, and both leave six tests. Its aggregate input is lower; output higher.",
+      "map_related_recovery": "None for config path; no retry of blocked search after Git failure.",
+      "verification": "Both run six tests once; C targeted discovery, V full discovery, same module. C runs three CLI examples, V one.",
+      "solution": "Both normalize the query in the existing filter and add the requested CLI regression.",
+      "conditions": {
+        "vanilla": {
+          "metrics": {
+            "cached_input_tokens": 63232,
+            "command_calls": 3,
+            "duration_seconds": 32.28483158303425,
+            "estimated_cost": null,
+            "file_reads": null,
+            "input_tokens": 69935,
+            "output_tokens": 883,
+            "reasoning_output_tokens": 22,
+            "tool_calls": null,
+            "total_tokens": 70818,
+            "unique_files_inspected": null
+          },
+          "uncached_input_tokens": 6703,
+          "cached_input_fraction": 0.9041538571530707,
+          "execution_success": true,
+          "evaluation": {
+            "acceptance_passed": true,
+            "agent_tests_passed": true,
+            "task_success": true,
+            "tests_passed": true
+          },
+          "raw_events": "raw/bug-fix-1-vanilla/events.jsonl",
+          "raw_stderr": "raw/bug-fix-1-vanilla/events.stderr.txt",
+          "commands": [
+            {
+              "line": 5,
+              "id": "item_1",
+              "command": "/bin/zsh -lc \"rg --files -g '\"'!*__pycache__*'\"' && rg -n \\\"category|--category|sample.csv\\\" .\"",
+              "exit_code": 0,
+              "captured_output_bytes": 1982,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 7,
+              "id": "item_2",
+              "command": "/bin/zsh -lc \"sed -n '1,160p' expense_report/filters.py && sed -n '1,200p' tests/test_expenses.py && sed -n '1,120p' expense_report/cli.py && sed -n '1,80p' data/sample.csv && git status --short\"",
+              "exit_code": 128,
+              "captured_output_bytes": 2698,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 12,
+              "id": "item_5",
+              "command": "/bin/zsh -lc \"python3 -m unittest discover -s tests -v && python3 -m expense_report.cli data/sample.csv --category ' FOOD ' --currency GBP\"",
+              "exit_code": 0,
+              "captured_output_bytes": 376,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            }
+          ],
+          "file_changes": [
+            {
+              "line": 9,
+              "id": "item_3",
+              "type": "file_change",
+              "changes": [
+                {
+                  "path": "<workspace>/expense_report/filters.py",
+                  "kind": "update"
+                },
+                {
+                  "path": "<workspace>/tests/test_expenses.py",
+                  "kind": "update"
+                }
+              ],
+              "status": "completed"
+            }
+          ],
+          "visible_agent_messages": [
+            {
+              "line": 3,
+              "id": "item_0",
+              "type": "agent_message",
+              "text": "I’ll trace the CLI’s category handling, normalize the filter without changing stored/report behavior, add a focused regression test, and run the standard-library test suite."
+            },
+            {
+              "line": 10,
+              "id": "item_4",
+              "type": "agent_message",
+              "text": "The filter now normalizes the requested category using the same trim-and-casefold rule as CSV values. I’ve added a CLI regression that exercises `--category ' FOOD '` and verifies the 20.00 result."
+            },
+            {
+              "line": 13,
+              "id": "item_6",
+              "type": "agent_message",
+              "text": "Fixed category filtering: requested categories are now stripped and case-folded before comparison.\n\nAdded a CLI regression test for `--category ' FOOD '` asserting total `20.00`.\n\nVerified with `python3 -m unittest discover -s tests -v`: all 6 tests pass."
+            }
+          ],
+          "diagnostics": {
+            "patch_rejections": 0,
+            "model_cache_schema_warnings": 0,
+            "state_db_warnings": 4,
+            "sandbox_warnings": 0
+          },
+          "captured_command_output_bytes": 5056
+        },
+        "contextlean": {
+          "metrics": {
+            "cached_input_tokens": 42240,
+            "command_calls": 4,
+            "duration_seconds": 29.894206583034247,
+            "estimated_cost": null,
+            "file_reads": null,
+            "input_tokens": 60260,
+            "output_tokens": 968,
+            "reasoning_output_tokens": 43,
+            "tool_calls": null,
+            "total_tokens": 61228,
+            "unique_files_inspected": null
+          },
+          "uncached_input_tokens": 18020,
+          "cached_input_fraction": 0.700962495851311,
+          "execution_success": true,
+          "evaluation": {
+            "acceptance_passed": true,
+            "agent_tests_passed": true,
+            "task_success": true,
+            "tests_passed": true
+          },
+          "raw_events": "raw/bug-fix-1-contextlean/events.jsonl",
+          "raw_stderr": "raw/bug-fix-1-contextlean/events.stderr.txt",
+          "commands": [
+            {
+              "line": 5,
+              "id": "item_1",
+              "command": "/bin/zsh -lc \"sed -n '1,240p' expense_report/cli.py && sed -n '1,200p' expense_report/filters.py && sed -n '1,260p' tests/test_expenses.py\"",
+              "exit_code": 0,
+              "captured_output_bytes": 2579,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 7,
+              "id": "item_2",
+              "command": "/bin/zsh -lc 'git status --short && rg -n \"category|filter\" expense_report tests/test_expenses.py'",
+              "exit_code": 128,
+              "captured_output_bytes": 69,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 12,
+              "id": "item_5",
+              "command": "/bin/zsh -lc \"python3 -m expense_report.cli data/sample.csv --category ' FOOD ' && python3 -m expense_report.cli data/sample.csv --category food --currency GBP && python3 -m expense_report.cli data/sample.csv\"",
+              "exit_code": 0,
+              "captured_output_bytes": 268,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 13,
+              "id": "item_4",
+              "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -p test_expenses.py -v'",
+              "exit_code": 0,
+              "captured_output_bytes": 293,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            }
+          ],
+          "file_changes": [
+            {
+              "line": 9,
+              "id": "item_3",
+              "type": "file_change",
+              "changes": [
+                {
+                  "path": "<workspace>/expense_report/filters.py",
+                  "kind": "update"
+                },
+                {
+                  "path": "<workspace>/tests/test_expenses.py",
+                  "kind": "update"
+                }
+              ],
+              "status": "completed"
+            }
+          ],
+          "visible_agent_messages": [
+            {
+              "line": 3,
+              "id": "item_0",
+              "type": "agent_message",
+              "text": "I’ll trace the CLI-to-filter path, add focused regression coverage, then run the repository’s standard-library test suite."
+            },
+            {
+              "line": 14,
+              "id": "item_6",
+              "type": "agent_message",
+              "text": "Fixed category filtering to normalize the requested value before comparison.\n\nAdded a CLI regression test covering `--category ' FOOD '` and confirming total `20.00`.\n\nVerification passed: `python3 -m unittest discover -s tests -p test_expenses.py -v` — 6 tests."
+            }
+          ],
+          "diagnostics": {
+            "patch_rejections": 0,
+            "model_cache_schema_warnings": 0,
+            "state_db_warnings": 4,
+            "sandbox_warnings": 0
+          },
+          "captured_command_output_bytes": 3209
+        }
+      },
+      "difference": {
+        "input_tokens": {
+          "absolute": -9675,
+          "percent": -13.834274683634805
+        },
+        "cached_input_tokens": {
+          "absolute": -20992,
+          "percent": -33.19838056680162
+        },
+        "output_tokens": {
+          "absolute": 85,
+          "percent": 9.626274065685164
+        },
+        "total_tokens": {
+          "absolute": -9590,
+          "percent": -13.541754921065266
+        },
+        "command_calls": {
+          "absolute": 1,
+          "percent": 33.333333333333336
+        },
+        "duration_seconds": {
+          "absolute": -2.390625,
+          "percent": -7.404793157590077
+        }
+      }
+    },
+    {
+      "task": "feature",
+      "bad_path_observed": false,
+      "impact": "C Git-before-search fails, requiring another discovery command; V discovery succeeds immediately. C explicitly reads five files (cli/filter/tests/storage/README), V four (cli/filter/tests/sample CSV). C stderr records one rejected patch; subsequent successful file-change includes README in addition to three code/test files. C uses combined select_expenses plus a compatibility select_category wrapper; V uses select_min_amount after select_category. Both add three tests (eight total); C runs that suite twice vs V once. V also fails git diff after successful verification and emits a large usage message. Bad config path is never accessed.",
+      "map_related_recovery": "None for config path; one recovery command for failed Git-before-search.",
+      "verification": "C eight-test suite twice plus two CLI examples; V eight-test suite once plus the same examples and failed git diff.",
+      "solution": "Both pass all acceptance/regression checks. C modifies four files; V three. Valid ownership/reuse rules are not removed.",
+      "conditions": {
+        "vanilla": {
+          "metrics": {
+            "cached_input_tokens": 54272,
+            "command_calls": 3,
+            "duration_seconds": 48.57418237510137,
+            "estimated_cost": null,
+            "file_reads": null,
+            "input_tokens": 74057,
+            "output_tokens": 1579,
+            "reasoning_output_tokens": 156,
+            "tool_calls": null,
+            "total_tokens": 75636,
+            "unique_files_inspected": null
+          },
+          "uncached_input_tokens": 19785,
+          "cached_input_fraction": 0.7328409198320213,
+          "execution_success": true,
+          "evaluation": {
+            "acceptance_passed": true,
+            "agent_tests_passed": true,
+            "task_success": true,
+            "tests_passed": true
+          },
+          "raw_events": "raw/feature-1-vanilla/events.jsonl",
+          "raw_stderr": "raw/feature-1-vanilla/events.stderr.txt",
+          "commands": [
+            {
+              "line": 5,
+              "id": "item_1",
+              "command": "/bin/zsh -lc \"rg --files -g '\"'!*node_modules*'\"' && rg -n \\\"category|expense|argparse|min\\\" .\"",
+              "exit_code": 0,
+              "captured_output_bytes": 3217,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 7,
+              "id": "item_2",
+              "command": "/bin/zsh -lc \"sed -n '1,220p' expense_report/cli.py && sed -n '1,160p' expense_report/filters.py && sed -n '1,220p' tests/test_expenses.py && sed -n '1,80p' data/sample.csv\"",
+              "exit_code": 0,
+              "captured_output_bytes": 2629,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 12,
+              "id": "item_5",
+              "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v && python3 -m expense_report.cli data/sample.csv --min-amount 10 && python3 -m expense_report.cli data/sample.csv --category food --min-amount 10 && git diff --check && git diff'",
+              "exit_code": 129,
+              "captured_output_bytes": 8081,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            }
+          ],
+          "file_changes": [
+            {
+              "line": 10,
+              "id": "item_4",
+              "type": "file_change",
+              "changes": [
+                {
+                  "path": "<workspace>/expense_report/cli.py",
+                  "kind": "update"
+                },
+                {
+                  "path": "<workspace>/expense_report/filters.py",
+                  "kind": "update"
+                },
+                {
+                  "path": "<workspace>/tests/test_expenses.py",
+                  "kind": "update"
+                }
+              ],
+              "status": "completed"
+            }
+          ],
+          "visible_agent_messages": [
+            {
+              "line": 3,
+              "id": "item_0",
+              "type": "agent_message",
+              "text": "I’ll inspect the local CLI and its standard-library tests, then implement the new filter and verify the requested cases."
+            },
+            {
+              "line": 8,
+              "id": "item_3",
+              "type": "agent_message",
+              "text": "The report already has a small filtering layer, so I’ll add the threshold there, parse it as `Decimal` in the CLI, and cover both requested CLI combinations."
+            },
+            {
+              "line": 13,
+              "id": "item_6",
+              "type": "agent_message",
+              "text": "Implemented `--min-amount` as a `Decimal` CLI option.\n\n- Filters expenses inclusively (`amount >= threshold`) after category filtering.\n- Omitted option preserves existing behavior.\n- Added unit and CLI tests for the requested cases.\n\nVerified with:\n\n```text\npython3 -m unittest discover -s tests -v\nRan 8 tests ... OK\n```\n\nConfirmed outputs:\n- `--min-amount 10` → count `2`, total `32.50`\n- `--category food --min-amount 10` → count `1`, total `12.50`"
+            }
+          ],
+          "diagnostics": {
+            "patch_rejections": 0,
+            "model_cache_schema_warnings": 2,
+            "state_db_warnings": 4,
+            "sandbox_warnings": 0
+          },
+          "captured_command_output_bytes": 13927
+        },
+        "contextlean": {
+          "metrics": {
+            "cached_input_tokens": 107008,
+            "command_calls": 4,
+            "duration_seconds": 74.95338954101317,
+            "estimated_cost": null,
+            "file_reads": null,
+            "input_tokens": 130612,
+            "output_tokens": 2918,
+            "reasoning_output_tokens": 202,
+            "tool_calls": null,
+            "total_tokens": 133530,
+            "unique_files_inspected": null
+          },
+          "uncached_input_tokens": 23604,
+          "cached_input_fraction": 0.8192815361528802,
+          "execution_success": true,
+          "evaluation": {
+            "acceptance_passed": true,
+            "agent_tests_passed": true,
+            "task_success": true,
+            "tests_passed": true
+          },
+          "raw_events": "raw/feature-1-contextlean/events.jsonl",
+          "raw_stderr": "raw/feature-1-contextlean/events.stderr.txt",
+          "commands": [
+            {
+              "line": 5,
+              "id": "item_1",
+              "command": "/bin/zsh -lc \"git status --short && rg -n --glob '\"'!AGENTS.md'\"' \\\"category|filter|parse_args|amount\\\" expense_report tests/test_expenses.py\"",
+              "exit_code": 128,
+              "captured_output_bytes": 69,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 7,
+              "id": "item_2",
+              "command": "/bin/zsh -lc \"pwd; rg -n --glob '\"'!AGENTS.md'\"' \\\"category|filter|parse_args|amount\\\" expense_report tests/test_expenses.py; rg --files -g '.git' -g 'pyproject.toml' -g 'setup.cfg' -g 'README.md'\"",
+              "exit_code": 0,
+              "captured_output_bytes": 1449,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 9,
+              "id": "item_3",
+              "command": "/bin/zsh -lc \"sed -n '1,160p' expense_report/cli.py; sed -n '1,160p' expense_report/filters.py; sed -n '1,220p' tests/test_expenses.py; sed -n '1,120p' expense_report/storage.py; sed -n '1,140p' README.md\"",
+              "exit_code": 0,
+              "captured_output_bytes": 3290,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 14,
+              "id": "item_6",
+              "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -p test_expenses.py -v && python3 -m unittest discover -s tests -v && python3 -m expense_report.cli data/sample.csv --min-amount 10 && python3 -m expense_report.cli data/sample.csv --category food --min-amount 10'",
+              "exit_code": 0,
+              "captured_output_bytes": 1442,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            }
+          ],
+          "file_changes": [
+            {
+              "line": 12,
+              "id": "item_5",
+              "type": "file_change",
+              "changes": [
+                {
+                  "path": "<workspace>/README.md",
+                  "kind": "update"
+                },
+                {
+                  "path": "<workspace>/expense_report/cli.py",
+                  "kind": "update"
+                },
+                {
+                  "path": "<workspace>/expense_report/filters.py",
+                  "kind": "update"
+                },
+                {
+                  "path": "<workspace>/tests/test_expenses.py",
+                  "kind": "update"
+                }
+              ],
+              "status": "completed"
+            }
+          ],
+          "visible_agent_messages": [
+            {
+              "line": 3,
+              "id": "item_0",
+              "type": "agent_message",
+              "text": "I’ll trace the existing CLI → filtering flow, add the threshold at the responsible selection layer, cover the combined cases, and run the standard-library suite."
+            },
+            {
+              "line": 10,
+              "id": "item_4",
+              "type": "agent_message",
+              "text": "The current selection module owns category filtering, so I’m extending it with one combined selector and keeping `select_category` intact for its existing callers. CLI parsing will convert the supplied threshold directly to `Decimal`."
+            },
+            {
+              "line": 15,
+              "id": "item_7",
+              "type": "agent_message",
+              "text": "Implemented `--min-amount` using `Decimal` thresholds, combined with category filtering.\n\nAdded regression tests for both requested CLI cases. Verified:\n\n- `python3 -m unittest discover -s tests -p test_expenses.py -v` — 8 passed\n- `python3 -m unittest discover -s tests -v` — 8 passed\n- `--min-amount 10` → count 2, total 32.50\n- `--category food --min-amount 10` → count 1, total 12.50"
+            }
+          ],
+          "diagnostics": {
+            "patch_rejections": 1,
+            "model_cache_schema_warnings": 1,
+            "state_db_warnings": 4,
+            "sandbox_warnings": 0
+          },
+          "captured_command_output_bytes": 6250
+        }
+      },
+      "difference": {
+        "input_tokens": {
+          "absolute": 56555,
+          "percent": 76.36685255951497
+        },
+        "cached_input_tokens": {
+          "absolute": 52736,
+          "percent": 97.16981132075472
+        },
+        "output_tokens": {
+          "absolute": 1339,
+          "percent": 84.80050664977834
+        },
+        "total_tokens": {
+          "absolute": 57894,
+          "percent": 76.54291607171189
+        },
+        "command_calls": {
+          "absolute": 1,
+          "percent": 33.333333333333336
+        },
+        "duration_seconds": {
+          "absolute": 26.379207165911794,
+          "percent": 54.30705340998906
+        }
+      }
+    },
+    {
+      "task": "refactor",
+      "bad_path_observed": false,
+      "impact": "Both have four command events. C fails Git before search, then repeats search; V fails Git after a file listing. Both read filtering/report/tests and extract categories.py with compatible exports. C stderr records one rejected patch and saved solution adds a permanent compatibility test (six tests); V leaves five tests and executes a standalone compatibility assertion script. C also runs two CLI examples. Source read stdout is not larger in C; aggregates cannot isolate the costs of map, recovery or tests.",
+      "map_related_recovery": "None for config path; one recovery command for blocked search after Git failure.",
+      "verification": "C six tests plus two CLI examples; V five tests plus import/normalization assertion script.",
+      "solution": "Same shared-helper design; C additionally modifies tests/test_expenses.py.",
+      "conditions": {
+        "vanilla": {
+          "metrics": {
+            "cached_input_tokens": 91648,
+            "command_calls": 4,
+            "duration_seconds": 34.07208379195072,
+            "estimated_cost": null,
+            "file_reads": null,
+            "input_tokens": 98960,
+            "output_tokens": 1097,
+            "reasoning_output_tokens": 37,
+            "tool_calls": null,
+            "total_tokens": 100057,
+            "unique_files_inspected": null
+          },
+          "uncached_input_tokens": 7312,
+          "cached_input_fraction": 0.9261115602263541,
+          "execution_success": true,
+          "evaluation": {
+            "acceptance_passed": true,
+            "agent_tests_passed": true,
+            "task_success": true,
+            "tests_passed": true
+          },
+          "raw_events": "raw/refactor-1-vanilla/events.jsonl",
+          "raw_stderr": "raw/refactor-1-vanilla/events.stderr.txt",
+          "commands": [
+            {
+              "line": 5,
+              "id": "item_1",
+              "command": "/bin/zsh -lc \"pwd && rg -n \\\"normalize_category|category\\\" . --glob '\"'!*.pyc'\"'\"",
+              "exit_code": 0,
+              "captured_output_bytes": 1273,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 7,
+              "id": "item_2",
+              "command": "/bin/zsh -lc \"sed -n '1,200p' expense_report/filters.py && sed -n '1,240p' expense_report/report.py && sed -n '1,260p' tests/test_expenses.py && rg --files -g 'AGENTS.md' -g 'pyproject.toml' -g 'setup.cfg' -g 'tox.ini' -g 'Makefile' -g 'README.md'\"",
+              "exit_code": 0,
+              "captured_output_bytes": 2434,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 9,
+              "id": "item_3",
+              "command": "/bin/zsh -lc 'rg --files expense_report tests && git status --short'",
+              "exit_code": 128,
+              "captured_output_bytes": 218,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 14,
+              "id": "item_6",
+              "command": "/bin/zsh -lc \"python3 -m unittest discover -s tests -v && python3 - <<'PY'\nfrom expense_report.categories import normalize_category as shared\nfrom expense_report.filters import normalize_category as filtering\nfrom expense_report.report import normalize_category as grouping\nassert filtering is shared\nassert grouping is shared\nassert filtering('  FÖÖD  ') == 'föö d'.replace(' ', '')\nprint('compatibility imports verified')\nPY\"",
+              "exit_code": 0,
+              "captured_output_bytes": 0,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            }
+          ],
+          "file_changes": [
+            {
+              "line": 11,
+              "id": "item_4",
+              "type": "file_change",
+              "changes": [
+                {
+                  "path": "<workspace>/expense_report/categories.py",
+                  "kind": "add"
+                },
+                {
+                  "path": "<workspace>/expense_report/filters.py",
+                  "kind": "update"
+                },
+                {
+                  "path": "<workspace>/expense_report/report.py",
+                  "kind": "update"
+                }
+              ],
+              "status": "completed"
+            }
+          ],
+          "visible_agent_messages": [
+            {
+              "line": 3,
+              "id": "item_0",
+              "type": "agent_message",
+              "text": "I’ll locate the duplicate helpers and their tests, extract a minimal shared implementation, retain compatibility exports, then run the standard-library test suite."
+            },
+            {
+              "line": 12,
+              "id": "item_5",
+              "type": "agent_message",
+              "text": "The shared helper is now used by both paths, while `expense_report.filters.normalize_category` and `expense_report.report.normalize_category` remain directly importable. The filter still compares normalized expense values to the query unchanged."
+            },
+            {
+              "line": 15,
+              "id": "item_7",
+              "type": "agent_message",
+              "text": "Consolidated category normalization into [categories.py](/private<workspace>/expense_report/categories.py).\n\nBoth existing imports remain compatible through [filters.py](/private<workspace>/expense_report/filters.py) and [report.py](/private<workspace>/expense_report/report.py). Filter query semantics are unchanged.\n\nVerified with `python3 -m unittest discover -s tests -v`: 5 tests passed."
+            }
+          ],
+          "diagnostics": {
+            "patch_rejections": 0,
+            "model_cache_schema_warnings": 1,
+            "state_db_warnings": 4,
+            "sandbox_warnings": 0
+          },
+          "captured_command_output_bytes": 3925
+        },
+        "contextlean": {
+          "metrics": {
+            "cached_input_tokens": 95488,
+            "command_calls": 4,
+            "duration_seconds": 44.6328659998253,
+            "estimated_cost": null,
+            "file_reads": null,
+            "input_tokens": 106944,
+            "output_tokens": 1652,
+            "reasoning_output_tokens": 180,
+            "tool_calls": null,
+            "total_tokens": 108596,
+            "unique_files_inspected": null
+          },
+          "uncached_input_tokens": 11456,
+          "cached_input_fraction": 0.8928785158587672,
+          "execution_success": true,
+          "evaluation": {
+            "acceptance_passed": true,
+            "agent_tests_passed": true,
+            "task_success": true,
+            "tests_passed": true
+          },
+          "raw_events": "raw/refactor-1-contextlean/events.jsonl",
+          "raw_stderr": "raw/refactor-1-contextlean/events.stderr.txt",
+          "commands": [
+            {
+              "line": 5,
+              "id": "item_1",
+              "command": "/bin/zsh -lc 'git status --short && rg -n \"normalize_category\" expense_report tests'",
+              "exit_code": 128,
+              "captured_output_bytes": 69,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 7,
+              "id": "item_2",
+              "command": "/bin/zsh -lc \"pwd; rg -n \\\"normalize_category\\\" expense_report tests; rg --files -g 'AGENTS.md' -g 'filters.py' -g 'report.py' -g 'test_expenses.py'\"",
+              "exit_code": 0,
+              "captured_output_bytes": 395,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 9,
+              "id": "item_3",
+              "command": "/bin/zsh -lc \"sed -n '1,160p' expense_report/filters.py; sed -n '1,180p' expense_report/report.py; sed -n '1,240p' tests/test_expenses.py; rg --files expense_report\"",
+              "exit_code": 0,
+              "captured_output_bytes": 2550,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 14,
+              "id": "item_6",
+              "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v && python3 -m expense_report.cli data/sample.csv && python3 -m expense_report.cli data/sample.csv --category food --currency GBP'",
+              "exit_code": 0,
+              "captured_output_bytes": 478,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            }
+          ],
+          "file_changes": [
+            {
+              "line": 11,
+              "id": "item_4",
+              "type": "file_change",
+              "changes": [
+                {
+                  "path": "<workspace>/expense_report/categories.py",
+                  "kind": "add"
+                },
+                {
+                  "path": "<workspace>/expense_report/filters.py",
+                  "kind": "update"
+                },
+                {
+                  "path": "<workspace>/expense_report/report.py",
+                  "kind": "update"
+                },
+                {
+                  "path": "<workspace>/tests/test_expenses.py",
+                  "kind": "update"
+                }
+              ],
+              "status": "completed"
+            }
+          ],
+          "visible_agent_messages": [
+            {
+              "line": 3,
+              "id": "item_0",
+              "type": "agent_message",
+              "text": "I’ll make the normalization helper owned by a small shared module, preserve the existing imports via compatibility re-exports, then run the standard-library test suite."
+            },
+            {
+              "line": 12,
+              "id": "item_5",
+              "type": "agent_message",
+              "text": "The duplicate logic now has one owner in `expense_report.categories`; both original module-level names re-export that same function. I also added a focused compatibility regression check."
+            },
+            {
+              "line": 15,
+              "id": "item_7",
+              "type": "agent_message",
+              "text": "Consolidated category normalization in [categories.py](/private<workspace>/expense_report/categories.py).\n\n`filters.normalize_category` and `report.normalize_category` remain importable and reference the same shared function. Category query semantics are unchanged.\n\nAdded a compatibility regression test and ran:\n\n`python3 -m unittest discover -s tests -v` — 6 tests passed."
+            }
+          ],
+          "diagnostics": {
+            "patch_rejections": 1,
+            "model_cache_schema_warnings": 1,
+            "state_db_warnings": 4,
+            "sandbox_warnings": 0
+          },
+          "captured_command_output_bytes": 3492
+        }
+      },
+      "difference": {
+        "input_tokens": {
+          "absolute": 7984,
+          "percent": 8.067906224737268
+        },
+        "cached_input_tokens": {
+          "absolute": 3840,
+          "percent": 4.189944134078212
+        },
+        "output_tokens": {
+          "absolute": 555,
+          "percent": 50.592525068368275
+        },
+        "total_tokens": {
+          "absolute": 8539,
+          "percent": 8.534135542740637
+        },
+        "command_calls": {
+          "absolute": 0,
+          "percent": 0.0
+        },
+        "duration_seconds": {
+          "absolute": 10.560782207874581,
+          "percent": 30.995410413875213
+        }
+      }
+    },
+    {
+      "task": "documentation-config",
+      "bad_path_observed": true,
+      "impact": "C item_1 names the bad path but Git fails first, so its rg/sed do not run. C item_2 executes rg and sed on expense_report/config.json, producing two missing-file messages. Shell exit is zero because the later README sed succeeds; command exit alone misses the failures. C item_3 lists files and discovers config.json; item_4 searches and reads root config, CLI and tests. C ultimately patches only root config and README correctly. C stderr records a patch rejection (target arguments absent, cannot link it to bad path). C runs the same five tests twice, V once. V post-verification git diff fails, then performs its own final read/search.",
+      "map_related_recovery": "One dedicated full file listing after bad-path errors, followed by one combined correct-path search/read command. Relative/counterfactual token cost unavailable.",
+      "verification": "Both run documented default and GBP examples; C five tests twice, V once.",
+      "solution": "Both modify config.json and README correctly; no incorrect-path file created.",
+      "conditions": {
+        "vanilla": {
+          "metrics": {
+            "cached_input_tokens": 76288,
+            "command_calls": 4,
+            "duration_seconds": 35.726004750002176,
+            "estimated_cost": null,
+            "file_reads": null,
+            "input_tokens": 87818,
+            "output_tokens": 1076,
+            "reasoning_output_tokens": 128,
+            "tool_calls": null,
+            "total_tokens": 88894,
+            "unique_files_inspected": null
+          },
+          "uncached_input_tokens": 11530,
+          "cached_input_fraction": 0.8687057323100048,
+          "execution_success": true,
+          "evaluation": {
+            "acceptance_passed": true,
+            "agent_tests_passed": true,
+            "task_success": true,
+            "tests_passed": true
+          },
+          "raw_events": "raw/documentation-config-1-vanilla/events.jsonl",
+          "raw_stderr": "raw/documentation-config-1-vanilla/events.stderr.txt",
+          "commands": [
+            {
+              "line": 5,
+              "id": "item_1",
+              "command": "/bin/zsh -lc \"rg -n --hidden -S \\\"USD|GBP|currency|pytest|unittest\\\" . -g '\"'!/.git'\"' && rg --files -g '\"'!*'\"\\\\.pyc' | sed -n '1,160p'\"",
+              "exit_code": 0,
+              "captured_output_bytes": 1525,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 7,
+              "id": "item_2",
+              "command": "/bin/zsh -lc \"find .. -name AGENTS.md -print; sed -n '1,120p' README.md; sed -n '1,120p' expense_report/cli.py; sed -n '1,120p' tests/test_expenses.py; sed -n '1,80p' config.json\"",
+              "exit_code": 0,
+              "captured_output_bytes": 2747,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 12,
+              "id": "item_5",
+              "command": "/bin/zsh -lc 'python3 -m expense_report.cli data/sample.csv && python3 -m expense_report.cli data/sample.csv --category food --currency GBP && python3 -m unittest discover -s tests -v && git diff --check && git diff -- README.md config.json'",
+              "exit_code": 129,
+              "captured_output_bytes": 7730,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 14,
+              "id": "item_6",
+              "command": "/bin/zsh -lc \"rg -n -S \\\"USD|EUR|GBP\\\" README.md config.json expense_report tests && sed -n '1,12p' README.md && sed -n '1p' config.json\"",
+              "exit_code": 0,
+              "captured_output_bytes": 1067,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            }
+          ],
+          "file_changes": [
+            {
+              "line": 9,
+              "id": "item_3",
+              "type": "file_change",
+              "changes": [
+                {
+                  "path": "<workspace>/README.md",
+                  "kind": "update"
+                },
+                {
+                  "path": "<workspace>/config.json",
+                  "kind": "update"
+                }
+              ],
+              "status": "completed"
+            }
+          ],
+          "visible_agent_messages": [
+            {
+              "line": 3,
+              "id": "item_0",
+              "type": "agent_message",
+              "text": "I’ll locate the currency configuration, CLI override handling, README examples, and the existing test commands, then make the smallest targeted change and verify it."
+            },
+            {
+              "line": 10,
+              "id": "item_4",
+              "type": "agent_message",
+              "text": "The configuration now defaults to EUR; the CLI’s existing `args.currency or config[\"currency\"]` path preserves the GBP override. I’m running each documented command and checking their outputs alongside the test suite."
+            },
+            {
+              "line": 15,
+              "id": "item_7",
+              "type": "agent_message",
+              "text": "Changed the default currency to EUR in [config.json](<workspace>/config.json:1) and updated [README.md](<workspace>/README.md:4).\n\nVerified documented commands:\n\n- Default report returns EUR with unchanged totals/grouping.\n- `--category food --currency GBP` returns GBP with the expected filtered total.\n- `python3 -m unittest discover -s tests -v` passes: 5 tests."
+            }
+          ],
+          "diagnostics": {
+            "patch_rejections": 0,
+            "model_cache_schema_warnings": 0,
+            "state_db_warnings": 4,
+            "sandbox_warnings": 0
+          },
+          "captured_command_output_bytes": 13069
+        },
+        "contextlean": {
+          "metrics": {
+            "cached_input_tokens": 111616,
+            "command_calls": 5,
+            "duration_seconds": 36.41364754200913,
+            "estimated_cost": null,
+            "file_reads": null,
+            "input_tokens": 122494,
+            "output_tokens": 1173,
+            "reasoning_output_tokens": 84,
+            "tool_calls": null,
+            "total_tokens": 123667,
+            "unique_files_inspected": null
+          },
+          "uncached_input_tokens": 10878,
+          "cached_input_fraction": 0.9111956503992032,
+          "execution_success": true,
+          "evaluation": {
+            "acceptance_passed": true,
+            "agent_tests_passed": true,
+            "task_success": true,
+            "tests_passed": true
+          },
+          "raw_events": "raw/documentation-config-1-contextlean/events.jsonl",
+          "raw_stderr": "raw/documentation-config-1-contextlean/events.stderr.txt",
+          "commands": [
+            {
+              "line": 5,
+              "id": "item_1",
+              "command": "/bin/zsh -lc \"git status --short && rg -n -i -e 'USD|EUR|currency|GBP' expense_report/config.json README.md && sed -n '1,160p' expense_report/config.json && sed -n '1,220p' README.md\"",
+              "exit_code": 128,
+              "captured_output_bytes": 69,
+              "bad_path_in_command": true,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 7,
+              "id": "item_2",
+              "command": "/bin/zsh -lc \"pwd; rg -n -i -e 'USD|EUR|currency|GBP' expense_report/config.json README.md; sed -n '1,160p' expense_report/config.json; sed -n '1,220p' README.md\"",
+              "exit_code": 0,
+              "captured_output_bytes": 860,
+              "bad_path_in_command": true,
+              "bad_path_in_output": true
+            },
+            {
+              "line": 9,
+              "id": "item_3",
+              "command": "/bin/zsh -lc \"rg --files -g '\"'!*.pyc'\"' -g '\"'!__pycache__/**'\"'\"",
+              "exit_code": 0,
+              "captured_output_bytes": 207,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 11,
+              "id": "item_4",
+              "command": "/bin/zsh -lc \"rg -n -e 'config|currency|USD|EUR|GBP' expense_report/cli.py tests/test_expenses.py config.json; sed -n '1,240p' expense_report/cli.py; sed -n '1,120p' config.json; sed -n '1,260p' tests/test_expenses.py\"",
+              "exit_code": 0,
+              "captured_output_bytes": 3241,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            },
+            {
+              "line": 16,
+              "id": "item_7",
+              "command": "/bin/zsh -lc 'python3 -m expense_report.cli data/sample.csv && python3 -m expense_report.cli data/sample.csv --category food --currency GBP && python3 -m unittest discover -s tests -p test_expenses.py -v && python3 -m unittest discover -s tests -v'",
+              "exit_code": 0,
+              "captured_output_bytes": 823,
+              "bad_path_in_command": false,
+              "bad_path_in_output": false
+            }
+          ],
+          "file_changes": [
+            {
+              "line": 13,
+              "id": "item_5",
+              "type": "file_change",
+              "changes": [
+                {
+                  "path": "<workspace>/README.md",
+                  "kind": "update"
+                },
+                {
+                  "path": "<workspace>/config.json",
+                  "kind": "update"
+                }
+              ],
+              "status": "completed"
+            }
+          ],
+          "visible_agent_messages": [
+            {
+              "line": 3,
+              "id": "item_0",
+              "type": "agent_message",
+              "text": "I’ll update the local configuration and its README reference, then exercise both default/override examples and the standard-library suite."
+            },
+            {
+              "line": 14,
+              "id": "item_6",
+              "type": "agent_message",
+              "text": "The default is now EUR and the README reflects it. I’m running the two documented CLI examples plus the full test discovery to confirm the GBP override and unchanged totals/grouping."
+            },
+            {
+              "line": 17,
+              "id": "item_8",
+              "type": "agent_message",
+              "text": "Changed the configured default currency to EUR and updated the README.\n\nVerified:\n\n- Default example outputs EUR; totals/grouping unchanged.\n- `--currency GBP` still overrides the default.\n- Targeted and full unittest discovery both pass: 5 tests."
+            }
+          ],
+          "diagnostics": {
+            "patch_rejections": 1,
+            "model_cache_schema_warnings": 0,
+            "state_db_warnings": 4,
+            "sandbox_warnings": 0
+          },
+          "captured_command_output_bytes": 5200
+        }
+      },
+      "difference": {
+        "input_tokens": {
+          "absolute": 34676,
+          "percent": 39.48621011637705
+        },
+        "cached_input_tokens": {
+          "absolute": 35328,
+          "percent": 46.308724832214764
+        },
+        "output_tokens": {
+          "absolute": 97,
+          "percent": 9.014869888475836
+        },
+        "total_tokens": {
+          "absolute": 34773,
+          "percent": 39.117375750894325
+        },
+        "command_calls": {
+          "absolute": 1,
+          "percent": 25.0
+        },
+        "duration_seconds": {
+          "absolute": 0.6876427920069546,
+          "percent": 1.924768237643233
+        }
+      }
+    }
+  ],
+  "limits": [
+    "These are observable command traces, not complete file-read/all-tool counters.",
+    "Private reasoning and rejected patch arguments are not in the saved event contract.",
+    "No per-command model token attribution or direct instruction-loading instrumentation.",
+    "Cached input is a subset of input; cached tokens are not omitted from total usage.",
+    "Captured-output bytes describe the saved strings only, not token counts or complete provider context."
+  ],
+  "instruction_file_bytes": {
+    "AGENTS.md": 7087,
+    "CLAUDE.md": 11
+  }
+}

@@ -20,6 +20,7 @@ skills/benchmark/                         -> static estimate and opt-in real Cod
 skills/benchmark/scripts/benchmark.py     -> dependency-free snapshot, runner, aggregation, and reporting
 skills/benchmark/data/credit-rates.json   -> dated official ChatGPT credit-equivalent rates
 benchmarks/                              -> graded sample tasks, fixture, evaluator, and opt-in runner
+benchmarks/prepare_fixture.py             -> offline map review, equivalent-state check, and validated fixture freezing
 benchmarks/results/                     -> optional public evidence with frozen source and solutions
 tests/test_public_validation.py          -> offline reconciliation and regrading of published evidence
 docs/                                   -> visual, verification record, and draft release notes
