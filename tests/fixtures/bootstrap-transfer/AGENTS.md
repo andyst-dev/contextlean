@@ -25,19 +25,19 @@ Flow: CLI/config → loader → selection → report → JSON. Keep Decimal thro
 
 ## Navigation
 
-Use AGENTS.md as the primary map; do not rediscover documented architecture. Identify the smallest owner, search before broad reading; inspect immediate dependencies/tests only when relevant. Expand only with evidence; avoid ordinary whole-repo scans and unjustified rereads. Before broad/state-sensitive changes, inspect version-control state when available. Preserve architecture unless the task requires change.
+AGENTS.md is primary map; trust mapped ownership/architecture unless source contradicts it. Start at smallest owner; search before broad reads; inspect relevant usages/dependencies/tests. Skip broad ownership/architecture reconfirmation and equivalent answered searches. Expand only with evidence; no ordinary whole-repo scans/unjustified rereads. For broad/state-sensitive work, inspect available version-control state only if relevant; no routine Git checks. Preserve architecture unless the task requires change.
 
 ## Ownership
 
-Give files/modules/classes cohesive owners: related behavior together, unrelated responsibilities separate, no duplicate state/behavior. Prefer specific owners over catch-all helpers. New modules need a genuine responsibility; split only for locality benefit; avoid fragmentation/forwarding wrappers. For architecture/refactoring decisions, read [Architecture decisions](PROJECT_REFERENCE.md#architecture-decisions).
+Give files/modules/classes cohesive owners: related together, unrelated separate, no duplicate state/behavior. Prefer specific owners to catch-all helpers. New modules need genuine responsibilities; split for locality; avoid fragmentation/forwarding wrappers. If extraction/boundary/refactor scope is unclear, read [Architecture decisions](PROJECT_REFERENCE.md#architecture-decisions).
 
 ## Structure
 
-Split by responsibility, never size; cohesive large files are acceptable. Refactor only for meaningful current-task benefit or an explicit request; assess signals using the architecture reference.
+Split by responsibility, not size; cohesive large files are valid. Refactor only for meaningful current-task benefit or explicit request; preserve behavior; assess relevant boundaries.
 
 ## Interfaces
 
-Keep dependencies simple, without cycles/hidden global coupling; public interfaces focused; internals local so callers need no unnecessary internal knowledge. For boundary/indirection decisions, use the architecture reference.
+Keep dependency direction simple, without cycles/hidden global coupling; public interfaces focused; internals local so callers need no unnecessary internal knowledge.
 
 ## Implementation
 
@@ -49,7 +49,7 @@ Diagnose root cause; inspect relevant flow/callers when needed. Fix the owner/sh
 
 ## Verification
 
-Use the smallest meaningful check, targeted first; broaden for shared/core changes; full suite only when necessary/project-required. These are scope choices, not mandatory sequential steps. Use existing infrastructure; leave a small runnable regression check for non-trivial logic/fixes when practical. No new framework for one check without justification. Distinguish verified targeted/full commands; label uncertainty. If scope is unclear, see [Verification scope](PROJECT_REFERENCE.md#verification-scope).
+Use the smallest meaningful check, targeted first; broaden for shared/core/public changes; full suite only when necessary/project-required. Scope choices are not mandatory sequential steps. Use existing infrastructure; leave a small runnable regression check for non-trivial logic/fixes when practical. No new framework for one check without justification. Distinguish verified targeted/full commands; label uncertainty. If scope is unclear, see [Verification scope](PROJECT_REFERENCE.md#verification-scope).
 
 ## Context
 

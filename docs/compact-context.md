@@ -5,6 +5,10 @@ benchmarking the guidance changes. Its statements about uncommitted work, zero m
 calls and pending isolated validation apply only to those stages. For the released
 v0.2.0 status and subsequent validation, see [current verification](verification.md#current-released-status).
 
+The initial record below describes frozen product `90ed9a4`. The subsequent general
+[refactor and repository state update](#refactor-and-repository-state-update) has its
+own offline verification below; benchmark evidence continues to describe the frozen product.
+
 ContextLean 0.2.0 retains **74 PASS / 0 PARTIAL / 0 MISSING / 2 INTENTIONALLY
 REPLACED**, including all **71 permanent semantic facets**. The category decisions
 in the original design request were the design input; no separate classification file
@@ -132,3 +136,75 @@ to HEAD. No commit or push was made. Local verification logs are ignored; only g
 bootstrap verification, contracts and developer documentation changed.
 
 Compact ContextLean preserves complete semantic coverage.
+
+## Refactor and repository state update
+
+This is a general product guidance improvement after the compact product freeze,
+not benchmark tuning. Benchmark tasks, prompts, graders, measurement code, historical
+and compact-final evidence, and the original bootstrap specification are unchanged.
+No model call, commit, push, tag or release was made.
+
+The permanent navigation rule now trusts mapped ownership and architecture unless
+source contradicts them. Start at the smallest owner with relevant usages/dependencies/
+tests; skip broad ownership reconfirmation and equivalent searches already answered.
+Distinct unresolved questions still warrant searches. Concrete evidence still warrants
+expansion: ambiguous/stale ownership, contradictory source, cross-boundary usages,
+public interfaces, shared/core effects, wider test impact or dependency-flow uncertainty.
+Source evidence overrides the map. This preserves targeted exploration and risk handling.
+
+Explicit refactors preserve behavior and assess relevant boundaries. The existing
+Architecture decisions reference describes the owner → changed code → needed callers/
+usages/tests → smallest structural change → proportional verification route, with
+unnecessary steps skipped. It retains all original refactor signals without making
+signals an architecture audit. Its trigger is uncertain extraction/boundary/refactor
+scope; routine refactors need not load it. Audit and Lean Review remain on-demand.
+
+Repository-state inspection now requires broad/state-sensitive work, available
+version-control metadata and relevant state. The setup procedure identifies uncommitted
+work, generated state, branching, conflicts and broad edits as reasons state may matter.
+Read-only navigation and small local edits alone require neither Git inspection nor
+an availability probe. Explicit bootstrap's own state inspection remains appropriate
+for its broad configuration changes. Proportional verification still starts targeted,
+broadens for shared/core/public effects, and uses full verification when necessary or
+project-required; these are scope choices, not three mandatory stages or token-saving cuts.
+
+The original 76-row comparison was reviewed against the immutable historical bootstrap
+and final durable destinations: **74 PASS / 0 PARTIAL / 0 MISSING / 2 INTENTIONALLY
+REPLACED**. All **71 permanent facets**, their identifiers/order and delivery categories
+are preserved. The hash-bound worked receipt and its activation descriptions were
+regenerated after review. Tests guard concept clauses, actual destinations and context
+size; they do not prove natural-language semantics or future model compliance.
+
+| Material | Previous bytes / lines | New bytes / lines | Estimated tokens before → after |
+|---|---:|---:|---:|
+| Representative AGENTS.md | 5,478 / 68 | 5,476 / 68 | 1,369.5 → 1,369 |
+| Claude wrapper | 11 / 1 | 11 / 1 | 2.75 → 2.75 |
+| Total automatic startup | 5,489 / 69 | 5,487 / 69 | 1,372.25 → 1,371.75 |
+| Conditional PROJECT_REFERENCE.md | 2,378 / 24 | 3,564 / 28 | 594.5 → 891 |
+
+UTF-8 bytes are exact; tokens are bytes ÷ 4 estimates. Automatic context decreases
+**2 bytes**; conditional detail increases **1,186 bytes**, outside startup context.
+ContextLean's own root map is unchanged: no path, ownership or verification-flow change
+requires a map edit. The bootstrap procedure retains its existing 249-line contract.
+
+Offline quality: **114 tests pass**, Ruff 0.15.7 lint/format pass, all four official Skill
+validators pass, the Codex plugin validator passes, and both Claude validators pass
+with their existing wrapper-context/catalog-policy warnings. Transfer/safe-removal
+contracts, fresh generated maps/paths, relative links/anchors, whitespace, hygiene and
+protected-file SHA-256 checks pass. All 310 tracked protected files equal their before
+hashes and HEAD; this includes all benchmark material and the original specification.
+
+Audit Context Locality: **9 PASS / 0 WARNING / 0 ACTION NEEDED** across map/commands,
+instruction duplication, startup/conditional context, wrappers, Skill/reference structure,
+exclusions, documentation freshness, transfer/removal and architectural locality.
+Navigation has one automatic rule; detailed examples are conditional. No mandatory
+Git check, large automatic reference, architecture audit or under-exploration rule was
+introduced. Lean Change Review: **no material findings**; the change stays within the
+bootstrap owner, deterministic fixtures/contracts and this verification record, without
+new dependencies or checker schema changes. Actual model behavior remains unmeasured.
+
+The compact-final historical result remains **434,893 → 361,650 tokens (-16.84%)**,
+**167.80s → 157.79s (-5.97%)**, **5/5 → 5/5 success**, with ContextLean Refactor
+**+23.30% tokens**. These numbers describe the previous frozen product and are unchanged.
+The general implementation is semantically safe for one separately authorized isolated
+Refactor Vanilla/ContextLean validation pair; no such pair was run here.

@@ -32,7 +32,7 @@
           "kind": "guidance",
           "path": "AGENTS.md",
           "section": "Navigation",
-          "sha256": "1743cdeee86f5b8c7eb813b0ecd3b97dbd9b966e8c5a867f7abe27acf17e95d5"
+          "sha256": "4bb7149cef5ae643f70a1c534ebbd621b7b3412d1eeb38333dc14a195a8cad98"
         }
       ]
     },
@@ -60,7 +60,7 @@
           "kind": "guidance",
           "path": "AGENTS.md",
           "section": "Ownership",
-          "sha256": "3ec5c3893da27e82fe17a561d64977ceeeff757753a4f2497d1f096e2202b0c5"
+          "sha256": "23671c641d9d218695a2546fff757d512bad190bcb300d1c49f6c777ad8b7dd5"
         },
         {
           "facets": [
@@ -69,12 +69,12 @@
           "kind": "reference",
           "path": "PROJECT_REFERENCE.md",
           "section": "Architecture decisions",
-          "sha256": "f8192424f1034d79d516b485986174fb2ae4092eaf94bd0c683cab2f578e6c68",
+          "sha256": "c2d1097a8057474d7ef257161b4ea52adc77d20b87d0a18e3c9fd4e241637e62",
           "activation": {
             "path": "AGENTS.md",
             "section": "Ownership",
-            "sha256": "3ec5c3893da27e82fe17a561d64977ceeeff757753a4f2497d1f096e2202b0c5",
-            "when": "architecture/refactoring decisions"
+            "sha256": "23671c641d9d218695a2546fff757d512bad190bcb300d1c49f6c777ad8b7dd5",
+            "when": "uncertain extraction/boundary/refactor scope"
           }
         }
       ]
@@ -98,7 +98,7 @@
           "kind": "guidance",
           "path": "AGENTS.md",
           "section": "Structure",
-          "sha256": "a6dfdce40e55638a9906ad3e11187abc5d7eaa065af2665f48fce4535d05480e"
+          "sha256": "2f19581856c49eadfc977880b1c866ad88c84da893c5874d6bfc5f05688b26bc"
         },
         {
           "facets": [
@@ -107,12 +107,12 @@
           "kind": "reference",
           "path": "PROJECT_REFERENCE.md",
           "section": "Architecture decisions",
-          "sha256": "f8192424f1034d79d516b485986174fb2ae4092eaf94bd0c683cab2f578e6c68",
+          "sha256": "c2d1097a8057474d7ef257161b4ea52adc77d20b87d0a18e3c9fd4e241637e62",
           "activation": {
             "path": "AGENTS.md",
             "section": "Ownership",
-            "sha256": "3ec5c3893da27e82fe17a561d64977ceeeff757753a4f2497d1f096e2202b0c5",
-            "when": "architecture/refactoring decisions"
+            "sha256": "23671c641d9d218695a2546fff757d512bad190bcb300d1c49f6c777ad8b7dd5",
+            "when": "uncertain extraction/boundary/refactor scope"
           }
         },
         {
@@ -122,7 +122,7 @@
           "kind": "guidance",
           "path": "AGENTS.md",
           "section": "Ownership",
-          "sha256": "3ec5c3893da27e82fe17a561d64977ceeeff757753a4f2497d1f096e2202b0c5"
+          "sha256": "23671c641d9d218695a2546fff757d512bad190bcb300d1c49f6c777ad8b7dd5"
         }
       ]
     },
@@ -145,7 +145,7 @@
           "kind": "guidance",
           "path": "AGENTS.md",
           "section": "Interfaces",
-          "sha256": "2fb8165927bcb4b4674b60d4de88c55dc86304b1c9c5383c0f21050651fd21aa"
+          "sha256": "05cda65b07431d1f3df73f4a26b95a5d2d28f95f27066494292f438c0abee370"
         },
         {
           "facets": [
@@ -155,12 +155,12 @@
           "kind": "reference",
           "path": "PROJECT_REFERENCE.md",
           "section": "Architecture decisions",
-          "sha256": "f8192424f1034d79d516b485986174fb2ae4092eaf94bd0c683cab2f578e6c68",
+          "sha256": "c2d1097a8057474d7ef257161b4ea52adc77d20b87d0a18e3c9fd4e241637e62",
           "activation": {
             "path": "AGENTS.md",
             "section": "Ownership",
-            "sha256": "3ec5c3893da27e82fe17a561d64977ceeeff757753a4f2497d1f096e2202b0c5",
-            "when": "architecture/refactoring decisions"
+            "sha256": "23671c641d9d218695a2546fff757d512bad190bcb300d1c49f6c777ad8b7dd5",
+            "when": "uncertain extraction/boundary/refactor scope"
           }
         }
       ]
@@ -210,7 +210,7 @@
           "kind": "guidance",
           "path": "AGENTS.md",
           "section": "Ownership",
-          "sha256": "3ec5c3893da27e82fe17a561d64977ceeeff757753a4f2497d1f096e2202b0c5"
+          "sha256": "23671c641d9d218695a2546fff757d512bad190bcb300d1c49f6c777ad8b7dd5"
         }
       ]
     },
@@ -245,7 +245,7 @@
           "kind": "guidance",
           "path": "AGENTS.md",
           "section": "Verification",
-          "sha256": "a33ea3514fc48b23550f4adcd2b73570b0d0301353ffdf2e1b73a8ca5796a224"
+          "sha256": "19d829cf9b66fca5b5f0f76b4079080f6127c2eda296cd28c5060517bbeca451"
         }
       ]
     },
@@ -272,7 +272,7 @@
           "kind": "guidance",
           "path": "AGENTS.md",
           "section": "Verification",
-          "sha256": "a33ea3514fc48b23550f4adcd2b73570b0d0301353ffdf2e1b73a8ca5796a224"
+          "sha256": "19d829cf9b66fca5b5f0f76b4079080f6127c2eda296cd28c5060517bbeca451"
         }
       ]
     },

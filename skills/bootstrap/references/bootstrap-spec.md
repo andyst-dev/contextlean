@@ -85,13 +85,13 @@ Transfer all 71 `permanent-rules.json` facets with their identifiers, meanings a
 choices intact. Categories distinguish automatic invariants/actions, packaged delegation,
 conditional detail and consolidated duplicates. Share wording/destinations, never drop duties.
 Keep navigation, coding, safety, proportional verification and after-task map checks automatic.
-Inspect version-control state before broad/state-sensitive changes when available; read-only
-navigation needs no Git ritual. Verification chooses scope: targeted first, broaden for shared/
-core impact, full only when necessary/project-required, not three mandatory sequential steps.
+Trust valid mapped owners; source overrides maps. Apply the inventory's scoped refactor route, distinct-question searches and evidence-driven expansion; preserve behavior and skip unnecessary steps.
+For broad/state-sensitive work, inspect available version-control state only if it affects work (uncommitted work, generated state, branching, conflicts or broad edits). Ordinary read-only navigation and small local edits alone require neither Git inspection nor a preliminary availability command; proceed when state is irrelevant.
+Verification chooses scope: targeted first, broaden for shared/core/public impact, full only when necessary/project-required, not mandatory sequential steps. Never reduce meaningful verification to save context.
 
 Use one optional `PROJECT_REFERENCE.md` (or an equivalent existing reference) for the inventory's
 architecture/extraction and project Skill creation/sharing/discovery details. Link each section
-from the map with an explicit task trigger; never import it or require it on every task. Bug/
+with a task trigger (e.g. uncertain extraction/boundary/refactor scope); never import it or require it for every refactor. Bug/
 verification examples may share it, with baseline duties automatic. Adapt existing equivalent
 rules instead of duplicating them; nested maps are only for subtree-specific behavior. Aim for
 roughly 4.5–5.5 KB on a small representative map; preservation overrides this nonbinding target.

@@ -62,7 +62,7 @@ def generate(repo, transfer):
                 item["activation"]["when"] = (
                     "creating/modifying project Skills"
                     if group["id"] == "project-skills"
-                    else "architecture/refactoring decisions"
+                    else "uncertain extraction/boundary/refactor scope"
                 )
             items.append(item)
         record["rules"][group["id"]] = {

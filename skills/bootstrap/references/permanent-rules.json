@@ -16,7 +16,7 @@
         "repository-state",
         "preserve-architecture"
       ],
-      "guidance": "Use AGENTS.md as the primary map; do not rediscover documented architecture. Identify the smallest owner, search before broad reading; inspect immediate dependencies/tests only when relevant. Expand only with evidence; avoid ordinary whole-repo scans and unjustified rereads. Before broad/state-sensitive changes, inspect version-control state when available. Preserve architecture unless the task requires change.",
+      "guidance": "AGENTS.md is primary map; trust mapped ownership/architecture unless source contradicts it. Start at smallest owner; search before broad reads; inspect relevant usages/dependencies/tests. Skip broad ownership/architecture reconfirmation and equivalent answered searches. Expand only with evidence; no ordinary whole-repo scans/unjustified rereads. For broad/state-sensitive work, inspect available version-control state only if relevant; no routine Git checks. Preserve architecture unless the task requires change.",
       "delivery": {
         "map-primary": "B",
         "no-rediscovery": "B",
@@ -42,7 +42,7 @@
         "owner-locality-unrelated-extraction",
         "genuine-new-module"
       ],
-      "guidance": "Give files/modules/classes cohesive owners: related behavior together, unrelated responsibilities separate, no duplicate state/behavior. Prefer specific owners over catch-all helpers. New modules need a genuine responsibility; split only for locality benefit; avoid fragmentation/forwarding wrappers. For architecture/refactoring decisions, read [Architecture decisions](PROJECT_REFERENCE.md#architecture-decisions).",
+      "guidance": "Give files/modules/classes cohesive owners: related together, unrelated separate, no duplicate state/behavior. Prefer specific owners to catch-all helpers. New modules need genuine responsibilities; split for locality; avoid fragmentation/forwarding wrappers. If extraction/boundary/refactor scope is unclear, read [Architecture decisions](PROJECT_REFERENCE.md#architecture-decisions).",
       "reference": {
         "heading": "Architecture decisions",
         "guidance": "Before adding/extracting behavior, identify its owner, whether it can stay local, whether it adds an unrelated responsibility, and whether cohesive extraction reduces future unrelated reading. Create a module only for a genuine responsibility. Maintainability and context efficiency both benefit from local changes."
@@ -67,10 +67,10 @@
         "refactor-current-need",
         "no-fragmentation-wrappers"
       ],
-      "guidance": "Split by responsibility, never size; cohesive large files are acceptable. Refactor only for meaningful current-task benefit or an explicit request; assess signals using the architecture reference.",
+      "guidance": "Split by responsibility, not size; cohesive large files are valid. Refactor only for meaningful current-task benefit or explicit request; preserve behavior; assess relevant boundaries.",
       "reference": {
         "heading": "Architecture decisions",
-        "guidance": "Refactoring signals: independent responsibilities, repeated unrelated edits, large unrelated reads, catch-all/god objects, a new independent responsibility, or extraction that improves locality. Signals invite judgment, not automatic refactoring; apply the permanent current-task/request threshold."
+        "guidance": "Refactoring signals: independent responsibilities, repeated unrelated edits, large unrelated reads, catch-all/god objects, a new independent responsibility, or extraction that improves locality. Signals invite judgment, not automatic refactoring; apply the permanent current-task/request threshold.\n\nFor an explicit refactor, start from the mapped owner and code being changed; inspect direct callers/usages and affected tests as needed, then make the smallest behavior-preserving structural change and verify proportionally. This is a route, not a fixed checklist: skip unnecessary steps, such as inspecting every caller for a private implementation change that cannot affect callers. Known references need no global search. Multiple searches are useful when they answer different unresolved questions; do not repeat an equivalent answered search.\n\nReview only architecture boundaries relevant to the change; refactor signals do not require a repository-wide architecture audit. Expand when ownership is ambiguous, the map is stale or contradicted by source, usages cross boundaries, public interfaces change, shared/core behavior is affected, tests expose wider impact, dependency flow needs investigation, or other concrete evidence requires it. Source evidence overrides the map. Preserve ownership/locality, interface stability and dependency direction unless the requested change requires altering them; preserve behavior and avoid unnecessary abstractions or unrelated cleanup."
       },
       "delivery": {
         "no-arbitrary-size": "A",
@@ -90,7 +90,7 @@
         "distinct-boundaries",
         "coupling-justifies-indirection"
       ],
-      "guidance": "Keep dependencies simple, without cycles/hidden global coupling; public interfaces focused; internals local so callers need no unnecessary internal knowledge. For boundary/indirection decisions, use the architecture reference.",
+      "guidance": "Keep dependency direction simple, without cycles/hidden global coupling; public interfaces focused; internals local so callers need no unnecessary internal knowledge.",
       "reference": {
         "heading": "Architecture decisions",
         "guidance": "Separate UI, domain, persistence, transport and infrastructure when genuinely distinct. Events, signals, interfaces or dependency injection must meaningfully reduce coupling; architectural purity alone is insufficient."
@@ -170,7 +170,7 @@
         "runnable-regression",
         "no-single-check-framework"
       ],
-      "guidance": "Use the smallest meaningful check, targeted first; broaden for shared/core changes; full suite only when necessary/project-required. These are scope choices, not mandatory sequential steps. Use existing infrastructure; leave a small runnable regression check for non-trivial logic/fixes when practical. No new framework for one check without justification. Distinguish verified targeted/full commands; label uncertainty. If scope is unclear, see [Verification scope](PROJECT_REFERENCE.md#verification-scope).",
+      "guidance": "Use the smallest meaningful check, targeted first; broaden for shared/core/public changes; full suite only when necessary/project-required. Scope choices are not mandatory sequential steps. Use existing infrastructure; leave a small runnable regression check for non-trivial logic/fixes when practical. No new framework for one check without justification. Distinguish verified targeted/full commands; label uncertainty. If scope is unclear, see [Verification scope](PROJECT_REFERENCE.md#verification-scope).",
       "delivery": {
         "targeted-affected-full": "B",
         "smallest-meaningful": "E",

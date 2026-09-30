@@ -26,6 +26,128 @@ GROUPS = {g["id"]: g for g in json.loads(transfer.RULES.read_text())["groups"]}
 
 
 class PermanentBehaviorContracts(unittest.TestCase):
+    def guidance_sources(self, group):
+        """Check setup semantics and their actual automatic destination."""
+        return (
+            GROUPS[group]["guidance"],
+            transfer.section_text(FIXTURE / "AGENTS.md", GROUPS[group]["heading"]),
+        )
+
+    def architecture_sources(self):
+        return (
+            GROUPS["structure"]["reference"]["guidance"],
+            transfer.section_text(FIXTURE / "PROJECT_REFERENCE.md", "Architecture decisions"),
+        )
+
+    def test_generated_guidance_matches_reviewed_inventory(self):
+        # Destinations must communicate the canonical rules, not just name facets.
+        for group in GROUPS.values():
+            with self.subTest(group=group["id"]):
+                automatic = transfer.section_text(FIXTURE / "AGENTS.md", group["heading"])
+                self.assertEqual(automatic.strip(), group["guidance"])
+                if "reference" in group:
+                    reference = group["reference"]
+                    self.assertIn(
+                        reference["guidance"],
+                        transfer.section_text(
+                            FIXTURE / "PROJECT_REFERENCE.md", reference["heading"]
+                        ),
+                    )
+
+    def test_mapped_ownership_is_trusted_subject_to_source(self):
+        for text in self.guidance_sources("navigation"):
+            with self.subTest(source=text):
+                self.assertRegex(
+                    text, r"trust mapped ownership/architecture.*unless source contradicts"
+                )
+                self.assertRegex(text, r"smallest owner.*search before broad reads")
+                self.assertRegex(text, r"[Ss]kip broad ownership/architecture reconfirmation")
+
+    def test_expansion_remains_evidence_driven(self):
+        for text in self.guidance_sources("navigation"):
+            self.assertRegex(text, r"[Ee]xpand only with evidence")
+        for text in self.architecture_sources():
+            # Distinct risk signals must survive compression of automatic context.
+            for signal in (
+                "ownership is ambiguous",
+                "map is stale",
+                "contradicted by source",
+                "usages cross boundaries",
+                "public interfaces change",
+                "shared/core behavior",
+                "tests expose wider impact",
+                "dependency flow",
+                "other concrete evidence",
+                "Source evidence overrides the map",
+            ):
+                with self.subTest(signal=signal):
+                    self.assertIn(signal, text)
+
+    def test_search_reuse_does_not_ban_distinct_questions(self):
+        for text in self.guidance_sources("navigation"):
+            self.assertRegex(text, r"[Ss]kip.*equivalent answered searches")
+        for text in self.architecture_sources():
+            self.assertRegex(text, r"Multiple searches.*different unresolved questions")
+            self.assertRegex(text, r"Known references.*no global search")
+
+    def test_explicit_refactor_is_scoped_and_behavior_preserving(self):
+        for text in self.guidance_sources("structure"):
+            self.assertRegex(text, r"explicit request.*preserve behavior")
+            self.assertRegex(text, r"assess relevant boundaries")
+        for text in self.architecture_sources():
+            self.assertRegex(text, r"Review only architecture boundaries relevant to the change")
+            self.assertRegex(text, r"signals do not require.*repository-wide architecture audit")
+            for safeguard in ("ownership/locality", "interface stability", "dependency direction"):
+                self.assertIn(safeguard, text)
+            self.assertRegex(text, r"smallest behavior-preserving structural change")
+
+    def test_refactor_route_allows_unnecessary_steps_to_be_skipped(self):
+        for text in self.architecture_sources():
+            self.assertRegex(text, r"mapped owner.*code being changed")
+            self.assertRegex(text, r"callers/usages and affected tests as needed")
+            self.assertRegex(text, r"not a fixed checklist.*skip unnecessary steps")
+            self.assertRegex(text, r"private implementation change.*cannot affect callers")
+        for text in self.guidance_sources("ownership"):
+            self.assertRegex(text, r"If .*refactor scope is unclear, read.*PROJECT_REFERENCE")
+        automatic = transfer.automatic_guidance(FIXTURE)
+        self.assertNotIn((FIXTURE / "PROJECT_REFERENCE.md").resolve(), automatic)
+
+    def test_repository_state_requires_relevance_and_availability(self):
+        for text in self.guidance_sources("navigation"):
+            self.assertRegex(text, r"broad/state-sensitive.*available version-control state")
+            self.assertRegex(text, r"inspect.*state only if relevant")
+            self.assertRegex(text, r"no routine Git checks")
+        procedure = (ROOT / "skills/bootstrap/references/bootstrap-spec.md").read_text()
+        # This is future permanent guidance routing, not the one-time setup inspection.
+        routing = procedure.split("Transfer all 71", 1)[1].split("## 4.", 1)[0]
+        for state in (
+            "uncommitted work",
+            "generated state",
+            "branching",
+            "conflicts",
+            "broad edits",
+        ):
+            self.assertIn(state, routing)
+        self.assertRegex(routing, r"read-only navigation and small local edits alone require")
+        self.assertRegex(routing, r"neither Git inspection nor a preliminary availability command")
+        self.assertRegex(routing, r"proceed when state is irrelevant")
+
+    def test_refactor_verification_preserves_proportional_scope(self):
+        for text in self.guidance_sources("verification"):
+            self.assertRegex(text, r"smallest meaningful check.*targeted first")
+            self.assertRegex(text, r"broaden for shared/core/public")
+            self.assertRegex(text, r"full suite only when necessary/project-required")
+            self.assertRegex(text, r"[Ss]cope choices.*not mandatory sequential steps")
+            self.assertRegex(text, r"existing infrastructure.*runnable regression")
+        for text in self.architecture_sources():
+            self.assertRegex(text, r"behavior-preserving.*verify proportionally")
+
+    def test_automatic_context_stays_within_compact_baseline(self):
+        automatic = transfer.automatic_guidance(FIXTURE)
+        self.assertEqual({path.name for path in automatic}, {"AGENTS.md", "CLAUDE.md"})
+        self.assertLessEqual(sum(len(path.read_bytes()) for path in automatic), 5489)
+        self.assertLessEqual(len((FIXTURE / "AGENTS.md").read_text().splitlines()), 68)
+
     def test_navigation_contract(self):
         self.assertEqual(
             set(GROUPS["navigation"]["facets"]),
@@ -222,7 +344,7 @@ class TransferGateTests(unittest.TestCase):
         ]
         self.assertEqual(
             {d["activation"]["when"] for d in destinations},
-            {"architecture/refactoring decisions", "creating/modifying project Skills"},
+            {"uncertain extraction/boundary/refactor scope", "creating/modifying project Skills"},
         )
         automatic = (self.repo / "AGENTS.md").read_text()
         self.assertNotIn(".agents/skills/", automatic)
@@ -288,7 +410,7 @@ class TransferGateTests(unittest.TestCase):
         activation["when"] = ""
         with self.assertRaisesRegex(ValueError, "applicability"):
             transfer.verify(self.repo, self.record)
-        activation["when"] = "architecture/refactoring decisions"
+        activation["when"] = "uncertain extraction/boundary/refactor scope"
         activation["section"] = "Navigation"
         activation["sha256"] = hashlib.sha256(
             transfer.section_text(self.repo / "AGENTS.md", "Navigation").encode()
