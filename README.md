@@ -206,6 +206,10 @@ Bootstrap inspects the project, preserves useful knowledge, verifies directions 
 captures a local static before/after report. Later sessions use the maps; audits
 check for drift, and reviews check changes for unnecessary complexity.
 
+Bootstrap also checks that permanent development guidance survives without the setup
+specification. It keeps that guidance compact, documents the separate Audit and Lean
+Review workflows, and stops if a required rule has no durable home.
+
 Version 0.2.0 has no MCP server, hooks, background process, runtime package or telemetry.
 Skill discovery can add skill descriptions to agent context; the workflows themselves
 run when invoked. Large optional references stay behind targeted links.

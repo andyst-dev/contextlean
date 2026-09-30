@@ -2,6 +2,12 @@
 
 ## Current released status
 
+[ContextLean v0.2.0](https://github.com/andyst-dev/contextlean/releases/tag/v0.2.0)
+was publicly released on 2026-09-30. The annotated tag resolves to
+`6113896f283f34558cbabaa1d6d25b6aa614b7a5`, which contains product commit
+`86043499d5a375cc6a3b295bc7c03b0999eb458c` and the release-aligned evidence/docs.
+Both manifests and the measurement helper identify 0.2.0.
+
 - Main [Quality CI](https://github.com/andyst-dev/contextlean/actions/runs/36748490974)
   and [tag CI](https://github.com/andyst-dev/contextlean/actions/runs/36749324799)
   passed on Python 3.11 and 3.14.

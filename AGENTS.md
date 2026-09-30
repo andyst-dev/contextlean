@@ -12,6 +12,8 @@ ContextLean is a dependency-free, skills-only plugin for Codex and Claude Code. 
 .claude-plugin/marketplace.json           -> local installation catalog for both agents
 skills/bootstrap/                         -> explicit, side-effecting one-time bootstrap
 skills/bootstrap/references/bootstrap-spec.md -> canonical detailed bootstrap procedure
+skills/bootstrap/references/permanent-rules.json -> compact permanent behavior and semantic identifiers
+skills/bootstrap/scripts/verify_transfer.py -> explicit, read-only bootstrap transfer verification
 skills/audit/                             -> read-only context and locality audit; safe fix mode is explicit
 skills/lean-review/                       -> read-only review of the current change
 skills/benchmark/                         -> static estimate and opt-in real Codex A/B benchmark
@@ -25,6 +27,7 @@ docs/                                   -> visual, verification record, and draf
 tests/test_package.py                     -> dependency-free package contract tests
 tests/test_benchmark.py                   -> offline benchmark parsing, math, and report tests
 tests/test_skill_contracts.py             -> fixture-backed bootstrap, audit, and review contracts
+tests/test_bootstrap_transfer.py          -> semantic contracts, transfer failures, and safe-removal checks
 tests/fixtures/projects/                  -> minimal cross-project guidance fixtures
 tests/fixtures/reviews/                   -> representative lean-review diffs
 README.md                                 -> public usage and development documentation

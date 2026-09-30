@@ -18,6 +18,9 @@ Start from the applicable `AGENTS.md` hierarchy and repository state. Use target
 - Skill structure, frontmatter, references, scripts, and symlinks;
 - exclusions that hide source, tests, fixtures, migrations, documentation, assets, or useful archives;
 - stale documentation and responsibilities that no longer match the implementation;
+- when a bootstrap transfer record exists, complete permanent-rule destinations,
+  reviewed-content integrity, explicit packaged Lean Review delegation and safe
+  omission of the setup specification; check semantics as well as structural evidence;
 - potential god objects, catch-all modules, circular or non-local dependencies, and simple features spread across unrelated files.
 
 File length alone is never a defect. Report a large file only when evidence shows mixed responsibilities or degraded locality. Do not recommend fragmenting cohesive code into wrappers or micro-files.
