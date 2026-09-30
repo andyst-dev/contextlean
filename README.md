@@ -151,6 +151,9 @@ my-project/                    my-project/
 
 - `AGENTS.md`: a concise project map, ownership boundaries, verified commands and rules.
   Existing guidance is preserved and improved. Nested maps are added only when needed.
+  Permanent startup instructions stay compact; detailed guidance is read only when
+  relevant, through references with clear task triggers. Complete original bootstrap
+  semantics are preserved. Audit and Lean Review remain on-demand.
 - `CLAUDE.md`: normally `@AGENTS.md`, so Claude reads the same guidance. Substantial
   existing Claude notes can move to an optional reference without losing knowledge.
 - `.contextlean/bootstrap-report.json`: local instruction counts and explicitly labelled

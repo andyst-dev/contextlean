@@ -10,6 +10,9 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
+
+from bootstrap_fixture import generate
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -122,7 +125,9 @@ class PermanentBehaviorContracts(unittest.TestCase):
         )
 
     def test_lean_review_is_delegated_not_recreated(self):
-        item = json.loads((FIXTURE / "transfer.json").read_text())["rules"]["lean-review"]
+        item = json.loads((FIXTURE / "transfer.json").read_text())["rules"]["lean-review"][
+            "destinations"
+        ][0]
         self.assertEqual(
             (item["kind"], item["skill"]), ("contextlean_skill", "contextlean:lean-review")
         )
@@ -154,6 +159,167 @@ class TransferGateTests(unittest.TestCase):
         self.repo = Path(self.temporary.name) / "repo"
         shutil.copytree(FIXTURE, self.repo)
         self.record = json.loads((self.repo / "transfer.json").read_text())
+
+    def destination(self, group):
+        return self.record["rules"][group]["destinations"][0]
+
+    def test_inventory_classifies_all_71_stable_facets(self):
+        # Freeze identifiers/order, not prose; independent of Git availability.
+        original = "f893e2913cc0888538c59b373a99732e02502fbbfac124e0c84d90d2784f7c0d"
+        self.assertEqual(
+            hashlib.sha256(
+                json.dumps({g["id"]: g["facets"] for g in GROUPS.values()}, sort_keys=True).encode()
+            ).hexdigest(),
+            original,
+        )
+        self.assertEqual(sum(len(g["facets"]) for g in GROUPS.values()), 71)
+        for group in GROUPS.values():
+            self.assertEqual(set(group["delivery"]), set(group["facets"]))
+            self.assertTrue(set(group["delivery"].values()) <= set("ABCDE"))
+
+    def test_historical_semantic_matrix_retains_acceptance(self):
+        import collections
+
+        matrix = (ROOT / "docs/bootstrap-coverage.md").read_text().split("## Coverage matrix", 1)[1]
+        matrix = matrix.split("## Repair verification", 1)[0]
+        results = collections.Counter(
+            line.split("|")[4].strip()
+            for line in matrix.splitlines()
+            if line.startswith("| ") and "Original lines" not in line
+        )
+        self.assertEqual(results, {"PASS": 74, "INTENTIONALLY REPLACED": 2})
+
+    def test_fresh_fixture_generation_and_mapped_paths(self):
+        from benchmarks.prepare_fixture import project_map
+
+        fresh = Path(self.temporary.name) / "fresh"
+        shutil.copytree(ROOT / "benchmarks/fixtures/expense-report", fresh)
+        record = generate(fresh, transfer)
+        self.assertEqual(record, self.record)
+        self.assertEqual(transfer.verify(fresh, record)["facets"], 71)
+        self.assertEqual(len(project_map(fresh)), 8)
+        self.assertEqual(
+            transfer.automatic_guidance(fresh),
+            {fresh.resolve() / "AGENTS.md", fresh.resolve() / "CLAUDE.md"},
+        )
+
+    def test_existing_version_one_receipts_still_pass(self):
+        archive = ROOT / "benchmarks/results/2026-09-30-clean-final-0.2.0/source-snapshot.zip"
+        with zipfile.ZipFile(archive) as source:
+            prefix = "tests/fixtures/bootstrap-transfer/"
+            for name in ("AGENTS.md", "CLAUDE.md", "transfer.json"):
+                (self.repo / name).write_bytes(source.read(prefix + name))
+        record = json.loads((self.repo / "transfer.json").read_text())
+        self.assertEqual(record["schema_version"], 1)
+        self.assertEqual(transfer.verify(self.repo, record)["facets"], 71)
+
+    def test_conditional_guidance_is_not_an_every_task_requirement(self):
+        destinations = [
+            d
+            for rule in self.record["rules"].values()
+            for d in rule["destinations"]
+            if d["kind"] == "reference"
+        ]
+        self.assertEqual(
+            {d["activation"]["when"] for d in destinations},
+            {"architecture/refactoring decisions", "creating/modifying project Skills"},
+        )
+        automatic = (self.repo / "AGENTS.md").read_text()
+        self.assertNotIn(".agents/skills/", automatic)
+        self.assertNotIn(".claude/skills/", automatic)
+        self.assertNotIn("symlink", automatic)
+        self.assertEqual((self.repo / "CLAUDE.md").read_text(), "@AGENTS.md\n")
+        reference = self.repo / "PROJECT_REFERENCE.md"
+        self.assertIn(reference.resolve(), transfer.reachable_guidance(self.repo.resolve()))
+        self.assertNotIn(reference.resolve(), transfer.automatic_guidance(self.repo))
+
+    def test_fixture_keeps_mandatory_behavior_automatic(self):
+        expected_kind = {
+            "A": "guidance",
+            "B": "guidance",
+            "C": "contextlean_skill",
+            "D": "reference",
+            "E": "guidance",
+        }
+        for group, rule in self.record["rules"].items():
+            for destination in rule["destinations"]:
+                for facet in destination["facets"]:
+                    category = GROUPS[group]["delivery"][facet]
+                    with self.subTest(group=group, facet=facet):
+                        self.assertEqual(destination["kind"], expected_kind[category])
+
+    def test_each_lost_destination_facet_blocks_completion(self):
+        for group, rule in self.record["rules"].items():
+            for index, destination in enumerate(rule["destinations"]):
+                for facet in destination["facets"]:
+                    record = copy.deepcopy(self.record)
+                    record["rules"][group]["destinations"][index]["facets"].remove(facet)
+                    with self.subTest(group=group, facet=facet), self.assertRaises(ValueError):
+                        transfer.verify(self.repo, record)
+
+    def test_duplicate_destination_facet_blocks_completion(self):
+        self.destination("ownership")["facets"].append("clear-owner")
+        with self.assertRaises(ValueError):
+            transfer.verify(self.repo, self.record)
+
+    def test_automatic_reference_import_blocks_completion(self):
+        wrapper = self.repo / "CLAUDE.md"
+        wrapper.write_text(wrapper.read_text() + "@PROJECT_REFERENCE.md\n")
+        with self.assertRaisesRegex(ValueError, "automatic startup"):
+            transfer.verify(self.repo, self.record)
+
+    def test_missing_reference_or_activation_blocks_completion(self):
+        reference = next(
+            d for d in self.record["rules"]["ownership"]["destinations"] if d["kind"] == "reference"
+        )
+        original = copy.deepcopy(reference)
+        for key in ("activation", "sha256"):
+            reference.clear()
+            reference.update(original)
+            reference.pop(key)
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                transfer.verify(self.repo, self.record)
+
+    def test_reference_activation_requires_condition_and_actual_link(self):
+        reference = next(
+            d for d in self.record["rules"]["ownership"]["destinations"] if d["kind"] == "reference"
+        )
+        activation = reference["activation"]
+        activation["when"] = ""
+        with self.assertRaisesRegex(ValueError, "applicability"):
+            transfer.verify(self.repo, self.record)
+        activation["when"] = "architecture/refactoring decisions"
+        activation["section"] = "Navigation"
+        activation["sha256"] = hashlib.sha256(
+            transfer.section_text(self.repo / "AGENTS.md", "Navigation").encode()
+        ).hexdigest()
+        with self.assertRaisesRegex(ValueError, "must link"):
+            transfer.verify(self.repo, self.record)
+
+    def test_changed_conditional_detail_invalidates_review(self):
+        path = self.repo / "PROJECT_REFERENCE.md"
+        path.write_text(path.read_text() + "\nChanged Skill sharing.\n")
+        with self.assertRaises(ValueError):
+            transfer.verify(self.repo, self.record)
+
+    def test_safety_obligation_change_invalidates_review(self):
+        path = self.repo / "AGENTS.md"
+        for obligation in (
+            "correctness",
+            "security",
+            "trust-boundary validation",
+            "data safety",
+            "data-loss prevention",
+            "readability",
+            "maintainability",
+            "accessibility",
+            "requested behavior",
+        ):
+            original = path.read_text()
+            path.write_text(original.replace(obligation, "", 1))
+            with self.subTest(obligation=obligation), self.assertRaises(ValueError):
+                transfer.verify(self.repo, self.record)
+            path.write_text(original)
 
     def test_complete_transfer_passes_without_any_setup_specification(self):
         result = transfer.verify(self.repo, self.record)
@@ -211,13 +377,19 @@ class TransferGateTests(unittest.TestCase):
         path.write_text(body)
         # Actually move the duty: an unreachable reference must not leave a fallback copy.
         guidance.write_text(guidance.read_text().replace(body, ""))
-        item = self.record["rules"]["navigation"]
+        item = self.destination("navigation")
         item.update(
             kind="reference",
             path=path.relative_to(self.repo).as_posix(),
             section="",
             sha256=hashlib.sha256(body.encode()).hexdigest(),
         )
+        item["activation"] = {
+            "path": "AGENTS.md",
+            "section": "",
+            "when": "navigation",
+            "sha256": hashlib.sha256(guidance.read_bytes()).hexdigest(),
+        }
 
     def test_unreachable_optional_reference_blocks_completion(self):
         self.move_navigation(self.repo / "docs/navigation.md")
@@ -230,6 +402,9 @@ class TransferGateTests(unittest.TestCase):
         path.write_text(
             path.read_text() + "\nFor navigation, follow [navigation](docs/navigation.md).\n"
         )
+        self.destination("navigation")["activation"]["sha256"] = hashlib.sha256(
+            path.read_bytes()
+        ).hexdigest()
         old_spec = self.repo / "AGENT_BOOTSTRAP.md"
         old_spec.write_text("Obsolete setup only.\n")
         before = transfer.verify(self.repo, self.record)
@@ -257,14 +432,14 @@ class TransferGateTests(unittest.TestCase):
             transfer.verify(self.repo, self.record)
 
     def test_normal_development_cannot_be_silently_delegated_to_review(self):
-        self.record["rules"]["bug-fix"].update(
+        self.destination("bug-fix").update(
             kind="contextlean_skill", skill="contextlean:lean-review"
         )
         with self.assertRaises(ValueError):
             transfer.verify(self.repo, self.record)
 
     def test_destination_cannot_escape_the_repository(self):
-        self.record["rules"]["navigation"]["path"] = "../outside.md"
+        self.destination("navigation")["path"] = "../outside.md"
         with self.assertRaises(ValueError):
             transfer.verify(self.repo, self.record)
 

@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "rules": {
     "navigation": {
       "facets": [
@@ -15,10 +15,26 @@
         "preserve-architecture"
       ],
       "semantics_reviewed": true,
-      "kind": "guidance",
-      "path": "AGENTS.md",
-      "section": "Navigation",
-      "sha256": "169da3d34b8a04535ed27c4ce177f88955ec45608cb6cac8eefab6145456f960"
+      "destinations": [
+        {
+          "facets": [
+            "map-primary",
+            "no-rediscovery",
+            "owner-first",
+            "search-first",
+            "immediate-dependencies",
+            "evidence-expansion",
+            "no-ordinary-scan",
+            "no-unjustified-reread",
+            "repository-state",
+            "preserve-architecture"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Navigation",
+          "sha256": "1743cdeee86f5b8c7eb813b0ecd3b97dbd9b966e8c5a867f7abe27acf17e95d5"
+        }
+      ]
     },
     "ownership": {
       "facets": [
@@ -31,10 +47,37 @@
         "genuine-new-module"
       ],
       "semantics_reviewed": true,
-      "kind": "guidance",
-      "path": "AGENTS.md",
-      "section": "Ownership",
-      "sha256": "608a74e853541035a056d1abd37f0366f75d3ab16df44ac2887ecf4b8ac8c253"
+      "destinations": [
+        {
+          "facets": [
+            "clear-owner",
+            "cohesive-files-modules-classes",
+            "related-together",
+            "unrelated-separated",
+            "unique-state-behavior",
+            "genuine-new-module"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Ownership",
+          "sha256": "3ec5c3893da27e82fe17a561d64977ceeeff757753a4f2497d1f096e2202b0c5"
+        },
+        {
+          "facets": [
+            "owner-locality-unrelated-extraction"
+          ],
+          "kind": "reference",
+          "path": "PROJECT_REFERENCE.md",
+          "section": "Architecture decisions",
+          "sha256": "f8192424f1034d79d516b485986174fb2ae4092eaf94bd0c683cab2f578e6c68",
+          "activation": {
+            "path": "AGENTS.md",
+            "section": "Ownership",
+            "sha256": "3ec5c3893da27e82fe17a561d64977ceeeff757753a4f2497d1f096e2202b0c5",
+            "when": "architecture/refactoring decisions"
+          }
+        }
+      ]
     },
     "structure": {
       "facets": [
@@ -45,10 +88,43 @@
         "no-fragmentation-wrappers"
       ],
       "semantics_reviewed": true,
-      "kind": "guidance",
-      "path": "AGENTS.md",
-      "section": "Structure",
-      "sha256": "54ecdf79c0952929c631dc5a1420ed15f6c3d5149caa3f4e0a963998c25c1179"
+      "destinations": [
+        {
+          "facets": [
+            "no-arbitrary-size",
+            "cohesive-large-files",
+            "refactor-current-need"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Structure",
+          "sha256": "a6dfdce40e55638a9906ad3e11187abc5d7eaa065af2665f48fce4535d05480e"
+        },
+        {
+          "facets": [
+            "refactor-signals"
+          ],
+          "kind": "reference",
+          "path": "PROJECT_REFERENCE.md",
+          "section": "Architecture decisions",
+          "sha256": "f8192424f1034d79d516b485986174fb2ae4092eaf94bd0c683cab2f578e6c68",
+          "activation": {
+            "path": "AGENTS.md",
+            "section": "Ownership",
+            "sha256": "3ec5c3893da27e82fe17a561d64977ceeeff757753a4f2497d1f096e2202b0c5",
+            "when": "architecture/refactoring decisions"
+          }
+        },
+        {
+          "facets": [
+            "no-fragmentation-wrappers"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Ownership",
+          "sha256": "3ec5c3893da27e82fe17a561d64977ceeeff757753a4f2497d1f096e2202b0c5"
+        }
+      ]
     },
     "interfaces": {
       "facets": [
@@ -59,10 +135,35 @@
         "coupling-justifies-indirection"
       ],
       "semantics_reviewed": true,
-      "kind": "guidance",
-      "path": "AGENTS.md",
-      "section": "Interfaces",
-      "sha256": "1609d4f4a58c9c1572e0ae3961d4d6e73fe4732aa3a13029acf8f6741865ca12"
+      "destinations": [
+        {
+          "facets": [
+            "simple-direction-no-cycles-globals",
+            "focused-public-api",
+            "local-internals"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Interfaces",
+          "sha256": "2fb8165927bcb4b4674b60d4de88c55dc86304b1c9c5383c0f21050651fd21aa"
+        },
+        {
+          "facets": [
+            "distinct-boundaries",
+            "coupling-justifies-indirection"
+          ],
+          "kind": "reference",
+          "path": "PROJECT_REFERENCE.md",
+          "section": "Architecture decisions",
+          "sha256": "f8192424f1034d79d516b485986174fb2ae4092eaf94bd0c683cab2f578e6c68",
+          "activation": {
+            "path": "AGENTS.md",
+            "section": "Ownership",
+            "sha256": "3ec5c3893da27e82fe17a561d64977ceeeff757753a4f2497d1f096e2202b0c5",
+            "when": "architecture/refactoring decisions"
+          }
+        }
+      ]
     },
     "implementation": {
       "facets": [
@@ -81,10 +182,37 @@
         "specific-helper-owner"
       ],
       "semantics_reviewed": true,
-      "kind": "guidance",
-      "path": "AGENTS.md",
-      "section": "Implementation",
-      "sha256": "300c3e622bec67555a5b2744ff7f72744c27de0fbd308c006c9dc6fc02b0dd19"
+      "destinations": [
+        {
+          "facets": [
+            "reuse-supported",
+            "reuse-project",
+            "reuse-standard-library",
+            "reuse-framework-platform",
+            "reuse-installed-dependency",
+            "reuse-minimum-new-code",
+            "readable-coherent-shallow",
+            "focused-diff",
+            "no-style-rewrite",
+            "safe-obsolete-removal",
+            "no-speculation",
+            "preserve-safety"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Implementation",
+          "sha256": "043b645cca5823be585482f188868e6fa9b01dec2699509838e22777a11dadf9"
+        },
+        {
+          "facets": [
+            "specific-helper-owner"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Ownership",
+          "sha256": "3ec5c3893da27e82fe17a561d64977ceeeff757753a4f2497d1f096e2202b0c5"
+        }
+      ]
     },
     "bug-fix": {
       "facets": [
@@ -96,10 +224,30 @@
         "practical-regression"
       ],
       "semantics_reviewed": true,
-      "kind": "guidance",
-      "path": "AGENTS.md",
-      "section": "Bug fixes",
-      "sha256": "9d761e3640b96676066523505d1ab160aacf59edf72311fa0bd8dfa264f2eae0"
+      "destinations": [
+        {
+          "facets": [
+            "root-cause-first",
+            "trace-flow-callers",
+            "responsible-shared-layer",
+            "no-repeated-workaround",
+            "no-unnecessary-broad-refactor"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Bug fixes",
+          "sha256": "70bf5a1ce9ea1bd1989753cb40cbdc246829695e68103d22fba427e6007cd740"
+        },
+        {
+          "facets": [
+            "practical-regression"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Verification",
+          "sha256": "a33ea3514fc48b23550f4adcd2b73570b0d0301353ffdf2e1b73a8ca5796a224"
+        }
+      ]
     },
     "verification": {
       "facets": [
@@ -111,10 +259,22 @@
         "no-single-check-framework"
       ],
       "semantics_reviewed": true,
-      "kind": "guidance",
-      "path": "AGENTS.md",
-      "section": "Verification",
-      "sha256": "c044da8b042fccf0ce928ff0479404cfc313d33dbbef2445ff416cef7d45c28e"
+      "destinations": [
+        {
+          "facets": [
+            "targeted-affected-full",
+            "smallest-meaningful",
+            "broaden-shared-core-or-rules",
+            "existing-infrastructure",
+            "runnable-regression",
+            "no-single-check-framework"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Verification",
+          "sha256": "a33ea3514fc48b23550f4adcd2b73570b0d0301353ffdf2e1b73a8ca5796a224"
+        }
+      ]
     },
     "context": {
       "facets": [
@@ -126,10 +286,22 @@
         "protected-agent-settings"
       ],
       "semantics_reviewed": true,
-      "kind": "guidance",
-      "path": "AGENTS.md",
-      "section": "Context",
-      "sha256": "b8955fddf096e2a480c56a8422c7481d2bc559c9501f318a25f23b5b284362a0"
+      "destinations": [
+        {
+          "facets": [
+            "large-documents-optional-search",
+            "proven-local-exclusions",
+            "task-relevant-generated-exception",
+            "preserve-useful-material",
+            "shared-claude-knowledge",
+            "protected-agent-settings"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Context",
+          "sha256": "87bebef1cca3676af8a39cc9aa01427ded8269643572c6e496e10b7a764bfad1"
+        }
+      ]
     },
     "maintenance": {
       "facets": [
@@ -141,10 +313,22 @@
         "no-global-refresh"
       ],
       "semantics_reviewed": true,
-      "kind": "guidance",
-      "path": "AGENTS.md",
-      "section": "Map maintenance",
-      "sha256": "a7662304a35f582105c3cf05aa0882f54d5cd98e3733e7b1601991c6b8be0f69"
+      "destinations": [
+        {
+          "facets": [
+            "after-every-task",
+            "paths-owners-subsystems-architecture-flows-commands-workflows",
+            "smallest-map-stale-removal",
+            "no-detail-churn",
+            "durable-concise-not-obvious",
+            "no-global-refresh"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Map maintenance",
+          "sha256": "c8a0d02d7fc7b1eb086fc56c4d9bca92f723d2761f22fb37e07ccfd25b380872"
+        }
+      ]
     },
     "project-skills": {
       "facets": [
@@ -154,10 +338,34 @@
         "portable-verified-sharing"
       ],
       "semantics_reviewed": true,
-      "kind": "guidance",
-      "path": "AGENTS.md",
-      "section": "Project Skills",
-      "sha256": "e4033787123560885ae73834149785d22c8aeb961532e9b4866d90b30d94ffb8"
+      "destinations": [
+        {
+          "facets": [
+            "repetitive-nontrivial-reusable"
+          ],
+          "kind": "guidance",
+          "path": "AGENTS.md",
+          "section": "Project Skills",
+          "sha256": "e59c8fbea27a07554eedbb85badb8b123e47275d76cd0f2d3e3181da046f016d"
+        },
+        {
+          "facets": [
+            "maps-versus-procedures",
+            "canonical-project-discovery",
+            "portable-verified-sharing"
+          ],
+          "kind": "reference",
+          "path": "PROJECT_REFERENCE.md",
+          "section": "Project Skills",
+          "sha256": "a3e26728cc295adbb147c9a2595784dd75344baf1b25247d021e37b2ecbae069",
+          "activation": {
+            "path": "AGENTS.md",
+            "section": "Project Skills",
+            "sha256": "e59c8fbea27a07554eedbb85badb8b123e47275d76cd0f2d3e3181da046f016d",
+            "when": "creating/modifying project Skills"
+          }
+        }
+      ]
     },
     "lean-review": {
       "facets": [
@@ -166,11 +374,20 @@
         "behavior-preserving-review"
       ],
       "semantics_reviewed": true,
-      "kind": "contextlean_skill",
-      "path": "skills/lean-review/SKILL.md",
-      "section": "Review workflow",
-      "skill": "contextlean:lean-review",
-      "sha256": "9245cfbc3ff7b26c3eb9c7604e0df0ced96fab4f9150a9b5674602f23278b8f5"
+      "destinations": [
+        {
+          "facets": [
+            "explicit-packaged-handoff",
+            "advisory-read-only",
+            "behavior-preserving-review"
+          ],
+          "kind": "contextlean_skill",
+          "path": "skills/lean-review/SKILL.md",
+          "section": "Review workflow",
+          "sha256": "9245cfbc3ff7b26c3eb9c7604e0df0ced96fab4f9150a9b5674602f23278b8f5",
+          "skill": "contextlean:lean-review"
+        }
+      ]
     }
   }
 }

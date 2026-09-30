@@ -1,10 +1,9 @@
 # ContextLean bootstrap procedure
 
-This is the canonical one-time bootstrap procedure. Read it only after the user
-explicitly asks to bootstrap a repository, and read it completely before changing
-that repository. Also read adjacent `permanent-rules.json` completely: its stable
-group/facet identifiers define the permanent behaviors to transfer, not extra startup
-context or an instruction template that must be copied verbatim.
+This is the canonical one-time procedure. Read it only after an explicit bootstrap request,
+completely before changing the repository. Also read `permanent-rules.json` completely:
+stable group/facet identifiers define behaviors to transfer, not extra startup context or
+a verbatim instruction template.
 
 The outcome is a small, durable repository map for Codex and Claude Code. Bootstrap
 may change agent guidance and narrowly related configuration, but it must not change
@@ -82,19 +81,26 @@ project map
 → check map accuracy and update only the smallest relevant map when needed
 ```
 
-Transfer every `permanent-rules.json` group into concise, repository-specific guidance.
-Preserve each facet's meaning, including ordered decisions; consolidate with equivalent
-existing rules rather than duplicating them. Usually use grouped paragraphs in the root
-map. Use nested maps only for genuinely subtree-specific behavior. Optional references
-must have a clear applicability/read instruction in the relevant map, not an orphan link.
+Transfer all 71 `permanent-rules.json` facets with their identifiers, meanings and ordered
+choices intact. Categories distinguish automatic invariants/actions, packaged delegation,
+conditional detail and consolidated duplicates. Share wording/destinations, never drop duties.
+Keep navigation, coding, safety, proportional verification and after-task map checks automatic.
+Inspect version-control state before broad/state-sensitive changes when available; read-only
+navigation needs no Git ritual. Verification chooses scope: targeted first, broaden for shared/
+core impact, full only when necessary/project-required, not three mandatory sequential steps.
+
+Use one optional `PROJECT_REFERENCE.md` (or an equivalent existing reference) for the inventory's
+architecture/extraction and project Skill creation/sharing/discovery details. Link each section
+from the map with an explicit task trigger; never import it or require it on every task. Bug/
+verification examples may share it, with baseline duties automatic. Adapt existing equivalent
+rules instead of duplicating them; nested maps are only for subtree-specific behavior. Aim for
+roughly 4.5–5.5 KB on a small representative map; preservation overrides this nonbinding target.
 Do not copy setup steps, identifiers or the transfer ledger into permanent context.
 
 Explicitly delegate advisory completed-change review to packaged `contextlean:lean-review`
 in reachable guidance; do not generate another generic review Skill. Document the
 separate `contextlean:audit` drift-inspection workflow. Ordinary implementation and
 maintenance duties still belong in project guidance; optional review is not their substitute.
-
-Do not require future sessions to read this bootstrap procedure.
 
 ## 4. Reuse the map from Claude Code
 
@@ -112,8 +118,8 @@ replace the automatically loaded file with the lightweight import. Preserve any
 Claude-specific instruction that cannot be represented safely in shared guidance and
 explain the exception.
 
-Verify every import relative to its wrapper. Re-running bootstrap on an unchanged,
-already-clean repository should produce no further guidance changes.
+Verify every relative import; re-running bootstrap on an unchanged, already-clean repository
+should produce no further guidance changes.
 
 ## 5. Keep optional context optional
 
@@ -153,24 +159,29 @@ Check all of the following against the final filesystem:
 - a second conceptual pass would be idempotent because no unresolved bootstrap work
   remains.
 
-Remove redundancy or speculative guidance found during verification. If a product
-refactor would improve locality, report it separately; bootstrap must not perform it.
+Remove redundancy/speculation. Report product-locality refactors separately; bootstrap must not
+perform them.
 
 ### Permanent-rule transfer and safe-removal gate
 
 Before success, review every facet in `permanent-rules.json` against its actual durable
 destination. No required normal-development behavior may exist only in a setup file.
-For each group, record one destination in local `.contextlean/bootstrap-transfer.json`:
-`schema_version: 1`, and `rules` keyed by all group ids. Each entry contains `facets`
-(all reviewed facet ids), `semantics_reviewed: true`, `kind`, relative `path`, optional
-Markdown `section` heading, and `sha256` of that section's exact UTF-8 body (or the
-whole file if no heading). The digest binds the review to the actual final content.
+Write local `.contextlean/bootstrap-transfer.json`: `schema_version: 2`, `rules` keyed by group
+ids. Each group has all `facets`, `semantics_reviewed: true`, and `destinations`; each destination
+has its subset of `facets`, `kind`, relative `path`, optional Markdown `section` and `sha256`
+of the exact UTF-8 section body (whole file without a heading). Assign every facet exactly once,
+including consolidated facets sharing another group's section; hashes bind review to final
+content. Existing version 1 records remain supported; use version 2 for the split.
 Do not attest a missing or weakened facet; adapt the guidance first. This record is
 verification evidence, not agent context; ignore `.contextlean/` in project Git rules.
 
 Kinds are `guidance`, `configuration`, `reference` or `project_skill`, reachable through
 explicit local links/imports from the root map. Nested destinations must apply to every
 subtree needing the rule; a local-only map cannot carry a repository-wide duty alone.
+Each `reference` also has `activation`: automatic source `path`, `section`, `sha256`, and `when`
+describing its task trigger. The reviewed source must link to the reference and instruct reading
+for that condition. Automatic reference imports fail. Review the trigger semantically; a nonempty
+`when` cannot prove appropriate applicability in prose.
 Only the advisory `lean-review` group may use `contextlean_skill`, with
 `skill: contextlean:lean-review`, `path: skills/lean-review/SKILL.md` resolved from the
 installed plugin and its reviewed section/hash. Verify that workflow remains available
@@ -211,14 +222,13 @@ python3 skills/benchmark/scripts/benchmark.py bootstrap-finish \
   --limit <measurement-limit>
 ```
 
-Repeat flags as needed and omit empty categories. Resolve the script from the plugin
-root as in step 1. The report records exact file/path measurements, explicit token
-estimates, heuristic startup-document detection, and the supplied action log. It must
-never contain repository contents, secrets, credentials, command output, telemetry,
-or an archive.
+Repeat flags as needed; omit empty categories and resolve the script as in step 1. The report
+records exact file/path measurements, token estimates, heuristic startup-document detection
+and the supplied action log. Never include repository contents, secrets, credentials, command
+output, telemetry or an archive.
 
-On success, `bootstrap-finish` removes only the temporary baseline. If it fails,
-preserve the baseline, report the failure, and do not invent before/after values.
+On success, `bootstrap-finish` removes only the temporary baseline. On failure preserve it, report
+the failure, and do not invent before/after values.
 Never import reports or the transfer record from `AGENTS.md`, `CLAUDE.md`, hooks,
 or startup scripts. Future sessions must not need a bootstrap specification.
 

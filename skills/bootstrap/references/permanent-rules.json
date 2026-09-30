@@ -16,7 +16,19 @@
         "repository-state",
         "preserve-architecture"
       ],
-      "guidance": "Use the AGENTS.md hierarchy as the primary map; do not rediscover documented architecture. Identify the smallest responsible subsystem, search symbols/references/text before reading, then inspect relevant code, immediate dependencies and tests. Expand only with evidence; avoid whole-repository scans during ordinary tasks and rereading understood files without reason. Inspect version-control state before broad changes. Respect existing architecture unless the requested task requires changing it."
+      "guidance": "Use AGENTS.md as the primary map; do not rediscover documented architecture. Identify the smallest owner, search before broad reading; inspect immediate dependencies/tests only when relevant. Expand only with evidence; avoid ordinary whole-repo scans and unjustified rereads. Before broad/state-sensitive changes, inspect version-control state when available. Preserve architecture unless the task requires change.",
+      "delivery": {
+        "map-primary": "B",
+        "no-rediscovery": "B",
+        "owner-first": "B",
+        "search-first": "B",
+        "immediate-dependencies": "B",
+        "evidence-expansion": "B",
+        "no-ordinary-scan": "B",
+        "no-unjustified-reread": "B",
+        "repository-state": "B",
+        "preserve-architecture": "A"
+      }
     },
     {
       "id": "ownership",
@@ -30,7 +42,20 @@
         "owner-locality-unrelated-extraction",
         "genuine-new-module"
       ],
-      "guidance": "Give each important responsibility a clear owner and each file/module/class one primary cohesive responsibility. Keep related behavior together, separate unrelated systems, and avoid duplicate ownership of state or behavior. Before adding or extracting a subsystem, ask who owns it, whether the change can stay local, whether it introduces an unrelated responsibility, and whether cohesive extraction reduces future unrelated reading. Create a module only for a genuine responsibility."
+      "guidance": "Give files/modules/classes cohesive owners: related behavior together, unrelated responsibilities separate, no duplicate state/behavior. Prefer specific owners over catch-all helpers. New modules need a genuine responsibility; split only for locality benefit; avoid fragmentation/forwarding wrappers. For architecture/refactoring decisions, read [Architecture decisions](PROJECT_REFERENCE.md#architecture-decisions).",
+      "reference": {
+        "heading": "Architecture decisions",
+        "guidance": "Before adding/extracting behavior, identify its owner, whether it can stay local, whether it adds an unrelated responsibility, and whether cohesive extraction reduces future unrelated reading. Create a module only for a genuine responsibility. Maintainability and context efficiency both benefit from local changes."
+      },
+      "delivery": {
+        "clear-owner": "A",
+        "cohesive-files-modules-classes": "E",
+        "related-together": "A",
+        "unrelated-separated": "A",
+        "unique-state-behavior": "A",
+        "owner-locality-unrelated-extraction": "D",
+        "genuine-new-module": "A"
+      }
     },
     {
       "id": "structure",
@@ -42,7 +67,18 @@
         "refactor-current-need",
         "no-fragmentation-wrappers"
       ],
-      "guidance": "Maintainability and context efficiency share the goal of local changes. Split by responsibility, never line count; cohesive large files are acceptable. Mixed responsibilities, repeated unrelated edits, unrelated reading, catch-all objects or a new independent responsibility are refactoring signals, not automatic permission. Refactor only when the current task benefits meaningfully or the user requests it. Avoid tiny-file fragmentation, forwarding wrappers and layers that increase the files needed to understand one responsibility."
+      "guidance": "Split by responsibility, never size; cohesive large files are acceptable. Refactor only for meaningful current-task benefit or an explicit request; assess signals using the architecture reference.",
+      "reference": {
+        "heading": "Architecture decisions",
+        "guidance": "Refactoring signals: independent responsibilities, repeated unrelated edits, large unrelated reads, catch-all/god objects, a new independent responsibility, or extraction that improves locality. Signals invite judgment, not automatic refactoring; apply the permanent current-task/request threshold."
+      },
+      "delivery": {
+        "no-arbitrary-size": "A",
+        "cohesive-large-files": "A",
+        "refactor-signals": "D",
+        "refactor-current-need": "A",
+        "no-fragmentation-wrappers": "E"
+      }
     },
     {
       "id": "interfaces",
@@ -54,7 +90,18 @@
         "distinct-boundaries",
         "coupling-justifies-indirection"
       ],
-      "guidance": "Keep dependency direction simple; avoid cycles and hidden global coupling. Keep public interfaces focused and implementation details local, so callers need no unnecessary knowledge of internals. Separate UI, domain, persistence, transport and infrastructure when genuinely distinct. Use events, signals, interfaces or dependency injection only when they reduce coupling; do not abstract for architectural purity."
+      "guidance": "Keep dependencies simple, without cycles/hidden global coupling; public interfaces focused; internals local so callers need no unnecessary internal knowledge. For boundary/indirection decisions, use the architecture reference.",
+      "reference": {
+        "heading": "Architecture decisions",
+        "guidance": "Separate UI, domain, persistence, transport and infrastructure when genuinely distinct. Events, signals, interfaces or dependency injection must meaningfully reduce coupling; architectural purity alone is insufficient."
+      },
+      "delivery": {
+        "simple-direction-no-cycles-globals": "A",
+        "focused-public-api": "A",
+        "local-internals": "A",
+        "distinct-boundaries": "D",
+        "coupling-justifies-indirection": "D"
+      }
     },
     {
       "id": "implementation",
@@ -74,7 +121,22 @@
         "preserve-safety",
         "specific-helper-owner"
       ],
-      "guidance": "Before new code, check in order: behavior already supported \u2192 project solution/helper/pattern \u2192 standard library \u2192 native framework/platform \u2192 installed dependency \u2192 minimum necessary new code. Prefer explicit readable code, coherent functions/classes, meaningful extractions and shallow control flow. Keep diffs and touched files focused; avoid unrelated cleanup, stylistic rewrites of working systems and speculative configuration/extension layers or dependencies without concrete benefit. Safely remove code made obsolete by the change. Preserve correctness, security, trust-boundary validation, data safety, readability, maintainability, accessibility and requested behavior. Prefer a specific responsible owner over generic catch-all helpers."
+      "guidance": "Reuse in order: existing support → project solution → standard library → framework/platform → installed dependency → minimum new code. Write explicit, readable, coherent code with meaningful extractions and shallow flow. Focus diffs/files; no unrelated cleanup, style-only rewrites, speculative abstractions/configuration or dependencies without concrete benefit. Remove newly obsolete code safely. Preserve correctness, security, trust-boundary validation, data safety and data-loss prevention, readability, maintainability, accessibility and requested behavior.",
+      "delivery": {
+        "reuse-supported": "B",
+        "reuse-project": "B",
+        "reuse-standard-library": "B",
+        "reuse-framework-platform": "B",
+        "reuse-installed-dependency": "B",
+        "reuse-minimum-new-code": "B",
+        "readable-coherent-shallow": "A",
+        "focused-diff": "A",
+        "no-style-rewrite": "A",
+        "safe-obsolete-removal": "B",
+        "no-speculation": "A",
+        "preserve-safety": "A",
+        "specific-helper-owner": "E"
+      }
     },
     {
       "id": "bug-fix",
@@ -87,7 +149,15 @@
         "no-unnecessary-broad-refactor",
         "practical-regression"
       ],
-      "guidance": "Find the root cause before patching symptoms; trace relevant data/execution flow and callers/usages when needed. Fix the responsible shared layer rather than duplicating workarounds across callers. Avoid broad refactors unless correctness requires them. Add the smallest useful runnable regression verification for non-trivial fixes when practical."
+      "guidance": "Diagnose root cause; inspect relevant flow/callers when needed. Fix the owner/shared layer, avoid repeated workarounds and broad refactors unless correctness requires them. Apply the regression rule below. For difficult diagnosis, see [Bug diagnosis](PROJECT_REFERENCE.md#bug-diagnosis).",
+      "delivery": {
+        "root-cause-first": "B",
+        "trace-flow-callers": "B",
+        "responsible-shared-layer": "B",
+        "no-repeated-workaround": "A",
+        "no-unnecessary-broad-refactor": "A",
+        "practical-regression": "E"
+      }
     },
     {
       "id": "verification",
@@ -100,7 +170,15 @@
         "runnable-regression",
         "no-single-check-framework"
       ],
-      "guidance": "Use the smallest meaningful verification: targeted checks first, affected broader checks for shared/core changes, and the full suite when necessary or required by project rules. Prefer existing test infrastructure; leave runnable regression coverage for non-trivial logic when practical. Do not introduce a test framework for one small check without genuine justification. Keep verified targeted and full commands distinct when both exist; mark uncertain commands unverified."
+      "guidance": "Use the smallest meaningful check, targeted first; broaden for shared/core changes; full suite only when necessary/project-required. These are scope choices, not mandatory sequential steps. Use existing infrastructure; leave a small runnable regression check for non-trivial logic/fixes when practical. No new framework for one check without justification. Distinguish verified targeted/full commands; label uncertainty. If scope is unclear, see [Verification scope](PROJECT_REFERENCE.md#verification-scope).",
+      "delivery": {
+        "targeted-affected-full": "B",
+        "smallest-meaningful": "E",
+        "broaden-shared-core-or-rules": "B",
+        "existing-infrastructure": "A",
+        "runnable-regression": "B",
+        "no-single-check-framework": "A"
+      }
     },
     {
       "id": "context",
@@ -113,7 +191,15 @@
         "shared-claude-knowledge",
         "protected-agent-settings"
       ],
-      "guidance": "Keep large documentation available as optional topic references: search first, read relevant sections, never require whole-document startup reading. Ignore only proven generated/cache/build/vendor material during ordinary work; inspect it when the task concerns it. Never hide useful source, tests, fixtures, migrations, documentation, assets or archives without a clear reason. Keep AGENTS.md canonical and Claude wrappers lightweight; preserve useful knowledge and necessary platform-specific exceptions. Never change model selection, reasoning level, provider, authentication, credentials or user-global agent settings without an explicit request."
+      "guidance": "Search large docs; read relevant sections, never whole documents at startup. Ignore only proven local generated/cache/build/vendor material; inspect when task-relevant. Preserve useful source/tests/fixtures/migrations/docs/assets/archives. Keep AGENTS.md canonical, Claude wrappers light, useful knowledge/platform exceptions intact. Never change model selection, reasoning, provider, authentication, credentials or user-global agent settings without an explicit request.",
+      "delivery": {
+        "large-documents-optional-search": "B",
+        "proven-local-exclusions": "A",
+        "task-relevant-generated-exception": "B",
+        "preserve-useful-material": "A",
+        "shared-claude-knowledge": "A",
+        "protected-agent-settings": "A"
+      }
     },
     {
       "id": "maintenance",
@@ -126,7 +212,15 @@
         "durable-concise-not-obvious",
         "no-global-refresh"
       ],
-      "guidance": "After each task, check map accuracy. Update only the smallest relevant AGENTS.md for important path, ownership, subsystem, architecture, dependency/data-flow, command or reusable-workflow changes; remove stale entries and duplication. Avoid map churn for ordinary bug fixes, details, content, tuning, small UI changes or internal refactors preserving ownership. Keep guidance concise and durable, omit transient or code-obvious details, and move depth to optional references. Avoid repository-wide documentation refreshes unless necessary. Use ContextLean Audit Context Locality (contextlean:audit) for a separate drift inspection when needed."
+      "guidance": "After every task, check map accuracy. Update only the smallest map for meaningful path/owner/subsystem/architecture/dependency/data-flow/command/reusable-workflow changes; remove stale/duplicate entries. No churn for ordinary fixes/details/content/tuning/UI or ownership-preserving refactors. Keep maps concise, durable, non-obvious; depth optional. No global documentation refresh unless necessary.",
+      "delivery": {
+        "after-every-task": "B",
+        "paths-owners-subsystems-architecture-flows-commands-workflows": "B",
+        "smallest-map-stale-removal": "B",
+        "no-detail-churn": "A",
+        "durable-concise-not-obvious": "A",
+        "no-global-refresh": "A"
+      }
     },
     {
       "id": "project-skills",
@@ -137,7 +231,17 @@
         "canonical-project-discovery",
         "portable-verified-sharing"
       ],
-      "guidance": "Keep persistent navigation, architecture and rules in AGENTS.md. Create project Skills only for repetitive, non-trivial reusable procedures, not simple repository facts. Use .agents/skills/<name>/SKILL.md as the canonical project source and expose it at .claude/skills/<name>/SKILL.md when both agents need it. Prefer a relative directory symlink to the same source only when portable and discovery/target resolution are verified; otherwise report the sharing limitation without copying instructions. These project locations differ from plugin-root skills/."
+      "guidance": "Create/share project Skills only for repetitive, non-trivial reusable procedures. When creating/modifying them, read [Project Skills](PROJECT_REFERENCE.md#project-skills).",
+      "reference": {
+        "heading": "Project Skills",
+        "guidance": "Keep persistent navigation, architecture and rules in AGENTS.md; Skills hold reusable procedures, not simple repository facts. Use .agents/skills/<name>/SKILL.md as the canonical project source; expose the same source through .claude/skills/<name>/SKILL.md when both agents need it. These differ from plugin-root skills/. Prefer a relative directory symlink only when portable: verify target resolution inside the project, resolution after relocation, and discovery on both installed tools without a model turn. Preserve valid existing workflows/sharing. Report unsupported sharing without copying divergent instructions."
+      },
+      "delivery": {
+        "repetitive-nontrivial-reusable": "B",
+        "maps-versus-procedures": "D",
+        "canonical-project-discovery": "D",
+        "portable-verified-sharing": "D"
+      }
     },
     {
       "id": "lean-review",
@@ -147,7 +251,19 @@
         "advisory-read-only",
         "behavior-preserving-review"
       ],
-      "guidance": "Delegate optional completed-change complexity/locality review to ContextLean Lean Change Review (contextlean:lean-review), which is advisory and read-only unless a fix is separately requested. Do not recreate a generic project review Skill; preserve behavior and safety when considering its findings."
+      "guidance": "On demand: ContextLean Lean Change Review (`contextlean:lean-review`) advises on completed changes; read-only unless fixes are requested, preserving behavior/safety. Do not recreate a generic review Skill. ContextLean Audit Context Locality (`contextlean:audit`) owns broader context/drift review. Neither runs automatically or replaces coding/maintenance duties.",
+      "delivery": {
+        "explicit-packaged-handoff": "C",
+        "advisory-read-only": "C",
+        "behavior-preserving-review": "C"
+      }
     }
-  ]
+  ],
+  "delivery_categories": {
+    "A": "concise automatic invariant",
+    "B": "concise automatic routing/action rule",
+    "C": "explicit packaged Skill delegation",
+    "D": "conditional reference detail",
+    "E": "semantically consolidated duplicate"
+  }
 }

@@ -1,56 +1,68 @@
 # Example bootstrapped expense-report project
 
-Dependency-free Python CSV CLI; preserve Decimal amounts and public imports.
+Dependency-free Python CSV CLI using Decimal and unittest; preserve public imports.
 
-## Project map and commands
+## Project map
 
-- `expense_report/cli.py`: parsing/orchestration; `storage.py`: CSV/Decimal loading.
-- `filters.py`: category selection; `report.py`: totals/grouping.
-- `tests/test_expenses.py`: logic and CLI verification; `config.json`: default currency.
+- `expense_report/cli.py`: arguments/configuration and orchestration.
+- `expense_report/storage.py`: CSV loading and Decimal conversion.
+- `expense_report/filters.py`: category normalization/selection.
+- `expense_report/report.py`: normalized grouping and totals.
+- `config.json`: default currency; CLI options override it.
+- `tests/test_expenses.py`: loading, filtering, report and CLI regression tests.
+- `data/sample.csv`: runnable input.
+- `README.md`: usage/development; search relevant sections when needed.
+
+Flow: CLI/config → loader → selection → report → JSON. Keep Decimal through totals.
+
+## Commands and local context
+
 - Targeted: `python3 -m unittest discover -s tests -p test_expenses.py -v`.
-- Full: `python3 -m unittest discover -s tests -v`; this small project has one test file.
-- Example: `python3 -m expense_report.cli data/sample.csv`.
+- Full: `python3 -m unittest discover -s tests -v` (currently the same module).
+- CLI: `python3 -m expense_report.cli data/sample.csv`; add `--category food --currency GBP` to check options.
+- No build/lint/format/type-check or package-manager configuration is present.
+- `.contextlean/` holds ignored local receipts; `__pycache__/` is generated. Inspect when relevant; preserve samples/tests.
 
 ## Navigation
 
-Use the AGENTS.md hierarchy as the primary map; do not rediscover documented architecture. Identify the smallest responsible subsystem, search symbols/references/text before reading, then inspect relevant code, immediate dependencies and tests. Expand only with evidence; avoid whole-repository scans during ordinary tasks and rereading understood files without reason. Inspect version-control state before broad changes. Respect existing architecture unless the requested task requires changing it.
+Use AGENTS.md as the primary map; do not rediscover documented architecture. Identify the smallest owner, search before broad reading; inspect immediate dependencies/tests only when relevant. Expand only with evidence; avoid ordinary whole-repo scans and unjustified rereads. Before broad/state-sensitive changes, inspect version-control state when available. Preserve architecture unless the task requires change.
 
 ## Ownership
 
-Give each important responsibility a clear owner and each file/module/class one primary cohesive responsibility. Keep related behavior together, separate unrelated systems, and avoid duplicate ownership of state or behavior. Before adding or extracting a subsystem, ask who owns it, whether the change can stay local, whether it introduces an unrelated responsibility, and whether cohesive extraction reduces future unrelated reading. Create a module only for a genuine responsibility.
+Give files/modules/classes cohesive owners: related behavior together, unrelated responsibilities separate, no duplicate state/behavior. Prefer specific owners over catch-all helpers. New modules need a genuine responsibility; split only for locality benefit; avoid fragmentation/forwarding wrappers. For architecture/refactoring decisions, read [Architecture decisions](PROJECT_REFERENCE.md#architecture-decisions).
 
 ## Structure
 
-Maintainability and context efficiency share the goal of local changes. Split by responsibility, never line count; cohesive large files are acceptable. Mixed responsibilities, repeated unrelated edits, unrelated reading, catch-all objects or a new independent responsibility are refactoring signals, not automatic permission. Refactor only when the current task benefits meaningfully or the user requests it. Avoid tiny-file fragmentation, forwarding wrappers and layers that increase the files needed to understand one responsibility.
+Split by responsibility, never size; cohesive large files are acceptable. Refactor only for meaningful current-task benefit or an explicit request; assess signals using the architecture reference.
 
 ## Interfaces
 
-Keep dependency direction simple; avoid cycles and hidden global coupling. Keep public interfaces focused and implementation details local, so callers need no unnecessary knowledge of internals. Separate UI, domain, persistence, transport and infrastructure when genuinely distinct. Use events, signals, interfaces or dependency injection only when they reduce coupling; do not abstract for architectural purity.
+Keep dependencies simple, without cycles/hidden global coupling; public interfaces focused; internals local so callers need no unnecessary internal knowledge. For boundary/indirection decisions, use the architecture reference.
 
 ## Implementation
 
-Before new code, check in order: behavior already supported → project solution/helper/pattern → standard library → native framework/platform → installed dependency → minimum necessary new code. Prefer explicit readable code, coherent functions/classes, meaningful extractions and shallow control flow. Keep diffs and touched files focused; avoid unrelated cleanup, stylistic rewrites of working systems and speculative configuration/extension layers or dependencies without concrete benefit. Safely remove code made obsolete by the change. Preserve correctness, security, trust-boundary validation, data safety, readability, maintainability, accessibility and requested behavior. Prefer a specific responsible owner over generic catch-all helpers.
+Reuse in order: existing support → project solution → standard library → framework/platform → installed dependency → minimum new code. Write explicit, readable, coherent code with meaningful extractions and shallow flow. Focus diffs/files; no unrelated cleanup, style-only rewrites, speculative abstractions/configuration or dependencies without concrete benefit. Remove newly obsolete code safely. Preserve correctness, security, trust-boundary validation, data safety and data-loss prevention, readability, maintainability, accessibility and requested behavior.
 
 ## Bug fixes
 
-Find the root cause before patching symptoms; trace relevant data/execution flow and callers/usages when needed. Fix the responsible shared layer rather than duplicating workarounds across callers. Avoid broad refactors unless correctness requires them. Add the smallest useful runnable regression verification for non-trivial fixes when practical.
+Diagnose root cause; inspect relevant flow/callers when needed. Fix the owner/shared layer, avoid repeated workarounds and broad refactors unless correctness requires them. Apply the regression rule below. For difficult diagnosis, see [Bug diagnosis](PROJECT_REFERENCE.md#bug-diagnosis).
 
 ## Verification
 
-Use the smallest meaningful verification: targeted checks first, affected broader checks for shared/core changes, and the full suite when necessary or required by project rules. Prefer existing test infrastructure; leave runnable regression coverage for non-trivial logic when practical. Do not introduce a test framework for one small check without genuine justification. Keep verified targeted and full commands distinct when both exist; mark uncertain commands unverified.
+Use the smallest meaningful check, targeted first; broaden for shared/core changes; full suite only when necessary/project-required. These are scope choices, not mandatory sequential steps. Use existing infrastructure; leave a small runnable regression check for non-trivial logic/fixes when practical. No new framework for one check without justification. Distinguish verified targeted/full commands; label uncertainty. If scope is unclear, see [Verification scope](PROJECT_REFERENCE.md#verification-scope).
 
 ## Context
 
-Keep large documentation available as optional topic references: search first, read relevant sections, never require whole-document startup reading. Ignore only proven generated/cache/build/vendor material during ordinary work; inspect it when the task concerns it. Never hide useful source, tests, fixtures, migrations, documentation, assets or archives without a clear reason. Keep AGENTS.md canonical and Claude wrappers lightweight; preserve useful knowledge and necessary platform-specific exceptions. Never change model selection, reasoning level, provider, authentication, credentials or user-global agent settings without an explicit request.
+Search large docs; read relevant sections, never whole documents at startup. Ignore only proven local generated/cache/build/vendor material; inspect when task-relevant. Preserve useful source/tests/fixtures/migrations/docs/assets/archives. Keep AGENTS.md canonical, Claude wrappers light, useful knowledge/platform exceptions intact. Never change model selection, reasoning, provider, authentication, credentials or user-global agent settings without an explicit request.
 
 ## Map maintenance
 
-After each task, check map accuracy. Update only the smallest relevant AGENTS.md for important path, ownership, subsystem, architecture, dependency/data-flow, command or reusable-workflow changes; remove stale entries and duplication. Avoid map churn for ordinary bug fixes, details, content, tuning, small UI changes or internal refactors preserving ownership. Keep guidance concise and durable, omit transient or code-obvious details, and move depth to optional references. Avoid repository-wide documentation refreshes unless necessary. Use ContextLean Audit Context Locality (contextlean:audit) for a separate drift inspection when needed.
+After every task, check map accuracy. Update only the smallest map for meaningful path/owner/subsystem/architecture/dependency/data-flow/command/reusable-workflow changes; remove stale/duplicate entries. No churn for ordinary fixes/details/content/tuning/UI or ownership-preserving refactors. Keep maps concise, durable, non-obvious; depth optional. No global documentation refresh unless necessary.
 
 ## Project Skills
 
-Keep persistent navigation, architecture and rules in AGENTS.md. Create project Skills only for repetitive, non-trivial reusable procedures, not simple repository facts. Use .agents/skills/<name>/SKILL.md as the canonical project source and expose it at .claude/skills/<name>/SKILL.md when both agents need it. Prefer a relative directory symlink to the same source only when portable and discovery/target resolution are verified; otherwise report the sharing limitation without copying instructions. These project locations differ from plugin-root skills/.
+Create/share project Skills only for repetitive, non-trivial reusable procedures. When creating/modifying them, read [Project Skills](PROJECT_REFERENCE.md#project-skills).
 
 ## Lean Review
 
-Delegate optional completed-change complexity/locality review to ContextLean Lean Change Review (contextlean:lean-review), which is advisory and read-only unless a fix is separately requested. Do not recreate a generic project review Skill; preserve behavior and safety when considering its findings.
+On demand: ContextLean Lean Change Review (`contextlean:lean-review`) advises on completed changes; read-only unless fixes are requested, preserving behavior/safety. Do not recreate a generic review Skill. ContextLean Audit Context Locality (`contextlean:audit`) owns broader context/drift review. Neither runs automatically or replaces coding/maintenance duties.

@@ -67,15 +67,76 @@ def reachable_guidance(repo):
     return visited
 
 
+def automatic_guidance(repo):
+    """Root/nested maps and Claude wrappers load automatically; links do not."""
+    repo = repo.resolve()
+    pending = list(repo.rglob("AGENTS.md")) + list(repo.rglob("CLAUDE.md"))
+    visited = set()
+    while pending:
+        path = pending.pop().resolve()
+        if path in visited or not path.is_file() or not path.is_relative_to(repo):
+            continue
+        if ".contextlean" in path.relative_to(repo).parts:
+            continue
+        visited.add(path)
+        for name in re.findall(r"^@([^\s]+)\s*$", path.read_text(), re.MULTILINE):
+            pending.append(path.parent / name)
+    return visited
+
+
+def reviewed_content(path, item):
+    content = section_text(path, item.get("section", ""))
+    if not content.strip() or hashlib.sha256(content.encode()).hexdigest() != item.get("sha256"):
+        raise ValueError("reviewed destination is missing or changed")
+    return content
+
+
+def verify_destination(repo, plugin, reachable, automatic, group_id, item, conditional):
+    kind = item.get("kind")
+    if kind == "contextlean_skill":
+        # Optional review cannot carry normal implementation obligations.
+        if group_id != "lean-review" or item.get("skill") != "contextlean:lean-review":
+            raise ValueError("unsupported packaged Skill delegation")
+        if not any(
+            "contextlean:lean-review" in p.read_text() for p in automatic if p.suffix == ".md"
+        ):
+            raise ValueError("Lean Review delegation is not documented in automatic guidance")
+        path = local_file(plugin, item["path"])
+        if path != plugin / "skills/lean-review/SKILL.md":
+            raise ValueError("Lean Review destination must be the packaged workflow")
+    elif kind in {"guidance", "configuration", "reference", "project_skill"}:
+        path = local_file(repo, item["path"])
+        if path not in reachable:
+            raise ValueError(f"destination is not reachable without bootstrap context: {group_id}")
+        if kind == "reference" and conditional:
+            if path in automatic:
+                raise ValueError("conditional reference must not be automatic startup context")
+            activation = item.get("activation", {})
+            source = local_file(repo, activation.get("path", ""))
+            if source not in automatic or not activation.get("when", "").strip():
+                raise ValueError("conditional reference requires an automatic applicability rule")
+            route = reviewed_content(source, activation)
+            links = re.findall(r"\[[^\]]*\]\(([^)]+)\)", route)
+            if not any((source.parent / link.split("#")[0]).resolve() == path for link in links):
+                raise ValueError("applicability rule must link to its conditional reference")
+    else:
+        raise ValueError("unknown durable destination kind")
+    if path.name in SPEC_NAMES:
+        raise ValueError("setup specification is not a durable destination")
+    reviewed_content(path, item)
+
+
 def verify(repo, record, plugin=PLUGIN_ROOT):
     repo, plugin = repo.resolve(), plugin.resolve()
     groups = json.loads(RULES.read_text(encoding="utf-8"))["groups"]
     expected = {group["id"]: set(group["facets"]) for group in groups}
-    if record.get("schema_version") != 1 or set(record.get("rules", {})) != set(expected):
+    version = record.get("schema_version")
+    if version not in {1, 2} or set(record.get("rules", {})) != set(expected):
         raise ValueError("transfer record must cover every permanent rule group exactly once")
     reachable = reachable_guidance(repo)
     if repo / "AGENTS.md" not in reachable:
         raise ValueError("canonical project AGENTS.md is required")
+    automatic = automatic_guidance(repo)
     destinations = set()
     for group_id, facets in expected.items():
         item = record["rules"][group_id]
@@ -84,34 +145,17 @@ def verify(repo, record, plugin=PLUGIN_ROOT):
             raise ValueError(f"incomplete semantic review: {group_id}")
         if item.get("semantics_reviewed") is not True:
             raise ValueError(f"semantic review not attested: {group_id}")
-        kind = item.get("kind")
-        if kind == "contextlean_skill":
-            # Only advisory review is delegated; normal implementation rules stay durable locally.
-            if group_id != "lean-review" or item.get("skill") != "contextlean:lean-review":
-                raise ValueError("unsupported packaged Skill delegation")
-            if not any(
-                "contextlean:lean-review" in p.read_text() for p in reachable if p.suffix == ".md"
-            ):
-                raise ValueError("Lean Review delegation is not documented in reachable guidance")
-            path = local_file(plugin, item["path"])
-            if path != plugin / "skills/lean-review/SKILL.md":
-                raise ValueError("Lean Review destination must be the packaged workflow")
-        elif kind in {"guidance", "configuration", "reference", "project_skill"}:
-            path = local_file(repo, item["path"])
-            if path not in reachable:
-                raise ValueError(
-                    f"destination is not reachable without bootstrap context: {group_id}"
-                )
-        else:
-            raise ValueError("unknown durable destination kind")
-        if path.name in SPEC_NAMES:
-            raise ValueError("setup specification is not a durable destination")
-        content = section_text(path, item.get("section", ""))
-        if not content.strip() or hashlib.sha256(content.encode()).hexdigest() != item.get(
-            "sha256"
-        ):
-            raise ValueError(f"reviewed destination is missing or changed: {group_id}")
-        destinations.add(item["path"])
+        items = item.get("destinations", []) if version == 2 else [item]
+        assigned = [facet for destination in items for facet in destination.get("facets", [])]
+        if len(assigned) != len(set(assigned)) or set(assigned) != facets:
+            raise ValueError(f"destinations must cover each facet exactly once: {group_id}")
+        for destination in items:
+            if not destination.get("facets"):
+                raise ValueError("destination must carry at least one facet")
+            verify_destination(
+                repo, plugin, reachable, automatic, group_id, destination, version == 2
+            )
+            destinations.add(destination["path"])
     return {
         "groups": len(expected),
         "facets": sum(map(len, expected.values())),

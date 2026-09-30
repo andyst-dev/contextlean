@@ -15,8 +15,10 @@ The [canonical setup procedure](../skills/bootstrap/references/bootstrap-spec.md
 owns setup only. [Permanent rules](../skills/bootstrap/references/permanent-rules.json)
 own 11 compact groups / 71 stable semantic facets. Bootstrap adapts their meaning
 into project guidance, preserving existing equivalent instructions. The complete
-[worked example](../tests/fixtures/bootstrap-transfer/AGENTS.md) is 56 lines, not a
-copy of the original specification. Advisory review is explicitly delegated to
+[worked example](../tests/fixtures/bootstrap-transfer/AGENTS.md) keeps compact automatic
+rules and [conditional detail](../tests/fixtures/bootstrap-transfer/PROJECT_REFERENCE.md)
+with explicit task triggers. See [compact-context verification](compact-context.md) for
+current measurements; the repair measurements below are historical. Advisory review delegates to
 [Lean Change Review](../skills/lean-review/SKILL.md); separate drift inspection uses
 [Audit Context Locality](../skills/audit/SKILL.md). Neither replaces ordinary coding
 or after-task maintenance duties.
@@ -32,14 +34,16 @@ applicability, configuration effectiveness and actual Skill discovery remain age
 verification duties; do not treat the attestation flag as a substitute.
 
 The [example transfer record](../tests/fixtures/bootstrap-transfer/transfer.json)
-shows the schema. It records section hashes, facet identifiers and review attestations,
+shows version 2: groups contain facet-level destinations, with reviewed automatic
+activation sections for conditional references. Version 1 remains supported for old
+receipts. It records section hashes, facet identifiers and review attestations,
 not copied project contents. In a bootstrapped project, keep it locally at
 `.contextlean/bootstrap-transfer.json`; it is not needed by future development sessions.
 Keep this receipt out of Git/startup context. Permanent guidance itself stays durable.
 
 For example, navigation transfers into the project's `AGENTS.md` / `Navigation`
-section with `kind: guidance`, all navigation facets, `semantics_reviewed: true` and
-that section body's SHA-256. Advisory review uses `kind: contextlean_skill`, qualified
+section with a `kind: guidance` destination, all navigation facets and that section's
+SHA-256; the group attests `semantics_reviewed: true`. Advisory review uses `kind: contextlean_skill`, qualified
 name `contextlean:lean-review` and the installed workflow's reviewed section hash;
 project guidance documents the invocation and its advisory scope. No generic review
 Skill is generated. Missing semantics, stale evidence or losing a destination blocks
@@ -94,14 +98,14 @@ mechanism/owner replacement. Compression alone is not a reason to classify PARTI
 | Navigation | 248–249 | Selective document reading; ordinary output exclusions with task exceptions | PASS | context |
 | Navigation | 250 | Version-control state before broad changes | PASS | navigation / repository-state |
 | Ownership / locality | 260–271 | Clear cohesive owners; related together, unrelated separate; unique state/behavior ownership | PASS | ownership |
-| Ownership / locality | 273–280 | Owner/locality/unrelated-responsibility/extraction decision; genuine new modules | PASS | ownership / owner-locality-unrelated-extraction, genuine-new-module |
+| Ownership / locality | 273–280 | Owner/locality/unrelated-responsibility/extraction decision; genuine new modules | PASS | automatic ownership; conditional Architecture decisions / owner-locality-unrelated-extraction |
 | Ownership / locality | 284–297 | No arbitrary size limits; cohesive large files; split by responsibility | PASS | structure |
-| Ownership / locality | 288–295 | All original refactoring signals, including improved locality | PASS | structure; ownership / owner-locality-unrelated-extraction |
-| Ownership / locality | 299–306 | No tiny-file fragmentation, forwarding wrappers or unnecessary layers | PASS | structure / no-fragmentation-wrappers; implementation / no-speculation |
+| Ownership / locality | 288–295 | All original refactoring signals, including improved locality | PASS | automatic structure threshold; conditional Architecture decisions / refactor-signals |
+| Ownership / locality | 299–306 | No tiny-file fragmentation, forwarding wrappers or unnecessary layers | PASS | consolidated automatic ownership / no-fragmentation-wrappers; implementation / no-speculation |
 | Ownership / locality | 310–312 | Simple dependency direction and no cycles | PASS | interfaces / simple-direction-no-cycles-globals |
 | Ownership / locality | 313–315, 320 | No hidden global coupling; focused public interfaces; local internals and independent callers | PASS | interfaces |
-| Ownership / locality | 316 | Separate genuinely distinct UI/domain/persistence/transport/infrastructure | PASS | interfaces / distinct-boundaries |
-| Ownership / locality | 317–318 | Indirection justified by coupling reduction, not purity | PASS | interfaces / coupling-justifies-indirection |
+| Ownership / locality | 316 | Separate genuinely distinct UI/domain/persistence/transport/infrastructure | PASS | conditional Architecture decisions / distinct-boundaries; automatic interfaces routing |
+| Ownership / locality | 317–318 | Indirection justified by coupling reduction, not purity | PASS | conditional Architecture decisions / coupling-justifies-indirection; automatic interfaces routing |
 | Ownership / locality | 324–330 | Coherent functions/classes, meaningful extraction, shallow readable code, focused APIs, specific helpers | PASS | implementation / readable-coherent-shallow, specific-helper-owner; interfaces |
 | Ownership / locality | 334–346 | Owner + dependencies + verification; locality signals do not authorize automatic refactors | PASS | navigation; ownership; structure / refactor-current-need |
 | Claude | 352–362 | Canonical shared map and same-directory lightweight import | PASS | procedure: Claude reuse; context / shared-claude-knowledge |
@@ -123,9 +127,9 @@ mechanism/owner replacement. Compression alone is not a reason to classify PARTI
 | Bug fixes | 485–487 | Responsible shared-layer fix, no duplicate workarounds or unnecessary broad refactor | PASS | bug-fix |
 | Bug fixes | 488 | Practical useful runnable regression verification | PASS | bug-fix / practical-regression; verification / existing-infrastructure |
 | Project Skills | 503–519 | Recurring workflow inventory; repetitive, non-trivial, reusable creation threshold | PASS | procedure: analyze once and optional context; project-skills |
-| Project Skills | 521–549 | Persistent facts/rules in maps, reusable procedures in Skills; no simple-fact Skills | PASS | project-skills / maps-versus-procedures, repetitive-nontrivial-reusable |
-| Project Skills | 529–543 | Canonical project locations and Claude exposure; distinct from plugin packaging | PASS | project-skills / canonical-project-discovery; procedure: optional context |
-| Project Skills | 547, 665 | Portable sharing and verified relative symlink resolution/discovery | PASS | project-skills / portable-verified-sharing; procedure: verification |
+| Project Skills | 521–549 | Persistent facts/rules in maps, reusable procedures in Skills; no simple-fact Skills | PASS | automatic creation threshold; conditional Project Skills / maps-versus-procedures |
+| Project Skills | 529–543 | Canonical project locations and Claude exposure; distinct from plugin packaging | PASS | conditional Project Skills / canonical-project-discovery; procedure: optional context |
+| Project Skills | 547, 665 | Portable sharing and verified relative symlink resolution/discovery | PASS | conditional Project Skills / portable-verified-sharing; procedure: verification |
 | Lean Review | 555 | Optional creation if not covered by tooling | INTENTIONALLY REPLACED | packaged contextlean:lean-review; no redundant generic project copy |
 | Lean Review | 557–566 | All original advisory complexity/locality review checks | PASS | packaged skills/lean-review/SKILL.md: review workflow |
 | Lean Review | 568–577 | Advisory review and behavior/safety/readability/maintainability preservation | PASS | packaged skills/lean-review/SKILL.md: boundaries |
@@ -150,7 +154,7 @@ mechanism/owner replacement. Compression alone is not a reason to classify PARTI
 | Lifecycle | 692–704 | Reusable setup specification location | INTENTIONALLY REPLACED | installed plugin optional reference, not required target-project startup copy |
 | Lifecycle | 706–714 | No rule only in setup; deletion loses no behavior; otherwise reject completion | PASS | procedure: transfer gate; removal/negative contract tests |
 
-## Repair verification
+## Repair verification (historical)
 
 The following records the semantic repair before its GitHub release gate. Commit,
 push, remote CI and clean-clone results belong to the subsequent release-gate report.

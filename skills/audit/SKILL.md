@@ -19,6 +19,7 @@ Start from the applicable `AGENTS.md` hierarchy and repository state. Use target
 - exclusions that hide source, tests, fixtures, migrations, documentation, assets, or useful archives;
 - stale documentation and responsibilities that no longer match the implementation;
 - when a bootstrap transfer record exists, complete permanent-rule destinations,
+  facet-level conditional triggers, references absent from automatic imports,
   reviewed-content integrity, explicit packaged Lean Review delegation and safe
   omission of the setup specification; check semantics as well as structural evidence;
 - potential god objects, catch-all modules, circular or non-local dependencies, and simple features spread across unrelated files.
