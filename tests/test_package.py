@@ -66,7 +66,7 @@ class PackageContractTests(unittest.TestCase):
 
         for manifest in (codex, claude):
             self.assertEqual(manifest["name"], "contextlean")
-            self.assertEqual(manifest["version"], "0.2.0")
+            self.assertEqual(manifest["version"], "0.2.1")
             self.assertEqual(manifest["license"], "MIT")
             self.assertEqual(manifest["author"]["name"], "ContextLean contributors")
             self.assertNotIn("[TODO:", json.dumps(manifest))
@@ -76,7 +76,7 @@ class PackageContractTests(unittest.TestCase):
         benchmark_script = (ROOT / "skills/benchmark/scripts/benchmark.py").read_text(
             encoding="utf-8"
         )
-        self.assertIn('CONTEXTLEAN_VERSION = "0.2.0"', benchmark_script)
+        self.assertIn('CONTEXTLEAN_VERSION = "0.2.1"', benchmark_script)
 
         self.assertLessEqual(len(codex["interface"]["defaultPrompt"]), 3)
 

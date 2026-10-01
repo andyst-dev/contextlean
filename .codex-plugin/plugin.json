@@ -1,6 +1,6 @@
 {
   "name": "contextlean",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Bootstrap, maintain, and honestly measure repository context for focused coding-agent work.",
   "author": {
     "name": "ContextLean contributors"

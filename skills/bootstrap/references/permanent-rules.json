@@ -170,7 +170,7 @@
         "runnable-regression",
         "no-single-check-framework"
       ],
-      "guidance": "Use the smallest meaningful check, targeted first; broaden for shared/core/public changes; full suite only when necessary/project-required. Scope choices are not mandatory sequential steps. Use existing infrastructure; leave a small runnable regression check for non-trivial logic/fixes when practical. No new framework for one check without justification. Distinguish verified targeted/full commands; label uncertainty. If scope is unclear, see [Verification scope](PROJECT_REFERENCE.md#verification-scope).",
+      "guidance": "Smallest sufficient targeted check first; broaden only for insufficient checks, shared/core/public impact or project rules. Coverage, not labels or stages. Reuse equivalent passed coverage absent relevant changes, failures, unresolved results or project-required repeats. Reuse infrastructure; leave small runnable regression checks for non-trivial logic/fixes when practical. No unjustified test framework. Label verified scope/uncertainty. If unclear, see [Scope](PROJECT_REFERENCE.md#verification-scope).",
       "delivery": {
         "targeted-affected-full": "B",
         "smallest-meaningful": "E",

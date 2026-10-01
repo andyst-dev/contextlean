@@ -21,7 +21,9 @@ Trace only the data/execution path needed to explain the failure. Inspect caller
 
 ## Verification scope
 
-Small logic change: targeted unit test. Component change: relevant component test. Shared/core change: targeted plus affected broader tests. Build/config change: relevant build/check. Stop when meaningful confidence is sufficient; full-project verification is for necessity or project requirements. Complex repetitive verification can qualify for a project Skill.
+Small logic change: targeted unit test. Component change: relevant component test. Shared/core change: cover targeted and affected behavior; reuse already-passed equivalent coverage. Build/config change: relevant build/check. Stop when meaningful confidence is sufficient; full-project verification is for necessity or project requirements. Complex repetitive verification can qualify for a project Skill.
+
+Compare actual coverage, not command labels: a full command running the same tests adds no coverage. Broaden when current checks are insufficient or affected behavior remains unverified. Reruns are valid after relevant code/test/config/environment changes, failures, unresolved results or project-required repeats.
 
 ## Project Skills
 

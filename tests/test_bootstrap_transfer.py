@@ -5,6 +5,7 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -132,15 +133,103 @@ class PermanentBehaviorContracts(unittest.TestCase):
         self.assertRegex(routing, r"neither Git inspection nor a preliminary availability command")
         self.assertRegex(routing, r"proceed when state is irrelevant")
 
+    def verification_sources(self):
+        procedure = (ROOT / "skills/bootstrap/references/bootstrap-spec.md").read_text()
+        routing = procedure.split("Verification chooses", 1)[1].split("\n\n", 1)[0]
+        return {
+            "inventory": GROUPS["verification"]["guidance"],
+            "automatic": transfer.section_text(FIXTURE / "AGENTS.md", "Verification"),
+            "procedure": routing,
+            "conditional": transfer.section_text(
+                FIXTURE / "PROJECT_REFERENCE.md", "Verification scope"
+            ),
+        }
+
+    def verification_clauses(self, text, concept):
+        # Bind conditions to the relevant directive, not an unrelated word elsewhere.
+        return " ".join(
+            clause.lower()
+            for clause in re.split(r"[.;]\s+", text)
+            if re.search(concept, clause, re.IGNORECASE)
+        )
+
     def test_refactor_verification_preserves_proportional_scope(self):
         for text in self.guidance_sources("verification"):
-            self.assertRegex(text, r"smallest meaningful check.*targeted first")
-            self.assertRegex(text, r"broaden for shared/core/public")
-            self.assertRegex(text, r"full suite only when necessary/project-required")
-            self.assertRegex(text, r"[Ss]cope choices.*not mandatory sequential steps")
-            self.assertRegex(text, r"existing infrastructure.*runnable regression")
+            text = text.lower()
+            self.assertRegex(text, r"smallest (meaningful|sufficient).*targeted.*first")
+            self.assertRegex(text, r"broaden.*shared/core/public")
+            self.assertRegex(text, r"(reuse|existing).*infrastructure")
+            self.assertRegex(text, r"small.*runnable regression.*non-trivial.*practical")
+            self.assertRegex(
+                text, r"(unjustified|justification).*framework|framework.*justification"
+            )
+            self.assertRegex(text, r"verified.*scope.*uncertainty")
         for text in self.architecture_sources():
             self.assertRegex(text, r"behavior-preserving.*verify proportionally")
+
+    def test_equivalent_passed_coverage_is_reused(self):
+        for name, text in self.verification_sources().items():
+            with self.subTest(source=name):
+                reuse = self.verification_clauses(text, r"reuse.*coverage")
+                for concept in ("equivalent", "passed", "coverage"):
+                    self.assertIn(concept, reuse)
+        detail = self.verification_sources()["conditional"].lower()
+        self.assertRegex(detail, r"actual coverage.*not command labels")
+        self.assertRegex(detail, r"full command.*same tests.*no coverage")
+
+    def test_broader_verification_adds_needed_coverage(self):
+        for name, text in self.verification_sources().items():
+            with self.subTest(source=name):
+                broaden = self.verification_clauses(text, r"broaden")
+                self.assertIn("insufficient", broaden)
+        for text in self.guidance_sources("verification"):
+            broaden = self.verification_clauses(text, r"broaden")
+            self.assertIn("only", broaden)
+            self.assertIn("shared/core/public", broaden)
+        detail = self.verification_sources()["conditional"].lower()
+        self.assertRegex(detail, r"shared/core.*targeted and affected behavior")
+        self.assertRegex(detail, r"broaden.*affected behavior remains unverified")
+        for name in ("procedure", "conditional"):
+            full = self.verification_clauses(self.verification_sources()[name], r"full")
+            self.assertRegex(full, r"necessary|necessity")
+            self.assertIn("project", full)
+
+    def test_relevant_changes_allow_equivalent_verification_reruns(self):
+        for name, text in self.verification_sources().items():
+            with self.subTest(source=name):
+                rerun = self.verification_clauses(text, r"reuse.*coverage|reruns")
+                if name in ("inventory", "automatic"):
+                    self.assertIn("relevant changes", rerun)
+                else:
+                    self.assertIn("relevant", rerun)
+                self.assertRegex(rerun, r"absent|unless|valid after")
+        for name in ("procedure", "conditional"):
+            rerun = self.verification_clauses(self.verification_sources()[name], r"reuse|reruns")
+            self.assertIn("relevant", rerun)
+            for change in ("code", "test", "config", "environment"):
+                self.assertIn(change, rerun)
+
+    def test_failures_and_unresolved_results_allow_verification_reruns(self):
+        for name, text in self.verification_sources().items():
+            with self.subTest(source=name):
+                rerun = self.verification_clauses(text, r"reuse.*coverage|reruns")
+                self.assertIn("failures", rerun)
+                self.assertIn("unresolved results", rerun)
+                self.assertRegex(rerun, r"absent|unless|valid after")
+
+    def test_project_required_verification_repeats_remain_valid(self):
+        for name, text in self.verification_sources().items():
+            with self.subTest(source=name):
+                rerun = self.verification_clauses(text, r"reuse.*coverage|reruns")
+                self.assertIn("project-required repeats", rerun)
+                self.assertRegex(rerun, r"absent|unless|valid after")
+
+    def test_verification_scopes_are_not_sequential_stages(self):
+        for name in ("inventory", "automatic", "procedure"):
+            with self.subTest(source=name):
+                text = self.verification_sources()[name].lower()
+                self.assertRegex(text, r"not.*(labels|stages)")
+                self.assertRegex(text, r"coverage")
 
     def test_automatic_context_stays_within_compact_baseline(self):
         automatic = transfer.automatic_guidance(FIXTURE)

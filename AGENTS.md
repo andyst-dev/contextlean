@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-ContextLean 0.2.0 is a dependency-free, skills-only Codex/Claude Code plugin: bootstrap guidance once, audit drift, review complexity/locality and measure context without invented gains. No MCP server, hooks, runtime package, telemetry or automatic benchmark; remain silent by default.
+ContextLean 0.2.1 candidate is a dependency-free, skills-only Codex/Claude Code plugin: bootstrap guidance once, audit drift, review complexity/locality and measure context without invented gains. No MCP server, hooks, runtime package, telemetry or automatic benchmark; remain silent by default.
 
 ## Repository Map
 

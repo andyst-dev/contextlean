@@ -87,7 +87,7 @@ conditional detail and consolidated duplicates. Share wording/destinations, neve
 Keep navigation, coding, safety, proportional verification and after-task map checks automatic.
 Trust valid mapped owners; source overrides maps. Apply the inventory's scoped refactor route, distinct-question searches and evidence-driven expansion; preserve behavior and skip unnecessary steps.
 For broad/state-sensitive work, inspect available version-control state only if it affects work (uncommitted work, generated state, branching, conflicts or broad edits). Ordinary read-only navigation and small local edits alone require neither Git inspection nor a preliminary availability command; proceed when state is irrelevant.
-Verification chooses scope: targeted first, broaden for shared/core/public impact, full only when necessary/project-required, not mandatory sequential steps. Never reduce meaningful verification to save context.
+Verification chooses actual coverage, not command labels or mandatory stages: smallest sufficient targeted checks first, broaden for insufficient evidence or shared/core/public impact, full only when necessary/project-required. Reuse equivalent passed coverage unless relevant code/test/config/environment changes, failures, unresolved results or project-required repeats justify another run. Never reduce meaningful verification to save context.
 
 Use one optional `PROJECT_REFERENCE.md` (or an equivalent existing reference) for the inventory's
 architecture/extraction and project Skill creation/sharing/discovery details. Link each section
