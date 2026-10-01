@@ -13,16 +13,12 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "benchmarks/results/2026-09-30-validation"
-SPEC = importlib.util.spec_from_file_location(
-    "published_suite", ROOT / "benchmarks/run_benchmark.py"
-)
-suite = importlib.util.module_from_spec(SPEC)
-SPEC.loader.exec_module(suite)
 
 
 class PublicValidationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        global suite
         cls.report = json.loads((DATA / "summary.json").read_text())
         cls.temporary = tempfile.TemporaryDirectory()
         cls.source = Path(cls.temporary.name) / "source"
@@ -39,6 +35,12 @@ class PublicValidationTests(unittest.TestCase):
                     if stat.S_ISLNK(member.external_attr >> 16):
                         raise AssertionError("archive contains a symlink")
                 archive.extractall(destination)
+        # Historical schema and grading belong to its frozen runner, not v2.
+        spec = importlib.util.spec_from_file_location(
+            "published_frozen_suite", cls.source / "benchmarks/run_benchmark.py"
+        )
+        suite = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(suite)
 
     @classmethod
     def tearDownClass(cls):

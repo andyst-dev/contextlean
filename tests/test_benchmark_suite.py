@@ -161,24 +161,44 @@ class SuiteTests(unittest.TestCase):
     def test_complete_runner_uses_fresh_equal_starts_and_retains_failures(self):
         starts = []
 
-        def fake_execute(codex, workspace, model, reasoning, prompt, timeout, sandbox, raw_path):
+        def fake_execute(session, command, prompt, timeout, policy, output):
+            workspace = session.repo
             starts.append(suite.core.tree_digest(workspace, True))
-            self.assertEqual((model, reasoning), ("offline-test", "low"))
+            self.assertIn("offline-test", command)
             self.assertNotIn("previous-run.txt", [path.name for path in workspace.iterdir()])
             (workspace / "previous-run.txt").write_text("must not reach next run")
-            suite.core.save_raw_run(raw_path, "", "", workspace)
             return {
-                "success": True,
-                "usage": {"input_tokens": 10, "cached_input_tokens": 0, "output_tokens": 2},
+                "stdout": json.dumps(
+                    {
+                        "type": "turn.completed",
+                        "usage": {"input_tokens": 10, "cached_input_tokens": 0, "output_tokens": 2},
+                    }
+                ),
+                "stderr": "",
+                "error": None,
                 "duration_seconds": 1,
-                "commands": 1,
-                "event_count": 1,
                 "exit_code": 0,
             }
 
         with (
             tempfile.TemporaryDirectory() as tmp,
-            patch.object(suite.core, "execute_run", fake_execute),
+            patch.object(suite.harness, "execute_session", fake_execute),
+            patch.object(
+                suite.harness,
+                "environment_source",
+                return_value=suite.harness.environment_source(
+                    "codex", {"OPENAI_API_KEY": "offline-test-secret"}
+                ),
+            ),
+            patch.object(
+                suite.harness, "permission_policy", return_value={"sandbox": "workspace-write"}
+            ),
+            patch.object(
+                suite.harness,
+                "permission_preflight",
+                side_effect=lambda s, p, o: dict(p, native_preflight={"mocked": True}),
+            ),
+            patch.object(suite.harness, "boundary_command", side_effect=lambda s, p, c, o: c),
         ):
             args = suite.argparse.Namespace(
                 model="offline-test",
@@ -187,7 +207,8 @@ class SuiteTests(unittest.TestCase):
                 timeout=10,
                 tasks_file=suite.TASKS,
                 output_dir=Path(tmp) / "output",
-                codex="unused",
+                codex=suite.sys.executable,
+                live=True,
                 preparation_record=Path(tmp) / "preparation.json",
             )
             # Fake semantic attestation for this mocked runner test only.
@@ -209,10 +230,10 @@ class SuiteTests(unittest.TestCase):
             )
             original_capture = suite.capture
 
-            def capture(command, workspace, timeout=60):
+            def capture(command, workspace, timeout=60, **kwargs):
                 if command[0] == "unused":
                     return True, "offline fake CLI"
-                return original_capture(command, workspace, timeout)
+                return original_capture(command, workspace, timeout, **kwargs)
 
             with patch.object(suite, "capture", capture):
                 report = suite.run(args)
