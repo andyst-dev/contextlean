@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 68463,
+    "cached_input_tokens": 61184,
+    "output_tokens": 850,
+    "reasoning_output_tokens": 76
+  },
+  "commands": 3,
+  "web_searches": 0,
+  "parse_errors": 0,
+  "error": null,
+  "thread_id": "01a0f6c6-ec2f-74a0-b579-8fa8f89ca059",
+  "event_count": 14,
+  "final_response": "Consolidated category normalization into [categories.py](<temporary-path>\n\nBoth [filters.py](<temporary-path> and [report.py](<temporary-path> still export `normalize_category` for compatibility. Filter query semantics remain unchanged.\n\nVerified with `python3 -m unittest discover -s tests -v`: 5 tests passed.",
+  "duration_seconds": 27.31048929085955,
+  "exit_code": 0
+}

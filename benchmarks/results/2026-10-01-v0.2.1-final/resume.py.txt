@@ -1,0 +1,22 @@
+"""Explicit user-requested continuation; never retry an attempted session."""
+import inspect
+import json
+from pathlib import Path
+import driver as d
+
+evidence = d.gates()
+ledger = d.read(d.BASE / 'call-ledger.json')
+report = d.read(d.BASE / 'summary.json')
+assert len(ledger) == len(report['runs']) == 9
+assert ledger[-1]['task'] == 'documentation-config' and ledger[-1]['condition'] == 'vanilla'
+assert report['runs'][-1]['execution_success'] is False
+assert not (d.BASE / 'resume-started.json').exists()
+# Record the additional operational driver and continuation before any launch.
+d.write(d.BASE / 'resume-started.json', {'user_request': 'Reprends', 'resume_at': d.core.utc_now(), 'already_attempted': 9, 'remaining_authorized': 9, 'total_cap': 18, 'resume_driver_sha256': d.hf(Path(__file__)), 'skip_attempted_without_retry': True, 'quota_available_verified': True})
+source = inspect.getsource(d.live)
+source = source.replace("    assert not (BASE / 'live-started.json').exists(), 'No reuse, retry or automatic additional launch'\n    write(BASE / 'live-started.json', {'authorized_sessions': 18, 'started_at': core.utc_now()})\n    report = {'preflight': e, 'runs': []}", "    report = read(BASE / 'summary.json')")
+source = source.replace('        ledger = []', "        ledger = read(BASE / 'call-ledger.json')\n        already_attempted = {(r['provider'], r['task'], r['condition']) for r in ledger}")
+source = source.replace("            for condition in pair['order']:\n                pair_gate(pair)", "            for condition in pair['order']:\n                if (pair['provider'], pair['task']['id'], condition) in already_attempted:\n                    continue\n                pair_gate(pair)")
+assert source != inspect.getsource(d.live)
+exec(compile(source, '<explicit-continuation>', 'exec'), d.__dict__)
+d.live()

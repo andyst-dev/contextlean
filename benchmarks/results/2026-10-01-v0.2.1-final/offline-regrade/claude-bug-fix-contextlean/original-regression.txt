@@ -1,0 +1,10 @@
+test_cli_override (test_expenses.ExpenseTests.test_cli_override) ... ok
+test_configured_default (test_expenses.ExpenseTests.test_configured_default) ... ok
+test_filter (test_expenses.ExpenseTests.test_filter) ... ok
+test_load_decimal (test_expenses.ExpenseTests.test_load_decimal) ... ok
+test_report (test_expenses.ExpenseTests.test_report) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.068s
+
+OK

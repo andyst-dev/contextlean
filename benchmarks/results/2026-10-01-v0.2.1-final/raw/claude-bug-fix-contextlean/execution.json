@@ -1,0 +1,117 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 70646,
+    "cached_input_tokens": 57135,
+    "output_tokens": 2335
+  },
+  "raw_usage": {
+    "input_tokens": 12,
+    "cache_creation_input_tokens": 13499,
+    "cache_read_input_tokens": 57135,
+    "output_tokens": 2335,
+    "output_tokens_details": {
+      "thinking_tokens": 294
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 13499,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "not_available",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 579,
+        "cache_read_input_tokens": 12893,
+        "cache_creation_input_tokens": 606,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 606
+        },
+        "type": "message",
+        "model": null
+      }
+    ],
+    "speed": "standard"
+  },
+  "model_usage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 617,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.000702,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "canonicalModel": "claude-haiku-4-5",
+      "provider": "firstParty"
+    },
+    "claude-opus-5[1m]": {
+      "inputTokens": 12,
+      "outputTokens": 2335,
+      "cacheReadInputTokens": 57135,
+      "cacheCreationInputTokens": 13499,
+      "webSearchRequests": 0,
+      "costUSD": 0.2219925,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "canonicalModel": "claude-opus-5",
+      "provider": "firstParty"
+    }
+  },
+  "reported_cost_usd": 0.2226945,
+  "actual_model": "claude-opus-5[1m]",
+  "final_response": "Done.\n\n**Root cause** \u2014 `select_category` in `expense_report/filters.py:10` normalized the *stored* category (`strip().casefold()`) but compared it against the raw `--category` argument, so anything other than an already-normalized string (`\"food\"`) silently matched nothing.\n\n**Fix** \u2014 normalize the requested category once in the same owner (`expense_report/filters.py:9`), so both sides of the comparison go through `normalize_category`. The `category is None` path is untouched, so unfiltered reports still return every row.\n\n**Regression tests** (`tests/test_expenses.py`) \u2014 two added:\n- `test_filter_mixed_case_and_whitespace`: `select_category(rows, \" FOOD \")` selects 2 rows and reports total `20.00`.\n- `test_cli_category_mixed_case_and_whitespace`: same through the CLI, asserting `count == 2` and `total == \"20.00\"`.\n\n**Verification** \u2014 targeted module, all 7 tests pass (this is also the full suite, since it's the only test module). Manual CLI check: `--category ' FOOD '` \u2192 `{\"currency\": \"USD\", \"count\": 2, \"total\": \"20.00\", \"categories\": {\"food\": \"20.00\"}}`. Decimal arithmetic and currency overrides are unchanged and still covered by the existing `test_load_decimal`, `test_report`, `test_cli_override` and `test_configured_default`.\n\nOne thing I noticed but left alone: `normalize_category` is duplicated verbatim in `expense_report/report.py:4`, which is outside this fix's scope. Worth consolidating into `filters.py` (the mapped owner of category normalization) if you want it cleaned up \u2014 say the word. No map update needed; ownership and data flow are unchanged.",
+  "duration_seconds": 33.390271875075996,
+  "exit_code": 0,
+  "commands": 2,
+  "file_read_tool_calls": 5,
+  "total_tool_calls": 9,
+  "event_count": 32,
+  "error": null,
+  "command_without_credentials": [
+    "claude",
+    "--print",
+    "--verbose",
+    "--output-format",
+    "stream-json",
+    "--no-session-persistence",
+    "--model",
+    "opus[1m]",
+    "--effort",
+    "high",
+    "--setting-sources",
+    "project,local",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "{\"mcpServers\":{}}",
+    "--permission-mode",
+    "acceptEdits",
+    "--tools",
+    "Bash,Read,Edit,Write,Glob,Grep",
+    "--allowedTools",
+    "Bash(python3 *)",
+    "Bash(rg *)",
+    "Bash(ls *)",
+    "Bash(cat *)",
+    "Bash(sed *)",
+    "Bash(head *)",
+    "Bash(tail *)",
+    "Bash(wc *)",
+    "Bash(find *)",
+    "Bash(pwd*)",
+    "Bash(git status*)",
+    "Bash(git diff*)",
+    "Read",
+    "Edit",
+    "Write",
+    "Glob",
+    "Grep"
+  ]
+}

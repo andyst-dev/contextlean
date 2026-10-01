@@ -1,0 +1,128 @@
+[
+  {
+    "provider": "terra",
+    "task": "navigation",
+    "condition": "vanilla",
+    "sequence": 1,
+    "attempted_at": "2026-10-01T09:20:42+00:00"
+  },
+  {
+    "provider": "terra",
+    "task": "navigation",
+    "condition": "contextlean",
+    "sequence": 2,
+    "attempted_at": "2026-10-01T09:20:58+00:00"
+  },
+  {
+    "provider": "terra",
+    "task": "bug-fix",
+    "condition": "contextlean",
+    "sequence": 3,
+    "attempted_at": "2026-10-01T09:21:13+00:00"
+  },
+  {
+    "provider": "terra",
+    "task": "bug-fix",
+    "condition": "vanilla",
+    "sequence": 4,
+    "attempted_at": "2026-10-01T09:21:41+00:00"
+  },
+  {
+    "provider": "terra",
+    "task": "feature",
+    "condition": "vanilla",
+    "sequence": 5,
+    "attempted_at": "2026-10-01T09:22:08+00:00"
+  },
+  {
+    "provider": "terra",
+    "task": "feature",
+    "condition": "contextlean",
+    "sequence": 6,
+    "attempted_at": "2026-10-01T09:22:48+00:00"
+  },
+  {
+    "provider": "terra",
+    "task": "refactor",
+    "condition": "contextlean",
+    "sequence": 7,
+    "attempted_at": "2026-10-01T09:23:25+00:00"
+  },
+  {
+    "provider": "terra",
+    "task": "refactor",
+    "condition": "vanilla",
+    "sequence": 8,
+    "attempted_at": "2026-10-01T09:23:46+00:00"
+  },
+  {
+    "provider": "terra",
+    "task": "documentation-config",
+    "condition": "vanilla",
+    "sequence": 9,
+    "attempted_at": "2026-10-01T09:24:15+00:00"
+  },
+  {
+    "provider": "terra",
+    "task": "documentation-config",
+    "condition": "contextlean",
+    "sequence": 10,
+    "attempted_at": "2026-10-01T09:52:29+00:00"
+  },
+  {
+    "provider": "claude",
+    "task": "bug-fix",
+    "condition": "contextlean",
+    "sequence": 11,
+    "attempted_at": "2026-10-01T09:52:50+00:00"
+  },
+  {
+    "provider": "claude",
+    "task": "bug-fix",
+    "condition": "vanilla",
+    "sequence": 12,
+    "attempted_at": "2026-10-01T09:53:24+00:00"
+  },
+  {
+    "provider": "claude",
+    "task": "refactor",
+    "condition": "contextlean",
+    "sequence": 13,
+    "attempted_at": "2026-10-01T09:54:16+00:00"
+  },
+  {
+    "provider": "claude",
+    "task": "refactor",
+    "condition": "vanilla",
+    "sequence": 14,
+    "attempted_at": "2026-10-01T09:55:37+00:00"
+  },
+  {
+    "provider": "sol",
+    "task": "bug-fix",
+    "condition": "contextlean",
+    "sequence": 15,
+    "attempted_at": "2026-10-01T09:56:31+00:00"
+  },
+  {
+    "provider": "sol",
+    "task": "bug-fix",
+    "condition": "vanilla",
+    "sequence": 16,
+    "attempted_at": "2026-10-01T09:57:04+00:00"
+  },
+  {
+    "provider": "sol",
+    "task": "refactor",
+    "condition": "contextlean",
+    "sequence": 17,
+    "attempted_at": "2026-10-01T09:57:40+00:00"
+  },
+  {
+    "provider": "sol",
+    "task": "refactor",
+    "condition": "vanilla",
+    "sequence": 18,
+    "attempted_at": "2026-10-01T09:58:27+00:00"
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "provider": "sol",
+  "task": "refactor",
+  "condition": "contextlean",
+  "sequence": 17,
+  "metrics": {
+    "input_tokens": 107022,
+    "cached_input_tokens": 97280,
+    "output_tokens": 1795,
+    "reasoning_output_tokens": 692,
+    "total_tokens": 108817,
+    "uncached_input_tokens": 9742,
+    "command_calls": 5,
+    "duration_seconds": 45.647646541008726,
+    "file_read_tool_calls": null,
+    "total_tool_calls": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "guidance_sample_baseline_intact": true,
+  "solution_digest": "6615512d494f5aa90cf67cfd9028820f48620779b48b9e4492e46f7b38a933e8",
+  "execution_success": true,
+  "actual_model": null,
+  "reported_cost_usd": null,
+  "offline_regrade": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "raw_directory": "raw/sol-refactor-contextlean",
+  "solution_archive_directory": "sol-refactor-contextlean",
+  "offline_regrade_directory": "offline-regrade/sol-refactor-contextlean",
+  "credit_equivalent": 2.8445
+}

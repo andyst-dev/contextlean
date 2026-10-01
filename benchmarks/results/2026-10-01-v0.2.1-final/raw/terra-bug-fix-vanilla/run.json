@@ -1,0 +1,39 @@
+{
+  "provider": "terra",
+  "task": "bug-fix",
+  "condition": "vanilla",
+  "sequence": 4,
+  "metrics": {
+    "input_tokens": 70029,
+    "cached_input_tokens": 60160,
+    "output_tokens": 821,
+    "reasoning_output_tokens": 17,
+    "total_tokens": 70850,
+    "uncached_input_tokens": 9869,
+    "command_calls": 3,
+    "duration_seconds": 26.092193291988224,
+    "file_read_tool_calls": null,
+    "total_tool_calls": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "guidance_sample_baseline_intact": true,
+  "solution_digest": "be48e58c15086fbc32d011a567dca463988b7ef0839d5a5b1fe6e9e212b02ecb",
+  "execution_success": true,
+  "actual_model": null,
+  "reported_cost_usd": null,
+  "offline_regrade": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "raw_directory": "raw/terra-bug-fix-vanilla",
+  "solution_archive_directory": "terra-bug-fix-vanilla",
+  "offline_regrade_directory": "offline-regrade/terra-bug-fix-vanilla",
+  "credit_equivalent": 1.04055
+}

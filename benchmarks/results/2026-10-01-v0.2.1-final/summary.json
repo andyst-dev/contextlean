@@ -1,0 +1,1186 @@
+{
+  "schema_version": 1,
+  "kind": "preliminary-v0.2.1-final-validation",
+  "release_tag": "v0.2.1",
+  "release_commit": "44ee6f227dfead62406326a1306f897358f1778f",
+  "public_release_url": "https://github.com/andyst-dev/contextlean/releases/tag/v0.2.1",
+  "expected_sessions": 18,
+  "completed_sessions": 18,
+  "repeats_per_condition": 1,
+  "environment": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.14.4"
+  },
+  "versions": {
+    "codex": "codex-cli 0.147.0",
+    "claude": "2.1.233 (Claude Code)"
+  },
+  "models": {
+    "terra": {
+      "model": "gpt-5.6-terra",
+      "reasoning": "low"
+    },
+    "sol": {
+      "model": "gpt-5.6-sol",
+      "reasoning": "high"
+    },
+    "claude": {
+      "model": "opus[1m]",
+      "effort": "high"
+    }
+  },
+  "finished_at": "2026-10-01T10:00:43+00:00",
+  "runs": [
+    {
+      "provider": "terra",
+      "task": "navigation",
+      "condition": "vanilla",
+      "sequence": 1,
+      "metrics": {
+        "input_tokens": 39526,
+        "cached_input_tokens": 25088,
+        "output_tokens": 287,
+        "reasoning_output_tokens": 14,
+        "total_tokens": 39813,
+        "uncached_input_tokens": 14438,
+        "command_calls": 2,
+        "duration_seconds": 15.269106375053525,
+        "file_read_tool_calls": null,
+        "total_tool_calls": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+      "execution_success": true,
+      "actual_model": null,
+      "reported_cost_usd": null,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/terra-navigation-vanilla",
+      "solution_archive_directory": "terra-navigation-vanilla",
+      "offline_regrade_directory": "offline-regrade/terra-navigation-vanilla",
+      "credit_equivalent": 0.93344
+    },
+    {
+      "provider": "terra",
+      "task": "navigation",
+      "condition": "contextlean",
+      "sequence": 2,
+      "metrics": {
+        "input_tokens": 42625,
+        "cached_input_tokens": 27136,
+        "output_tokens": 369,
+        "reasoning_output_tokens": 53,
+        "total_tokens": 42994,
+        "uncached_input_tokens": 15489,
+        "command_calls": 3,
+        "duration_seconds": 13.315527791855857,
+        "file_read_tool_calls": null,
+        "total_tool_calls": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "594c41b149729a69fbde6713711e76407cbda09ba7b08c6233b631481dce4099",
+      "execution_success": true,
+      "actual_model": null,
+      "reported_cost_usd": null,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/terra-navigation-contextlean",
+      "solution_archive_directory": "terra-navigation-contextlean",
+      "offline_regrade_directory": "offline-regrade/terra-navigation-contextlean",
+      "credit_equivalent": 1.02083
+    },
+    {
+      "provider": "terra",
+      "task": "bug-fix",
+      "condition": "contextlean",
+      "sequence": 3,
+      "metrics": {
+        "input_tokens": 73760,
+        "cached_input_tokens": 64256,
+        "output_tokens": 827,
+        "reasoning_output_tokens": 31,
+        "total_tokens": 74587,
+        "uncached_input_tokens": 9504,
+        "command_calls": 3,
+        "duration_seconds": 26.924647458130494,
+        "file_read_tool_calls": null,
+        "total_tool_calls": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "bf0d09cbc2a87e265027e37004a6cab5de1feb26c3a5c2385fbc1d1e1c4fe9b0",
+      "execution_success": true,
+      "actual_model": null,
+      "reported_cost_usd": null,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/terra-bug-fix-contextlean",
+      "solution_archive_directory": "terra-bug-fix-contextlean",
+      "offline_regrade_directory": "offline-regrade/terra-bug-fix-contextlean",
+      "credit_equivalent": 1.04458
+    },
+    {
+      "provider": "terra",
+      "task": "bug-fix",
+      "condition": "vanilla",
+      "sequence": 4,
+      "metrics": {
+        "input_tokens": 70029,
+        "cached_input_tokens": 60160,
+        "output_tokens": 821,
+        "reasoning_output_tokens": 17,
+        "total_tokens": 70850,
+        "uncached_input_tokens": 9869,
+        "command_calls": 3,
+        "duration_seconds": 26.092193291988224,
+        "file_read_tool_calls": null,
+        "total_tool_calls": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "be48e58c15086fbc32d011a567dca463988b7ef0839d5a5b1fe6e9e212b02ecb",
+      "execution_success": true,
+      "actual_model": null,
+      "reported_cost_usd": null,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/terra-bug-fix-vanilla",
+      "solution_archive_directory": "terra-bug-fix-vanilla",
+      "offline_regrade_directory": "offline-regrade/terra-bug-fix-vanilla",
+      "credit_equivalent": 1.04055
+    },
+    {
+      "provider": "terra",
+      "task": "feature",
+      "condition": "vanilla",
+      "sequence": 5,
+      "metrics": {
+        "input_tokens": 85129,
+        "cached_input_tokens": 62208,
+        "output_tokens": 1542,
+        "reasoning_output_tokens": 72,
+        "total_tokens": 86671,
+        "uncached_input_tokens": 22921,
+        "command_calls": 4,
+        "duration_seconds": 38.35299833281897,
+        "file_read_tool_calls": null,
+        "total_tool_calls": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "31239d08f6dc02434ffe7bf550e5d0ebd954f335a3c5d8b784198e57a8d406e4",
+      "execution_success": true,
+      "actual_model": null,
+      "reported_cost_usd": null,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/terra-feature-vanilla",
+      "solution_archive_directory": "terra-feature-vanilla",
+      "offline_regrade_directory": "offline-regrade/terra-feature-vanilla",
+      "credit_equivalent": 1.91969
+    },
+    {
+      "provider": "terra",
+      "task": "feature",
+      "condition": "contextlean",
+      "sequence": 6,
+      "metrics": {
+        "input_tokens": 75436,
+        "cached_input_tokens": 56320,
+        "output_tokens": 1451,
+        "reasoning_output_tokens": 118,
+        "total_tokens": 76887,
+        "uncached_input_tokens": 19116,
+        "command_calls": 3,
+        "duration_seconds": 35.00739554222673,
+        "file_read_tool_calls": null,
+        "total_tool_calls": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "a5e98a3af3755c20822303713f77677fa1241083d43f3a171ec376ef8984927c",
+      "execution_success": true,
+      "actual_model": null,
+      "reported_cost_usd": null,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/terra-feature-contextlean",
+      "solution_archive_directory": "terra-feature-contextlean",
+      "offline_regrade_directory": "offline-regrade/terra-feature-contextlean",
+      "credit_equivalent": 1.6727
+    },
+    {
+      "provider": "terra",
+      "task": "refactor",
+      "condition": "contextlean",
+      "sequence": 7,
+      "metrics": {
+        "input_tokens": 72114,
+        "cached_input_tokens": 54272,
+        "output_tokens": 630,
+        "reasoning_output_tokens": 24,
+        "total_tokens": 72744,
+        "uncached_input_tokens": 17842,
+        "command_calls": 3,
+        "duration_seconds": 20.461934125050902,
+        "file_read_tool_calls": null,
+        "total_tool_calls": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "3545430dfd52b88595d36e49a9b4a107e034cf44b81d8eae1af8d61cadc6e464",
+      "execution_success": true,
+      "actual_model": null,
+      "reported_cost_usd": null,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/terra-refactor-contextlean",
+      "solution_archive_directory": "terra-refactor-contextlean",
+      "offline_regrade_directory": "offline-regrade/terra-refactor-contextlean",
+      "credit_equivalent": 1.35246
+    },
+    {
+      "provider": "terra",
+      "task": "refactor",
+      "condition": "vanilla",
+      "sequence": 8,
+      "metrics": {
+        "input_tokens": 68463,
+        "cached_input_tokens": 61184,
+        "output_tokens": 850,
+        "reasoning_output_tokens": 76,
+        "total_tokens": 69313,
+        "uncached_input_tokens": 7279,
+        "command_calls": 3,
+        "duration_seconds": 27.31048929085955,
+        "file_read_tool_calls": null,
+        "total_tool_calls": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "0bde0efae5534b42a51e0d8da8940077b95f891443809e53c89d1f41b7e616db",
+      "execution_success": true,
+      "actual_model": null,
+      "reported_cost_usd": null,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/terra-refactor-vanilla",
+      "solution_archive_directory": "terra-refactor-vanilla",
+      "offline_regrade_directory": "offline-regrade/terra-refactor-vanilla",
+      "credit_equivalent": 0.92487
+    },
+    {
+      "provider": "terra",
+      "task": "documentation-config",
+      "condition": "vanilla",
+      "sequence": 9,
+      "metrics": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null,
+        "uncached_input_tokens": null,
+        "command_calls": 3,
+        "duration_seconds": 29.16840195795521,
+        "file_read_tool_calls": null,
+        "total_tool_calls": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": false
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "352d40a921b44768e8c66b736d5b9e4447fef1c3160fd7c8f1ee97d7251bf111",
+      "execution_success": false,
+      "actual_model": null,
+      "reported_cost_usd": null,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": false
+      },
+      "raw_directory": "raw/terra-documentation-config-vanilla",
+      "solution_archive_directory": "terra-documentation-config-vanilla",
+      "offline_regrade_directory": "offline-regrade/terra-documentation-config-vanilla",
+      "credit_equivalent": null
+    },
+    {
+      "provider": "terra",
+      "task": "documentation-config",
+      "condition": "contextlean",
+      "sequence": 10,
+      "metrics": {
+        "input_tokens": 56662,
+        "cached_input_tokens": 40192,
+        "output_tokens": 434,
+        "reasoning_output_tokens": 14,
+        "total_tokens": 57096,
+        "uncached_input_tokens": 16470,
+        "command_calls": 2,
+        "duration_seconds": 19.470602083019912,
+        "file_read_tool_calls": null,
+        "total_tool_calls": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "62ccc931b0e3e8f48f312c050ae10ca4ba38be1e8dce87abb653e51eba8631d0",
+      "execution_success": true,
+      "actual_model": null,
+      "reported_cost_usd": null,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/terra-documentation-config-contextlean",
+      "solution_archive_directory": "terra-documentation-config-contextlean",
+      "offline_regrade_directory": "offline-regrade/terra-documentation-config-contextlean",
+      "credit_equivalent": 1.15466
+    },
+    {
+      "provider": "claude",
+      "task": "bug-fix",
+      "condition": "contextlean",
+      "sequence": 11,
+      "metrics": {
+        "input_tokens": 70646,
+        "cached_input_tokens": 57135,
+        "output_tokens": 2335,
+        "reasoning_output_tokens": null,
+        "total_tokens": 72981,
+        "uncached_input_tokens": 13511,
+        "command_calls": 2,
+        "duration_seconds": 33.390271875075996,
+        "file_read_tool_calls": 5,
+        "total_tool_calls": 9
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "5a9c6da12ff644c6f59bd58a355e6d0b6e236a561fab4b072e5ec6947627657d",
+      "execution_success": true,
+      "actual_model": "claude-opus-5[1m]",
+      "reported_cost_usd": 0.2226945,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/claude-bug-fix-contextlean",
+      "solution_archive_directory": "claude-bug-fix-contextlean",
+      "offline_regrade_directory": "offline-regrade/claude-bug-fix-contextlean",
+      "credit_equivalent": null
+    },
+    {
+      "provider": "claude",
+      "task": "bug-fix",
+      "condition": "vanilla",
+      "sequence": 12,
+      "metrics": {
+        "input_tokens": 110006,
+        "cached_input_tokens": 101029,
+        "output_tokens": 3507,
+        "reasoning_output_tokens": null,
+        "total_tokens": 113513,
+        "uncached_input_tokens": 8977,
+        "command_calls": 6,
+        "duration_seconds": 50.260083250002936,
+        "file_read_tool_calls": 5,
+        "total_tool_calls": 14
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "f7d5c9d345d22d42aa609b6a2ad81f5b8563ac66c813048aec2ddaef6b54a9be",
+      "execution_success": true,
+      "actual_model": "claude-opus-5[1m]",
+      "reported_cost_usd": 0.22857650000000002,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/claude-bug-fix-vanilla",
+      "solution_archive_directory": "claude-bug-fix-vanilla",
+      "offline_regrade_directory": "offline-regrade/claude-bug-fix-vanilla",
+      "credit_equivalent": null
+    },
+    {
+      "provider": "claude",
+      "task": "refactor",
+      "condition": "contextlean",
+      "sequence": 13,
+      "metrics": {
+        "input_tokens": 222374,
+        "cached_input_tokens": 209069,
+        "output_tokens": 5041,
+        "reasoning_output_tokens": null,
+        "total_tokens": 227415,
+        "uncached_input_tokens": 13305,
+        "command_calls": 9,
+        "duration_seconds": 79.72900637495331,
+        "file_read_tool_calls": 5,
+        "total_tool_calls": 19
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "5a8d674fcefff9b044f510f4921f005400de06765a03886b491821c7c487f2c1",
+      "execution_success": true,
+      "actual_model": "claude-opus-5[1m]",
+      "reported_cost_usd": 0.3641575,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/claude-refactor-contextlean",
+      "solution_archive_directory": "claude-refactor-contextlean",
+      "offline_regrade_directory": "offline-regrade/claude-refactor-contextlean",
+      "credit_equivalent": null
+    },
+    {
+      "provider": "claude",
+      "task": "refactor",
+      "condition": "vanilla",
+      "sequence": 14,
+      "metrics": {
+        "input_tokens": 97079,
+        "cached_input_tokens": 88254,
+        "output_tokens": 2948,
+        "reasoning_output_tokens": null,
+        "total_tokens": 100027,
+        "uncached_input_tokens": 8825,
+        "command_calls": 4,
+        "duration_seconds": 52.88976037502289,
+        "file_read_tool_calls": 7,
+        "total_tool_calls": 14
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "9c057ad3b9aab8f5c1b43ce08339967d0a86e1dcca66d5b391872838d2f1792f",
+      "execution_success": true,
+      "actual_model": "claude-opus-5[1m]",
+      "reported_cost_usd": 0.20669,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/claude-refactor-vanilla",
+      "solution_archive_directory": "claude-refactor-vanilla",
+      "offline_regrade_directory": "offline-regrade/claude-refactor-vanilla",
+      "credit_equivalent": null
+    },
+    {
+      "provider": "sol",
+      "task": "bug-fix",
+      "condition": "contextlean",
+      "sequence": 15,
+      "metrics": {
+        "input_tokens": 90770,
+        "cached_input_tokens": 77184,
+        "output_tokens": 1122,
+        "reasoning_output_tokens": 169,
+        "total_tokens": 91892,
+        "uncached_input_tokens": 13586,
+        "command_calls": 4,
+        "duration_seconds": 32.04321058304049,
+        "file_read_tool_calls": null,
+        "total_tool_calls": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "6157a97c27d6397c61501fc8d800f8eadcc9cdf1deb6e67225498c8caa8b644a",
+      "execution_success": true,
+      "actual_model": null,
+      "reported_cost_usd": null,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/sol-bug-fix-contextlean",
+      "solution_archive_directory": "sol-bug-fix-contextlean",
+      "offline_regrade_directory": "offline-regrade/sol-bug-fix-contextlean",
+      "credit_equivalent": 2.69144
+    },
+    {
+      "provider": "sol",
+      "task": "bug-fix",
+      "condition": "vanilla",
+      "sequence": 16,
+      "metrics": {
+        "input_tokens": 88171,
+        "cached_input_tokens": 71296,
+        "output_tokens": 1052,
+        "reasoning_output_tokens": 99,
+        "total_tokens": 89223,
+        "uncached_input_tokens": 16875,
+        "command_calls": 4,
+        "duration_seconds": 34.51880929199979,
+        "file_read_tool_calls": null,
+        "total_tool_calls": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "069d01ef9074d46491f0bebb1bf4e5b60bea6dc771c3eb8421323aa3f042fdf0",
+      "execution_success": true,
+      "actual_model": null,
+      "reported_cost_usd": null,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/sol-bug-fix-vanilla",
+      "solution_archive_directory": "sol-bug-fix-vanilla",
+      "offline_regrade_directory": "offline-regrade/sol-bug-fix-vanilla",
+      "credit_equivalent": 2.92646
+    },
+    {
+      "provider": "sol",
+      "task": "refactor",
+      "condition": "contextlean",
+      "sequence": 17,
+      "metrics": {
+        "input_tokens": 107022,
+        "cached_input_tokens": 97280,
+        "output_tokens": 1795,
+        "reasoning_output_tokens": 692,
+        "total_tokens": 108817,
+        "uncached_input_tokens": 9742,
+        "command_calls": 5,
+        "duration_seconds": 45.647646541008726,
+        "file_read_tool_calls": null,
+        "total_tool_calls": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "6615512d494f5aa90cf67cfd9028820f48620779b48b9e4492e46f7b38a933e8",
+      "execution_success": true,
+      "actual_model": null,
+      "reported_cost_usd": null,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/sol-refactor-contextlean",
+      "solution_archive_directory": "sol-refactor-contextlean",
+      "offline_regrade_directory": "offline-regrade/sol-refactor-contextlean",
+      "credit_equivalent": 2.8445
+    },
+    {
+      "provider": "sol",
+      "task": "refactor",
+      "condition": "vanilla",
+      "sequence": 18,
+      "metrics": {
+        "input_tokens": 84501,
+        "cached_input_tokens": 55424,
+        "output_tokens": 1217,
+        "reasoning_output_tokens": 263,
+        "total_tokens": 85718,
+        "uncached_input_tokens": 29077,
+        "command_calls": 4,
+        "duration_seconds": 33.727675542002544,
+        "file_read_tool_calls": null,
+        "total_tool_calls": null
+      },
+      "evaluation": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "guidance_sample_baseline_intact": true,
+      "solution_digest": "8fc5ec01d66a8bf158e4b384b61db6bca0a377a7889c8b680c5054eded4cdb4b",
+      "execution_success": true,
+      "actual_model": null,
+      "reported_cost_usd": null,
+      "offline_regrade": {
+        "tests_passed": true,
+        "agent_tests_passed": true,
+        "acceptance_passed": true,
+        "task_success": true
+      },
+      "raw_directory": "raw/sol-refactor-vanilla",
+      "solution_archive_directory": "sol-refactor-vanilla",
+      "offline_regrade_directory": "offline-regrade/sol-refactor-vanilla",
+      "credit_equivalent": 4.07044
+    }
+  ],
+  "campaign_disposition": "NOT suitable for main headline: session 9 failed at provider usage limit; usage unavailable. No retry. README unchanged.",
+  "all_grades_pass": false,
+  "resume": {
+    "user_request": "Reprends",
+    "resume_at": "2026-10-01T09:52:24+00:00",
+    "already_attempted": 9,
+    "remaining_authorized": 9,
+    "total_cap": 18,
+    "resume_driver_sha256": "41e94e0a4d63f1aaa2e097c052ad83efcb295215e0e9e664fd2d6937bc44660e",
+    "skip_attempted_without_retry": true,
+    "quota_available_verified": true
+  },
+  "preparation": "preparation.json",
+  "methodology": "methodology.md",
+  "measurement_review": "measurement-review.json",
+  "aggregates": {
+    "terra": {
+      "vanilla": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "uncached_input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null,
+        "duration_seconds": 136.19318924867548,
+        "command_calls": 15,
+        "available_usage_subtotal": {
+          "input_tokens": 263147,
+          "cached_input_tokens": 208640,
+          "uncached_input_tokens": 54507,
+          "output_tokens": 3500,
+          "total_tokens": 266647,
+          "duration_seconds": 136.19318924867548,
+          "command_calls": 15
+        },
+        "measured_usage_runs": 4,
+        "complete_usage": false,
+        "runs": 5,
+        "successes": 4,
+        "submitted_successes": 5,
+        "regression_successes": 5,
+        "acceptance_successes": 5
+      },
+      "contextlean": {
+        "input_tokens": 320597,
+        "cached_input_tokens": 242176,
+        "uncached_input_tokens": 78421,
+        "output_tokens": 3711,
+        "total_tokens": 324308,
+        "duration_seconds": 115.1801070002839,
+        "command_calls": 14,
+        "available_usage_subtotal": {
+          "input_tokens": 320597,
+          "cached_input_tokens": 242176,
+          "uncached_input_tokens": 78421,
+          "output_tokens": 3711,
+          "total_tokens": 324308,
+          "duration_seconds": 115.1801070002839,
+          "command_calls": 14
+        },
+        "measured_usage_runs": 5,
+        "complete_usage": true,
+        "runs": 5,
+        "successes": 5,
+        "submitted_successes": 5,
+        "regression_successes": 5,
+        "acceptance_successes": 5
+      }
+    },
+    "claude": {
+      "vanilla": {
+        "input_tokens": 207085,
+        "cached_input_tokens": 189283,
+        "uncached_input_tokens": 17802,
+        "output_tokens": 6455,
+        "total_tokens": 213540,
+        "duration_seconds": 103.14984362502582,
+        "command_calls": 10,
+        "available_usage_subtotal": {
+          "input_tokens": 207085,
+          "cached_input_tokens": 189283,
+          "uncached_input_tokens": 17802,
+          "output_tokens": 6455,
+          "total_tokens": 213540,
+          "duration_seconds": 103.14984362502582,
+          "command_calls": 10
+        },
+        "measured_usage_runs": 2,
+        "complete_usage": true,
+        "runs": 2,
+        "successes": 2,
+        "submitted_successes": 2,
+        "regression_successes": 2,
+        "acceptance_successes": 2
+      },
+      "contextlean": {
+        "input_tokens": 293020,
+        "cached_input_tokens": 266204,
+        "uncached_input_tokens": 26816,
+        "output_tokens": 7376,
+        "total_tokens": 300396,
+        "duration_seconds": 113.11927825002931,
+        "command_calls": 11,
+        "available_usage_subtotal": {
+          "input_tokens": 293020,
+          "cached_input_tokens": 266204,
+          "uncached_input_tokens": 26816,
+          "output_tokens": 7376,
+          "total_tokens": 300396,
+          "duration_seconds": 113.11927825002931,
+          "command_calls": 11
+        },
+        "measured_usage_runs": 2,
+        "complete_usage": true,
+        "runs": 2,
+        "successes": 2,
+        "submitted_successes": 2,
+        "regression_successes": 2,
+        "acceptance_successes": 2
+      }
+    },
+    "sol": {
+      "vanilla": {
+        "input_tokens": 172672,
+        "cached_input_tokens": 126720,
+        "uncached_input_tokens": 45952,
+        "output_tokens": 2269,
+        "total_tokens": 174941,
+        "duration_seconds": 68.24648483400233,
+        "command_calls": 8,
+        "available_usage_subtotal": {
+          "input_tokens": 172672,
+          "cached_input_tokens": 126720,
+          "uncached_input_tokens": 45952,
+          "output_tokens": 2269,
+          "total_tokens": 174941,
+          "duration_seconds": 68.24648483400233,
+          "command_calls": 8
+        },
+        "measured_usage_runs": 2,
+        "complete_usage": true,
+        "runs": 2,
+        "successes": 2,
+        "submitted_successes": 2,
+        "regression_successes": 2,
+        "acceptance_successes": 2
+      },
+      "contextlean": {
+        "input_tokens": 197792,
+        "cached_input_tokens": 174464,
+        "uncached_input_tokens": 23328,
+        "output_tokens": 2917,
+        "total_tokens": 200709,
+        "duration_seconds": 77.69085712404922,
+        "command_calls": 9,
+        "available_usage_subtotal": {
+          "input_tokens": 197792,
+          "cached_input_tokens": 174464,
+          "uncached_input_tokens": 23328,
+          "output_tokens": 2917,
+          "total_tokens": 200709,
+          "duration_seconds": 77.69085712404922,
+          "command_calls": 9
+        },
+        "measured_usage_runs": 2,
+        "complete_usage": true,
+        "runs": 2,
+        "successes": 2,
+        "submitted_successes": 2,
+        "regression_successes": 2,
+        "acceptance_successes": 2
+      }
+    }
+  },
+  "negative_cases": {
+    "terra": [
+      {
+        "task": "navigation",
+        "metric": "input_tokens",
+        "vanilla": 39526,
+        "contextlean": 42625,
+        "difference": 3099,
+        "percent_change": 7.840408844811009
+      },
+      {
+        "task": "navigation",
+        "metric": "cached_input_tokens",
+        "vanilla": 25088,
+        "contextlean": 27136,
+        "difference": 2048,
+        "percent_change": 8.163265306122458
+      },
+      {
+        "task": "navigation",
+        "metric": "uncached_input_tokens",
+        "vanilla": 14438,
+        "contextlean": 15489,
+        "difference": 1051,
+        "percent_change": 7.279401579166089
+      },
+      {
+        "task": "navigation",
+        "metric": "output_tokens",
+        "vanilla": 287,
+        "contextlean": 369,
+        "difference": 82,
+        "percent_change": 28.57142857142858
+      },
+      {
+        "task": "navigation",
+        "metric": "total_tokens",
+        "vanilla": 39813,
+        "contextlean": 42994,
+        "difference": 3181,
+        "percent_change": 7.989852560721378
+      },
+      {
+        "task": "navigation",
+        "metric": "command_calls",
+        "vanilla": 2,
+        "contextlean": 3,
+        "difference": 1,
+        "percent_change": 50.0
+      },
+      {
+        "task": "bug-fix",
+        "metric": "input_tokens",
+        "vanilla": 70029,
+        "contextlean": 73760,
+        "difference": 3731,
+        "percent_change": 5.327792771566076
+      },
+      {
+        "task": "bug-fix",
+        "metric": "cached_input_tokens",
+        "vanilla": 60160,
+        "contextlean": 64256,
+        "difference": 4096,
+        "percent_change": 6.808510638297882
+      },
+      {
+        "task": "bug-fix",
+        "metric": "output_tokens",
+        "vanilla": 821,
+        "contextlean": 827,
+        "difference": 6,
+        "percent_change": 0.730816077953711
+      },
+      {
+        "task": "bug-fix",
+        "metric": "total_tokens",
+        "vanilla": 70850,
+        "contextlean": 74587,
+        "difference": 3737,
+        "percent_change": 5.2745236414961205
+      },
+      {
+        "task": "bug-fix",
+        "metric": "duration_seconds",
+        "vanilla": 26.092193291988224,
+        "contextlean": 26.924647458130494,
+        "difference": 0.83245416614227,
+        "percent_change": 3.190433846731766
+      },
+      {
+        "task": "refactor",
+        "metric": "input_tokens",
+        "vanilla": 68463,
+        "contextlean": 72114,
+        "difference": 3651,
+        "percent_change": 5.332807501862313
+      },
+      {
+        "task": "refactor",
+        "metric": "uncached_input_tokens",
+        "vanilla": 7279,
+        "contextlean": 17842,
+        "difference": 10563,
+        "percent_change": 145.11608737463936
+      },
+      {
+        "task": "refactor",
+        "metric": "total_tokens",
+        "vanilla": 69313,
+        "contextlean": 72744,
+        "difference": 3431,
+        "percent_change": 4.9500093777502086
+      }
+    ],
+    "claude": [
+      {
+        "task": "bug-fix",
+        "metric": "uncached_input_tokens",
+        "vanilla": 8977,
+        "contextlean": 13511,
+        "difference": 4534,
+        "percent_change": 50.50685084103821
+      },
+      {
+        "task": "refactor",
+        "metric": "input_tokens",
+        "vanilla": 97079,
+        "contextlean": 222374,
+        "difference": 125295,
+        "percent_change": 129.06498830849102
+      },
+      {
+        "task": "refactor",
+        "metric": "cached_input_tokens",
+        "vanilla": 88254,
+        "contextlean": 209069,
+        "difference": 120815,
+        "percent_change": 136.89464500192625
+      },
+      {
+        "task": "refactor",
+        "metric": "uncached_input_tokens",
+        "vanilla": 8825,
+        "contextlean": 13305,
+        "difference": 4480,
+        "percent_change": 50.76487252124646
+      },
+      {
+        "task": "refactor",
+        "metric": "output_tokens",
+        "vanilla": 2948,
+        "contextlean": 5041,
+        "difference": 2093,
+        "percent_change": 70.99728629579376
+      },
+      {
+        "task": "refactor",
+        "metric": "total_tokens",
+        "vanilla": 100027,
+        "contextlean": 227415,
+        "difference": 127388,
+        "percent_change": 127.35361452407852
+      },
+      {
+        "task": "refactor",
+        "metric": "duration_seconds",
+        "vanilla": 52.88976037502289,
+        "contextlean": 79.72900637495331,
+        "difference": 26.839245999930426,
+        "percent_change": 50.74563735895696
+      },
+      {
+        "task": "refactor",
+        "metric": "command_calls",
+        "vanilla": 4,
+        "contextlean": 9,
+        "difference": 5,
+        "percent_change": 125.0
+      }
+    ],
+    "sol": [
+      {
+        "task": "bug-fix",
+        "metric": "input_tokens",
+        "vanilla": 88171,
+        "contextlean": 90770,
+        "difference": 2599,
+        "percent_change": 2.947681210375297
+      },
+      {
+        "task": "bug-fix",
+        "metric": "cached_input_tokens",
+        "vanilla": 71296,
+        "contextlean": 77184,
+        "difference": 5888,
+        "percent_change": 8.258527827648109
+      },
+      {
+        "task": "bug-fix",
+        "metric": "output_tokens",
+        "vanilla": 1052,
+        "contextlean": 1122,
+        "difference": 70,
+        "percent_change": 6.653992395437269
+      },
+      {
+        "task": "bug-fix",
+        "metric": "total_tokens",
+        "vanilla": 89223,
+        "contextlean": 91892,
+        "difference": 2669,
+        "percent_change": 2.9913811461170337
+      },
+      {
+        "task": "refactor",
+        "metric": "input_tokens",
+        "vanilla": 84501,
+        "contextlean": 107022,
+        "difference": 22521,
+        "percent_change": 26.65175560052544
+      },
+      {
+        "task": "refactor",
+        "metric": "cached_input_tokens",
+        "vanilla": 55424,
+        "contextlean": 97280,
+        "difference": 41856,
+        "percent_change": 75.51963048498844
+      },
+      {
+        "task": "refactor",
+        "metric": "output_tokens",
+        "vanilla": 1217,
+        "contextlean": 1795,
+        "difference": 578,
+        "percent_change": 47.493837304848
+      },
+      {
+        "task": "refactor",
+        "metric": "total_tokens",
+        "vanilla": 85718,
+        "contextlean": 108817,
+        "difference": 23099,
+        "percent_change": 26.94766560115729
+      },
+      {
+        "task": "refactor",
+        "metric": "duration_seconds",
+        "vanilla": 33.727675542002544,
+        "contextlean": 45.647646541008726,
+        "difference": 11.919970999006182,
+        "percent_change": 35.34180997490244
+      },
+      {
+        "task": "refactor",
+        "metric": "command_calls",
+        "vanilla": 4,
+        "contextlean": 5,
+        "difference": 1,
+        "percent_change": 25.0
+      }
+    ]
+  },
+  "cost": {
+    "unit_note": "ChatGPT standard-speed credit-equivalent, not actual subscription credits spent. Claude reports a USD equivalent, not confirmed billing. Units are not convertible here.",
+    "complete_campaign_usage_available": false,
+    "missing_usage_sessions": [
+      9
+    ],
+    "terra_credit_equivalent": 11.06378,
+    "sol_credit_equivalent": 12.53284,
+    "claude_reported_cost_usd": 1.0221185,
+    "openai_credit_equivalent_total": 23.59662
+  }
+}

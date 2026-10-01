@@ -1,0 +1,39 @@
+{
+  "provider": "terra",
+  "task": "feature",
+  "condition": "contextlean",
+  "sequence": 6,
+  "metrics": {
+    "input_tokens": 75436,
+    "cached_input_tokens": 56320,
+    "output_tokens": 1451,
+    "reasoning_output_tokens": 118,
+    "total_tokens": 76887,
+    "uncached_input_tokens": 19116,
+    "command_calls": 3,
+    "duration_seconds": 35.00739554222673,
+    "file_read_tool_calls": null,
+    "total_tool_calls": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "guidance_sample_baseline_intact": true,
+  "solution_digest": "a5e98a3af3755c20822303713f77677fa1241083d43f3a171ec376ef8984927c",
+  "execution_success": true,
+  "actual_model": null,
+  "reported_cost_usd": null,
+  "offline_regrade": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "raw_directory": "raw/terra-feature-contextlean",
+  "solution_archive_directory": "terra-feature-contextlean",
+  "offline_regrade_directory": "offline-regrade/terra-feature-contextlean",
+  "credit_equivalent": 1.6727
+}

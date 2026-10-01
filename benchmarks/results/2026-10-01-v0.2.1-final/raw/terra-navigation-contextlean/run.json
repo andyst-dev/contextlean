@@ -1,0 +1,39 @@
+{
+  "provider": "terra",
+  "task": "navigation",
+  "condition": "contextlean",
+  "sequence": 2,
+  "metrics": {
+    "input_tokens": 42625,
+    "cached_input_tokens": 27136,
+    "output_tokens": 369,
+    "reasoning_output_tokens": 53,
+    "total_tokens": 42994,
+    "uncached_input_tokens": 15489,
+    "command_calls": 3,
+    "duration_seconds": 13.315527791855857,
+    "file_read_tool_calls": null,
+    "total_tool_calls": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "guidance_sample_baseline_intact": true,
+  "solution_digest": "594c41b149729a69fbde6713711e76407cbda09ba7b08c6233b631481dce4099",
+  "execution_success": true,
+  "actual_model": null,
+  "reported_cost_usd": null,
+  "offline_regrade": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "raw_directory": "raw/terra-navigation-contextlean",
+  "solution_archive_directory": "terra-navigation-contextlean",
+  "offline_regrade_directory": "offline-regrade/terra-navigation-contextlean",
+  "credit_equivalent": 1.02083
+}

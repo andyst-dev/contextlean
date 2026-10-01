@@ -1,0 +1,117 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 110006,
+    "cached_input_tokens": 101029,
+    "output_tokens": 3507
+  },
+  "raw_usage": {
+    "input_tokens": 20,
+    "cache_creation_input_tokens": 8957,
+    "cache_read_input_tokens": 101029,
+    "output_tokens": 3507,
+    "output_tokens_details": {
+      "thinking_tokens": 511
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 8957,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "not_available",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 570,
+        "cache_read_input_tokens": 13063,
+        "cache_creation_input_tokens": 359,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 359
+        },
+        "type": "message",
+        "model": null
+      }
+    ],
+    "speed": "standard"
+  },
+  "model_usage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 617,
+      "outputTokens": 20,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0007170000000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "canonicalModel": "claude-haiku-4-5",
+      "provider": "firstParty"
+    },
+    "claude-opus-5[1m]": {
+      "inputTokens": 20,
+      "outputTokens": 3507,
+      "cacheReadInputTokens": 101029,
+      "cacheCreationInputTokens": 8957,
+      "webSearchRequests": 0,
+      "costUSD": 0.2278595,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "canonicalModel": "claude-opus-5",
+      "provider": "firstParty"
+    }
+  },
+  "reported_cost_usd": 0.22857650000000002,
+  "actual_model": "claude-opus-5[1m]",
+  "final_response": "Fixed and verified.\n\n**Cause** \u2014 `expense_report/filters.py:10` normalized only the *stored* category, comparing `\"food\"` against the raw argument. Any input that wasn't already trimmed and lowercased (like `' FOOD '`) matched nothing.\n\n**Fix** \u2014 normalize the requested category once before comparing, using the same `normalize_category` helper:\n\n```python\nwanted = normalize_category(category)\nreturn [\n    expense for expense in expenses\n    if normalize_category(expense[\"category\"]) == wanted\n]\n```\n\n**Regression tests** added in `tests/test_expenses.py`:\n- `test_filter_mixed_case_and_whitespace` \u2014 `select_category` with `\" FOOD \"`, `\"Food\"`, `\"food\\n\"`, `\"  tRaVeL\"`.\n- `test_cli_filter_mixed_case_and_whitespace` \u2014 end-to-end CLI with `--category ' FOOD '`, asserting count 2, total `20.00`, categories `{\"food\": \"20.00\"}`.\n\n**Results** \u2014 `python3 -m unittest discover -s tests`: 7 tests, all pass. Spot-checked the CLI: `--category ' FOOD '` now gives total `20.00` over 2 expenses; the unfiltered report is unchanged at `40.00` across 3 expenses; `--currency GBP` and the `config.json` default (USD) both still apply; totals remain exact decimal strings.\n\n`None` still means unfiltered, so reports without `--category` are untouched. One thing I left alone as out of scope: a category that matches nothing reports `\"total\": \"0\"` rather than `\"0.00\"`, since `sum` starts from `Decimal(\"0\")` with no operands to set the exponent.",
+  "duration_seconds": 50.260083250002936,
+  "exit_code": 0,
+  "commands": 6,
+  "file_read_tool_calls": 5,
+  "total_tool_calls": 14,
+  "event_count": 50,
+  "error": null,
+  "command_without_credentials": [
+    "claude",
+    "--print",
+    "--verbose",
+    "--output-format",
+    "stream-json",
+    "--no-session-persistence",
+    "--model",
+    "opus[1m]",
+    "--effort",
+    "high",
+    "--setting-sources",
+    "project,local",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "{\"mcpServers\":{}}",
+    "--permission-mode",
+    "acceptEdits",
+    "--tools",
+    "Bash,Read,Edit,Write,Glob,Grep",
+    "--allowedTools",
+    "Bash(python3 *)",
+    "Bash(rg *)",
+    "Bash(ls *)",
+    "Bash(cat *)",
+    "Bash(sed *)",
+    "Bash(head *)",
+    "Bash(tail *)",
+    "Bash(wc *)",
+    "Bash(find *)",
+    "Bash(pwd*)",
+    "Bash(git status*)",
+    "Bash(git diff*)",
+    "Read",
+    "Edit",
+    "Write",
+    "Glob",
+    "Grep"
+  ]
+}

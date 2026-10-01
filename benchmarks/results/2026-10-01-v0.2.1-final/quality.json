@@ -1,0 +1,44 @@
+{
+  "skill-bootstrap": "PASS",
+  "skill-audit": "PASS",
+  "skill-lean-review": "PASS",
+  "skill-benchmark": "PASS",
+  "codex-plugin": "PASS",
+  "claude-plugin": "PASS",
+  "claude-marketplace": "PASS",
+  "offline_tests": 120,
+  "ruff-lint": "PASS",
+  "ruff-format": "PASS",
+  "original_tracked_files_unchanged": 478,
+  "historical_files_unchanged": 388,
+  "semantic_coverage": {
+    "PASS": 74,
+    "PARTIAL": 0,
+    "MISSING": 0,
+    "INTENTIONALLY_REPLACED": 2,
+    "facets_preserved": 71,
+    "basis": "Byte-identical released product/guidance/matrix; complete semantic contracts and fresh nine-pair transfer validation pass."
+  },
+  "relative_links": 313,
+  "public_hygiene": {
+    "status": "PASS",
+    "text_files_and_archive_members_scanned": 3062,
+    "credentials_files_published": false,
+    "intentional_git_metadata": "Controlled anonymous committed fixture baselines in preparation archive only; no authentication/remotes/hooks"
+  },
+  "readme_headline": "UNCHANGED: all-18-success gate failed, session 9 usage unavailable",
+  "model_sessions": 18,
+  "model_retries": 0,
+  "offline_solution_grade": "18/18 all three tests; 17/18 execution/task success",
+  "headline_eligible": false,
+  "claude_expected_warnings": [
+    "Plugin-root CLAUDE.md is not project context.",
+    "Claude ignores the Codex marketplace policy field."
+  ],
+  "patch_compression": "Lossless gzip of 18 final patches; decompression matches original hashes",
+  "final_public_hygiene": {
+    "status": "PASS",
+    "text_files_including_nested_archives_gzip": 3063,
+    "generic_personal_path_and_secret_scan": "PASS"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "raw/terra-documentation-config-vanilla/final-git-diff.patch": {
+    "stored_as": "raw/terra-documentation-config-vanilla/final-git-diff.patch.gz",
+    "uncompressed_sha256": "9311e09476840f2ac9c67dab912aed5ddff1fd6ddedbfed5ef5a5bbd4e5152f7",
+    "lossless": true
+  },
+  "raw/terra-navigation-vanilla/final-git-diff.patch": {
+    "stored_as": "raw/terra-navigation-vanilla/final-git-diff.patch.gz",
+    "uncompressed_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "lossless": true
+  },
+  "raw/claude-bug-fix-contextlean/final-git-diff.patch": {
+    "stored_as": "raw/claude-bug-fix-contextlean/final-git-diff.patch.gz",
+    "uncompressed_sha256": "092b1dbfb99801571002b757aee9172d90866844894e1a4440306808f3e0c3d2",
+    "lossless": true
+  },
+  "raw/sol-refactor-vanilla/final-git-diff.patch": {
+    "stored_as": "raw/sol-refactor-vanilla/final-git-diff.patch.gz",
+    "uncompressed_sha256": "e6ec934a6dc8ba8ce61e1600b7e2fd18cb5d3a5a25f45a55036c8a613c0032e4",
+    "lossless": true
+  },
+  "raw/sol-refactor-contextlean/final-git-diff.patch": {
+    "stored_as": "raw/sol-refactor-contextlean/final-git-diff.patch.gz",
+    "uncompressed_sha256": "a6416c02bc460a9f3064efac38f753ed3002956216c535050135207022013bc1",
+    "lossless": true
+  },
+  "raw/terra-refactor-contextlean/final-git-diff.patch": {
+    "stored_as": "raw/terra-refactor-contextlean/final-git-diff.patch.gz",
+    "uncompressed_sha256": "b21ec21f8f2272e0bedf8ea5de57199b856d3fd6c3328ecd6a86e93c2f509fe6",
+    "lossless": true
+  },
+  "raw/sol-bug-fix-contextlean/final-git-diff.patch": {
+    "stored_as": "raw/sol-bug-fix-contextlean/final-git-diff.patch.gz",
+    "uncompressed_sha256": "07b75cffad749befac8a29585fb2c1c12ed29175362a4142db807faa4d707432",
+    "lossless": true
+  },
+  "raw/terra-refactor-vanilla/final-git-diff.patch": {
+    "stored_as": "raw/terra-refactor-vanilla/final-git-diff.patch.gz",
+    "uncompressed_sha256": "b21ec21f8f2272e0bedf8ea5de57199b856d3fd6c3328ecd6a86e93c2f509fe6",
+    "lossless": true
+  },
+  "raw/terra-documentation-config-contextlean/final-git-diff.patch": {
+    "stored_as": "raw/terra-documentation-config-contextlean/final-git-diff.patch.gz",
+    "uncompressed_sha256": "5278782074d15e2c4f42256ba0d44cbab6177179fae87ca9b157a6e1673f73fa",
+    "lossless": true
+  },
+  "raw/terra-bug-fix-vanilla/final-git-diff.patch": {
+    "stored_as": "raw/terra-bug-fix-vanilla/final-git-diff.patch.gz",
+    "uncompressed_sha256": "9318b4f3f36fcc350af8e49b5c9a3f2e59cb62c76cf1cc402297cf3df49b3948",
+    "lossless": true
+  },
+  "raw/claude-refactor-contextlean/final-git-diff.patch": {
+    "stored_as": "raw/claude-refactor-contextlean/final-git-diff.patch.gz",
+    "uncompressed_sha256": "e716ccca4fb9a79eccc71c21f1f1b911761028e4e3d40858b69d0fd81684f622",
+    "lossless": true
+  },
+  "raw/claude-bug-fix-vanilla/final-git-diff.patch": {
+    "stored_as": "raw/claude-bug-fix-vanilla/final-git-diff.patch.gz",
+    "uncompressed_sha256": "49020d40e62276c081b930ad6dab721444c32bf0648ceec2c7130c2ddfe21ed7",
+    "lossless": true
+  },
+  "raw/terra-bug-fix-contextlean/final-git-diff.patch": {
+    "stored_as": "raw/terra-bug-fix-contextlean/final-git-diff.patch.gz",
+    "uncompressed_sha256": "fc54190b9f2041e3923f090b591e97c226fc1c45024ea8f19250314a4538067c",
+    "lossless": true
+  },
+  "raw/terra-feature-vanilla/final-git-diff.patch": {
+    "stored_as": "raw/terra-feature-vanilla/final-git-diff.patch.gz",
+    "uncompressed_sha256": "487e0b2bc4a7da066c525d14cb07a26195ccaf91ca7ed3ff601538959070ea3e",
+    "lossless": true
+  },
+  "raw/terra-feature-contextlean/final-git-diff.patch": {
+    "stored_as": "raw/terra-feature-contextlean/final-git-diff.patch.gz",
+    "uncompressed_sha256": "f6414912c7bc44eb2227ab636862e9562c2716d26aa4e203bde5c48c85452cab",
+    "lossless": true
+  },
+  "raw/terra-navigation-contextlean/final-git-diff.patch": {
+    "stored_as": "raw/terra-navigation-contextlean/final-git-diff.patch.gz",
+    "uncompressed_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "lossless": true
+  },
+  "raw/sol-bug-fix-vanilla/final-git-diff.patch": {
+    "stored_as": "raw/sol-bug-fix-vanilla/final-git-diff.patch.gz",
+    "uncompressed_sha256": "28fc0863950c9f88846f669e81e601f56781038828d570c83c8d23bb0777f114",
+    "lossless": true
+  },
+  "raw/claude-refactor-vanilla/final-git-diff.patch": {
+    "stored_as": "raw/claude-refactor-vanilla/final-git-diff.patch.gz",
+    "uncompressed_sha256": "e6ec934a6dc8ba8ce61e1600b7e2fd18cb5d3a5a25f45a55036c8a613c0032e4",
+    "lossless": true
+  }
+}

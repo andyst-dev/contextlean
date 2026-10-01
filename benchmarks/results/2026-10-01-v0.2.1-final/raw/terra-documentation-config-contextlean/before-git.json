@@ -1,0 +1,22 @@
+{
+  "head": "926ae34b5f737b42e9135099ceb08781fb0ff229",
+  "tree": "b3431789c267a4436ce07ce9b851d5de957babc4",
+  "clean": true,
+  "normal_diff_empty": true,
+  "tracked_file_sha256": {
+    ".gitignore": "66556d3cf14a84a8c025c4e396fa1842c41d1dd09c98dc25ec3f2ae6ac878db5",
+    "AGENTS.md": "209e63926369bd2893eff49ee3b4e3ef6e51ca258956b4fb188a8535cd9d9635",
+    "CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "PROJECT_REFERENCE.md": "ecac8f12737b0a25ab826b74476a170e1c3a2ee85bd0bb23e0431e4284c28025",
+    "README.md": "3bc7002182a17904d8435a5cb95fca7c0095d809d441f22a9f4572ac60c06722",
+    "config.json": "6a8c29bd630822a34ee4ed59e0d2591f9afa4b7a310db08b6aa528039a443da4",
+    "data/sample.csv": "c39faa15a1d1eefbf2ee2402f88cfe7d88e22aeddacfeedb538203044e60163e",
+    "expense_report/__init__.py": "f6b1efb33c8e51aa4ebf4d7ea4a1fade259d94b019ade83dd241271118529a47",
+    "expense_report/cli.py": "6a681929dc3b3fc7149084ce6d97db797dcabaee51e44e54f8f517c3fa8d89ab",
+    "expense_report/filters.py": "8825e48b6a21b716bc6b074284378bc42c13be48ca16c4450184d449cb65a9f7",
+    "expense_report/report.py": "a6054eafc61b537081ee06573065ecbe1d8ca0e0cd6712d6ffcce73c225e6b64",
+    "expense_report/storage.py": "97eb5325d6b0a78427875ad0774856b1b3249ed5f939fc22ccb0a43efd9f69b4",
+    "tests/test_expenses.py": "542ad1c532288b3c460269224ecf161dd560e6e0d5c9c783f83cec4e593a194b"
+  },
+  "local_config": "core.repositoryformatversion=0\ncore.filemode=true\ncore.bare=false\ncore.logallrefupdates=false\ncore.ignorecase=true\ncore.precomposeunicode=true\ncore.autocrlf=false\nuser.name=ContextLean fixture\nuser.email=fixture@example.invalid\ncommit.gpgsign=false"
+}

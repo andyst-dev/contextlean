@@ -1,0 +1,39 @@
+{
+  "provider": "terra",
+  "task": "documentation-config",
+  "condition": "vanilla",
+  "sequence": 9,
+  "metrics": {
+    "input_tokens": null,
+    "cached_input_tokens": null,
+    "output_tokens": null,
+    "reasoning_output_tokens": null,
+    "total_tokens": null,
+    "uncached_input_tokens": null,
+    "command_calls": 3,
+    "duration_seconds": 29.16840195795521,
+    "file_read_tool_calls": null,
+    "total_tool_calls": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": false
+  },
+  "guidance_sample_baseline_intact": true,
+  "solution_digest": "352d40a921b44768e8c66b736d5b9e4447fef1c3160fd7c8f1ee97d7251bf111",
+  "execution_success": false,
+  "actual_model": null,
+  "reported_cost_usd": null,
+  "offline_regrade": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": false
+  },
+  "raw_directory": "raw/terra-documentation-config-vanilla",
+  "solution_archive_directory": "terra-documentation-config-vanilla",
+  "offline_regrade_directory": "offline-regrade/terra-documentation-config-vanilla",
+  "credit_equivalent": null
+}

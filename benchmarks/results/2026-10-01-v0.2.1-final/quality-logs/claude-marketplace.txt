@@ -1,0 +1,7 @@
+Validating marketplace manifest: <contextlean>/.claude-plugin/marketplace.json
+
+⚠ Found 1 warning:
+
+  ❯ plugins[0].policy: Unknown field 'policy'. Claude Code ignores it at load time.
+
+✔ Validation passed with warnings

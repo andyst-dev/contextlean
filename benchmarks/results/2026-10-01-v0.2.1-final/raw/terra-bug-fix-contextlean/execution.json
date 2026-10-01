@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 73760,
+    "cached_input_tokens": 64256,
+    "output_tokens": 827,
+    "reasoning_output_tokens": 31
+  },
+  "commands": 3,
+  "web_searches": 0,
+  "parse_errors": 0,
+  "error": null,
+  "thread_id": "01a0f6c4-9488-79f3-89d7-ff87a30c839f",
+  "event_count": 14,
+  "final_response": "Fixed category filtering by normalizing the requested `--category` value before matching.\n\nAdded a CLI regression test for `--category ' FOOD '`, confirming count 2 and total `20.00`.\n\nVerified with:\n\n`python3 -m unittest discover -s tests -p test_expenses.py -v`\n\nAll 6 tests pass.",
+  "duration_seconds": 26.924647458130494,
+  "exit_code": 0
+}

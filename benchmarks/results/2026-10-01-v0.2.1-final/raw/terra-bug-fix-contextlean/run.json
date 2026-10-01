@@ -1,0 +1,39 @@
+{
+  "provider": "terra",
+  "task": "bug-fix",
+  "condition": "contextlean",
+  "sequence": 3,
+  "metrics": {
+    "input_tokens": 73760,
+    "cached_input_tokens": 64256,
+    "output_tokens": 827,
+    "reasoning_output_tokens": 31,
+    "total_tokens": 74587,
+    "uncached_input_tokens": 9504,
+    "command_calls": 3,
+    "duration_seconds": 26.924647458130494,
+    "file_read_tool_calls": null,
+    "total_tool_calls": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "guidance_sample_baseline_intact": true,
+  "solution_digest": "bf0d09cbc2a87e265027e37004a6cab5de1feb26c3a5c2385fbc1d1e1c4fe9b0",
+  "execution_success": true,
+  "actual_model": null,
+  "reported_cost_usd": null,
+  "offline_regrade": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "raw_directory": "raw/terra-bug-fix-contextlean",
+  "solution_archive_directory": "terra-bug-fix-contextlean",
+  "offline_regrade_directory": "offline-regrade/terra-bug-fix-contextlean",
+  "credit_equivalent": 1.04458
+}

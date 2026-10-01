@@ -1,0 +1,39 @@
+{
+  "provider": "sol",
+  "task": "bug-fix",
+  "condition": "vanilla",
+  "sequence": 16,
+  "metrics": {
+    "input_tokens": 88171,
+    "cached_input_tokens": 71296,
+    "output_tokens": 1052,
+    "reasoning_output_tokens": 99,
+    "total_tokens": 89223,
+    "uncached_input_tokens": 16875,
+    "command_calls": 4,
+    "duration_seconds": 34.51880929199979,
+    "file_read_tool_calls": null,
+    "total_tool_calls": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "guidance_sample_baseline_intact": true,
+  "solution_digest": "069d01ef9074d46491f0bebb1bf4e5b60bea6dc771c3eb8421323aa3f042fdf0",
+  "execution_success": true,
+  "actual_model": null,
+  "reported_cost_usd": null,
+  "offline_regrade": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "raw_directory": "raw/sol-bug-fix-vanilla",
+  "solution_archive_directory": "sol-bug-fix-vanilla",
+  "offline_regrade_directory": "offline-regrade/sol-bug-fix-vanilla",
+  "credit_equivalent": 2.92646
+}

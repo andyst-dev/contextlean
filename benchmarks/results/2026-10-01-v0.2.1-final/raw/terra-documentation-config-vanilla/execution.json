@@ -1,0 +1,13 @@
+{
+  "success": false,
+  "usage": null,
+  "commands": 3,
+  "web_searches": 0,
+  "parse_errors": 0,
+  "error": "turn.completed event missing",
+  "thread_id": "01a0f6c7-5c26-7e83-8930-f875918f8b9d",
+  "event_count": 14,
+  "final_response": "The implementation already reads its default from `config.json`, and the override path is independent. I\u2019m updating the configured value and documentation, and tightening the default-currency test to make the EUR requirement explicit.",
+  "duration_seconds": 29.16840195795521,
+  "exit_code": 1
+}

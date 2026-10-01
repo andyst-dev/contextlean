@@ -1,0 +1,39 @@
+{
+  "provider": "terra",
+  "task": "feature",
+  "condition": "vanilla",
+  "sequence": 5,
+  "metrics": {
+    "input_tokens": 85129,
+    "cached_input_tokens": 62208,
+    "output_tokens": 1542,
+    "reasoning_output_tokens": 72,
+    "total_tokens": 86671,
+    "uncached_input_tokens": 22921,
+    "command_calls": 4,
+    "duration_seconds": 38.35299833281897,
+    "file_read_tool_calls": null,
+    "total_tool_calls": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "guidance_sample_baseline_intact": true,
+  "solution_digest": "31239d08f6dc02434ffe7bf550e5d0ebd954f335a3c5d8b784198e57a8d406e4",
+  "execution_success": true,
+  "actual_model": null,
+  "reported_cost_usd": null,
+  "offline_regrade": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "raw_directory": "raw/terra-feature-vanilla",
+  "solution_archive_directory": "terra-feature-vanilla",
+  "offline_regrade_directory": "offline-regrade/terra-feature-vanilla",
+  "credit_equivalent": 1.91969
+}

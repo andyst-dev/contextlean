@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 90770,
+    "cached_input_tokens": 77184,
+    "output_tokens": 1122,
+    "reasoning_output_tokens": 169
+  },
+  "commands": 4,
+  "web_searches": 0,
+  "parse_errors": 0,
+  "error": null,
+  "thread_id": "01a0f6e4-e85f-7743-85f5-c501e163665c",
+  "event_count": 17,
+  "final_response": "Implemented category input normalization in `select_category`:\n\n- `--category \" FOOD \"` now matches stored `Food` and `food`.\n- Added an end-to-end CLI regression confirming 2 expenses and total `20.00`.\n- Preserved unfiltered behavior, Decimal totals, and currency overrides.\n\nVerification: all 6 standard-library tests pass.",
+  "duration_seconds": 32.04321058304049,
+  "exit_code": 0
+}

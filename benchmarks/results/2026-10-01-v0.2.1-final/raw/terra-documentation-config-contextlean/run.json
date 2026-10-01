@@ -1,0 +1,39 @@
+{
+  "provider": "terra",
+  "task": "documentation-config",
+  "condition": "contextlean",
+  "sequence": 10,
+  "metrics": {
+    "input_tokens": 56662,
+    "cached_input_tokens": 40192,
+    "output_tokens": 434,
+    "reasoning_output_tokens": 14,
+    "total_tokens": 57096,
+    "uncached_input_tokens": 16470,
+    "command_calls": 2,
+    "duration_seconds": 19.470602083019912,
+    "file_read_tool_calls": null,
+    "total_tool_calls": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "guidance_sample_baseline_intact": true,
+  "solution_digest": "62ccc931b0e3e8f48f312c050ae10ca4ba38be1e8dce87abb653e51eba8631d0",
+  "execution_success": true,
+  "actual_model": null,
+  "reported_cost_usd": null,
+  "offline_regrade": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "raw_directory": "raw/terra-documentation-config-contextlean",
+  "solution_archive_directory": "terra-documentation-config-contextlean",
+  "offline_regrade_directory": "offline-regrade/terra-documentation-config-contextlean",
+  "credit_equivalent": 1.15466
+}

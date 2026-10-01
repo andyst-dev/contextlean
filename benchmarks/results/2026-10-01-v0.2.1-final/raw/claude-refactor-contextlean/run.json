@@ -1,0 +1,39 @@
+{
+  "provider": "claude",
+  "task": "refactor",
+  "condition": "contextlean",
+  "sequence": 13,
+  "metrics": {
+    "input_tokens": 222374,
+    "cached_input_tokens": 209069,
+    "output_tokens": 5041,
+    "reasoning_output_tokens": null,
+    "total_tokens": 227415,
+    "uncached_input_tokens": 13305,
+    "command_calls": 9,
+    "duration_seconds": 79.72900637495331,
+    "file_read_tool_calls": 5,
+    "total_tool_calls": 19
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "guidance_sample_baseline_intact": true,
+  "solution_digest": "5a8d674fcefff9b044f510f4921f005400de06765a03886b491821c7c487f2c1",
+  "execution_success": true,
+  "actual_model": "claude-opus-5[1m]",
+  "reported_cost_usd": 0.3641575,
+  "offline_regrade": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "raw_directory": "raw/claude-refactor-contextlean",
+  "solution_archive_directory": "claude-refactor-contextlean",
+  "offline_regrade_directory": "offline-regrade/claude-refactor-contextlean",
+  "credit_equivalent": null
+}

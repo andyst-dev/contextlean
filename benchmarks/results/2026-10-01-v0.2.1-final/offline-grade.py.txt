@@ -1,0 +1,22 @@
+"""Independent offline regrade of every attempted session, including failed execution."""
+import driver as d
+
+e = d.gates()
+r = d.read(d.BASE / 'summary.json')
+assert len(r['runs']) == len(d.read(d.BASE / 'call-ledger.json')) == 18
+for run in r['runs']:
+    name = f"{run['provider']}-{run['task']}-{run['condition']}"
+    out = d.BASE / 'raw' / name
+    assert d.digest(out / 'solution') == run['solution_digest']
+    pair = next(p for p in e['pairs'] if p['provider'] == run['provider'] and p['task']['id'] == run['task'])
+    d.runner.FIXTURE = d.pair_base(run['provider'], run['task']) / 'fixtures' / run['condition']
+    grade = d.runner.grade(pair['task'], out / 'solution', d.read(out / 'execution.json'), d.BASE / 'offline-regrade' / name)
+    assert grade == run['evaluation'], (name, grade, run['evaluation'])
+    run['offline_regrade'] = grade
+    print(name, grade, flush=True)
+r['finished_at'] = d.core.utc_now()
+r['all_grades_pass'] = all(run['offline_regrade']['task_success'] and run['guidance_sample_baseline_intact'] for run in r['runs'])
+r['campaign_disposition'] = 'NOT suitable for main headline: session 9 failed at provider usage limit; usage unavailable. No retry. README unchanged.'
+r['resume'] = d.read(d.BASE / 'resume-started.json')
+d.write(d.BASE / 'summary.json', r)
+print('All 18 attempted solutions independently regraded; no model calls.', flush=True)

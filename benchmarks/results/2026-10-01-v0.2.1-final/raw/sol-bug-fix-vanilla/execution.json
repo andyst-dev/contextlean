@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 88171,
+    "cached_input_tokens": 71296,
+    "output_tokens": 1052,
+    "reasoning_output_tokens": 99
+  },
+  "commands": 4,
+  "web_searches": 0,
+  "parse_errors": 0,
+  "error": null,
+  "thread_id": "01a0f6e5-699e-7552-9adb-86a7ea96eb7f",
+  "event_count": 16,
+  "final_response": "Implemented category-filter normalization using `strip().casefold()`.\n\nAdded a CLI regression test for `--category ' FOOD '` verifying:\n\n- 2 matching expenses\n- Total `\"20.00\"`\n- Category total `{\"food\": \"20.00\"}`\n\nAll 6 standard-library tests pass. Currency overrides, unfiltered reports, and Decimal arithmetic remain intact.",
+  "duration_seconds": 34.51880929199979,
+  "exit_code": 0
+}

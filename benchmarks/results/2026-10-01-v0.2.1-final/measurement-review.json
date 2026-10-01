@@ -1,0 +1,42 @@
+{
+  "status": "17 usage-reported sessions / 18 attempts; full main headline ineligible",
+  "sessions": 18,
+  "paid_retries": 0,
+  "unavailable_usage": [
+    9
+  ],
+  "source_product_unchanged": true,
+  "tasks_prompts_grader_metrics_unchanged": true,
+  "fresh_git_pairs": 9,
+  "mapped_paths_per_pair": 8,
+  "facets_per_pair": 71,
+  "wrapper": "@AGENTS.md\\n",
+  "offline_tests_all_solutions": "18/18 submitted, original regression and acceptance; execution/task success 17/18",
+  "token_numeric_fields_preserved": true,
+  "derived_uncached": "input - cached",
+  "codex_tokens": "turn.completed.usage; failed ninth session null",
+  "claude_tokens": "ordinary input + cache creation + cache read; cached is cache read; uncached includes creation",
+  "command_contracts": {
+    "codex": "unique command_execution IDs",
+    "claude": "unique Bash tool-use IDs, including denied tool attempts"
+  },
+  "file_reads": {
+    "codex": null,
+    "claude": "explicit Read tool-use IDs, not unique files or shell reads"
+  },
+  "total_tools": {
+    "codex": null,
+    "claude": "unique explicit tool-use IDs"
+  },
+  "clock": "local monotonic process time, evaluation excluded",
+  "provider_conditions": "cache/load uncontrolled; quota interruption after attempt 9",
+  "resume": "explicit Reprends; only unattempted sessions after read-only quota check; no ninth-session retry",
+  "headline_disposition": "README left byte-identical; incomplete batch unsuitable for headline",
+  "verification_reuse": {
+    "contextlean_duplicate_equivalent_passed_checks_observed": 0,
+    "scope": "visible test scope/counts and intervening changes, not command labels or hidden state"
+  },
+  "sanitation": "home/temporary machine paths and opaque Claude signatures redacted; numeric usage fields retained; no authentication files in archives",
+  "historical_evidence": "unchanged; diagnostic invalid for headline; no pooling/no causal inference",
+  "cost": "known subtotals only; ninth usage unavailable, full campaign cost unavailable; no actual billing assertion"
+}

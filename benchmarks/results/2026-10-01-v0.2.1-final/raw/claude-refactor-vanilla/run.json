@@ -1,0 +1,39 @@
+{
+  "provider": "claude",
+  "task": "refactor",
+  "condition": "vanilla",
+  "sequence": 14,
+  "metrics": {
+    "input_tokens": 97079,
+    "cached_input_tokens": 88254,
+    "output_tokens": 2948,
+    "reasoning_output_tokens": null,
+    "total_tokens": 100027,
+    "uncached_input_tokens": 8825,
+    "command_calls": 4,
+    "duration_seconds": 52.88976037502289,
+    "file_read_tool_calls": 7,
+    "total_tool_calls": 14
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "guidance_sample_baseline_intact": true,
+  "solution_digest": "9c057ad3b9aab8f5c1b43ce08339967d0a86e1dcca66d5b391872838d2f1792f",
+  "execution_success": true,
+  "actual_model": "claude-opus-5[1m]",
+  "reported_cost_usd": 0.20669,
+  "offline_regrade": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "raw_directory": "raw/claude-refactor-vanilla",
+  "solution_archive_directory": "claude-refactor-vanilla",
+  "offline_regrade_directory": "offline-regrade/claude-refactor-vanilla",
+  "credit_equivalent": null
+}

@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 75436,
+    "cached_input_tokens": 56320,
+    "output_tokens": 1451,
+    "reasoning_output_tokens": 118
+  },
+  "commands": 3,
+  "web_searches": 0,
+  "parse_errors": 0,
+  "error": null,
+  "thread_id": "01a0f6c6-093a-7452-b54e-f106d30c8da2",
+  "event_count": 14,
+  "final_response": "Implemented `--min-amount` as a Decimal threshold, composable with `--category`.\n\n- Added amount filtering in [filters.py](<temporary-path>\n- Wired CLI parsing/application in [cli.py](<temporary-path>\n- Added filter and CLI regression tests in [test_expenses.py](<temporary-path>\n\nVerified with `python3 -m unittest discover -s tests -p test_expenses.py -v`: all 8 tests pass.",
+  "duration_seconds": 35.00739554222673,
+  "exit_code": 0
+}

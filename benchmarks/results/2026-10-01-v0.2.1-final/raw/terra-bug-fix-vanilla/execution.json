@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 70029,
+    "cached_input_tokens": 60160,
+    "output_tokens": 821,
+    "reasoning_output_tokens": 17
+  },
+  "commands": 3,
+  "web_searches": 0,
+  "parse_errors": 0,
+  "error": null,
+  "thread_id": "01a0f6c5-025f-7f31-a875-51f3a566c81e",
+  "event_count": 14,
+  "final_response": "Implemented category input normalization and added a CLI regression test.\n\n`--category ' FOOD '` now selects both food rows and totals `20.00`.\n\nVerified with:\n\n`python3 -m unittest discover -s tests -v` \u2014 6 tests passed.",
+  "duration_seconds": 26.092193291988224,
+  "exit_code": 0
+}

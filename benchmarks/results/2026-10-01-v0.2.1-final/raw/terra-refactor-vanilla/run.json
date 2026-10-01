@@ -1,0 +1,39 @@
+{
+  "provider": "terra",
+  "task": "refactor",
+  "condition": "vanilla",
+  "sequence": 8,
+  "metrics": {
+    "input_tokens": 68463,
+    "cached_input_tokens": 61184,
+    "output_tokens": 850,
+    "reasoning_output_tokens": 76,
+    "total_tokens": 69313,
+    "uncached_input_tokens": 7279,
+    "command_calls": 3,
+    "duration_seconds": 27.31048929085955,
+    "file_read_tool_calls": null,
+    "total_tool_calls": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "guidance_sample_baseline_intact": true,
+  "solution_digest": "0bde0efae5534b42a51e0d8da8940077b95f891443809e53c89d1f41b7e616db",
+  "execution_success": true,
+  "actual_model": null,
+  "reported_cost_usd": null,
+  "offline_regrade": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "raw_directory": "raw/terra-refactor-vanilla",
+  "solution_archive_directory": "terra-refactor-vanilla",
+  "offline_regrade_directory": "offline-regrade/terra-refactor-vanilla",
+  "credit_equivalent": 0.92487
+}

@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 56662,
+    "cached_input_tokens": 40192,
+    "output_tokens": 434,
+    "reasoning_output_tokens": 14
+  },
+  "commands": 2,
+  "web_searches": 0,
+  "parse_errors": 0,
+  "error": null,
+  "thread_id": "01a0f6e1-3860-7953-bfb6-cd965a7512dc",
+  "event_count": 11,
+  "final_response": "Changed the configured default currency to EUR and updated the README.\n\nVerified:\n\n- Default CLI output uses `\"currency\": \"EUR\"` with unchanged totals/grouping.\n- `--category food --currency GBP` still outputs GBP.\n- All 5 standard-library tests pass.",
+  "duration_seconds": 19.470602083019912,
+  "exit_code": 0
+}

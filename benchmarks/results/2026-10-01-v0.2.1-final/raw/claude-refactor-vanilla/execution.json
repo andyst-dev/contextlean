@@ -1,0 +1,117 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 97079,
+    "cached_input_tokens": 88254,
+    "output_tokens": 2948
+  },
+  "raw_usage": {
+    "input_tokens": 18,
+    "cache_creation_input_tokens": 8807,
+    "cache_read_input_tokens": 88254,
+    "output_tokens": 2948,
+    "output_tokens_details": {
+      "thinking_tokens": 772
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 8807,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "not_available",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 423,
+        "cache_read_input_tokens": 12977,
+        "cache_creation_input_tokens": 295,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 295
+        },
+        "type": "message",
+        "model": null
+      }
+    ],
+    "speed": "standard"
+  },
+  "model_usage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 618,
+      "outputTokens": 17,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.000703,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "canonicalModel": "claude-haiku-4-5",
+      "provider": "firstParty"
+    },
+    "claude-opus-5[1m]": {
+      "inputTokens": 18,
+      "outputTokens": 2948,
+      "cacheReadInputTokens": 88254,
+      "cacheCreationInputTokens": 8807,
+      "webSearchRequests": 0,
+      "costUSD": 0.205987,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "canonicalModel": "claude-opus-5",
+      "provider": "firstParty"
+    }
+  },
+  "reported_cost_usd": 0.20669,
+  "actual_model": "claude-opus-5[1m]",
+  "final_response": "Done. The duplicate is consolidated into a single implementation.\n\n**Changes**\n- `expense_report/categories.py` (new) \u2014 holds the one `normalize_category` definition, unchanged from the two identical copies (`value.strip().casefold()`).\n- `expense_report/filters.py:1` and `expense_report/report.py:3` \u2014 now import it; the local definitions are deleted.\n\nBecause each module imports the name into its own namespace, `from expense_report.filters import normalize_category` and `from expense_report.report import normalize_category` both still work, and all three now resolve to the same function object (verified: `a is b is c` \u2192 `True`).\n\n**Tests:** all 5 pass (`python3 -m unittest discover -s tests -v`). CLI output is byte-identical to before for both the default and `--category food --currency GBP` paths.\n\nOne thing worth flagging, left deliberately untouched per your instruction that this isn't a bug fix: `select_category` normalizes only `expense[\"category\"]` and compares it against the caller's raw `category` argument (`filters.py:7`). So `--category Food` or `--category \" food\"` matches nothing, while `--category food` works. If you ever want that made symmetric, it's a one-line change \u2014 but it would alter CLI behavior, so I left the semantics exactly as they were.",
+  "duration_seconds": 52.88976037502289,
+  "exit_code": 0,
+  "commands": 4,
+  "file_read_tool_calls": 7,
+  "total_tool_calls": 14,
+  "event_count": 47,
+  "error": null,
+  "command_without_credentials": [
+    "claude",
+    "--print",
+    "--verbose",
+    "--output-format",
+    "stream-json",
+    "--no-session-persistence",
+    "--model",
+    "opus[1m]",
+    "--effort",
+    "high",
+    "--setting-sources",
+    "project,local",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "{\"mcpServers\":{}}",
+    "--permission-mode",
+    "acceptEdits",
+    "--tools",
+    "Bash,Read,Edit,Write,Glob,Grep",
+    "--allowedTools",
+    "Bash(python3 *)",
+    "Bash(rg *)",
+    "Bash(ls *)",
+    "Bash(cat *)",
+    "Bash(sed *)",
+    "Bash(head *)",
+    "Bash(tail *)",
+    "Bash(wc *)",
+    "Bash(find *)",
+    "Bash(pwd*)",
+    "Bash(git status*)",
+    "Bash(git diff*)",
+    "Read",
+    "Edit",
+    "Write",
+    "Glob",
+    "Grep"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 39526,
+    "cached_input_tokens": 25088,
+    "output_tokens": 287,
+    "reasoning_output_tokens": 14
+  },
+  "commands": 2,
+  "web_searches": 0,
+  "parse_errors": 0,
+  "error": null,
+  "thread_id": "01a0f6c4-1d97-7372-a4f7-3761c23ef866",
+  "event_count": 9,
+  "final_response": "{\"loader\":\"expense_report/storage.py\",\"reporter\":\"expense_report/report.py\",\"cli_tests\":\"tests/test_expenses.py\",\"total\":\"40.00\",\"count\":3,\"currency\":\"USD\"}",
+  "duration_seconds": 15.269106375053525,
+  "exit_code": 0
+}

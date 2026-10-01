@@ -1,0 +1,39 @@
+{
+  "provider": "terra",
+  "task": "refactor",
+  "condition": "contextlean",
+  "sequence": 7,
+  "metrics": {
+    "input_tokens": 72114,
+    "cached_input_tokens": 54272,
+    "output_tokens": 630,
+    "reasoning_output_tokens": 24,
+    "total_tokens": 72744,
+    "uncached_input_tokens": 17842,
+    "command_calls": 3,
+    "duration_seconds": 20.461934125050902,
+    "file_read_tool_calls": null,
+    "total_tool_calls": null
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "guidance_sample_baseline_intact": true,
+  "solution_digest": "3545430dfd52b88595d36e49a9b4a107e034cf44b81d8eae1af8d61cadc6e464",
+  "execution_success": true,
+  "actual_model": null,
+  "reported_cost_usd": null,
+  "offline_regrade": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "raw_directory": "raw/terra-refactor-contextlean",
+  "solution_archive_directory": "terra-refactor-contextlean",
+  "offline_regrade_directory": "offline-regrade/terra-refactor-contextlean",
+  "credit_equivalent": 1.35246
+}

@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 85129,
+    "cached_input_tokens": 62208,
+    "output_tokens": 1542,
+    "reasoning_output_tokens": 72
+  },
+  "commands": 4,
+  "web_searches": 0,
+  "parse_errors": 0,
+  "error": null,
+  "thread_id": "01a0f6c5-6e31-7f62-907d-e0c3b23b8acd",
+  "event_count": 17,
+  "final_response": "Implemented `--min-amount` using `Decimal`, applied after category filtering.\n\nAdded tests for:\n- `--min-amount 10` \u2192 count 2, total `32.50`\n- `--category food --min-amount 10` \u2192 count 1, total `12.50`\n- omitted threshold preserves all expenses.\n\nVerified with `python3 -m unittest discover -s tests -v`: 8 tests passed.",
+  "duration_seconds": 38.35299833281897,
+  "exit_code": 0
+}

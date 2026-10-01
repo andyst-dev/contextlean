@@ -1,0 +1,39 @@
+{
+  "provider": "claude",
+  "task": "bug-fix",
+  "condition": "vanilla",
+  "sequence": 12,
+  "metrics": {
+    "input_tokens": 110006,
+    "cached_input_tokens": 101029,
+    "output_tokens": 3507,
+    "reasoning_output_tokens": null,
+    "total_tokens": 113513,
+    "uncached_input_tokens": 8977,
+    "command_calls": 6,
+    "duration_seconds": 50.260083250002936,
+    "file_read_tool_calls": 5,
+    "total_tool_calls": 14
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "guidance_sample_baseline_intact": true,
+  "solution_digest": "f7d5c9d345d22d42aa609b6a2ad81f5b8563ac66c813048aec2ddaef6b54a9be",
+  "execution_success": true,
+  "actual_model": "claude-opus-5[1m]",
+  "reported_cost_usd": 0.22857650000000002,
+  "offline_regrade": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "raw_directory": "raw/claude-bug-fix-vanilla",
+  "solution_archive_directory": "claude-bug-fix-vanilla",
+  "offline_regrade_directory": "offline-regrade/claude-bug-fix-vanilla",
+  "credit_equivalent": null
+}

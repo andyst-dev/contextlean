@@ -1,0 +1,335 @@
+"""Evidence-only campaign adapter. Public product/tasks/graders/metrics unchanged."""
+import hashlib
+import importlib.util
+import json
+import os
+from pathlib import Path
+import platform
+import shutil
+import subprocess
+import sys
+import tempfile
+import time
+
+ROOT = Path(__file__).resolve().parents[3]
+BASE = Path(__file__).resolve().parent
+LOCATION = json.loads((BASE / 'location.json').read_text())
+SOURCE = Path(LOCATION['source'])
+SHA = '44ee6f227dfead62406326a1306f897358f1778f'
+GUIDANCE = {'AGENTS.md', 'CLAUDE.md', 'PROJECT_REFERENCE.md'}
+
+def write(path, value):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, indent=2) + '\n')
+
+def read(path):
+    return json.loads(path.read_text())
+
+def hf(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def load(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+runner = load('runner', SOURCE / 'benchmarks/run_benchmark.py')
+core, prep = runner.core, runner.preparation
+original_digest = core.tree_digest
+
+def digest(root, ignore_instructions=False):
+    if not ignore_instructions:
+        return original_digest(root)
+    h = hashlib.sha256()
+    for path in core.iter_project_files(root):
+        name = core.relative(path, root)
+        if name in GUIDANCE or path.name in core.INSTRUCTION_NAMES:
+            continue
+        assert not path.is_symlink()
+        h.update(name.encode() + b'\0' + path.read_bytes() + b'\0')
+    return h.hexdigest()
+
+core.tree_digest = digest
+transfer = load('transfer', SOURCE / 'skills/bootstrap/scripts/verify_transfer.py')
+GIT_ENV = dict(os.environ, GIT_CONFIG_NOSYSTEM='1', GIT_CONFIG_GLOBAL=os.devnull,
+               GIT_AUTHOR_NAME='ContextLean fixture', GIT_AUTHOR_EMAIL='fixture@example.invalid',
+               GIT_COMMITTER_NAME='ContextLean fixture', GIT_COMMITTER_EMAIL='fixture@example.invalid',
+               GIT_AUTHOR_DATE='2026-10-01T00:00:00Z', GIT_COMMITTER_DATE='2026-10-01T00:00:00Z',
+               PYTHONDONTWRITEBYTECODE='1')
+for key in ['GIT_DIR', 'GIT_WORK_TREE', 'GIT_INDEX_FILE', 'GIT_COMMON_DIR', 'GIT_OBJECT_DIRECTORY', 'GIT_ALTERNATE_OBJECT_DIRECTORIES']:
+    GIT_ENV.pop(key, None)
+
+def git(repo, *args):
+    return subprocess.check_output(['git', *args], cwd=repo, env=GIT_ENV, text=True).strip()
+
+def git_state(repo):
+    assert (repo / '.git').is_dir()
+    assert not (repo / '.git/objects/info/alternates').exists()
+    assert Path(git(repo, 'rev-parse', '--show-toplevel')).resolve() == repo.resolve()
+    assert not git(repo, 'status', '--short')
+    assert not git(repo, 'diff', '--')
+    assert not git(repo, 'diff', '--', 'expense_report/report.py', 'tests/test_expenses.py')
+    assert not git(repo, 'diff', '--cached', '--')
+    assert not git(repo, 'remote')
+    names = git(repo, 'ls-files').splitlines()
+    assert set(names) == {core.relative(p, repo) for p in core.iter_project_files(repo)}
+    hashes = {name: hashlib.sha256(subprocess.check_output(['git', 'show', f'HEAD:{name}'], cwd=repo, env=GIT_ENV)).hexdigest() for name in names}
+    assert all(hf(repo / n) == h for n, h in hashes.items())
+    return {'head': git(repo, 'rev-parse', 'HEAD'), 'tree': git(repo, 'rev-parse', 'HEAD^{tree}'),
+            'clean': True, 'normal_diff_empty': True, 'tracked_file_sha256': hashes,
+            'local_config': git(repo, 'config', '--local', '--list')}
+
+def source_hashes():
+    return {name: hf(SOURCE / name) for name in git(SOURCE, 'ls-files').splitlines()}
+
+def historical_hashes():
+    return {str(p.relative_to(ROOT)): hf(p) for p in sorted((ROOT / 'benchmarks/results').rglob('*')) if p.is_file() and '2026-10-01-v0.2.1-final' not in p.parts}
+
+def pair_base(provider, task):
+    return BASE / 'pairs' / f'{provider}-{task}'
+
+def order():
+    tasks = runner.load_suite(runner.TASKS)
+    pairs = []
+    for provider in ['terra', 'claude', 'sol']:
+        selected = tasks if provider == 'terra' else [t for t in tasks if t['id'] in {'bug-fix', 'refactor'}]
+        for task in selected:
+            index = next(i for i, t in enumerate(tasks) if t['id'] == task['id'])
+            conditions = ['vanilla' if c == 'baseline' else 'contextlean' for c in core.variant_order(index, 0)]
+            pairs.append({'provider': provider, 'task': task, 'order': conditions})
+    assert sum(len(p['order']) for p in pairs) == 18
+    return pairs
+
+def prepare_pair(pair):
+    base = pair_base(pair['provider'], pair['task']['id'])
+    base.mkdir(parents=True, exist_ok=False)
+    baseline = base / 'baseline'
+    core.copy_repository(SOURCE / 'benchmarks/fixtures/expense-report', baseline)
+    core.neutralize_instructions(baseline)
+    prepared = base / 'prepared'
+    core.copy_repository(baseline, prepared)
+    generator = load('fresh_generator', SOURCE / 'tests/bootstrap_fixture.py')
+    receipt = generator.generate(prepared, transfer)
+    (prepared / 'transfer.json').rename(base / 'transfer.json')
+    entries = prep.project_map(prepared)
+    snippets = {'expense_report/cli.py': 'args.currency or config["currency"]',
+                'expense_report/storage.py': 'Decimal(row["amount"])',
+                'expense_report/filters.py': 'if normalize_category(expense["category"]) == category',
+                'expense_report/report.py': 'categories[key] = categories.get(key, Decimal("0")) + expense["amount"]',
+                'config.json': '{"currency": "USD"}', 'tests/test_expenses.py': 'def test_configured_default(self):',
+                'data/sample.csv': 'Food,12.50', 'README.md': 'python3 -m unittest discover -s tests -v'}
+    assert set(entries) == set(snippets)
+    review = {'semantics_reviewed': True, 'entries': {name: {'responsibility': description, 'evidence': [{'path': name, 'contains': snippets[name]}]} for name, description in entries.items()}}
+    write(base / 'map-review.json', review)
+    neutral = base / 'validated-contextlean'
+    prep.freeze(baseline, prepared, review, neutral, base / 'preparation.json')
+    empty_template = base / 'empty-git-template'
+    empty_template.mkdir()
+    checks = {}
+    for condition in ['vanilla', 'contextlean']:
+        fixture = base / 'fixtures' / condition
+        fixture.parent.mkdir(exist_ok=True)
+        core.copy_repository(neutral, fixture)
+        if condition == 'vanilla':
+            core.neutralize_instructions(fixture)
+            (fixture / 'PROJECT_REFERENCE.md').unlink()
+        git(fixture, 'init', '--initial-branch=main', f'--template={empty_template}')
+        for key, value in [('user.name', 'ContextLean fixture'), ('user.email', 'fixture@example.invalid'), ('commit.gpgsign', 'false'), ('core.autocrlf', 'false'), ('core.logallrefupdates', 'false')]:
+            git(fixture, 'config', key, value)
+        git(fixture, 'add', '.')
+        git(fixture, 'commit', '-m', f"Untouched {pair['task']['id']} task baseline")
+        state = git_state(fixture)
+        with tempfile.TemporaryDirectory(prefix='contextlean-git-probe-', dir='/private/tmp') as temporary:
+            probe = Path(temporary) / 'repo'
+            shutil.copytree(fixture, probe)
+            target = probe / 'expense_report/report.py'
+            target.write_text(target.read_text() + '\n# offline Git preflight probe\n')
+            diff = git(probe, 'diff', '--', 'expense_report/report.py', 'tests/test_expenses.py')
+            assert 'diff --git a/expense_report/report.py b/expense_report/report.py' in diff
+            assert 'a/expense_report/report.py b/tests/test_expenses.py' not in diff
+            (base / f'preflight-{condition}-git-diff.patch').write_text(diff + '\n')
+        ok, log = runner.capture([sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-v'], fixture)
+        assert ok, log
+        (base / f'preflight-{condition}-tests.txt').write_text(log)
+        assert git_state(fixture) == state
+        for name in entries:
+            prep.local_path(fixture, name)
+        checks[condition] = {'digest': digest(fixture), 'product_digest': digest(fixture, True), 'git': state, 'baseline_tests_passed': True}
+    assert checks['vanilla']['product_digest'] == checks['contextlean']['product_digest'] == digest(baseline, True)
+    v = checks['vanilla']['git']['tracked_file_sha256']
+    c = checks['contextlean']['git']['tracked_file_sha256']
+    assert set(c) - set(v) == GUIDANCE and all(c[n] == h for n, h in v.items())
+    assert (neutral / 'CLAUDE.md').read_text() == '@AGENTS.md\n'
+    assert transfer.automatic_guidance(neutral) == {neutral.resolve() / n for n in ['AGENTS.md', 'CLAUDE.md']}
+    assert neutral.resolve() / 'PROJECT_REFERENCE.md' in transfer.reachable_guidance(neutral.resolve())
+    verified = transfer.verify(neutral, receipt)
+    assert verified['facets'] == 71
+    prompt = runner.task_prompt(pair['task'])
+    (base / 'prompt.txt').write_text(prompt)
+    # No prompt mutation relative to the existing historical run definition.
+    old = read(SOURCE / 'benchmarks/results/2026-09-30-release-aligned-0.2.0/summary.json')
+    assert prompt == next(t['executed_prompt'] for t in old['tasks'] if t['id'] == pair['task']['id'])
+    e = {**pair, 'fixtures': checks, 'transfer': verified, 'mapped_paths': entries,
+         'prompt_sha256': hf(base / 'prompt.txt'), 'preparation_sha256': hf(base / 'preparation.json'),
+         'guidance_bytes': {n: (neutral / n).stat().st_size for n in sorted(GUIDANCE)},
+         'frozen_at': core.utc_now()}
+    write(base / 'preflight.json', e)
+    print(f"Prepared {pair['provider']} / {pair['task']['id']}: Git, map, ownership, import, state and 71 facets PASS", flush=True)
+    return e
+
+def prepare():
+    assert not (BASE / 'preflight.json').exists()
+    assert git(SOURCE, 'rev-parse', 'HEAD') == SHA and not git(SOURCE, 'status', '--porcelain')
+    assert git(ROOT, 'rev-parse', 'HEAD') == SHA and not git(ROOT, 'status', '--porcelain')
+    write(BASE / 'source-hashes.json', source_hashes())
+    write(BASE / 'historical-hashes.json', historical_hashes())
+    pairs = [prepare_pair(p) for p in order()]
+    e = {'release': 'v0.2.1', 'source_commit': SHA, 'public_repository': 'https://github.com/andyst-dev/contextlean',
+         'adapter_sha256': hf(Path(__file__)), 'authorized_sessions': 18, 'pairs': pairs,
+         'versions': {p: subprocess.check_output([p, '--version'], text=True).strip() for p in ['codex', 'claude']},
+         'environment': {'system': platform.system(), 'machine': platform.machine(), 'python': platform.python_version()},
+         'models': {'terra': {'model': 'gpt-5.6-terra', 'reasoning': 'low'}, 'sol': {'model': 'gpt-5.6-sol', 'reasoning': 'high'}, 'claude': {'model': 'opus[1m]', 'effort': 'high'}},
+         'adapter_scope': 'Fresh tagged deterministic bootstrap fixture assembly; PROJECT_REFERENCE guidance-only state exclusion; preserve Git metadata and clean root baseline; Claude CLI bridge from previous high-effort compatibility test. No product/task/grader/Codex metric edits.'}
+    write(BASE / 'preflight.json', e)
+    gates()
+    print('ALL NINE PAIRS PASS. NO MODEL CALLS STARTED.', flush=True)
+
+def pair_gate(pair):
+    base = pair_base(pair['provider'], pair['task']['id'])
+    e = read(base / 'preflight.json')
+    assert e == pair
+    assert hf(base / 'preparation.json') == e['preparation_sha256']
+    prep.validate_frozen(base / 'validated-contextlean', base / 'preparation.json')
+    assert transfer.verify(base / 'fixtures/contextlean', read(base / 'transfer.json')) == e['transfer']
+    assert hf(base / 'prompt.txt') == e['prompt_sha256']
+    assert (base / 'prompt.txt').read_text() == runner.task_prompt(e['task'])
+    for c, d in e['fixtures'].items():
+        f = base / 'fixtures' / c
+        assert digest(f) == d['digest'] and git_state(f) == d['git']
+    return e
+
+def gates():
+    e = read(BASE / 'preflight.json')
+    assert hf(Path(__file__)) == e['adapter_sha256']
+    assert source_hashes() == read(BASE / 'source-hashes.json')
+    assert historical_hashes() == read(BASE / 'historical-hashes.json')
+    assert git(SOURCE, 'rev-parse', 'HEAD') == SHA and not git(SOURCE, 'status', '--porcelain')
+    for p in e['pairs']:
+        pair_gate(p)
+    return e
+
+def claude_run(workspace, prompt, raw, profile):
+    env = dict(os.environ, CLAUDE_CONFIG_DIR=str(profile), CLAUDE_CODE_OAUTH_TOKEN=read(Path.home() / '.claude/.credentials.json')['claudeAiOauth']['accessToken'])
+    for k in ['ANTHROPIC_API_KEY', 'ANTHROPIC_AUTH_TOKEN', 'ANTHROPIC_BASE_URL', 'CLAUDE_CODE_USE_BEDROCK', 'CLAUDE_CODE_USE_VERTEX', 'CLAUDE_CODE_USE_FOUNDRY']:
+        env.pop(k, None)
+    command = ['claude', '--print', '--verbose', '--output-format', 'stream-json', '--no-session-persistence', '--model', 'opus[1m]', '--effort', 'high', '--setting-sources', 'project,local', '--strict-mcp-config', '--mcp-config', '{"mcpServers":{}}', '--permission-mode', 'acceptEdits', '--tools', 'Bash,Read,Edit,Write,Glob,Grep', '--allowedTools', 'Bash(python3 *)', 'Bash(rg *)', 'Bash(ls *)', 'Bash(cat *)', 'Bash(sed *)', 'Bash(head *)', 'Bash(tail *)', 'Bash(wc *)', 'Bash(find *)', 'Bash(pwd*)', 'Bash(git status*)', 'Bash(git diff*)', 'Read', 'Edit', 'Write', 'Glob', 'Grep']
+    start = time.perf_counter()
+    try:
+        r = subprocess.run(command, input=prompt, cwd=workspace, env=env, text=True, capture_output=True, timeout=600)
+    except subprocess.TimeoutExpired as error:
+        core.save_raw_run(raw, error.stdout or b'', error.stderr or b'', workspace)
+        return {'success': False, 'usage': None, 'error': 'timeout', 'duration_seconds': time.perf_counter() - start, 'exit_code': None, 'commands': None, 'event_count': 0}
+    duration = time.perf_counter() - start
+    core.save_raw_run(raw, r.stdout, r.stderr, workspace)
+    events = [json.loads(line) for line in r.stdout.splitlines() if line.strip()]
+    res = next((v for v in reversed(events) if v.get('type') == 'result'), None)
+    calls = {b['id']: b for v in events if v.get('type') == 'assistant' for b in v.get('message', {}).get('content', []) if b.get('type') == 'tool_use'}
+    if not res:
+        return {'success': False, 'usage': None, 'error': 'missing Claude result', 'duration_seconds': duration, 'exit_code': r.returncode, 'commands': sum(b['name'] == 'Bash' for b in calls.values()), 'event_count': len(events)}
+    u = res.get('usage') or {}
+    usage = {'input_tokens': u['input_tokens'] + u.get('cache_creation_input_tokens', 0) + u.get('cache_read_input_tokens', 0), 'cached_input_tokens': u.get('cache_read_input_tokens', 0), 'output_tokens': u['output_tokens']}
+    return {'success': r.returncode == 0 and not res.get('is_error', False) and res.get('subtype') == 'success', 'usage': usage, 'raw_usage': u, 'model_usage': res.get('modelUsage'), 'reported_cost_usd': res.get('total_cost_usd'),
+            'actual_model': next((v.get('model') for v in events if v.get('type') == 'system' and v.get('subtype') == 'init'), None), 'final_response': res.get('result', ''), 'duration_seconds': duration, 'exit_code': r.returncode,
+            'commands': sum(b['name'] == 'Bash' for b in calls.values()), 'file_read_tool_calls': sum(b['name'] == 'Read' for b in calls.values()), 'total_tool_calls': len(calls), 'event_count': len(events), 'error': res.get('errors'), 'command_without_credentials': command}
+
+def live():
+    e = gates()
+    assert not (BASE / 'live-started.json').exists(), 'No reuse, retry or automatic additional launch'
+    write(BASE / 'live-started.json', {'authorized_sessions': 18, 'started_at': core.utc_now()})
+    report = {'preflight': e, 'runs': []}
+    with tempfile.TemporaryDirectory(prefix='contextlean-final18-', dir='/private/tmp') as tmp:
+        tmp = Path(tmp)
+        cp = tmp / 'codex-profile'
+        cp.mkdir(mode=0o700)
+        shutil.copy2(Path.home() / '.codex/auth.json', cp / 'auth.json')
+        (cp / 'auth.json').chmod(0o600)
+        os.environ['CODEX_HOME'] = str(cp)
+        for k, v in GIT_ENV.items():
+            if k.startswith('GIT_') or k == 'PYTHONDONTWRITEBYTECODE':
+                os.environ[k] = v
+        workspace = tmp / 'repo'
+        ledger = []
+        for pair in e['pairs']:
+            pair_gate(pair)
+            for condition in pair['order']:
+                pair_gate(pair)
+                if workspace.exists():
+                    shutil.rmtree(workspace)
+                fixture = pair_base(pair['provider'], pair['task']['id']) / 'fixtures' / condition
+                shutil.copytree(fixture, workspace)
+                assert digest(workspace) == pair['fixtures'][condition]['digest']
+                assert git_state(workspace) == pair['fixtures'][condition]['git']
+                out = BASE / 'raw' / f"{pair['provider']}-{pair['task']['id']}-{condition}"
+                out.mkdir(parents=True, exist_ok=False)
+                runner.FIXTURE = fixture
+                i = len(ledger) + 1
+                assert i <= 18
+                item = {'provider': pair['provider'], 'task': pair['task']['id'], 'condition': condition, 'sequence': i}
+                ledger.append({**item, 'attempted_at': core.utc_now()})
+                write(BASE / 'call-ledger.json', ledger)
+                write(out / 'before-git.json', git_state(workspace))
+                print(f'Live {i}/18: {item}', flush=True)
+                if pair['provider'] == 'claude':
+                    profile = tmp / f'claude-profile-{i}'
+                    profile.mkdir(mode=0o700)
+                    result = claude_run(workspace, runner.task_prompt(pair['task']), out / 'events.jsonl', profile)
+                else:
+                    config = e['models'][pair['provider']]
+                    result = core.execute_run('codex', workspace, config['model'], config['reasoning'], runner.task_prompt(pair['task']), 600, 'read-only' if pair['task']['id'] == 'navigation' else 'workspace-write', out / 'events.jsonl')
+                write(out / 'execution.json', result)
+                core.copy_repository(workspace, out / 'solution')
+                (out / 'final-git-status.txt').write_text(git(workspace, 'status', '--short') + '\n')
+                (out / 'final-git-diff.patch').write_text(git(workspace, 'diff', 'HEAD', '--') + '\n')
+                head_intact = git(workspace, 'rev-parse', 'HEAD') == pair['fixtures'][condition]['git']['head']
+                grade = runner.grade(pair['task'], workspace, result, out)
+                intact = all((workspace / n).is_file() and (workspace / n).read_bytes() == (fixture / n).read_bytes() for n in GUIDANCE) if condition == 'contextlean' else not any((workspace / n).exists() for n in GUIDANCE)
+                intact = bool(intact and head_intact and (workspace / 'data/sample.csv').read_bytes() == (fixture / 'data/sample.csv').read_bytes())
+                if pair['task']['id'] == 'navigation':
+                    intact = intact and digest(workspace) == pair['fixtures'][condition]['digest']
+                if not intact:
+                    grade['task_success'] = False
+                u = result.get('usage') or {}
+                metrics = {k: u.get(k) for k in ['input_tokens', 'cached_input_tokens', 'output_tokens', 'reasoning_output_tokens']}
+                metrics.update(total_tokens=u['input_tokens'] + u['output_tokens'] if u else None, uncached_input_tokens=u['input_tokens'] - u['cached_input_tokens'] if u else None, command_calls=result.get('commands') if result.get('event_count') else None, duration_seconds=result['duration_seconds'], file_read_tool_calls=result.get('file_read_tool_calls'), total_tool_calls=result.get('total_tool_calls'))
+                run = {**item, 'metrics': metrics, 'evaluation': grade, 'guidance_sample_baseline_intact': intact, 'solution_digest': digest(out / 'solution'), 'execution_success': result['success'], 'actual_model': result.get('actual_model'), 'reported_cost_usd': result.get('reported_cost_usd')}
+                report['runs'].append(run)
+                write(out / 'run.json', run)
+                write(BASE / 'summary.json', report)
+                print(json.dumps(run), flush=True)
+                if not result['success'] or not u:
+                    raise RuntimeError('Execution/usage failure: STOP, preserve attempted call, no retry')
+        assert len(ledger) == len(report['runs']) == 18
+    print('Exactly 18 fresh sessions complete; no further calls.', flush=True)
+
+def regrade():
+    e = gates()
+    report = read(BASE / 'summary.json')
+    assert len(report['runs']) == len(read(BASE / 'call-ledger.json')) == 18
+    for run in report['runs']:
+        pair = next(p for p in e['pairs'] if p['provider'] == run['provider'] and p['task']['id'] == run['task'])
+        name = f"{run['provider']}-{run['task']}-{run['condition']}"
+        out = BASE / 'raw' / name
+        assert digest(out / 'solution') == run['solution_digest']
+        runner.FIXTURE = pair_base(run['provider'], run['task']) / 'fixtures' / run['condition']
+        run['offline_regrade'] = runner.grade(pair['task'], out / 'solution', read(out / 'execution.json'), BASE / 'offline-regrade' / name)
+        assert run['offline_regrade'] == run['evaluation'], run
+        print(f"Offline regrade {name}: {run['offline_regrade']}", flush=True)
+    report['finished_at'] = core.utc_now()
+    report['all_grades_pass'] = all(r['offline_regrade']['task_success'] and r['guidance_sample_baseline_intact'] for r in report['runs'])
+    write(BASE / 'summary.json', report)
+    assert report['all_grades_pass'], 'README must remain unchanged if any required grade fails'
+    print('All 18 independent offline grades PASS.', flush=True)
+
+if __name__ == '__main__':
+    {'prepare': prepare, 'live': live, 'regrade': regrade}[sys.argv[1]]()

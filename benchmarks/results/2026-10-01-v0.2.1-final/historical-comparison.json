@@ -1,0 +1,337 @@
+{
+  "history": [
+    {
+      "dataset": "2026-09-30-validation",
+      "status": "historical, separate",
+      "aggregates": {
+        "vanilla": {
+          "input_tokens": 396727,
+          "cached_input_tokens": 294400,
+          "uncached_input_tokens": 102327,
+          "output_tokens": 6645,
+          "total_tokens": 403372,
+          "duration_seconds": 188.2827120819129,
+          "command_calls": 15,
+          "available_usage_subtotal": {
+            "input_tokens": 396727,
+            "cached_input_tokens": 294400,
+            "uncached_input_tokens": 102327,
+            "output_tokens": 6645,
+            "total_tokens": 403372,
+            "duration_seconds": 188.2827120819129,
+            "command_calls": 15
+          },
+          "measured_usage_runs": 5,
+          "complete_usage": true,
+          "runs": 5,
+          "successes": 5,
+          "submitted_successes": 5,
+          "regression_successes": 5,
+          "acceptance_successes": 5
+        },
+        "contextlean": {
+          "input_tokens": 350329,
+          "cached_input_tokens": 279296,
+          "uncached_input_tokens": 71033,
+          "output_tokens": 4978,
+          "total_tokens": 355307,
+          "duration_seconds": 149.85422099917196,
+          "command_calls": 13,
+          "available_usage_subtotal": {
+            "input_tokens": 350329,
+            "cached_input_tokens": 279296,
+            "uncached_input_tokens": 71033,
+            "output_tokens": 4978,
+            "total_tokens": 355307,
+            "duration_seconds": 149.85422099917196,
+            "command_calls": 13
+          },
+          "measured_usage_runs": 5,
+          "complete_usage": true,
+          "runs": 5,
+          "successes": 5,
+          "submitted_successes": 5,
+          "regression_successes": 5,
+          "acceptance_successes": 5
+        }
+      }
+    },
+    {
+      "dataset": "2026-09-30-final-0.2.0",
+      "status": "INVALID diagnostic preparation",
+      "aggregates": {
+        "vanilla": {
+          "input_tokens": 378295,
+          "cached_input_tokens": 299520,
+          "uncached_input_tokens": 78775,
+          "output_tokens": 4951,
+          "total_tokens": 383246,
+          "duration_seconds": 165.78472154214978,
+          "command_calls": 16,
+          "available_usage_subtotal": {
+            "input_tokens": 378295,
+            "cached_input_tokens": 299520,
+            "uncached_input_tokens": 78775,
+            "output_tokens": 4951,
+            "total_tokens": 383246,
+            "duration_seconds": 165.78472154214978,
+            "command_calls": 16
+          },
+          "measured_usage_runs": 5,
+          "complete_usage": true,
+          "runs": 5,
+          "successes": 5,
+          "submitted_successes": 5,
+          "regression_successes": 5,
+          "acceptance_successes": 5
+        },
+        "contextlean": {
+          "input_tokens": 463316,
+          "cached_input_tokens": 383488,
+          "uncached_input_tokens": 79828,
+          "output_tokens": 7043,
+          "total_tokens": 470359,
+          "duration_seconds": 200.41419687471353,
+          "command_calls": 19,
+          "available_usage_subtotal": {
+            "input_tokens": 463316,
+            "cached_input_tokens": 383488,
+            "uncached_input_tokens": 79828,
+            "output_tokens": 7043,
+            "total_tokens": 470359,
+            "duration_seconds": 200.41419687471353,
+            "command_calls": 19
+          },
+          "measured_usage_runs": 5,
+          "complete_usage": true,
+          "runs": 5,
+          "successes": 5,
+          "submitted_successes": 5,
+          "regression_successes": 5,
+          "acceptance_successes": 5
+        }
+      }
+    },
+    {
+      "dataset": "2026-09-30-clean-final-0.2.0",
+      "status": "historical, separate",
+      "aggregates": {
+        "vanilla": {
+          "input_tokens": 380321,
+          "cached_input_tokens": 311552,
+          "uncached_input_tokens": 68769,
+          "output_tokens": 5108,
+          "total_tokens": 385429,
+          "duration_seconds": 144.12425037496723,
+          "command_calls": 16,
+          "available_usage_subtotal": {
+            "input_tokens": 380321,
+            "cached_input_tokens": 311552,
+            "uncached_input_tokens": 68769,
+            "output_tokens": 5108,
+            "total_tokens": 385429,
+            "duration_seconds": 144.12425037496723,
+            "command_calls": 16
+          },
+          "measured_usage_runs": 5,
+          "complete_usage": true,
+          "runs": 5,
+          "successes": 5,
+          "submitted_successes": 5,
+          "regression_successes": 5,
+          "acceptance_successes": 5
+        },
+        "contextlean": {
+          "input_tokens": 417257,
+          "cached_input_tokens": 361216,
+          "uncached_input_tokens": 56041,
+          "output_tokens": 6158,
+          "total_tokens": 423415,
+          "duration_seconds": 169.58739162469283,
+          "command_calls": 15,
+          "available_usage_subtotal": {
+            "input_tokens": 417257,
+            "cached_input_tokens": 361216,
+            "uncached_input_tokens": 56041,
+            "output_tokens": 6158,
+            "total_tokens": 423415,
+            "duration_seconds": 169.58739162469283,
+            "command_calls": 15
+          },
+          "measured_usage_runs": 5,
+          "complete_usage": true,
+          "runs": 5,
+          "successes": 5,
+          "submitted_successes": 5,
+          "regression_successes": 5,
+          "acceptance_successes": 5
+        }
+      }
+    },
+    {
+      "dataset": "2026-09-30-compact-final-0.2.0",
+      "status": "historical, separate",
+      "aggregates": {
+        "vanilla": {
+          "input_tokens": 428936,
+          "cached_input_tokens": 319744,
+          "uncached_input_tokens": 109192,
+          "output_tokens": 5957,
+          "total_tokens": 434893,
+          "duration_seconds": 167.80068249814212,
+          "command_calls": 15,
+          "available_usage_subtotal": {
+            "input_tokens": 428936,
+            "cached_input_tokens": 319744,
+            "uncached_input_tokens": 109192,
+            "output_tokens": 5957,
+            "total_tokens": 434893,
+            "duration_seconds": 167.80068249814212,
+            "command_calls": 15
+          },
+          "measured_usage_runs": 5,
+          "complete_usage": true,
+          "runs": 5,
+          "successes": 5,
+          "submitted_successes": 5,
+          "regression_successes": 5,
+          "acceptance_successes": 5
+        },
+        "contextlean": {
+          "input_tokens": 356321,
+          "cached_input_tokens": 266240,
+          "uncached_input_tokens": 90081,
+          "output_tokens": 5329,
+          "total_tokens": 361650,
+          "duration_seconds": 157.79011070868,
+          "command_calls": 18,
+          "available_usage_subtotal": {
+            "input_tokens": 356321,
+            "cached_input_tokens": 266240,
+            "uncached_input_tokens": 90081,
+            "output_tokens": 5329,
+            "total_tokens": 361650,
+            "duration_seconds": 157.79011070868,
+            "command_calls": 18
+          },
+          "measured_usage_runs": 5,
+          "complete_usage": true,
+          "runs": 5,
+          "successes": 5,
+          "submitted_successes": 5,
+          "regression_successes": 5,
+          "acceptance_successes": 5
+        }
+      }
+    },
+    {
+      "dataset": "2026-09-30-release-aligned-0.2.0",
+      "status": "historical, separate",
+      "aggregates": {
+        "vanilla": {
+          "input_tokens": 475198,
+          "cached_input_tokens": 369920,
+          "uncached_input_tokens": 105278,
+          "output_tokens": 6826,
+          "total_tokens": 482024,
+          "duration_seconds": 189.97367979120463,
+          "command_calls": 18,
+          "available_usage_subtotal": {
+            "input_tokens": 475198,
+            "cached_input_tokens": 369920,
+            "uncached_input_tokens": 105278,
+            "output_tokens": 6826,
+            "total_tokens": 482024,
+            "duration_seconds": 189.97367979120463,
+            "command_calls": 18
+          },
+          "measured_usage_runs": 5,
+          "complete_usage": true,
+          "runs": 5,
+          "successes": 5,
+          "submitted_successes": 5,
+          "regression_successes": 5,
+          "acceptance_successes": 5
+        },
+        "contextlean": {
+          "input_tokens": 337007,
+          "cached_input_tokens": 257280,
+          "uncached_input_tokens": 79727,
+          "output_tokens": 4669,
+          "total_tokens": 341676,
+          "duration_seconds": 134.5158410409931,
+          "command_calls": 16,
+          "available_usage_subtotal": {
+            "input_tokens": 337007,
+            "cached_input_tokens": 257280,
+            "uncached_input_tokens": 79727,
+            "output_tokens": 4669,
+            "total_tokens": 341676,
+            "duration_seconds": 134.5158410409931,
+            "command_calls": 16
+          },
+          "measured_usage_runs": 5,
+          "complete_usage": true,
+          "runs": 5,
+          "successes": 5,
+          "submitted_successes": 5,
+          "regression_successes": 5,
+          "acceptance_successes": 5
+        }
+      }
+    }
+  ],
+  "current_terra": {
+    "vanilla": {
+      "input_tokens": null,
+      "cached_input_tokens": null,
+      "uncached_input_tokens": null,
+      "output_tokens": null,
+      "total_tokens": null,
+      "duration_seconds": 136.19318924867548,
+      "command_calls": 15,
+      "available_usage_subtotal": {
+        "input_tokens": 263147,
+        "cached_input_tokens": 208640,
+        "uncached_input_tokens": 54507,
+        "output_tokens": 3500,
+        "total_tokens": 266647,
+        "duration_seconds": 136.19318924867548,
+        "command_calls": 15
+      },
+      "measured_usage_runs": 4,
+      "complete_usage": false,
+      "runs": 5,
+      "successes": 4,
+      "submitted_successes": 5,
+      "regression_successes": 5,
+      "acceptance_successes": 5
+    },
+    "contextlean": {
+      "input_tokens": 320597,
+      "cached_input_tokens": 242176,
+      "uncached_input_tokens": 78421,
+      "output_tokens": 3711,
+      "total_tokens": 324308,
+      "duration_seconds": 115.1801070002839,
+      "command_calls": 14,
+      "available_usage_subtotal": {
+        "input_tokens": 320597,
+        "cached_input_tokens": 242176,
+        "uncached_input_tokens": 78421,
+        "output_tokens": 3711,
+        "total_tokens": 324308,
+        "duration_seconds": 115.1801070002839,
+        "command_calls": 14
+      },
+      "measured_usage_runs": 5,
+      "complete_usage": true,
+      "runs": 5,
+      "successes": 5,
+      "submitted_successes": 5,
+      "regression_successes": 5,
+      "acceptance_successes": 5
+    }
+  },
+  "limitations": "Different independent model runs, stochastic behavior, uncontrolled provider/cache/service conditions, one observation per condition; new Git-backed environment. No statistical confidence or causal performance claim. Invalid diagnostic numbers never become headline evidence."
+}
