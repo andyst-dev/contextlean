@@ -1,4 +1,4 @@
-"""Harness v2 contracts. Real filesystem/Git probes; synthetic provider events only."""
+"""Harness contracts. Real filesystem/Git probes; synthetic provider events only."""
 
 import importlib.util
 import json
@@ -186,7 +186,7 @@ class IsolationTests(unittest.TestCase):
             for condition in ["vanilla", "contextlean"]:
                 with h.session_root(runtime, test_env(), Path(tmp)) as s:
                     try:
-                        policy = h.permission_policy(s, "codex", "workspace-write")
+                        policy = h.permission_policy(s, "external", "workspace-write")
                         receipt = h.permission_preflight(s, policy, Path(tmp))
                     except h.HarnessError as error:
                         if "Operation not permitted" in str(error) or "no supported native" in str(
@@ -196,7 +196,7 @@ class IsolationTests(unittest.TestCase):
                                 "native boundary unavailable in this host/nested sandbox; live preflight fails closed"
                             )
                         raise
-                    receipts.append(receipt)
+                    receipts.append(s.sanitizer.value(receipt))
                     self.assertEqual(
                         receipt["native_preflight"],
                         {
@@ -205,6 +205,7 @@ class IsolationTests(unittest.TestCase):
                             "parent_write": False,
                             "outside_write": False,
                             "evidence_read": False,
+                            "outside_read": False,
                         },
                     )
             h.compare_receipts(*receipts, "permission")
@@ -362,7 +363,7 @@ class EvidenceTests(unittest.TestCase):
                     "-c",
                     "import sys;sys.stdout.buffer.write(b'raw\\r\\n');sys.stderr.buffer.write(b'err\\r\\n')",
                 ]
-                with patch.object(h, "boundary_command", side_effect=lambda s, p, c, o: c):
+                with patch.object(h, "execution_command", side_effect=lambda s, p, c, o: c):
                     result = h.execute_session(
                         session, command, "", 10, {"native_preflight": True}, output
                     )

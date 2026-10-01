@@ -1,10 +1,10 @@
-# Graded benchmark methodology — harness v2
+# Graded benchmark methodology — harness v3 (v2 controls, corrected composition)
 
 This version applies to future runs of `benchmarks/run_benchmark.py`. It changes
 development benchmark infrastructure, not ContextLean instructions or product
-behavior. Every new summary records `schema_version: 2` and
-`benchmark_harness_version: 2`. Historical datasets and their frozen runners remain
-unchanged; do not pool them with v2 observations as one controlled experiment.
+behavior. Every new summary records `schema_version: 3` and
+`benchmark_harness_version: 3`. Historical datasets and their frozen runners remain
+unchanged; do not pool them with v3 observations as one controlled experiment.
 The packaged generic navigation A/B runner retains its existing diagnostic contract
 and does not acquire these stronger controls.
 
@@ -41,28 +41,53 @@ entire root is removed, including scratch files above `repo/`; absence is checke
 Cleanup errors stop the campaign. A regression test writes a scratch script above
 session A's repository, verifies its removal and verifies invisibility to session B.
 
-An outer native filesystem boundary surrounds the entire provider CLI. On macOS it
-uses `sandbox-exec`; on Linux it requires Bubblewrap and working user namespaces.
-Unsupported or nonfunctional boundaries fail closed before a model call. A nested
-host sandbox may prohibit native sandbox creation; the harness does not fall back
-to unrestricted execution. The macOS backend has been exercised offline on the
-development host; the Linux backend needs the same preflight on its deployment host.
+Execution is provider-aware. Codex uses its native command sandbox, with no
+outer OS sandbox around its driver. One named permission profile is passed to
+both `codex sandbox` preflight and `codex exec`; legacy `--sandbox` options are
+not mixed into that profile. The profile denies filesystem access by default,
+permits minimal OS/pinned runtime reads, grants task `repo/` and `tmp/` writes,
+and keeps `.git` read-only. Navigation permits only `tmp/` writes. The evidence
+root is explicitly denied. Task-command networking is disabled; the provider
+driver retains the network access needed for provider requests.
 
-The task policy permits writes to `repo/` for edit tasks and to `tmp/` for all tasks.
-Navigation's repository is read-only. The enclosing CLI also needs explicit write
-access to its session-local `cache/`, `artifacts/` and `receipts/`; the native
-boundary cannot distinguish CLI writes from tools using those locations. These
-exceptions are recorded and inspected, not hidden. Writes to the session parent
-and shared host paths are denied. `/dev/null` is the one write device exception.
-Both conditions use the same policy, including the same provider tool allowlist.
+The trusted provider driver uses fresh session-local cache/profile/control areas;
+command tools cannot write those areas. Receipts distinguish driver control writes
+from effective task writable roots. Neither earlier sessions nor shared scratch
+parents are readable through the native command sandbox. Roots are deleted after
+use, and tests check both concurrent scratch denial and subsequent invisibility.
+This remains local filesystem isolation, not a virtual machine or a proof of every
+opaque provider implementation detail.
 
-Preflight actually attempts repository, temporary, parent and outside writes and
-an evidence read under this boundary. It requires equal allowed/denied results
-across the pair. The evidence directory is denied/masked for reads as well as
-writes, preventing access to previous observations. Host runtime resources remain
-readable; this is filesystem write isolation, not a virtual machine or network
-air gap. Provider connections require network access. Task prompts forbid network
-services and dependency installation, and optional web/MCP tools are disabled.
+Claude selects provider-native execution and requires its sandbox enabled with
+failure on unavailable isolation and no unsandboxed-command fallback. Its supported
+CLI has no exposed offline native-command probe. A deterministic OS-primitive
+probe is recorded as a diagnostic only; it cannot validate Claude's actual Bash
+sandbox or built-in Read/Edit/Write policy. Claude execution therefore fails closed
+before any model call until an actual native path can be checked offline. No
+Claude CLI is run inside a second OS sandbox. For explicitly non-native external
+runners, a supported harness outer boundary remains available (macOS Seatbelt or
+Linux Bubblewrap), with its own permission gate; it is never combined with native
+sandboxing.
+
+Before execution the actual Codex CLI sandbox attempts repository and session-temp
+writes, parent and outside writes, and evidence/unrelated scratch reads. It must report the expected
+allowed/denied results with exit 0. Per-operation process exit codes are unavailable
+because operations run in one local Python process; receipts retain booleans and
+the enclosing CLI exit code without estimation. Canonical fixture tests run through
+that same CLI-native sandbox path. Missing/unsupported native profiles, denied
+sandbox initialization, incorrect permission results and nested strategy selections
+are harness/preparation failures, with no retries or model calls. Failed and passed
+probe receipts are saved publicly with sanitized paths and privately with exact
+invocations before root cleanup.
+
+Receipts record harness version, OS/platform, provider/CLI version, execution
+strategy, configured native/outer sandbox states, native availability as actually
+probed (null if unverified), permission mode, effective writable roots, cwd and
+environment policy, probe scope/result and exit code. Normalized policy receipts
+must match between Vanilla and ContextLean. Only guidance/configuration differs.
+See [the sandbox composition diagnosis](sandbox-composition.md) for the exact
+macOS failure and the provider-specific limits. Linux must pass the real CLI gate
+on its deployment host; macOS evidence does not establish Linux compatibility.
 
 ## Git, runtime and environment
 
@@ -218,5 +243,5 @@ do not automatically establish causality, generalization or significance.
 Offline self-tests exercise isolation, manifest/path drift, deterministic Git,
 runtime/environment/permission parity, fail-before-launch behavior, quota handling,
 unavailable metrics, equivalent coverage, raw byte preservation and export hygiene.
-Provider invocations are mocked; one stream test runs only Python printing literal
+Model invocations are mocked; one stream test runs only Python printing literal
 bytes. Native permission probes and CLI version probes do not run models.

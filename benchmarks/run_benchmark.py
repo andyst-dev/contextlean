@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Harness v2: opt-in, isolated graded Codex/Claude benchmark; offline preflight."""
+"""Harness v3: opt-in, isolated graded Codex/Claude benchmark; offline preflight."""
 
 import argparse
 import importlib.util
@@ -26,7 +26,7 @@ PREPARATION_SPEC.loader.exec_module(preparation)
 # Share the existing copier/digests/error type with the suite's measurement helper.
 preparation.core = core
 HARNESS_SPEC = importlib.util.spec_from_file_location(
-    "benchmark_harness_v2", ROOT / "benchmarks/harness.py"
+    "benchmark_harness_v3", ROOT / "benchmarks/harness.py"
 )
 harness = importlib.util.module_from_spec(HARNESS_SPEC)
 HARNESS_SPEC.loader.exec_module(harness)
@@ -326,7 +326,7 @@ def run(args):
     save(
         output / "schedule.json",
         {
-            "benchmark_harness_version": 2,
+            "benchmark_harness_version": harness.VERSION,
             "generated_at": core.utc_now(),
             "order": plan,
             "method": "deterministic counterbalanced task/repetition parity",
@@ -339,6 +339,7 @@ def run(args):
             "benchmarks/tasks/suite.json",
             "benchmarks/run_benchmark.py",
             "benchmarks/harness.py",
+            "benchmarks/execution.py",
             "benchmarks/trace.py",
             "benchmarks/prepare_fixture.py",
             "skills/benchmark/scripts/benchmark.py",
@@ -357,8 +358,8 @@ def run(args):
     harness.copy_fixture(FIXTURE, output / "private/canonical-fixture")
     (output / "private/tasks.json").write_bytes(args.tasks_file.read_bytes())
     report = {
-        "schema_version": 2,
-        "benchmark_harness_version": 2,
+        "schema_version": harness.VERSION,
+        "benchmark_harness_version": harness.VERSION,
         "kind": "contextlean-graded-validation",
         "experiment_kind": mode,
         "status": "preparing",
@@ -388,7 +389,9 @@ def run(args):
     save(output / "summary.json", report)
     reference_receipts = {}
     reference_git = {}
-    with tempfile.TemporaryDirectory(prefix="contextlean-canonical-v2-") as temporary:
+    with tempfile.TemporaryDirectory(
+        prefix=f"contextlean-canonical-v{harness.VERSION}-"
+    ) as temporary:
         canonical = Path(temporary) / "conditions"
         vanilla, contextlean = harness.make_conditions(FIXTURE, canonical, harness.copy_fixture)
         manifest = harness.fixture_manifest(vanilla, contextlean, b"", b"")
@@ -475,11 +478,11 @@ def run(args):
             if harness.git_state(session) != baseline:
                 raise harness.HarnessError("canonical tests changed baseline")
             receipt = {
-                "benchmark_harness_version": 2,
+                "benchmark_harness_version": harness.VERSION,
                 "runtime": runtime,
                 "cwd": "<session-root>/repo",
                 "environment": harness.environment_receipt(session.env, session.sanitizer.text),
-                "permission": policy,
+                "permission": session.sanitizer.value(policy),
                 "auth": auth,
                 "git": baseline,
                 "prompt_sha256": pair_manifest["prompt_sha256"],
@@ -538,13 +541,15 @@ def run(args):
             name = f"{item['task']}-{item['repeat']}-{item['condition']}"
             artifacts = output / "raw" / name
             artifacts.mkdir(parents=True)
-            run_record = dict(item, benchmark_harness_version=2, timestamp=core.utc_now())
+            run_record = dict(
+                item, benchmark_harness_version=harness.VERSION, timestamp=core.utc_now()
+            )
             session = None
             try:
                 with harness.session_root(runtime, source_env, output) as session:
                     task, prompt, baseline, policy, receipt = prepare_session(session, item)
                     command = harness.invocation(
-                        session, provider, args.model, args.reasoning, policy["sandbox"]
+                        session, provider, args.model, args.reasoning, policy["sandbox"], policy
                     )
                     receipt["provider"] = {
                         "provider": provider,

@@ -45,11 +45,11 @@ the runner and grading; it is not a statistically robust final benchmark.
 The separately authorized final-candidate series above retains new evidence without
 overwriting this historical batch. No further repetitions are authorized.
 
-## Future graded runs: harness v2
+## Future graded runs: harness v3
 
 The development runner now uses stronger session isolation and versioned evidence.
 Historical datasets above and their frozen runners remain unchanged. Read
-[methodology v2](methodology-v2.md) for controls, receipt definitions and limitations.
+[current methodology](methodology-v2.md) and [sandbox composition diagnosis](sandbox-composition.md) for controls, receipt definitions and limitations.
 The packaged ContextLean product and generic diagnostic A/B runner are unchanged.
 
 Five independent tasks use the standard-library expense-report fixture:
@@ -83,10 +83,11 @@ Invalid maps and stale hashes fail preparation. No guidance is automatically
 created by the runner. Do not use the historical diagnostic fixture as a fresh
 headline comparison.
 
-Python 3.11+, Git, rg, an authenticated provider CLI and a working native filesystem
-boundary are required. macOS uses sandbox-exec; Linux requires Bubblewrap. Other
-hosts and nested sandboxes that cannot enforce the boundary fail closed. Runtime
-paths/hashes/versions are pinned and receipts are checked across conditions.
+Python 3.11+, Git, rg and a provider CLI with an offline-verifiable native sandbox
+are required. Codex uses its own sandbox without an outer wrapper. The installed
+Claude CLI lacks an offline native-command probe, so Claude execution currently
+fails closed. Explicit non-native runners can use the harness OS boundary where
+supported. Runtime paths/hashes/versions and policy receipts match across conditions.
 
 Run deterministic gates without model calls:
 
@@ -95,7 +96,7 @@ python3 benchmarks/run_benchmark.py \
   --provider codex --model MODEL --reasoning EFFORT \
   --preflight-only --experiment-kind performance --repeat 3 \
   --preparation-record .contextlean/preparation.json \
-  --output-dir .contextlean/validation/preflight-v2
+  --output-dir .contextlean/validation/preflight-v3
 ```
 
 This executes canonical tests, Git and permission probes and CLI version checks,
@@ -124,10 +125,10 @@ exact prompts match. Policy permits session-local writes and prevents shared-par
 scratch files and access to prior exported evidence. The whole root is removed and
 cleanup is verified before the next session.
 
-## Future v2 evidence
+## Future v3 evidence
 
 ```text
-summary.json                   # schema/harness v2, all observations, descriptive/paired statistics
+summary.json                   # schema/harness v3, all observations, descriptive/paired statistics
 schedule.json                  # deterministic plan saved before calls
 fixture-manifest.json          # exhaustive condition hashes/sizes, task prompt identities
 preparation.json               # frozen offline map/source attestation

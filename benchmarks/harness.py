@@ -7,6 +7,7 @@ independent of this development harness.
 
 from contextlib import contextmanager
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -20,7 +21,12 @@ import tempfile
 import time
 
 
-VERSION = 2
+VERSION = 3
+EXECUTION_SPEC = importlib.util.spec_from_file_location(
+    "benchmark_execution", Path(__file__).with_name("execution.py")
+)
+execution = importlib.util.module_from_spec(EXECUTION_SPEC)
+EXECUTION_SPEC.loader.exec_module(execution)
 GUIDANCE = frozenset({"AGENTS.md", "CLAUDE.md", "PROJECT_REFERENCE.md"})
 GIT_SETTINGS = {
     "user.name": "Benchmark fixture",
@@ -275,7 +281,7 @@ class Sanitizer:
 
 class Session:
     def __init__(self, root, runtime, source_env, output):
-        self.root, self.runtime = root, runtime
+        self.root, self.runtime, self.output = root, runtime, output.resolve()
         for name in ["repo", "tmp", "cache", "artifacts", "receipts"]:
             (root / name).mkdir()
         self.repo = root / "repo"
@@ -336,7 +342,7 @@ class Session:
 
 @contextmanager
 def session_root(runtime, env, output):
-    root = Path(tempfile.mkdtemp(prefix="contextlean-session-v2-")).resolve()
+    root = Path(tempfile.mkdtemp(prefix=f"contextlean-session-v{VERSION}-")).resolve()
     session = None
     try:
         session = Session(root, runtime, env, output)
@@ -409,20 +415,28 @@ def git_state(session):
 
 
 def permission_policy(session, provider, sandbox):
-    # Provider modes alone do not enforce an identical host filesystem boundary.
-    # Use a native boundary around the whole CLI; fail closed if unavailable.
+    if sandbox not in {"workspace-write", "read-only"}:
+        raise HarnessError("unsupported task permission mode")
+    selected = execution.strategy(provider)
+    primitive = None
     if platform.system() == "Darwin" and Path("/usr/bin/sandbox-exec").is_file():
-        backend = "sandbox-exec"
+        primitive = "sandbox-exec"
     elif platform.system() == "Linux" and shutil.which("bwrap"):
-        backend = "bwrap"
-    else:
+        primitive = "bwrap"
+    if not primitive and (selected["outer_os_sandbox"] or provider == "claude"):
         raise HarnessError("no supported native filesystem boundary available")
-    return {
-        "backend": backend,
+    policy = {
+        **selected,
+        "benchmark_harness_version": VERSION,
+        "platform": platform.platform(),
+        "os": platform.system(),
+        "backend": provider + "-native" if selected["provider_native_sandbox"] else primitive,
+        "primitive_backend": primitive,
         "provider": provider,
+        "cli_version": session.runtime["binaries"]["cli"]["version"],
         "sandbox": sandbox,
         "permission_mode": "acceptEdits" if provider == "claude" else "approval-never",
-        "agent_writable": ["<session-root>/repo", "<session-root>/tmp"]
+        "effective_writable_roots": ["<session-root>/repo", "<session-root>/tmp"]
         if sandbox != "read-only"
         else ["<session-root>/tmp"],
         "cli_control_writable": [
@@ -430,13 +444,19 @@ def permission_policy(session, provider, sandbox):
             "<session-root>/artifacts",
             "<session-root>/receipts",
         ],
+        "cwd_policy": "isolated session repository",
+        "environment_policy": "allowlisted environment; session-local home/temp/cache; pinned PATH",
         "evidence_readable": False,
         "shared_tmp_writable": False,
         "native_preflight": None,
+        "task_control_writable": selected["outer_os_sandbox"],
     }
+    if selected["outer_os_sandbox"]:
+        policy["effective_writable_roots"] += policy["cli_control_writable"]
+    return policy
 
 
-def boundary_command(session, policy, command, output):
+def outer_command(session, policy, command, output):
     output = output.resolve()
     if policy["backend"] == "sandbox-exec":
         roots = [
@@ -456,6 +476,20 @@ def boundary_command(session, policy, command, output):
             f"(deny file-read* (subpath {json.dumps(str(output))}))",
         ]
         rules += [f"(allow file-write* (subpath {json.dumps(str(p))}))" for p in roots]
+        scratch_parents = {
+            Path("/tmp"),
+            Path("/private/tmp"),
+            Path(tempfile.gettempdir()).resolve(),
+        }
+        rules += [
+            f"(deny file-read* (subpath {json.dumps(str(p))}))" for p in sorted(scratch_parents)
+        ]
+        rules += [f"(allow file-read* (subpath {json.dumps(str(session.root))}))"]
+        rules += [
+            f"(allow file-read-metadata (literal {json.dumps(str(p))}))"
+            for p in session.root.parents
+        ]
+
         profile.write_text("\n".join(rules) + "\n")
         return ["/usr/bin/sandbox-exec", "-f", str(profile), *command]
     empty = session.root / "receipts/hidden-evidence"
@@ -473,6 +507,11 @@ def boundary_command(session, policy, command, output):
         "--proc",
         "/proc",
     ]
+    # Mask shared scratch before rebinding this session's own locations.
+    for parent in sorted({Path("/tmp"), Path("/var/tmp"), Path(tempfile.gettempdir()).resolve()}):
+        if parent.is_dir():
+            arguments += ["--tmpfs", str(parent)]
+    arguments += ["--ro-bind", str(session.repo), str(session.repo)]
     for name in ["tmp", "cache", "artifacts", "receipts"]:
         arguments += ["--bind", str(session.root / name), str(session.root / name)]
     if policy["sandbox"] != "read-only":
@@ -480,63 +519,52 @@ def boundary_command(session, policy, command, output):
     return [*arguments, "--ro-bind", str(empty), str(output), "--", *command]
 
 
-def permission_preflight(session, policy, output):
-    """Actually execute allowed/denied probes under the configured native policy."""
-    # The outside target is on the same volume; denial cannot be a bad path.
-    with tempfile.TemporaryDirectory(prefix="contextlean-denied-probe-") as temporary:
-        targets = [
-            session.repo / ".permission-probe",
-            session.tmp / "probe",
-            session.root / "parent-probe",
-            Path(temporary) / "outside",
-        ]
-        script = (
-            "import pathlib,sys,json; r=[]\n"
-            "for s in sys.argv[1:]:\n"
-            " try:\n  p=pathlib.Path(s);p.write_text('probe');p.unlink();r.append(True)\n"
-            " except PermissionError:r.append(False)\n"
-            "try:\n pathlib.Path(sys.argv[-1]).read_bytes();r.append(True)\n"
-            "except PermissionError:r.append(False)\n"
-            "except FileNotFoundError:r.append(False)\n"
-            "print(json.dumps(r))\n"
+def boundary_command(session, policy, command, output):
+    """Offline task commands follow the same provider sandbox path as real tools."""
+    try:
+        execution.validate_strategy(policy)
+        if policy["provider_native_sandbox"]:
+            return execution.native_command(session, policy, command)
+        return outer_command(session, policy, command, output)
+    except execution.ExecutionError as error:
+        raise HarnessError(str(error)) from error
+
+
+def execution_command(session, policy, command, output):
+    """Do not put a native-sandbox provider driver inside a second OS sandbox."""
+    try:
+        execution.model_command(policy, command)
+        return (
+            command
+            if policy["provider_native_sandbox"]
+            else outer_command(session, policy, command, output)
         )
-        marker = output / "permission-read-probe"
-        marker.write_text("evidence must not be readable by model sessions")
-        # Only the first four arguments are write targets; the last is a read probe.
-        script = script.replace("sys.argv[1:]", "sys.argv[1:-1]")
-        command = [
-            session.runtime["binaries"]["python3"]["path"],
-            "-c",
-            script,
-            *map(str, targets),
-            str(marker),
-        ]
-        try:
-            result = subprocess.run(
-                boundary_command(session, policy, command, output),
-                cwd=session.repo,
-                env=session.env,
-                capture_output=True,
-                text=True,
-                timeout=15,
-                check=False,
-            )
-        finally:
-            marker.unlink()
-        expected = [policy["sandbox"] != "read-only", True, False, False, False]
-        if result.returncode or json.loads(result.stdout or "null") != expected:
-            raise HarnessError("native filesystem preflight failed: " + result.stderr)
-        policy["native_preflight"] = {
-            "repo_write": expected[0],
-            "tmp_write": True,
-            "parent_write": False,
-            "outside_write": False,
-            "evidence_read": False,
-        }
-    return policy
+    except execution.ExecutionError as error:
+        raise HarnessError(str(error)) from error
 
 
-def invocation(session, provider, model, reasoning, sandbox):
+def permission_preflight(session, policy, output):
+    """Preserve successful and failed compatibility receipts before cleanup."""
+    try:
+        return execution.permission_probe(session, policy, output, outer_command)
+    except (execution.ExecutionError, OSError, ValueError, subprocess.SubprocessError) as error:
+        policy["preparation_failure"] = str(error)
+        raise HarnessError(str(error)) from error
+    finally:
+        private = output / "private/preflight"
+        private.mkdir(parents=True, exist_ok=True, mode=0o700)
+        private.chmod(0o700)
+        raw = private / (session.root.name + "-permission.json")
+        write_json(raw, policy)
+        raw.chmod(0o600)
+        write_json(
+            output / "preflight" / (session.root.name + "-permission.json"),
+            session.sanitizer.value(policy),
+        )
+
+
+def invocation(session, provider, model, reasoning, sandbox, policy=None):
+    policy = policy or permission_policy(session, provider, sandbox)
     cli = session.runtime["binaries"]["cli"]["path"]
     if provider == "codex":
         return [
@@ -547,24 +575,13 @@ def invocation(session, provider, model, reasoning, sandbox):
             "--ignore-user-config",
             "--ignore-rules",
             "--strict-config",
-            "--sandbox",
-            sandbox,
             "--model",
             model,
             "--config",
             f'model_reasoning_effort="{reasoning}"',
-            "--config",
-            'approval_policy="never"',
-            "--config",
-            'web_search="disabled"',
-            "--config",
-            "sandbox_workspace_write.exclude_slash_tmp=true",
-            "--config",
-            "sandbox_workspace_write.exclude_tmpdir_env_var=true",
+            *execution.codex_options(session, policy),
             "--cd",
             str(session.repo),
-            "--add-dir",
-            str(session.tmp),
             "-",
         ]
     return [
@@ -583,6 +600,16 @@ def invocation(session, provider, model, reasoning, sandbox):
         "--strict-mcp-config",
         "--mcp-config",
         '{"mcpServers":{}}',
+        "--settings",
+        json.dumps(
+            {
+                "sandbox": {
+                    "enabled": True,
+                    "failIfUnavailable": True,
+                    "allowUnsandboxedCommands": False,
+                }
+            }
+        ),
         "--permission-mode",
         "acceptEdits",
         "--add-dir",
@@ -626,7 +653,7 @@ def execute_session(session, command, prompt, timeout, policy, output):
     started = time.perf_counter()
     try:
         result = subprocess.run(
-            boundary_command(session, policy, command, output),
+            execution_command(session, policy, command, output),
             input=prompt.encode("utf-8"),
             cwd=session.repo,
             env=session.env,
