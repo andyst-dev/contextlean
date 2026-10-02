@@ -5,6 +5,9 @@ import json
 import re
 
 
+COVERAGE_PARSER_VERSION = 2
+
+
 def normalize_usage(raw, claude=False):
     if not isinstance(raw, dict):
         return None
@@ -37,31 +40,88 @@ def coverage(command, text):
         r"(?:\bunittest\b|\bpytest\b|\b(?:npm|cargo|go)\s+(?:run\s+)?test\b)", command
     ):
         return None
-    tests = re.findall(r"^([\w.]+) \(([^)]+)\) \.\.\. (ok|FAIL|ERROR|skipped[^\n]*)$", text, re.M)
-    names = sorted({identity.removeprefix("tests.") for _, identity, _ in tests})
-    counts = re.findall(r"Ran (\d+) tests?", text)
+    tests = re.findall(
+        r"^([\w.]+) \(([^)]+)\) \.\.\. (ok|FAIL|ERROR|expected failure|unexpected success|skipped[^\n]*)$",
+        text,
+        re.M,
+    )
+    # Python 3.9 prints method (module.Class); newer versions include the
+    # method inside the parentheses too. Both expose the full identity.
+    names = sorted(
+        {
+            (identity if identity.endswith("." + method) else identity + "." + method).removeprefix(
+                "tests."
+            )
+            for method, identity, _ in tests
+        }
+    )
+    counts = re.findall(r"^Ran (\d+) tests?\b", text, re.M)
     discovered = int(counts[-1]) if len(counts) == 1 else None
     passed = sum(status == "ok" for _, _, status in tests) if tests else None
-    failed = sum(status in {"FAIL", "ERROR"} for _, _, status in tests) if tests else None
-    if not tests:
+    failed = sum(status == "FAIL" for _, _, status in tests) if tests else None
+    errors = sum(status == "ERROR" for _, _, status in tests) if tests else None
+    skipped = sum(status.startswith("skipped") for _, _, status in tests) if tests else None
+    expected_failures = (
+        sum(status == "expected failure" for _, _, status in tests) if tests else None
+    )
+    unexpected_successes = (
+        sum(status == "unexpected success" for _, _, status in tests) if tests else None
+    )
+    complete = discovered is not None and len(names) == len(tests) == discovered and discovered > 0
+    counts_complete = complete
+    count_scope = "exposed status rows only"
+    summaries = re.findall(r"^(OK|FAILED)(?: \(([^\n]*)\))?\s*$", text, re.M)
+    if discovered is not None and len(summaries) == 1:
+        fields = {
+            name.strip(): value for name, value in re.findall(r"([a-z ]+)=(\d+)", summaries[0][1])
+        }
+        supported = {"failures", "errors", "skipped", "expected failures", "unexpected successes"}
+        if set(fields) <= supported:
+            failed, errors, skipped, expected_failures, unexpected_successes = (
+                int(fields.get(name, 0))
+                for name in [
+                    "failures",
+                    "errors",
+                    "skipped",
+                    "expected failures",
+                    "unexpected successes",
+                ]
+            )
+            passed = (
+                discovered - failed - errors - skipped - expected_failures - unexpected_successes
+            )
+            counts_complete = passed >= 0 and (
+                (summaries[0][0] == "OK") == (failed == errors == unexpected_successes == 0)
+            )
+            count_scope = "single unittest footer; no identities inferred"
+    if not tests and discovered is None:
         pytest = re.search(r"(\d+) passed", text)
         passed = int(pytest[1]) if pytest else None
         failure = re.search(r"(\d+) failed", text)
         failed = int(failure[1]) if failure else None
         if pytest:
             discovered = passed + (failed or 0)
-    complete = discovered is not None and len(names) == discovered and discovered > 0
     return {
+        "coverage_parser_version": COVERAGE_PARSER_VERSION,
         "command": command,
         "discovered_count": discovered,
         "passed_count": passed,
         "failed_count": failed,
+        "error_count": errors,
+        "skipped_count": skipped,
+        "expected_failure_count": expected_failures,
+        "unexpected_success_count": unexpected_successes,
+        "status_counts_complete": counts_complete,
+        "status_count_scope": count_scope,
         "test_names": names,
         "test_list_complete": complete,
         "normalized_test_list_sha256": hashlib.sha256("\n".join(names).encode()).hexdigest()
         if complete
         else None,
-        "passed": complete and passed == discovered and failed == 0,
+        "passed": complete
+        and counts_complete
+        and passed + skipped + expected_failures == discovered
+        and failed == errors == unexpected_successes == 0,
         "identity_scope": "exposed test output only; hidden coverage unavailable",
     }
 

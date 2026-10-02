@@ -198,6 +198,11 @@ class SuiteTests(unittest.TestCase):
                 "permission_preflight",
                 side_effect=lambda s, p, o: dict(p, native_preflight={"mocked": True}),
             ),
+            patch.object(
+                suite.harness,
+                "effective_runtime_preflight",
+                return_value={"passed": True, "mocked": True},
+            ),
             patch.object(suite.harness, "boundary_command", side_effect=lambda s, p, c, o: c),
         ):
             args = suite.argparse.Namespace(

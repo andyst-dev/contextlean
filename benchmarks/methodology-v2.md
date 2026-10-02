@@ -1,10 +1,10 @@
-# Graded benchmark methodology — harness v3 (v2 controls, corrected composition)
+# Graded benchmark methodology — harness v4 (effective runtime control)
 
 This version applies to future runs of `benchmarks/run_benchmark.py`. It changes
 development benchmark infrastructure, not ContextLean instructions or product
-behavior. Every new summary records `schema_version: 3` and
-`benchmark_harness_version: 3`. Historical datasets and their frozen runners remain
-unchanged; do not pool them with v3 observations as one controlled experiment.
+behavior. Every new summary records `schema_version: 4` and
+`benchmark_harness_version: 4`. Historical datasets and their frozen runners remain
+unchanged; do not pool v2/v3 observations with v4 as one controlled experiment.
 The packaged generic navigation A/B runner retains its existing diagnostic contract
 and does not acquire these stronger controls.
 
@@ -29,8 +29,8 @@ Every preparation and model session gets a new system-generated root:
 ```text
 <session-root>/
   repo/       # task fixture and deterministic Git repository
-  tmp/        # session-local scratch files
-  cache/      # pinned executable aliases and isolated auth-only CLI profile
+  tmp/        # session-local HOME, scratch, Python and XDG caches/config
+  cache/      # direct executable shims, shell/Git setup, auth-only CLI profile
   artifacts/  # disposable CLI control artifacts
   receipts/   # permission profile and preparation receipts
 ```
@@ -103,8 +103,11 @@ policy must match across conditions. Requiring identical full-tree hashes would
 contradict the intended treatment.
 
 Python, Git, rg, shell and CLI paths are resolved once, with executable hashes and
-versions (shell version is null if its version probe is unsupported). Session
-aliases resolve these same binaries. Hashes are rechecked before execution. The
+versions (launcher shell version is null if its version probe is unsupported).
+On macOS, Apple Git's xcrun launcher is replaced by the implementation in the
+active developer directory; its helper directory is pinned too. Session-local
+scripts exec absolute pinned binaries directly, without recursive PATH lookup.
+Hashes are rechecked before execution. The
 receipt records OS/platform/architecture and working directory. Auxiliary system
 utilities and opaque CLI dependency internals are outside this small pinned binary
 set; their drift is a remaining host limitation. This fixture uses only Python's
@@ -114,8 +117,11 @@ environment and a new documented series.
 
 The child environment is rebuilt from an explicit allowlist. Locale is recorded;
 UTC, bytecode suppression, Git isolation, session temporary/cache/profile paths
-and shell startup isolation are fixed. Child HOME is the isolated profile, so
-login-shell home startup files cannot come from the host account; Python user-site
+and shell startup isolation are fixed. Child HOME and XDG/Python cache/config
+directories live under writable session `tmp/`; the separate auth-only provider
+profile and runtime setup remain protected command-read-only control areas.
+Git uses an explicit session-local global configuration file and helper path,
+with system configuration disabled. Python user-site
 loading is disabled. The parent process environment remains unchanged. Python paths, proxy overrides, injected
 shell startup files and provider overrides are not inherited. Relevant environment
 receipts are compared after portable path normalization. Secret variables record
@@ -124,6 +130,24 @@ auth-only credential file; user settings, plugins, memories and history are not
 copied. Auth values never enter receipts. Quota is explicitly unknown because no
 reliable cross-provider check exists in this harness; unknown is not sufficient
 quota or a zero balance. A future reliable check must become a gate.
+
+The session ZDOTDIR contains `.zshenv`, which restores the controlled environment
+and disables GLOBAL_RCS before `/etc/zprofile` can invoke macOS `path_helper`.
+Isolated bash/sh HOME startup files and BASH_ENV/ENV restore the same environment.
+No global shell files are modified. Codex receives an explicit
+`shell_environment_policy` with inheritance disabled and controlled non-secret
+values set; launcher PATH inheritance alone is not accepted.
+
+Every preparation uses `codex sandbox` with the exec permission profile and
+environment policy to run the pinned shell with `-lc`. Shell `command -v` and
+versions for Python/Git/rg, effective PATH, shell identity/version, environment,
+Python executable, Git configuration origins and cache writes are checked.
+Unexpected values, failed commands or diagnostics fail closed before model
+execution. Requested and effective runtime receipts are retained, including failed
+probes. This exercises the exposed native command mechanism without a model,
+not an observation of an internal model-driven tool turn. Unsupported provider
+native mechanisms remain blocked. Preparation slots record artifact inventory,
+prior-root absence and complete cleanup, including failure cleanup.
 
 All scheduled condition/task preparations pass before the first authorized model
 call. Each actual session repeats its own checks: root freshness, frozen source
@@ -151,9 +175,15 @@ tool calls, per-command filesystem snapshots, unreported durations and hidden
 internal model requests are unavailable, not estimated. Exposed file-change events
 are recorded separately from the complete post-run repository diff.
 
-Verbose unittest coverage records test identities, discovered/passed/failed counts
-and a digest only when the full exposed list matches the discovered count. Count-only
-pytest output has no invented test identities. Equal digests detect targeted and
+Coverage parser version 2 joins the separately exposed method and class in older
+unittest output, while retaining complete modern identities. It records discovered,
+passed, failed, error and skipped counts separately, with count completeness/scope.
+A single unittest footer can establish counts without recovering any identities.
+Zero-test, missing, duplicate or partial identity lists remain explicitly incomplete
+with a null digest. Complete identities are sorted and normalized for the fixture's
+`tests.` discovery/module prefix before hashing; command labels and execution order
+do not affect the digest. Count-only pytest output has no invented test identities.
+Equal digests detect targeted and
 full commands that ran the same tests. Intervening exposed mutations are recorded;
 an intervening shell/tool whose changes are unobservable leaves the change flag
 unknown. Hidden state is never inferred from two matching test lists.

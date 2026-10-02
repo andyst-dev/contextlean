@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Harness v3: opt-in, isolated graded Codex/Claude benchmark; offline preflight."""
+"""Harness v4: opt-in, isolated graded Codex/Claude benchmark; offline preflight."""
 
 import argparse
 import importlib.util
@@ -26,7 +26,7 @@ PREPARATION_SPEC.loader.exec_module(preparation)
 # Share the existing copier/digests/error type with the suite's measurement helper.
 preparation.core = core
 HARNESS_SPEC = importlib.util.spec_from_file_location(
-    "benchmark_harness_v3", ROOT / "benchmarks/harness.py"
+    "benchmark_harness_v4", ROOT / "benchmarks/harness.py"
 )
 harness = importlib.util.module_from_spec(HARNESS_SPEC)
 HARNESS_SPEC.loader.exec_module(harness)
@@ -340,6 +340,7 @@ def run(args):
             "benchmarks/run_benchmark.py",
             "benchmarks/harness.py",
             "benchmarks/execution.py",
+            "benchmarks/runtime.py",
             "benchmarks/trace.py",
             "benchmarks/prepare_fixture.py",
             "skills/benchmark/scripts/benchmark.py",
@@ -379,6 +380,7 @@ def run(args):
         "cache_state": "uncontrolled",
         "tasks": [{**t, "executed_prompt": task_prompt(t)} for t in tasks],
         "runs": [],
+        "preparation_slots": [],
         "limitations": [
             "Model stochasticity, cache/service load and hidden provider implementation are uncontrolled.",
             "Only exposed command/usage/coverage events are captured; no per-action token estimates.",
@@ -451,16 +453,11 @@ def run(args):
             policy = harness.permission_preflight(
                 session, harness.permission_policy(session, provider, sandbox), output
             )
+            effective_runtime = harness.effective_runtime_preflight(session, policy, output)
             # Canonical tests run in the exact environment and filesystem boundary.
-            command = [
-                runtime["binaries"]["python3"]["path"],
-                "-m",
-                "unittest",
-                "discover",
-                "-s",
-                "tests",
-                "-v",
-            ]
+            command = harness.runtime_control.shell_command(
+                session, "python3 -m unittest discover -s tests -v"
+            )
             tested = subprocess.run(
                 harness.boundary_command(session, policy, command, output),
                 cwd=session.repo,
@@ -480,6 +477,8 @@ def run(args):
             receipt = {
                 "benchmark_harness_version": harness.VERSION,
                 "runtime": runtime,
+                "effective_runtime": session.sanitizer.value(effective_runtime),
+                "coverage_parser_version": trace.COVERAGE_PARSER_VERSION,
                 "cwd": "<session-root>/repo",
                 "environment": harness.environment_receipt(session.env, session.sanitizer.text),
                 "permission": session.sanitizer.value(policy),
@@ -498,6 +497,8 @@ def run(args):
                 k: receipt[k]
                 for k in [
                     "runtime",
+                    "effective_runtime",
+                    "coverage_parser_version",
                     "environment",
                     "permission",
                     "auth",
@@ -516,11 +517,27 @@ def run(args):
         # Gate every planned task/condition before the first paid call. Each dry
         # preparation gets its own root and is cleaned, just like a measured run.
         try:
+            previous_roots = []
             for item in plan:
-                with harness.session_root(runtime, source_env, output) as session:
-                    _, _, _, _, receipt = prepare_session(session, item)
-                    save(output / "preflight" / f"{item['sequence']}.json", receipt)
-                if not session.cleanup_verified:
+                slot = dict(item, preparation_passed=False, cleanup_verified=False)
+                report["preparation_slots"].append(slot)
+                session = None
+                try:
+                    with harness.session_root(runtime, source_env, output) as session:
+                        slot["root"] = session.sanitizer.text(str(session.root))
+                        slot["previous_roots_absent"] = all(not p.exists() for p in previous_roots)
+                        if not slot["previous_roots_absent"] or session.root in previous_roots:
+                            raise harness.HarnessError("previous preparation state visible")
+                        _, _, _, _, receipt = prepare_session(session, item)
+                        save(output / "preflight" / f"{item['sequence']}.json", receipt)
+                        (session.tmp / "previous-slot-scratch").write_text("isolated preparation")
+                        slot["session_artifacts"] = harness.control_inventory(session.tmp)
+                        slot["preparation_passed"] = True
+                    previous_roots.append(session.root)
+                finally:
+                    slot["cleanup_verified"] = bool(session and session.cleanup_verified)
+                    slot["root_absent"] = bool(session and not session.root.exists())
+                if not slot["cleanup_verified"]:
                     raise harness.HarnessError("preflight cleanup unverified")
         except (harness.HarnessError, OSError, ValueError, subprocess.SubprocessError) as error:
             report.update(status="harness-preparation-failure", error=str(error), model_calls=0)

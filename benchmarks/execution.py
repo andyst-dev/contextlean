@@ -55,8 +55,15 @@ def codex_options(session, policy):
     filesystem = {":root": "deny", ":minimal": "read"}
     # Provider driver stays outside the command sandbox. Its fresh profile can
     # be read by child shells, but commands cannot write to the control areas.
-    roots = {Path(sys.base_prefix).resolve(), session.profile, session.root / "cache/bin"}
+    roots = {
+        Path(sys.base_prefix).resolve(),
+        session.profile,
+        session.root / "cache/bin",
+        session.root / "cache/shell",
+        session.root / "cache/gitconfig",
+    }
     roots.update(Path(v["path"]).parent for v in session.runtime["binaries"].values())
+    roots.add(Path(session.runtime["binaries"]["git"]["exec_path"]))
     # Homebrew's dynamic libraries live outside individual executable prefixes.
     if platform.system() == "Darwin" and Path("/opt/homebrew").is_dir():
         roots.add(Path("/opt/homebrew"))
@@ -80,6 +87,15 @@ def codex_options(session, policy):
         'approval_policy="never"',
         "--config",
         'web_search="disabled"',
+        "--config",
+        "shell_environment_policy="
+        + toml(
+            {
+                "inherit": "none",
+                "set": session.tool_env,
+                "experimental_use_profile": False,
+            }
+        ),
     ]
 
 
@@ -108,6 +124,7 @@ def model_command(policy, command):
     if (
         not policy.get("native_preflight")
         or not policy.get("permission_probe", {}).get("passed")
+        or not policy.get("effective_runtime", {}).get("passed")
         or (
             policy["provider_native_sandbox"] and policy.get("native_sandbox_available") is not True
         )

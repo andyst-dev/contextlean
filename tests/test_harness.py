@@ -79,7 +79,7 @@ class IsolationTests(unittest.TestCase):
             self.assertFalse(a_root.exists())
             with h.session_root(runtime, test_env(), output) as b:
                 self.assertNotEqual(a_root, b.root)
-                self.assertEqual(b.env["HOME"], str(b.profile))
+                self.assertEqual(b.env["HOME"], str(b.tmp / "home"))
                 self.assertEqual(b.env["PYTHONNOUSERSITE"], "1")
                 self.assertFalse(scratch.exists())
                 self.assertFalse((b.root / scratch.name).exists())
@@ -399,6 +399,29 @@ class EvidenceTests(unittest.TestCase):
 
 
 class RunnerGateTests(unittest.TestCase):
+    def test_effective_runtime_mismatch_prevents_any_model_launch(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp = Path(tmp)
+            prepare_receipt(tmp / "preparation.json")
+            args = args_for(tmp)
+            runtime = offline_runtime()
+            runtime["binaries"]["python3"]["version"] = "Python deliberately mismatched"
+            with (
+                patch.object(h, "pin_runtime", return_value=runtime),
+                patch.object(h, "environment_source", return_value=test_env()),
+                patch.object(h, "permission_preflight", side_effect=fake_permission),
+                patch.object(h, "permission_policy", return_value={"sandbox": "workspace-write"}),
+                patch.object(h, "boundary_command", side_effect=lambda s, p, c, o: c),
+                patch.object(h, "execute_session") as launch,
+            ):
+                with self.assertRaisesRegex(h.HarnessError, "effective python3 mismatch"):
+                    suite.run(args)
+            launch.assert_not_called()
+            report = json.loads((args.output_dir / "summary.json").read_text())
+            self.assertEqual(report["model_calls"], 0)
+            self.assertEqual(report["status"], "harness-preparation-failure")
+            self.assertTrue(report["preparation_slots"][0]["cleanup_verified"])
+
     def test_deterministic_preparation_failure_prevents_any_launch(self):
         with tempfile.TemporaryDirectory() as tmp:
             tmp = Path(tmp)
@@ -429,6 +452,9 @@ class RunnerGateTests(unittest.TestCase):
                 patch.object(h, "pin_runtime", return_value=offline_runtime()),
                 patch.object(h, "environment_source", return_value=test_env()),
                 patch.object(h, "permission_preflight", side_effect=fake_permission),
+                patch.object(
+                    h, "effective_runtime_preflight", return_value={"passed": True, "mocked": True}
+                ),
                 patch.object(h, "permission_policy", return_value={"sandbox": "read-only"}),
                 patch.object(h, "boundary_command", side_effect=lambda s, p, c, o: c),
                 patch.object(
@@ -489,6 +515,9 @@ class RunnerGateTests(unittest.TestCase):
                 patch.object(h, "pin_runtime", return_value=offline_runtime()),
                 patch.object(h, "environment_source", return_value=test_env()),
                 patch.object(h, "permission_preflight", side_effect=fake_permission),
+                patch.object(
+                    h, "effective_runtime_preflight", return_value={"passed": True, "mocked": True}
+                ),
                 patch.object(h, "permission_policy", return_value={"sandbox": "workspace-write"}),
                 patch.object(h, "boundary_command", side_effect=lambda s, p, c, o: c),
                 patch.object(h, "execute_session") as launch,

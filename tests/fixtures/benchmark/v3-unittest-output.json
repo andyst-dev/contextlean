@@ -1,0 +1,26 @@
+[
+  {
+    "source": "v3/refactor-1-vanilla/events.jsonl",
+    "source_sha256": "a665843629e89c5b0fdfbe2b0ebc958f53574fb0a95839e017948c2d649a11fe",
+    "command": "/bin/zsh -lc \"python3 -m unittest discover -s tests -v && python3 - <<'PY'\nfrom decimal import Decimal\nfrom expense_report.categories import normalize_category as shared\nfrom expense_report.filters import normalize_category as filtering, select_category\nfrom expense_report.report import normalize_category as grouping\n\nassert filtering is shared\nassert grouping is shared\nrows = [{\\\"category\\\": \\\" Food \\\", \\\"amount\\\": Decimal(\\\"1.00\\\")}]\nassert len(select_category(rows, \\\"food\\\")) == 1\nassert len(select_category(rows, \\\" Food \\\")) == 0\nprint(\\\"compatibility checks passed\\\")\nPY\"",
+    "output": "2026-10-01 18:47:05.284 xcodebuild[71242:27952520]  DVTFilePathFSEvents: Failed to start fs event stream.\npython3: error: couldn't create cache file '<host-path>' (errno=Operation not permitted)\n2026-10-01 18:47:06.057 xcodebuild[71244:27952533]  DVTFilePathFSEvents: Failed to start fs event stream.\ntest_cli_override (test_expenses.ExpenseTests) ... ok\ntest_configured_default (test_expenses.ExpenseTests) ... ok\ntest_filter (test_expenses.ExpenseTests) ... ok\ntest_load_decimal (test_expenses.ExpenseTests) ... ok\ntest_report (test_expenses.ExpenseTests) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.165s\n\nOK\npython3: error: couldn't create cache file '<host-path>' (errno=Operation not permitted)\n2026-10-01 18:47:07.784 xcodebuild[71251:27952582]  DVTFilePathFSEvents: Failed to start fs event stream.\npython3: error: couldn't create cache file '<host-path>' (errno=Operation not permitted)\n2026-10-01 18:47:08.508 xcodebuild[71254:27952604]  DVTFilePathFSEvents: Failed to start fs event stream.\ncompatibility checks passed\n"
+  },
+  {
+    "source": "v3/refactor-2-vanilla/events.jsonl",
+    "source_sha256": "eb4578e91d77506c9aadcdad58808660ab1c66e2a8a2ccbd389da17a9371e95f",
+    "command": "/bin/zsh -lc 'python3 -m unittest discover -v'",
+    "output": "2026-10-01 18:50:00.318 xcodebuild[71818:27957503]  DVTFilePathFSEvents: Failed to start fs event stream.\npython3: error: couldn't create cache file '<host-path>' (errno=Operation not permitted)\n2026-10-01 18:50:01.238 xcodebuild[71824:27957564]  DVTFilePathFSEvents: Failed to start fs event stream.\n\n----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nOK\n"
+  },
+  {
+    "source": "v3/refactor-2-vanilla/events.jsonl",
+    "source_sha256": "eb4578e91d77506c9aadcdad58808660ab1c66e2a8a2ccbd389da17a9371e95f",
+    "command": "/bin/zsh -lc '/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/bin/python3.14 -m unittest discover -s tests -v'",
+    "output": "test_cli_override (test_expenses.ExpenseTests.test_cli_override) ... ok\ntest_configured_default (test_expenses.ExpenseTests.test_configured_default) ... ok\ntest_filter (test_expenses.ExpenseTests.test_filter) ... ok\ntest_load_decimal (test_expenses.ExpenseTests.test_load_decimal) ... ok\ntest_report (test_expenses.ExpenseTests.test_report) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.060s\n\nOK\n"
+  },
+  {
+    "source": "v3/refactor-1-contextlean/events.jsonl",
+    "source_sha256": "751fa68efaa58b970c6aaa4ebca71e265a880458e2b59bcfc01d8bda401be387",
+    "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+    "output": "2026-10-01 18:47:56.713 xcodebuild[71440:27953922]  DVTFilePathFSEvents: Failed to start fs event stream.\npython3: error: couldn't create cache file '<host-path>' (errno=Operation not permitted)\n2026-10-01 18:47:57.431 xcodebuild[71443:27953950]  DVTFilePathFSEvents: Failed to start fs event stream.\ntest_category_normalizer_is_shared_and_filter_query_is_unchanged (test_expenses.ExpenseTests) ... ok\ntest_cli_override (test_expenses.ExpenseTests) ... ok\ntest_configured_default (test_expenses.ExpenseTests) ... ok\ntest_filter (test_expenses.ExpenseTests) ... ok\ntest_load_decimal (test_expenses.ExpenseTests) ... ok\ntest_report (test_expenses.ExpenseTests) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.163s\n\nOK\n"
+  }
+]

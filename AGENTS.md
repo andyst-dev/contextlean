@@ -21,14 +21,16 @@ skills/benchmark/scripts/benchmark.py -> dependency-free snapshot, runner, aggre
 skills/benchmark/data/credit-rates.json -> dated official ChatGPT credit-equivalent rates
 benchmarks/ -> graded sample tasks, fixture, evaluator, and opt-in runner
 benchmarks/prepare_fixture.py -> offline map review, equivalent-state check, and validated fixture freezing
-benchmarks/harness.py -> v3 session isolation, runtime/Git/permission gates, and evidence hygiene
+benchmarks/harness.py -> v4 session isolation, runtime/Git/permission gates, and evidence hygiene
 benchmarks/execution.py -> provider-aware sandbox strategy and offline CLI compatibility probes
+benchmarks/runtime.py -> session-local runtime shims, shell/cache setup and native effective-runtime probe
 benchmarks/trace.py -> exposed command, coverage, primary/helper token evidence parsing
 benchmarks/methodology-v2.md -> future graded experiment controls and provider limitations
 benchmarks/results/ -> optional public evidence with frozen source and solutions
 tests/test_public_validation.py -> offline reconciliation and regrading of published evidence
 tests/test_harness.py -> offline isolation, equivalence, instrumentation, and failure contracts
 tests/test_execution.py -> offline native sandbox composition, permission parity, and fail-closed guards
+tests/test_runtime.py -> offline login-shell, effective-runtime, cache and coverage identity regressions
 docs/ -> visual, verification record, and release notes
 .github/workflows/quality.yml -> offline tests, lint, and formatting
 tests/test_package.py -> dependency-free package contract tests

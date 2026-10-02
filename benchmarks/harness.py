@@ -21,12 +21,17 @@ import tempfile
 import time
 
 
-VERSION = 3
+VERSION = 4
 EXECUTION_SPEC = importlib.util.spec_from_file_location(
     "benchmark_execution", Path(__file__).with_name("execution.py")
 )
 execution = importlib.util.module_from_spec(EXECUTION_SPEC)
 EXECUTION_SPEC.loader.exec_module(execution)
+RUNTIME_SPEC = importlib.util.spec_from_file_location(
+    "benchmark_runtime", Path(__file__).with_name("runtime.py")
+)
+runtime_control = importlib.util.module_from_spec(RUNTIME_SPEC)
+RUNTIME_SPEC.loader.exec_module(runtime_control)
 GUIDANCE = frozenset({"AGENTS.md", "CLAUDE.md", "PROJECT_REFERENCE.md"})
 GIT_SETTINGS = {
     "user.name": "Benchmark fixture",
@@ -153,6 +158,20 @@ def schedule(tasks, repeats):
 
 def pin_runtime(cli, shell=None):
     """Resolve once, record versions/content hashes; children use pinned aliases."""
+    with tempfile.TemporaryDirectory(prefix="contextlean-runtime-pin-") as temporary:
+        probe_env = dict(
+            environment_source("external", {}),
+            PATH="/usr/bin:/bin:/usr/sbin:/sbin",
+            HOME=temporary,
+            TMPDIR=temporary,
+            XDG_CACHE_HOME=temporary,
+            CODEX_HOME=temporary,
+            CLAUDE_CONFIG_DIR=temporary,
+        )
+        return _pin_runtime(cli, shell, probe_env)
+
+
+def _pin_runtime(cli, shell, probe_env):
     binaries = {
         "python3": sys.executable,
         "git": "git",
@@ -166,8 +185,29 @@ def pin_runtime(cli, shell=None):
         if not path:
             raise HarnessError(f"required runtime unavailable: {name}")
         path = Path(path).resolve()
+        selection = "resolved executable"
+        if name == "git" and platform.system() == "Darwin" and path == Path("/usr/bin/git"):
+            # Apple /usr/bin/git is an xcrun launcher, not the implementation.
+            developer = subprocess.run(
+                ["/usr/bin/xcode-select", "--print-path"],
+                capture_output=True,
+                text=True,
+                timeout=15,
+                check=False,
+                env=probe_env,
+            )
+            implementation = Path(developer.stdout.strip()) / "usr/bin/git"
+            if developer.returncode or not implementation.is_file():
+                raise HarnessError("Apple Git implementation unavailable")
+            path = implementation.resolve()
+            selection = "active developer directory; bypass Apple xcrun launcher"
         result = subprocess.run(
-            [str(path), "--version"], capture_output=True, text=True, timeout=15, check=False
+            [str(path), "--version"],
+            capture_output=True,
+            text=True,
+            timeout=15,
+            check=False,
+            env=probe_env,
         )
         version = (result.stdout or result.stderr).strip() if result.returncode == 0 else None
         if name != "shell" and not version:
@@ -176,7 +216,20 @@ def pin_runtime(cli, shell=None):
             "path": str(path),
             "version": version,
             "sha256": digest(path.read_bytes()),
+            "selection": selection,
         }
+        if name == "git":
+            helpers = subprocess.run(
+                [str(path), "--exec-path"],
+                capture_output=True,
+                text=True,
+                timeout=15,
+                check=False,
+                env=probe_env,
+            )
+            if helpers.returncode or helpers.stderr:
+                raise HarnessError("Git helper runtime unavailable")
+            resolved[name]["exec_path"] = helpers.stdout.strip()
     return {
         "os": platform.system(),
         "platform": platform.platform(),
@@ -255,7 +308,7 @@ class Sanitizer:
         ):
             text = text.replace(source, placeholder)
         text = re.sub(
-            r"(?:/Users/|/home/|/private/tmp/|/tmp/|/private/var/folders/|/var/folders/)[^\s\"'<>]*",
+            r"(?<![>\w/])(?:/Users/|/home/|/private/tmp/|/tmp/|/private/var/folders/|/var/folders/)[^\s\"'<>]*",
             "<host-path>",
             text,
         )
@@ -288,27 +341,8 @@ class Session:
         self.tmp = root / "tmp"
         self.profile = root / "cache/profile"
         self.profile.mkdir()
-        bindir = root / "cache/bin"
-        bindir.mkdir()
-        for name, record in runtime["binaries"].items():
-            (bindir / name).symlink_to(record["path"])
-        (bindir / "python").symlink_to(runtime["binaries"]["python3"]["path"])
-        self.env = dict(
-            source_env,
-            HOME=str(self.profile),
-            PATH=f"{bindir}:/usr/bin:/bin:/usr/sbin:/sbin",
-            SHELL=runtime["binaries"]["shell"]["path"],
-            TMPDIR=str(self.tmp),
-            TMP=str(self.tmp),
-            TEMP=str(self.tmp),
-            XDG_CACHE_HOME=str(root / "cache"),
-            CODEX_HOME=str(self.profile),
-            CLAUDE_CONFIG_DIR=str(self.profile),
-            ZDOTDIR=str(self.profile),
-            ENV="",
-            BASH_ENV="",
-            PYTHONNOUSERSITE="1",
-        )
+        self.auth_names = AUTH_NAMES
+        runtime_control.configure(self, source_env)
         self.sanitizer = Sanitizer(
             root, {str(output): "<evidence>"}, [self.env[k] for k in AUTH_NAMES if k in self.env]
         )
@@ -394,6 +428,7 @@ def initialize_git(session):
         target.write_bytes(original)
     if git_state(session) != receipt:
         raise HarnessError("Git probe changed baseline")
+    session.git_config_expected = git(session, "config", "--show-origin", "--list")
     return receipt
 
 
@@ -560,6 +595,35 @@ def permission_preflight(session, policy, output):
         write_json(
             output / "preflight" / (session.root.name + "-permission.json"),
             session.sanitizer.value(policy),
+        )
+
+
+def effective_runtime_preflight(session, policy, output):
+    """A launcher receipt cannot authorize execution without the native shell gate."""
+    receipt = {"passed": False, "requested": session.runtime, "effective": None}
+    try:
+        receipt = runtime_control.probe(
+            session, lambda command: boundary_command(session, policy, command, output)
+        )
+        if not receipt["passed"]:
+            raise HarnessError(
+                "effective runtime preflight failed: " + "; ".join(receipt["errors"])
+            )
+        return receipt
+    except (OSError, ValueError, subprocess.SubprocessError) as error:
+        receipt["preparation_failure"] = str(error)
+        raise HarnessError(str(error)) from error
+    finally:
+        policy["effective_runtime"] = receipt
+        private = output / "private/preflight"
+        private.mkdir(parents=True, exist_ok=True, mode=0o700)
+        private.chmod(0o700)
+        raw = private / (session.root.name + "-runtime.json")
+        write_json(raw, receipt)
+        raw.chmod(0o600)
+        write_json(
+            output / "preflight" / (session.root.name + "-runtime.json"),
+            session.sanitizer.value(receipt),
         )
 
 
