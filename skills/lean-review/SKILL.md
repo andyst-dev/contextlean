@@ -5,7 +5,13 @@ description: Review the current code change for duplicated behavior, unnecessary
 
 # Review a change for locality
 
-Review only; do not edit files by default. Prefer the current Git diff and relevant repository map. If no diff is available, use the change set or files identified by the user and state that limitation.
+Run only when the user requests a review. Review only; do not edit files by default. Prefer the current Git diff and relevant repository map. If no diff is available, use the change set or files identified by the user and state that limitation.
+
+## Specialized architecture review
+
+For an explicitly requested review involving ownership, extraction, boundaries,
+dependency direction or indirection, read [Architecture and locality review](references/architecture.md).
+These details are optional review material, not required ordinary coding context.
 
 ## Review workflow
 

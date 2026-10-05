@@ -1,5 +1,9 @@
 # Bootstrap semantic preservation — 0.2.0 repair
 
+The current working-tree contract is [Balanced](balanced-contract.md). It intentionally
+retires full original-bootstrap compatibility. The release/coverage records below
+describe their historical revisions; they do not certify the Balanced contract.
+
 This is developer verification, not agent startup guidance. It revisits every grouped
 requirement in the owner-reviewed comparison against the supplied 714-line
 [`AGENT_BOOTSTRAP.md`, preserved as historical reference](reference/original-agent-bootstrap.md)

@@ -1,5 +1,9 @@
 # ContextLean v0.2.0
 
+The current working-tree contract is [Balanced](balanced-contract.md). It intentionally
+retires full original-bootstrap compatibility. The release/coverage records below
+describe their historical revisions; they do not certify the Balanced contract.
+
 Released on 2026-09-30. [Public GitHub Release](https://github.com/andyst-dev/contextlean/releases/tag/v0.2.0).
 Release commit: `6113896f283f34558cbabaa1d6d25b6aa614b7a5`.
 [Release verification and historical records](verification.md).

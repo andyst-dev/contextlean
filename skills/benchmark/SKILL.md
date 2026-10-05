@@ -5,6 +5,9 @@ description: Measure ContextLean's context impact with a no-Codex static estimat
 
 # Benchmark ContextLean
 
+Run only when the user requests measurement. Model runs require an explicit live
+benchmark request; a static estimate request does not authorize them.
+
 Keep every result honest: label exact measurements, estimates, and heuristics separately. Never turn an estimate into measured token savings or claim a gain when the comparison does not support it.
 
 ## Static estimate
@@ -15,9 +18,12 @@ Run:
 python3 skills/benchmark/scripts/benchmark.py estimate --repo .
 ```
 
-This reads `.contextlean/bootstrap-report.json` when bootstrap captured a baseline. It never runs Codex. If the baseline is absent, report only the current state and say that no true static before/after is available.
+This reads `.contextlean/bootstrap-report.json` when an explicitly requested capture produced it. It never runs Codex. If the baseline is absent, report only the current state and say that no true static before/after is available.
 
-During `$bootstrap`, follow the capture procedure in the bootstrap specification: run `bootstrap-start` before any repository change and `bootstrap-finish` after verification. Keep the resulting report local and out of automatic instruction context.
+Only when the user requests a static before/after measurement, follow
+[Static capture](references/static-capture.md). Default bootstrap creates no report
+and has no measurement prerequisite. Existing reports remain readable. Keep reports
+local and out of automatic instruction context; never reconstruct a missing baseline.
 
 ## Codex A/B
 

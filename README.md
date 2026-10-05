@@ -1,10 +1,13 @@
 # ContextLean
 
-Help coding agents find the right code with a small, maintained repository map.
+Help coding agents find owners, limit exploration, and verify focused changes.
 
-ContextLean gives Codex and Claude Code a small map of your repository so they can
-find the right code with less repeated exploration. It creates and checks guidance
-about the project, important code, useful commands, and rules that changes must preserve.
+ContextLean produces a reliable project map and a compact coding discipline for
+Codex and Claude Code. It helps agents find responsible code, preserve important
+constraints, make focused changes, and verify sufficient coverage.
+
+The current **Balanced** contract focuses on ordinary coding work. Audit, Lean Review
+and measurement are optional, explicitly requested workflows.
 
 ![Without ContextLean: explore the repository to find relevant code. With ContextLean: use a small project map to reach relevant code and tests.](docs/assets/before-after.svg)
 
@@ -37,7 +40,7 @@ ContextLean does not guarantee savings or make a model inherently smarter.
 - **Benchmark Context Usage** measures structure offline or, when explicitly requested,
   compares real model runs and their outcomes.
 
-## Before vs After
+## Historical results (before Balanced)
 
 **Release-aligned v0.2.0 preliminary validation — one fresh run per condition per task.**
 
@@ -89,8 +92,8 @@ error and is **invalid for headline performance comparison**.
 
 ## Quick start
 
-You need an installed, working Codex or Claude Code, and Python 3.11+ for the local
-report helper. Use a local checkout of this repository; ContextLean is not in a
+You need an installed, working Codex or Claude Code. Python 3.11+ is needed only
+for optional measurement helpers and development checks. Use a local checkout of this repository; ContextLean is not in a
 public marketplace yet.
 
 1. **Install / load ContextLean.** For Codex, run these from the ContextLean checkout:
@@ -138,35 +141,20 @@ See [installation details and verification status](docs/verification.md).
 ## What gets created?
 
 Bootstrap writes repository guidance; it does not change your application's behavior.
-A small project might change like this:
 
-```text
-Before                         After
-my-project/                    my-project/
-├── app/                       ├── AGENTS.md
-├── tests/                     ├── CLAUDE.md
-└── README.md                  ├── .contextlean/
-                               │   └── bootstrap-report.json
-                               ├── app/
-                               ├── tests/
-                               └── README.md
-```
+- `AGENTS.md`: a project map, ownership boundaries, verified commands and important
+  coding rules. Existing useful knowledge is preserved. Nested maps are added only
+  for genuinely specialized subtrees.
+- `CLAUDE.md`: normally `@AGENTS.md`, so Claude reads the same guidance. Useful existing
+  Claude notes and necessary platform exceptions are preserved during setup.
+- Only when needed: targeted project references and proven-safe local exclusions.
 
-- `AGENTS.md`: a concise project map, ownership boundaries, verified commands and rules.
-  Existing guidance is preserved and improved. Nested maps are added only when needed.
-  Permanent startup instructions stay compact; detailed guidance is read only when
-  relevant, through references with clear task triggers. Complete original bootstrap
-  semantics are preserved. Audit and Lean Review remain on-demand.
-- `CLAUDE.md`: normally `@AGENTS.md`, so Claude reads the same guidance. Substantial
-  existing Claude notes can move to an optional reference without losing knowledge.
-- `.contextlean/bootstrap-report.json`: local instruction counts and explicitly labelled
-  estimates. During bootstrap, `.bootstrap-baseline.json` temporarily holds the before state.
-  Reports are not agent instructions and are not automatically loaded.
-- Only when justified: safe generated-file exclusions, optional references and reusable
-  project skills. There is no fixed bundle of extra files for every project.
+Default bootstrap creates no project Skills, transfer receipts or measurement reports.
+Ordinary work corrects map entries made inaccurate by the change or discovered stale;
+it does not require a map check after every task. Request Audit for broader drift.
 
-Keep `.contextlean/` out of Git. This checkout ignores it; check your project's ignore
-rules too. Live benchmark reports default there, unless you choose another output directory.
+If you separately request measurement, keep its local `.contextlean/` reports out of
+Git and startup context. Existing reports and guidance are not deleted by this change.
 
 ## What is AGENTS.md?
 
@@ -187,7 +175,8 @@ start work. It gives directions without replacing the code or tests. For example
 
 This is an example, not files or commands generated for every repository. ContextLean
 tries to keep guidance small instead of copying the README or cataloguing every file.
-See the [real sample project map](benchmarks/fixtures/expense-report/AGENTS.md).
+See the [representative project map](tests/fixtures/bootstrap-core/project-map.md) and
+[ordinary coding guidance](skills/bootstrap/references/core-guidance.md).
 
 ## Skills
 
@@ -216,18 +205,20 @@ A lean review edits code only when you separately request a fix.
 
 ## How it works
 
-The plugin packages four instruction-based workflows, shared by both agents.
-Bootstrap inspects the project, preserves useful knowledge, verifies directions and
-captures a local static before/after report. Later sessions use the maps; audits
-check for drift, and reviews check changes for unnecessary complexity.
+The plugin packages four instruction-based workflows shared by both agents.
+Bootstrap preserves project knowledge, writes focused guidance, sets up compatible
+Claude imports and validates actual paths, commands, ownership and references.
+Later sessions use the project guidance without needing an installed ContextLean plugin.
 
-Bootstrap also checks that permanent development guidance survives without the setup
-specification. It keeps that guidance compact, documents the separate Audit and Lean
-Review workflows, and stops if a required rule has no durable home.
+Balanced intentionally retires complete original-bootstrap compatibility. The original
+specification and previous validation remain historical evidence; their behavior and
+measurements are not claims about this new contract. See the
+[Balanced contract and historical comparison](docs/balanced-contract.md).
 
-Version 0.2.0 has no MCP server, hooks, background process, runtime package or telemetry.
-Skill discovery can add skill descriptions to agent context; the workflows themselves
-run when invoked. Large optional references stay behind targeted links.
+There is no MCP server, hook, background process, runtime package or telemetry.
+Skill discovery can add descriptions to agent context; workflows run only on request.
+Project-Skill authoring and sharing remain available as
+[optional maintainer guidance](docs/guidance-authoring.md), outside default setup.
 
 ## Benchmark methodology
 

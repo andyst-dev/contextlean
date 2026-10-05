@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only structural check of an agent-reviewed permanent-rule transfer record."""
+"""Explicit legacy transfer check; not a Balanced bootstrap prerequisite."""
 
 import argparse
 import hashlib

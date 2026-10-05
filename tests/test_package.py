@@ -34,6 +34,11 @@ class PackageContractTests(unittest.TestCase):
             ".claude-plugin/plugin.json",
             ".claude-plugin/marketplace.json",
             "skills/bootstrap/references/bootstrap-spec.md",
+            "skills/bootstrap/references/core-guidance.md",
+            "skills/lean-review/references/architecture.md",
+            "skills/benchmark/references/static-capture.md",
+            "docs/balanced-contract.md",
+            "docs/guidance-authoring.md",
             "skills/benchmark/scripts/benchmark.py",
             "skills/benchmark/references/methodology.md",
             "skills/benchmark/data/credit-rates.json",
@@ -141,8 +146,8 @@ class PackageContractTests(unittest.TestCase):
     def test_bootstrap_spec_is_targeted_and_canonical(self) -> None:
         spec = ROOT / "skills/bootstrap/references/bootstrap-spec.md"
         content = spec.read_text(encoding="utf-8")
-        self.assertGreater(len(content.splitlines()), 100)
-        self.assertLess(len(content.splitlines()), 250)
+        self.assertIn("core-guidance.md", content)
+        self.assertIn("Balanced", content)
         self.assertEqual(
             [path for path in ROOT.rglob("bootstrap-spec.md") if ".contextlean" not in path.parts],
             [spec],
@@ -162,7 +167,8 @@ class PackageContractTests(unittest.TestCase):
         self.assertIn("never invent gains", benchmark.lower())
         self.assertIn("danger-full-access", methodology)
         self.assertIn("never used", methodology)
-        self.assertIn(".contextlean/bootstrap-report.json", bootstrap)
+        self.assertIn("Default bootstrap writes no measurement report", bootstrap)
+        self.assertIn("references/static-capture.md", benchmark)
         self.assertNotIn("bootstrap-report.json", (ROOT / "AGENTS.md").read_text(encoding="utf-8"))
 
 

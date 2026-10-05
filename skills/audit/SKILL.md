@@ -5,7 +5,7 @@ description: Audit a repository's agent instructions, project maps, Skills, excl
 
 # Audit repository context
 
-Default to read-only. Treat `audit fix` as explicit permission only for safe documentation and configuration repairs; never refactor product code silently.
+Run only when the user requests an audit. Default to read-only. Treat `audit fix` as explicit permission only for safe documentation and configuration repairs; never refactor product code silently.
 
 ## Inspect
 
@@ -18,10 +18,15 @@ Start from the applicable `AGENTS.md` hierarchy and repository state. Use target
 - Skill structure, frontmatter, references, scripts, and symlinks;
 - exclusions that hide source, tests, fixtures, migrations, documentation, assets, or useful archives;
 - stale documentation and responsibilities that no longer match the implementation;
-- when a bootstrap transfer record exists, complete permanent-rule destinations,
-  facet-level conditional triggers, references absent from automatic imports,
-  reviewed-content integrity, explicit packaged Lean Review delegation and safe
-  omission of the setup specification; check semantics as well as structural evidence;
+- the selected product contract: new Balanced guidance must retain the coding
+  kernel and work without setup documents or installed ContextLean Skills; do not
+  silently migrate a project that selected a historical contract;
+- unintended automatic Skill invocation, after-every-task map-check rituals, or
+  required historical receipts/measurement reports in new Balanced guidance;
+- known stale map information and whether corrections stay within affected entries;
+- legacy transfer records only when historical investigation is explicitly requested:
+  an absent receipt is not a Balanced defect; use the matching historical revision
+  and do not regenerate old evidence or demand compatibility with every old facet;
 - potential god objects, catch-all modules, circular or non-local dependencies, and simple features spread across unrelated files.
 
 File length alone is never a defect. Report a large file only when evidence shows mixed responsibilities or degraded locality. Do not recommend fragmenting cohesive code into wrappers or micro-files.

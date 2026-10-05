@@ -5,8 +5,9 @@ equivalent.
 
 ## Static estimate
 
-`bootstrap-start` captures instruction paths and byte counts before bootstrap.
-`bootstrap-finish` writes the verified before/after data to
+Only for explicitly requested static measurement, `bootstrap-start` captures
+instruction paths and byte counts before bootstrap. These captures are not setup
+prerequisites. `bootstrap-finish` writes the verified before/after data to
 `.contextlean/bootstrap-report.json`. `benchmark estimate` reads that report without
 running Codex.
 

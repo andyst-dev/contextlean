@@ -1,0 +1,10 @@
+{
+  "benchmarks/results/2026-09-30-clean-final-0.2.0": "9bcdfb67d6c3b991bf98f9d8dd52766d9e8d3c12417c12d57e909c6bc1b04e32",
+  "benchmarks/results/2026-09-30-compact-final-0.2.0": "f0210a042f4a037cef9b1093ebd074556dcdbde7db73067dd5fa9a0212f19603",
+  "benchmarks/results/2026-09-30-final-0.2.0": "7f750f72833a96ffc9727412f739b0b156aba2d0cb844695d0bedf81973f6695",
+  "benchmarks/results/2026-09-30-release-aligned-0.2.0": "dc132a2f80e673f29d9659a65cfbbec165a0640fa196c6a0cf006fbf9b3165cd",
+  "benchmarks/results/2026-09-30-validation": "dd8314084022b1b5fda4a9c1af3fa1f1e74fd444ee71207f7270427bba6d9ef4",
+  "benchmarks/results/2026-10-01-v0.2.1-final": "1df89c98f1f289dfba43d6d9eaf0350c5804b5bcdca43dc81c8baa68e215002a",
+  "benchmarks/results/README.md": "75c8b26c7687d718cfd376b5933c5193a63890fca138ced990c543735ae5a1af",
+  "docs/reference/original-agent-bootstrap.md": "c0580c33039e652b54ea0159811d6b7a2943008825aba057b1c84b5f4f15cea9"
+}
