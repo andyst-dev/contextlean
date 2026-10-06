@@ -1,0 +1,26 @@
+--- original/expense_report/categories.py
++++ submitted/expense_report/categories.py
+@@ -0,0 +1,2 @@
++def normalize_category(value):
++    return value.strip().casefold()
+--- original/expense_report/filters.py
++++ submitted/expense_report/filters.py
+@@ -1,5 +1,4 @@
+-def normalize_category(value):
+-    return value.strip().casefold()
++from .categories import normalize_category
+ 
+ 
+ def select_category(expenses, category):
+--- original/expense_report/report.py
++++ submitted/expense_report/report.py
+@@ -1,8 +1,6 @@
+ from decimal import Decimal
+ 
+-
+-def normalize_category(value):
+-    return value.strip().casefold()
++from .categories import normalize_category
+ 
+ 
+ def build_report(expenses, currency):

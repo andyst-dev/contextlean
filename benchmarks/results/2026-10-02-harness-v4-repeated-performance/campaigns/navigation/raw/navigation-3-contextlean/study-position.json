@@ -1,0 +1,7 @@
+{
+  "sequence": 6,
+  "harness_sequence": 6,
+  "task": "navigation",
+  "repeat": 3,
+  "condition": "contextlean"
+}

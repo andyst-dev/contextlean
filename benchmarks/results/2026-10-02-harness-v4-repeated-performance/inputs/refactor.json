@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {
+      "id": "refactor",
+      "category": "localized refactor",
+      "prompt": "Consolidate the duplicated normalize_category functions into one shared implementation used by filtering and category grouping. Preserve behavior, including current category filter query semantics; this task is not a bug fix. Keep the normalize_category names importable from both existing modules for compatibility. Do not add dependencies or unrelated abstractions. Run the existing tests."
+    }
+  ]
+}

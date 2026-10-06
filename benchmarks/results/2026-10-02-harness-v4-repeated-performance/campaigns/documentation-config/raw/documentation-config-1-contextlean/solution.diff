@@ -1,0 +1,25 @@
+--- original/README.md
++++ submitted/README.md
+@@ -1,7 +1,7 @@
+ # Expense report
+ 
+ A dependency-free Python tool that summarizes a CSV file with `category,amount`
+-columns. Amounts use decimal arithmetic. The configured default currency is USD;
++columns. Amounts use decimal arithmetic. The configured default currency is EUR;
+ `--currency` overrides it. Category totals are grouped without case sensitivity.
+ 
+ ```sh
+--- original/config.json
++++ submitted/config.json
+@@ -1 +1 @@
+-{"currency": "USD"}
++{"currency": "EUR"}
+--- original/tests/test_expenses.py
++++ submitted/tests/test_expenses.py
+@@ -38,4 +38,5 @@
+             [sys.executable, "-m", "expense_report.cli", "data/sample.csv"],
+             capture_output=True, text=True, check=True,
+         )
+-        self.assertEqual(json.loads(result.stdout)["currency"], json.loads(Path("config.json").read_text())["currency"])
++        self.assertEqual(json.loads(result.stdout)["currency"], "EUR")
++        self.assertEqual(json.loads(Path("config.json").read_text())["currency"], "EUR")

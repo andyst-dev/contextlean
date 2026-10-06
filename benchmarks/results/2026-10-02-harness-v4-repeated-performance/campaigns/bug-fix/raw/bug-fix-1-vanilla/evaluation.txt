@@ -1,0 +1,30 @@
+test_cli_category_ignores_case_and_surrounding_whitespace (test_expenses.ExpenseTests.test_cli_category_ignores_case_and_surrounding_whitespace) ... ok
+test_cli_override (test_expenses.ExpenseTests.test_cli_override) ... ok
+test_configured_default (test_expenses.ExpenseTests.test_configured_default) ... ok
+test_filter (test_expenses.ExpenseTests.test_filter) ... ok
+test_load_decimal (test_expenses.ExpenseTests.test_load_decimal) ... ok
+test_report (test_expenses.ExpenseTests.test_report) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.321s
+
+OK
+
+test_cli_override (test_expenses.ExpenseTests.test_cli_override) ... ok
+test_configured_default (test_expenses.ExpenseTests.test_configured_default) ... ok
+test_filter (test_expenses.ExpenseTests.test_filter) ... ok
+test_load_decimal (test_expenses.ExpenseTests.test_load_decimal) ... ok
+test_report (test_expenses.ExpenseTests.test_report) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.213s
+
+OK
+
+test_preserved_behavior (__main__.evaluate.<locals>.Acceptance.test_preserved_behavior) ... ok
+test_task_contract (__main__.evaluate.<locals>.Acceptance.test_task_contract) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.646s
+
+OK

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {
+      "id": "navigation",
+      "category": "repository understanding/navigation",
+      "prompt": "Inspect this expense report repository without changing files. Identify the function that loads CSV amounts, the function that produces category totals, and the test file covering the CLI. Run the CLI on data/sample.csv. Return only a JSON object with keys loader (relative source path), reporter (relative source path), cli_tests (relative test path), total (string), count (integer), and currency (string). Verify from code and execution, not only guidance."
+    },
+    {
+      "id": "bug-fix",
+      "category": "small bug fix",
+      "prompt": "Fix category filtering so --category accepts mixed case and surrounding whitespace, just as stored category names do. For example --category ' FOOD ' must select both food expenses from data/sample.csv and produce total 20.00. Preserve unfiltered reports, decimal arithmetic and currency overrides. Add a regression test and run the tests."
+    },
+    {
+      "id": "feature",
+      "category": "small feature",
+      "prompt": "Add optional --min-amount to the expense report CLI. Keep only expenses whose individual amount is greater than or equal to that decimal threshold before producing the report. It must combine with --category and leave existing behavior unchanged when omitted. With data/sample.csv, --min-amount 10 yields count 2 and total 32.50; --category food --min-amount 10 yields count 1 and total 12.50. Add tests and run them."
+    },
+    {
+      "id": "refactor",
+      "category": "localized refactor",
+      "prompt": "Consolidate the duplicated normalize_category functions into one shared implementation used by filtering and category grouping. Preserve behavior, including current category filter query semantics; this task is not a bug fix. Keep the normalize_category names importable from both existing modules for compatibility. Do not add dependencies or unrelated abstractions. Run the existing tests."
+    },
+    {
+      "id": "documentation-config",
+      "category": "documentation/configuration",
+      "prompt": "Change the configured default currency from USD to EUR and update the README to match. --currency GBP must still override the default. Keep expense amounts and grouping behavior unchanged. Verify the documented example commands and run the tests."
+    }
+  ]
+}

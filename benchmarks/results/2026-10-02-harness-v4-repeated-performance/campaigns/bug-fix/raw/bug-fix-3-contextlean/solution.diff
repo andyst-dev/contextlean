@@ -1,0 +1,30 @@
+--- original/expense_report/filters.py
++++ submitted/expense_report/filters.py
+@@ -5,7 +5,8 @@
+ def select_category(expenses, category):
+     if category is None:
+         return list(expenses)
++    normalized_category = normalize_category(category)
+     return [
+         expense for expense in expenses
+-        if normalize_category(expense["category"]) == category
++        if normalize_category(expense["category"]) == normalized_category
+     ]
+--- original/tests/test_expenses.py
++++ submitted/tests/test_expenses.py
+@@ -33,6 +33,15 @@
+         )
+         self.assertEqual(json.loads(result.stdout)["currency"], "GBP")
+ 
++    def test_cli_category_ignores_case_and_whitespace(self):
++        result = subprocess.run(
++            [sys.executable, "-m", "expense_report.cli", "data/sample.csv", "--category", " FOOD "],
++            capture_output=True, text=True, check=True,
++        )
++        report = json.loads(result.stdout)
++        self.assertEqual(report["count"], 2)
++        self.assertEqual(report["total"], "20.00")
++
+     def test_configured_default(self):
+         result = subprocess.run(
+             [sys.executable, "-m", "expense_report.cli", "data/sample.csv"],

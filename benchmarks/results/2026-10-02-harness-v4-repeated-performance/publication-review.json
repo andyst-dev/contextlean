@@ -1,0 +1,7 @@
+{
+  "personal_absolute_paths_found": false,
+  "credential_patterns_found": false,
+  "private_directories_included": false,
+  "files_reviewed": 1393,
+  "artifact_review": "Reviewed traces, receipts, saved solutions, test identities, diffs and task-specific variance."
+}

@@ -1,0 +1,208 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 50361,
+    "cached_input_tokens": 40064,
+    "uncached_input_tokens": 10297,
+    "output_tokens": 549,
+    "total_tokens": 50910,
+    "reasoning_output_tokens": 113
+  },
+  "raw_usage": {
+    "input_tokens": 50361,
+    "cached_input_tokens": 40064,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 549,
+    "reasoning_output_tokens": 113
+  },
+  "error": null,
+  "final_response": "{\"loader\":\"expense_report/storage.py\",\"reporter\":\"expense_report/report.py\",\"cli_tests\":\"tests/test_expenses.py\",\"total\":\"40.00\",\"count\":3,\"currency\":\"USD\"}",
+  "commands": 3,
+  "event_count": 10,
+  "parse_error_lines": [],
+  "calls": [
+    {
+      "sequence": 1,
+      "event_line": 3,
+      "id": "item_0",
+      "tool": "command_execution",
+      "input": {
+        "command": "/bin/zsh -lc \"pwd && rg --files -g '\"'!AGENTS.md'\"' -g '\"'!**/AGENTS.md'\"' && rg -n \\\"csv|category|CLI|argparse|main\\\" . -g '*.py'\""
+      },
+      "command": "/bin/zsh -lc \"pwd && rg --files -g '\"'!AGENTS.md'\"' -g '\"'!**/AGENTS.md'\"' && rg -n \\\"csv|category|CLI|argparse|main\\\" . -g '*.py'\"",
+      "cwd": "<session-root>/repo",
+      "cwd_scope": "session cwd; shell may change cwd internally",
+      "timestamp": null,
+      "exit_code": 0,
+      "status": "completed",
+      "executed": true,
+      "denied": false,
+      "denial_reason": null,
+      "duration_seconds": null,
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "returned_content_bytes": null,
+      "files_changed_afterward": null,
+      "file_change_scope": "unavailable unless provider explicitly exposes changes",
+      "combined_output_bytes": 2194,
+      "result": "<session-root>/repo\ndata/sample.csv\nexpense_report/filters.py\nexpense_report/report.py\nexpense_report/storage.py\nexpense_report/cli.py\nexpense_report/__init__.py\nREADME.md\ntests/test_expenses.py\nconfig.json\n./expense_report/filters.py:1:def normalize_category(value):\n./expense_report/filters.py:5:def select_category(expenses, category):\n./expense_report/filters.py:6:    if category is None:\n./expense_report/filters.py:10:        if normalize_category(expense[\"category\"]) == category\n./expense_report/report.py:4:def normalize_category(value):\n./expense_report/report.py:11:        key = normalize_category(expense[\"category\"])\n./expense_report/storage.py:1:import csv\n./expense_report/storage.py:8:            {\"category\": row[\"category\"], \"amount\": Decimal(row[\"amount\"])}\n./expense_report/storage.py:9:            for row in csv.DictReader(handle)\n./expense_report/cli.py:1:import argparse\n./expense_report/cli.py:5:from expense_report.filters import select_category\n./expense_report/cli.py:10:def main():\n./expense_report/cli.py:11:    parser = argparse.ArgumentParser(description=\"Summarize a CSV expense file.\")\n./expense_report/cli.py:13:    parser.add_argument(\"--category\")\n./expense_report/cli.py:17:    expenses = select_category(load_expenses(args.path), args.category)\n./expense_report/cli.py:21:if __name__ == \"__main__\":\n./expense_report/cli.py:22:    main()\n./tests/test_expenses.py:8:from expense_report.filters import select_category\n./tests/test_expenses.py:15:        rows = load_expenses(\"data/sample.csv\")\n./tests/test_expenses.py:19:        rows = load_expenses(\"data/sample.csv\")\n./tests/test_expenses.py:20:        self.assertEqual(len(select_category(rows, \"food\")), 2)\n./tests/test_expenses.py:21:        self.assertEqual(len(select_category(rows, None)), 3)\n./tests/test_expenses.py:24:        report = build_report(load_expenses(\"data/sample.csv\"), \"GBP\")\n./tests/test_expenses.py:31:            [sys.executable, \"-m\", \"expense_report.cli\", \"data/sample.csv\", \"--currency\", \"GBP\"],\n./tests/test_expenses.py:38:            [sys.executable, \"-m\", \"expense_report.cli\", \"data/sample.csv\"],\n"
+    },
+    {
+      "sequence": 2,
+      "event_line": 5,
+      "id": "item_1",
+      "tool": "command_execution",
+      "input": {
+        "command": "/bin/zsh -lc \"sed -n '1,160p' expense_report/storage.py; sed -n '1,200p' expense_report/report.py; sed -n '1,180p' expense_report/cli.py; sed -n '1,180p' tests/test_expenses.py; sed -n '1,80p' data/sample.csv; python3 -m expense_report.cli data/sample.csv; python3 -m unittest\""
+      },
+      "command": "/bin/zsh -lc \"sed -n '1,160p' expense_report/storage.py; sed -n '1,200p' expense_report/report.py; sed -n '1,180p' expense_report/cli.py; sed -n '1,180p' tests/test_expenses.py; sed -n '1,80p' data/sample.csv; python3 -m expense_report.cli data/sample.csv; python3 -m unittest\"",
+      "cwd": "<session-root>/repo",
+      "cwd_scope": "session cwd; shell may change cwd internally",
+      "timestamp": null,
+      "exit_code": 5,
+      "status": "failed",
+      "executed": true,
+      "denied": false,
+      "denial_reason": null,
+      "duration_seconds": null,
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "returned_content_bytes": null,
+      "files_changed_afterward": null,
+      "file_change_scope": "unavailable unless provider explicitly exposes changes",
+      "combined_output_bytes": 108,
+      "result": "\n----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nNO TESTS RAN\n"
+    },
+    {
+      "sequence": 3,
+      "event_line": 7,
+      "id": "item_2",
+      "tool": "command_execution",
+      "input": {
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'"
+      },
+      "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+      "cwd": "<session-root>/repo",
+      "cwd_scope": "session cwd; shell may change cwd internally",
+      "timestamp": null,
+      "exit_code": 0,
+      "status": "completed",
+      "executed": true,
+      "denied": false,
+      "denial_reason": null,
+      "duration_seconds": null,
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "returned_content_bytes": null,
+      "files_changed_afterward": null,
+      "file_change_scope": "unavailable unless provider explicitly exposes changes",
+      "combined_output_bytes": 446,
+      "result": "test_cli_override (test_expenses.ExpenseTests.test_cli_override) ... ok\ntest_configured_default (test_expenses.ExpenseTests.test_configured_default) ... ok\ntest_filter (test_expenses.ExpenseTests.test_filter) ... ok\ntest_load_decimal (test_expenses.ExpenseTests.test_load_decimal) ... ok\ntest_report (test_expenses.ExpenseTests.test_report) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.215s\n\nOK\n"
+    }
+  ],
+  "verification": [
+    {
+      "coverage_parser_version": 2,
+      "command": "/bin/zsh -lc \"sed -n '1,160p' expense_report/storage.py; sed -n '1,200p' expense_report/report.py; sed -n '1,180p' expense_report/cli.py; sed -n '1,180p' tests/test_expenses.py; sed -n '1,80p' data/sample.csv; python3 -m expense_report.cli data/sample.csv; python3 -m unittest\"",
+      "discovered_count": 0,
+      "passed_count": null,
+      "failed_count": null,
+      "error_count": null,
+      "skipped_count": null,
+      "expected_failure_count": null,
+      "unexpected_success_count": null,
+      "status_counts_complete": false,
+      "status_count_scope": "exposed status rows only",
+      "test_names": [],
+      "test_list_complete": false,
+      "normalized_test_list_sha256": null,
+      "passed": false,
+      "identity_scope": "exposed test output only; hidden coverage unavailable",
+      "event_line": 6,
+      "command_sequence": 2,
+      "equivalent_previous_pass": null,
+      "intervening_relevant_change": null,
+      "change_scope": "exposed changes only; no hidden-state inference"
+    },
+    {
+      "coverage_parser_version": 2,
+      "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+      "discovered_count": 5,
+      "passed_count": 5,
+      "failed_count": 0,
+      "error_count": 0,
+      "skipped_count": 0,
+      "expected_failure_count": 0,
+      "unexpected_success_count": 0,
+      "status_counts_complete": true,
+      "status_count_scope": "single unittest footer; no identities inferred",
+      "test_names": [
+        "test_expenses.ExpenseTests.test_cli_override",
+        "test_expenses.ExpenseTests.test_configured_default",
+        "test_expenses.ExpenseTests.test_filter",
+        "test_expenses.ExpenseTests.test_load_decimal",
+        "test_expenses.ExpenseTests.test_report"
+      ],
+      "test_list_complete": true,
+      "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+      "passed": true,
+      "identity_scope": "exposed test output only; hidden coverage unavailable",
+      "event_line": 8,
+      "command_sequence": 3,
+      "equivalent_previous_pass": null,
+      "intervening_relevant_change": null,
+      "change_scope": "exposed changes only; no hidden-state inference"
+    }
+  ],
+  "usage_records": [
+    {
+      "event_line": 10,
+      "scope": "top-level turn aggregate",
+      "raw": {
+        "input_tokens": 50361,
+        "cached_input_tokens": 40064,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 549,
+        "reasoning_output_tokens": 113
+      },
+      "normalized": {
+        "input_tokens": 50361,
+        "cached_input_tokens": 40064,
+        "uncached_input_tokens": 10297,
+        "output_tokens": 549,
+        "total_tokens": 50910,
+        "reasoning_output_tokens": 113
+      }
+    }
+  ],
+  "usage_scope": "top-level turn aggregate; internal request usage unavailable",
+  "primary_model_usage": null,
+  "auxiliary_model_usage": {},
+  "unclassified_model_usage": {},
+  "auxiliary_scope": "unavailable",
+  "reported_model": null,
+  "reported_permission_mode": null,
+  "session_identifiers": [
+    "01a0fc8c-4f8f-7a60-a6fe-7111a1cf7226"
+  ],
+  "request_identifiers": [],
+  "reported_turn_count": 1,
+  "assistant_message_count": null,
+  "output_byte_totals": {
+    "stdout_bytes": null,
+    "stderr_bytes": null,
+    "combined_output_bytes": 2748,
+    "returned_content_bytes": null
+  },
+  "output_byte_scope": "original exposed UTF-8 strings before sanitization; merged outputs are not counted again as stdout/stderr",
+  "cache_state": "uncontrolled",
+  "provider_result": null,
+  "duration_seconds": 44.572610166855156,
+  "exit_code": 0,
+  "raw_stdout_bytes": 5205,
+  "raw_stderr_bytes": 0,
+  "raw_stdout_sha256": "e2b3390488ca8e80cac04b37b623dcb3946616c1d98ec1d784b9715b854c081d",
+  "raw_digest_scope": "decoded UTF-8 trace; byte-exact private stream retained separately",
+  "stderr": "",
+  "file_changes": {}
+}

@@ -1,0 +1,7 @@
+{
+  "sequence": 11,
+  "harness_sequence": 5,
+  "task": "bug-fix",
+  "repeat": 3,
+  "condition": "vanilla"
+}

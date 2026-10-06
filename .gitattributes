@@ -1,0 +1,4 @@
+# Frozen command/diff evidence retains literal unified-diff context whitespace.
+benchmarks/results/2026-10-02-harness-v4-repeated-performance/**/solution.diff -whitespace
+benchmarks/results/2026-10-02-harness-v4-repeated-performance/commands.md -whitespace
+benchmarks/results/2026-10-06-balanced-product-change/**/solution.diff -whitespace

@@ -1,0 +1,388 @@
+"""Independent offline regrading and descriptive reporting; no model calls."""
+import collections
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import shutil
+import statistics
+import subprocess
+import sys
+import tempfile
+
+sys.dont_write_bytecode = True
+HERE = Path(__file__).resolve().parent
+REPO = HERE.parents[2]
+sys.path.insert(0, str(HERE))
+import study
+
+m = study.runner()
+harness, trace = m.harness, m.trace
+PUBLIC = REPO / 'benchmarks/results/2026-10-02-harness-v4-repeated-performance'
+clean = harness.Sanitizer(replacements={str(HERE): '<study>', str(REPO): '<contextlean>', str(PUBLIC): '<evidence>'})
+
+def save(name, value):
+    study.save(PUBLIC / name, clean.value(value))
+
+def dist(values):
+    return None if not values else dict(observations=values, count=len(values), mean=statistics.mean(values),
+        median=statistics.median(values), min=min(values), max=max(values),
+        sample_standard_deviation=statistics.stdev(values) if len(values)>1 else None)
+
+def regrade(run, campaign, parsed, python):
+    name = Path(run['raw_directory']).name
+    solution = campaign / 'private' / name / 'solution'
+    original = harness.inventory(solution)
+    stages = {}
+    with tempfile.TemporaryDirectory(prefix='contextlean-independent-offline-regrade-') as temp:
+        root = Path(temp)
+        workspace = root / 'repo'
+        shutil.copytree(solution, workspace)
+        env = dict(PATH='/usr/bin:/bin:/usr/sbin:/sbin', LANG='C.UTF-8', LC_ALL='C.UTF-8', TZ='UTC',
+                   PYTHONDONTWRITEBYTECODE='1', PYTHONNOUSERSITE='1', GIT_CONFIG_NOSYSTEM='1', GIT_ATTR_NOSYSTEM='1')
+        for key, suffix in {'HOME':'home','TMPDIR':'tmp','XDG_CACHE_HOME':'cache','XDG_CONFIG_HOME':'config',
+                            'PYTHONPYCACHEPREFIX':'pycache','PYTHONUSERBASE':'python-user'}.items():
+            location = root / suffix
+            location.mkdir()
+            env[key] = str(location)
+        (root / 'gitconfig').write_text('')
+        env['GIT_CONFIG_GLOBAL'] = str(root / 'gitconfig')
+        response = root / 'response.txt'
+        response.write_text(parsed['final_response'], encoding='utf-8')
+        for stage in ['submitted','original','acceptance']:
+            if stage == 'original':
+                shutil.rmtree(workspace / 'tests')
+                shutil.copytree(campaign / 'private/canonical-fixture/tests', workspace / 'tests')
+            argv = [python,'-m','unittest','discover','-s','tests','-v'] if stage != 'acceptance' else [
+                python,str(REPO / 'benchmarks/evaluate.py'),run['task'],str(workspace),str(response)]
+            try:
+                result = subprocess.run(argv,cwd=workspace,env=env,capture_output=True,text=True,timeout=60)
+                output = result.stdout + result.stderr
+                stages[stage] = dict(exit_code=result.returncode, passed=result.returncode==0,
+                    stdout_bytes=len(result.stdout.encode()), stderr_bytes=len(result.stderr.encode()),
+                    coverage=trace.coverage('unittest',output))
+                target = PUBLIC / 'offline-regrade' / name / (stage + '.txt')
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_text(clean.text(harness.Sanitizer(root=root).text(output)))
+            except (OSError, subprocess.SubprocessError) as e:
+                stages[stage] = dict(passed=None, error=type(e).__name__)
+    assert original == harness.inventory(solution)
+    infrastructure_failure = any(s['passed'] is None for s in stages.values())
+    return dict(sequence=run['sequence'],task=run['task'],repeat=run['repeat'],condition=run['condition'],
+        stages=stages,task_success=None if infrastructure_failure else all(s['passed'] for s in stages.values()),
+        classification='grading-failure' if infrastructure_failure else 'successful-task' if all(s['passed'] for s in stages.values()) else 'model-task-failure',
+        saved_solution_unchanged=True, grading_root_removed=not root.exists())
+
+def main():
+    frozen = study.verify_frozen()
+    state = study.load(HERE / 'execution-state.json')
+    assert state['finished_at'], 'Do not analyze an active study'
+    assert not PUBLIC.exists(), 'Never overwrite evidence'
+    PUBLIC.mkdir(parents=True)
+    save('schedule.json', study.load(HERE / 'schedule.json'))
+    save('ci.json', study.load(HERE / 'ci.json'))
+    save('frozen-source.json', frozen)
+    save('execution-state.json', state)
+    for script in ['study.py','analyze.py']:
+        (PUBLIC / (script + '.txt')).write_text(clean.text((HERE / script).read_text()))
+    save('inputs/preparation.json', study.load(HERE / 'inputs/preparation.json'))
+    for task in study.TASKS:
+        save('inputs/' + task + '.json', study.load(HERE / 'inputs' / (task+'.json')))
+    shutil.copy2(REPO / 'benchmarks/methodology-v2.md', PUBLIC / 'harness-methodology-v4.md')
+    observations, runs, regrades, trajectory, roots, campaign_summaries = [], [], [], [], [], []
+    chronology = ['# All exposed study commands', '', 'Command output is sanitized. Original UTF-8 output byte counts are retained; separate command stdout/stderr are unavailable.', '']
+    for task_index, task in enumerate(study.TASKS):
+        for label in ['offline-preflight','campaigns']:
+            campaign = HERE / label / task
+            if not campaign.exists():
+                continue
+            target = PUBLIC / label / task
+            shutil.copytree(campaign,target,ignore=shutil.ignore_patterns('private'))
+            for p in (campaign / 'private/preflight').glob('*runtime.json'):
+                runtime = study.load(p)
+                argv = runtime['invocation']
+                root = Path(argv[argv.index('--cd')+1]).parent
+                assert not root.exists()
+                roots.append(str(root))
+            if label == 'offline-preflight':
+                continue
+            summary = study.load(campaign / 'summary.json')
+            campaign_summaries.append(summary)
+            for original_run in summary['runs']:
+                run = dict(original_run, harness_sequence=original_run['sequence'], sequence=6*task_index+original_run['sequence'])
+                run['raw_directory'] = 'campaigns/' + task + '/' + original_run['raw_directory']
+                save(run['raw_directory'] + '/study-position.json', dict(
+                    sequence=run['sequence'], harness_sequence=run['harness_sequence'],
+                    task=run['task'], repeat=run['repeat'], condition=run['condition']))
+                runs.append(run)
+                name = Path(original_run['raw_directory']).name
+                private = campaign / 'private' / name
+                exposed = campaign / original_run['raw_directory']
+                if not (private / 'events.jsonl').exists():
+                    observations.append(dict(sequence=run['sequence'],task=task,repeat=run['repeat'],condition=run['condition'],
+                        classification=run['failure_category'],measurement_complete=False,
+                        **{k:None for k in ['input_tokens','cached_input_tokens','uncached_input_tokens','output_tokens','total_tokens','duration_seconds','command_calls']}))
+                    continue
+                receipt = study.load(private / 'session.json')
+                root = Path(receipt['cwd']).parent
+                assert not root.exists() and run['cleanup_verified']
+                assert receipt['coverage_parser_version']==2 and receipt['git']['clean']
+                assert receipt['effective_runtime']['passed']
+                expected_permissions = dict(repo_write=task!='navigation',tmp_write=True,parent_write=False,
+                    outside_write=False,evidence_read=False,outside_read=False)
+                assert receipt['permission']['native_preflight']==expected_permissions
+                assert receipt['permission']['provider_native_sandbox'] and not receipt['permission']['outer_os_sandbox']
+                assert not run['post_run']['unexpected_root_entries']
+                assert run['post_run']['git']['baseline_commit']==receipt['git']['baseline_commit']
+                parsed = trace.parse((private / 'events.jsonl').read_text(), 'codex', receipt['cwd'])
+                execution = study.load(exposed / 'execution.json')
+                assert (private/'events.jsonl').stat().st_size==execution['raw_stdout_bytes']
+                assert (private/'events.stderr.txt').stat().st_size==execution['raw_stderr_bytes']
+                assert parsed['usage'] == execution['usage']
+                assert parsed['commands'] == run['metrics']['command_calls']
+                assert parsed['output_byte_totals'] == execution['output_byte_totals']
+                commands = [c for c in parsed['calls'] if c['tool']=='command_execution']
+                assert len(commands) == parsed['commands']
+                grade = regrade(run,campaign,parsed,summary['runtime']['binaries']['python3']['path'])
+                regrades.append(grade)
+                category = run['failure_category']
+                classification = grade['classification'] if category in ['success','model-task-failure',None] else category
+                obs = dict(sequence=run['sequence'],harness_sequence=run['harness_sequence'],task=task,repeat=run['repeat'],condition=run['condition'],
+                    classification=classification, measurement_complete=run['measurement_complete'], task_success=grade['task_success'],
+                    **run['metrics'], provider_exit_code=run['exit_code'], command_exit_codes=[c['exit_code'] for c in commands],
+                    denied_commands=sum(bool(c['denied']) for c in commands),
+                    command_failures=sum(c['exit_code'] not in (0,None) for c in commands),
+                    raw_stdout_bytes=(private / 'events.jsonl').stat().st_size,
+                    raw_stderr_bytes=(private / 'events.stderr.txt').stat().st_size,
+                    tool_output_bytes=parsed['output_byte_totals'],
+                    coverage=parsed['verification'], preflight_coverage=receipt['preflight_coverage'],
+                    submitted_test_coverage=grade['stages']['submitted'].get('coverage'),
+                    reported_turn_count=parsed['reported_turn_count'], assistant_message_count=parsed['assistant_message_count'],
+                    session_identifiers=parsed['session_identifiers'], request_identifiers=parsed['request_identifiers'],
+                    internal_request_count=None, auxiliary_model_usage=parsed['auxiliary_model_usage'] or None,
+                    runtime_receipt=run['raw_directory']+'/session.json', environment_receipt=run['raw_directory']+'/session.json',
+                    sandbox_receipt=run['raw_directory']+'/session.json',
+                    changed_files=sorted(run['post_run']['repo_changes']),cleanup_verified=run['cleanup_verified'])
+                observations.append(obs)
+                categories = {label:sum(bool(re.search(pattern, c['command'] or '')) for c in commands) for label,pattern in {
+                    'searches':'\\brg\\b|\\bfind\\b','reads':'\\bcat\\b|\\bsed\\b|\\bhead\\b|\\btail\\b',
+                    'git':'\\bgit\\b','verification':'unittest|expense_report\\.cli|compileall'}.items()}
+                all_tests = grade['stages']['submitted'].get('coverage') or {}
+                baseline_tests = receipt['preflight_coverage']['test_names']
+                added_tests = sorted(set(all_tests.get('test_names',[]))-set(baseline_tests)) if all_tests.get('test_list_complete') else None
+                file_changes = run['post_run']['repo_changes']
+                solution = private / 'solution'
+                patches = []
+                for filename in sorted(file_changes):
+                    before = campaign / 'private/canonical-fixture' / filename
+                    after = solution / filename
+                    import difflib
+                    patches.extend(difflib.unified_diff(before.read_text().splitlines(True) if before.is_file() else [],
+                        after.read_text().splitlines(True) if after.is_file() else [],fromfile='original/'+filename,tofile='submitted/'+filename))
+                (PUBLIC / run['raw_directory'] / 'solution.diff').write_text(clean.text(''.join(patches)))
+                diagnostics = [line for c in commands for line in str(c.get('result') or '').splitlines()
+                    if any(term in line.lower() for term in ['xcrun','xcode_cache','developer tools cache','sandbox_apply'])]
+                trajectory.append(dict(sequence=run['sequence'],task=task,repeat=run['repeat'],condition=run['condition'],
+                    shell_call_categories=categories, category_scope='Overlapping counts of command calls containing observed utilities; not file-open counts.',
+                    changed_files=sorted(file_changes),added_test_identities=added_tests,
+                    verification=parsed['verification'], command_failures=obs['command_failures'],
+                    denied_commands=obs['denied_commands'], host_cache_diagnostics=diagnostics,
+                    tool_output_bytes=obs['tool_output_bytes'],cached_input_tokens=obs['cached_input_tokens'],uncached_input_tokens=obs['uncached_input_tokens'],
+                    command_count=obs['command_calls']))
+                chronology += [f'## {run["sequence"]}. {name}', '']
+                local_clean = harness.Sanitizer(root=root)
+                for c in parsed['calls']:
+                    chronology += [f'### Action {c["sequence"]}: {c["tool"]}', '',
+                        f'Exit={c["exit_code"]}; denied={c["denied"]}; combined output bytes={c.get("combined_output_bytes")}', '',
+                        '```text',clean.text(local_clean.text(c['command'] or json.dumps(c['input']))),'```','',
+                        '```text',clean.text(local_clean.text(str(c.get('result') or ''))),'```','']
+    assert len(roots)==len(set(roots)), 'Root reuse detected'
+    save('observations.json',observations)
+    save('grading.json',regrades)
+    save('variance.json',trajectory)
+    (PUBLIC / 'commands.md').write_text('\n'.join(chronology))
+    metrics = ['input_tokens','cached_input_tokens','uncached_input_tokens','output_tokens','total_tokens','duration_seconds','command_calls']
+    per_task, pairs = [], []
+    for task in study.TASKS:
+        item = dict(task=task)
+        for condition in ['vanilla','contextlean']:
+            rows = [o for o in observations if o['task']==task and o['condition']==condition]
+            item[condition] = dict(successes=sum(o.get('task_success') is True for o in rows),
+                metrics={metric:dist([o[metric] for o in rows if o.get(metric) is not None and o['measurement_complete']]) for metric in metrics})
+        task_pairs = []
+        for repetition in [1,2,3]:
+            v = next((o for o in observations if o['task']==task and o['repeat']==repetition and o['condition']=='vanilla'),None)
+            c = next((o for o in observations if o['task']==task and o['repeat']==repetition and o['condition']=='contextlean'),None)
+            complete = bool(v and c and v['measurement_complete'] and c['measurement_complete'])
+            pair = dict(task=task,repeat=repetition,complete=complete,
+                token_difference=c['total_tokens']-v['total_tokens'] if complete else None,
+                percentage_difference=100*(c['total_tokens']-v['total_tokens'])/v['total_tokens'] if complete else None,
+                time_difference=c['duration_seconds']-v['duration_seconds'] if complete else None,
+                command_difference=c['command_calls']-v['command_calls'] if complete else None)
+            if complete:
+                pair['favors'] = 'approximately-neutral' if abs(pair['percentage_difference'])<=1 else 'contextlean' if pair['token_difference']<0 else 'vanilla'
+            task_pairs.append(pair)
+            pairs.append(pair)
+        item['pairs']=task_pairs
+        item['paired_token_difference']=dist([p['token_difference'] for p in task_pairs]) if all(p['complete'] for p in task_pairs) else None
+        item['paired_percentage_difference']=dist([p['percentage_difference'] for p in task_pairs]) if all(p['complete'] for p in task_pairs) else None
+        per_task.append(item)
+    complete = len(observations)==30 and all(o['measurement_complete'] for o in observations)
+    if complete:
+        assert len(roots)==90, 'Expected sixty offline preparation roots plus thirty measured roots'
+    session_ids = [identifier for o in observations for identifier in o.get('session_identifiers', [])]
+    assert len(session_ids)==len(set(session_ids)), 'Provider session identifier reuse'
+    overall = dict(label='Descriptive only; heterogeneous tasks remain paired by task/repetition.',
+        condition_totals={condition:{metric:sum(o[metric] for o in observations if o['condition']==condition and o['measurement_complete'] and o.get(metric) is not None) for metric in metrics} for condition in ['vanilla','contextlean']},
+        conditions={condition: {metric:dist([o[metric] for o in observations if o['condition']==condition and o['measurement_complete'] and o.get(metric) is not None]) for metric in metrics} for condition in ['vanilla','contextlean']},
+        paired_token_differences=dist([p['token_difference'] for p in pairs]) if complete else None,
+        pair_preference_counts=dict(collections.Counter(p.get('favors','incomplete') for p in pairs)),
+        approximately_neutral_definition='Absolute paired percentage difference <= 1%, frozen before execution.',
+        median_per_task_paired_token_effect=statistics.median(t['paired_token_difference']['median'] for t in per_task) if complete else None,
+        median_per_task_paired_percentage_effect=statistics.median(t['paired_percentage_difference']['median'] for t in per_task) if complete else None,
+        successes={c:sum(o.get('task_success') is True for o in observations if o['condition']==c) for c in ['vanilla','contextlean']})
+    stats = dict(n_per_task_condition=3,statistical_significance_claimed=False,tasks=per_task,pairs=pairs,overall=overall)
+    save('statistics.json',stats)
+    totals = {metric:sum(o[metric] for o in observations if o.get(metric) is not None) for metric in metrics}
+    cost = dict(known_primary_usage=totals,actual_cost=None,actual_credits_spent=None,currency=None,
+                accounting='Actual provider billing is not exposed in the retained trace. No hidden request or reasoning usage is added.')
+    auth_file = Path.home() / '.codex/auth.json'
+    auth_mode = json.loads(auth_file.read_text()).get('auth_mode') if auth_file.exists() else None
+    cost['authentication_mode'] = auth_mode if auth_mode in ['chatgpt','apikey','api_key'] else 'unclassified'
+    if auth_mode=='chatgpt' and all(r['receipt']['auth']['source']=='auth-only-profile' for r in runs):
+        rates = study.load(REPO / 'skills/benchmark/data/credit-rates.json')
+        rate = next(r for r in rates['models'] if r['model']=='gpt-5.6-sol')
+        cost['dated_credit_equivalent'] = (totals['uncached_input_tokens']*rate['input']+totals['cached_input_tokens']*rate['cached_input']+totals['output_tokens']*rate['output'])/1_000_000
+        cost['credit_equivalent_rates'] = dict(verified_on=rates['verified_on'],source_url=rates['source_url'],rate=rate,
+            label='Dated frozen rate card estimate; not current pricing or actual credits spent.')
+    save('usage-cost.json',cost)
+    review = dict(frozen_revision=frozen['revision'],tracked_source_unchanged=bool(study.verify_frozen()),
+        schedule_sha256_unchanged=study.sha(HERE / 'schedule.json')==frozen['schedule_sha256'],
+        unique_roots=len(roots),all_inspected_roots_absent=True,session_retries=0,
+        root_identifiers=[Path(root).name for root in roots],
+        unique_exposed_provider_session_identifiers=len(session_ids),
+        harness_behavior_modified=False,coverage_parser_version=trace.COVERAGE_PARSER_VERSION,
+        orchestration_script_sha256=study.sha(HERE / 'study.py'),
+        all_completed_solutions_independently_regraded=len(regrades)==sum(r.get('model_invocation_attempted',False) for r in runs),
+        model_calls=state['model_calls'],host_cache_diagnostics=[v for v in trajectory if v['host_cache_diagnostics']],
+        raw_usage_reconciled=True,tool_output_bytes_reconciled=True,private_material_excluded=True,
+        summary='Native receipts, source hashes and cleanup show no observed harness contamination. Opaque provider internals are outside the evidence.')
+    save('measurement-review.json',review)
+    for o in observations:
+        expected=next(s for s in study.load(HERE/'schedule.json')['order'] if s['sequence']==o['sequence'])
+        assert all(o[k]==expected[k] for k in ['task','repeat','condition'])
+    summary = dict(schema_version=4,benchmark_harness_version=4,revision=frozen['revision'],
+        model='gpt-5.6-sol',reasoning='high',expected_model_calls=30,model_calls=state['model_calls'],
+        status='complete' if complete else 'incomplete', observations=observations,runs=runs,
+        classifications=dict(collections.Counter(o['classification'] for o in observations)),
+        failure_counts={category:sum(o['classification']==category for o in observations) for category in
+            ['model-task-failure','provider-network-failure','provider-usage-limit-interruption','harness-preparation-failure','grading-failure']},
+        statistics=stats,usage_cost=cost,measurement_review=review,unattempted_schedule_positions=[s['sequence'] for s in study.load(HERE/'schedule.json')['order'] if not any(o['sequence']==s['sequence'] for o in observations)])
+    save('summary.json',summary)
+    render(summary,trajectory)
+    # Review every public textual artifact, including harness exports, for leaked paths/secrets.
+    leaks=[]
+    for p in PUBLIC.rglob('*'):
+        if not p.is_file():
+            continue
+        text=p.read_text()
+        if re.search(r'<host-path><\s]|/private/(?:tmp|var/folders)/|(?<![\w>])(?:sk-[A-Za-z0-9_-]{12,}|Bearer\s+[A-Za-z0-9_-]{12,})',text):
+            leaks.append(p.relative_to(PUBLIC).as_posix())
+    assert not leaks, 'Sanitization review failed: '+str(leaks)
+    save('publication-review.json',dict(personal_absolute_paths_found=False,credential_patterns_found=False,
+         private_directories_included=False,files_reviewed=sum(p.is_file() for p in PUBLIC.rglob('*'))))
+    save('checksums.json',{p.relative_to(PUBLIC).as_posix():study.sha(p) for p in sorted(PUBLIC.rglob('*')) if p.is_file() and p != PUBLIC/'checksums.json'})
+    assert all(study.sha(PUBLIC/n)==v for n,v in study.load(PUBLIC/'checksums.json').items())
+    print(json.dumps(dict(status=summary['status'],model_calls=summary['model_calls'],classifications=summary['classifications'],
+        tasks=[dict(task=t['task'],vanilla=t['vanilla']['metrics']['total_tokens'],contextlean=t['contextlean']['metrics']['total_tokens'],paired=t['paired_token_difference']) for t in per_task],
+        pairs=pairs,overall=overall,usage_cost=cost,review=review),indent=2))
+
+def fmt(value, decimals=2):
+    return 'null' if value is None else f'{value:,.{decimals}f}'
+
+def render(s, trajectory):
+    stats=s['statistics']
+    lines=['# Harness v4 repeated performance study','',
+        f"{s['model']} · high reasoning · frozen revision `{s['revision']}` · {s['model_calls']}/30 model sessions.",'',
+        'Three independent repetitions per task and condition. All planned results are retained. No statistical significance is claimed from n=3.', '',
+        '## Session completion and success','',f"Study status: {s['status']}. Classifications: {json.dumps(s['classifications'])}. Failures/interruption categories: {json.dumps(s['failure_counts'])}.",'',
+        f"Independent task successes: Vanilla {stats['overall']['successes']['vanilla']}/15; ContextLean {stats['overall']['successes']['contextlean']}/15.",'',
+        '## All thirty observations','',
+        '| Position | Task | Rep | Condition | Input | Cached | Uncached | Output | Total | Seconds | Commands | Success |',
+        '|---:|---|---:|---|---:|---:|---:|---:|---:|---:|---:|---|']
+    for o in s['observations']:
+        lines.append('| '+ ' | '.join(str(o.get(k,'null')) if k!='duration_seconds' else fmt(o.get(k)) for k in ['sequence','task','repeat','condition','input_tokens','cached_input_tokens','uncached_input_tokens','output_tokens','total_tokens','duration_seconds','command_calls','task_success'])+' |')
+    lines += ['', '## Per-task condition statistics', '',
+        '| Task | Condition | Mean tokens | Median tokens | Min–max | Sample SD | Mean seconds | Median seconds | Commands in rep order |',
+        '|---|---|---:|---:|---:|---:|---:|---:|---|']
+    for t in stats['tasks']:
+        for condition in ['vanilla','contextlean']:
+            d=t[condition]['metrics']; tok=d['total_tokens']; wall=d['duration_seconds']; cmd=d['command_calls']
+            if tok and wall:
+                lines.append(f"| {t['task']} | {condition} | {fmt(tok['mean'])} | {fmt(tok['median'])} | {tok['min']:,}–{tok['max']:,} | {fmt(tok['sample_standard_deviation'])} | {fmt(wall['mean'])} | {fmt(wall['median'])} | {cmd['observations']} |")
+            else:
+                lines.append(f"| {t['task']} | {condition} | null | null | null | null | null | null | null |")
+    lines += ['', '## All fifteen paired differences', '',
+        'Every difference is ContextLean minus Vanilla within the same task and repetition. Negative values favor ContextLean. Percentages use Vanilla as the denominator.', '',
+        '| Task | Rep | Tokens Δ | Tokens Δ % | Seconds Δ | Commands Δ |',
+        '|---|---:|---:|---:|---:|---:|']
+    for p in stats['pairs']:
+        lines.append(f"| {p['task']} | {p['repeat']} | {fmt(p['token_difference'],0)} | {fmt(p['percentage_difference'])} | {fmt(p['time_difference'])} | {fmt(p['command_difference'],0)} |")
+    lines += ['', '| Task | Mean paired tokens Δ | Median paired tokens Δ | Paired tokens Δ range | Median paired % Δ |',
+        '|---|---:|---:|---:|---:|']
+    for t in stats['tasks']:
+        d=t['paired_token_difference']; pct=t['paired_percentage_difference']
+        lines.append(f"| {t['task']} | {fmt(d['mean']) if d else 'null'} | {fmt(d['median']) if d else 'null'} | {str([d['min'],d['max']]) if d else 'null'} | {fmt(pct['median']) if pct else 'null'} |")
+    overall=stats['overall']
+    lines += ['', '## Overall descriptive summaries', '',
+        'These summaries describe this fixed set of heterogeneous tasks; task pairing and the full task-level results remain above.', '',
+        f"Pairs: {json.dumps(overall['pair_preference_counts'])}. Approximately neutral means an absolute percentage difference ≤1%, fixed before execution.",'',
+        f"Median of five per-task median paired effects: {fmt(overall['median_per_task_paired_token_effect'])} tokens; {fmt(overall['median_per_task_paired_percentage_effect'])}%.",'']
+    d=overall['paired_token_differences']
+    if d:
+        lines += [f"All 15 paired token differences: {d['observations']}. Mean {fmt(d['mean'])}; median {fmt(d['median'])}; range [{d['min']:,}, {d['max']:,}]; sample SD {fmt(d['sample_standard_deviation'])}.",'']
+    for condition in ['vanilla','contextlean']:
+        d=overall['conditions'][condition]['total_tokens']; w=overall['conditions'][condition]['duration_seconds']
+        if d and w:
+            lines += [f"{condition.title()}: 15 token observations {d['observations']}; descriptive mean {fmt(d['mean'])}, median {fmt(d['median'])}, range [{d['min']:,}, {d['max']:,}], sample SD {fmt(d['sample_standard_deviation'])}. Mean time {fmt(w['mean'])} s; median time {fmt(w['median'])} s. Descriptive totals: {json.dumps(overall['condition_totals'][condition])}.",'']
+    lines += ['## Observable repetition variance', '',
+        'Counts below describe shell calls containing search/read/Git/verification commands and can overlap. They do not measure file-open counts. Detailed commands, results, solution diffs, exact test identities and coverage digests are preserved.', '',
+        '| Task | Rep | Condition | Searches | Reads | Git | Verification | Commands | Failed | Added tests | Tool merged bytes | Cached / uncached |',
+        '|---|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---|']
+    for v in trajectory:
+        c=v['shell_call_categories']; added=v['added_test_identities']; merged=v['tool_output_bytes']['combined_output_bytes']
+        lines.append(f"| {v['task']} | {v['repeat']} | {v['condition']} | {c['searches']} | {c['reads']} | {c['git']} | {c['verification']} | {v['command_count']} | {v['command_failures']} | {len(added) if added is not None else 'null'} | {merged} | {v['cached_input_tokens']} / {v['uncached_input_tokens']} |")
+    lines += ['', 'Implementation choices and recovery are inspectable in each solution.diff and in commands.md. variance.json retains the observed changed files, added test identities, coverage/digests and exact output-byte totals; no hidden reasoning or per-action causal token cost is inferred.', '',
+        'Controlled environment: frozen source and prompt bytes, clean deterministic Git baselines, Python 3.14.4, Git 2.54.0, rg 15.2.0, native permissions, isolated HOME/TMP/cache/config, condition policy parity, fresh roots and verified cleanup.', '',
+        'Observed agent trajectory: the exposed searches/reads, code changes, Git checks, failures/recovery and verification decisions differ between repetitions. Those differences are outcomes of the sessions, not controlled treatment inputs.', '',
+        'Uncontrolled provider state: cache warmth, service load, opaque request handling and model stochasticity. Cached/uncached composition is measured, but does not identify a cause of a paired token/time difference.', '',
+        '## Usage and cost', '',
+        f"Known primary usage: {json.dumps(s['usage_cost']['known_primary_usage'])}. Actual provider cost and actual credits spent are unavailable (null).",'']
+    if 'dated_credit_equivalent' in s['usage_cost']:
+        lines += [f"Dated credit-equivalent: {fmt(s['usage_cost']['dated_credit_equivalent'])}, using the frozen 2026-09-30 rate card. This is an estimate, not actual credits spent or a claim about current pricing.",'']
+    lines += ['## Evidence and contamination review', '',
+        f"Frozen source unchanged: {s['measurement_review']['tracked_source_unchanged']}; schedule unchanged: {s['measurement_review']['schedule_sha256_unchanged']}; unique inspected roots: {s['measurement_review']['unique_roots']}; all absent after cleanup. No harness behavior modifications or session retries.",'',
+        'Public evidence excludes private originals. Individual harness artifacts retain local sequence 1–6; summary.json, observations.json and schedule.json map each to the global position 1–30. Harness-produced files are preserved unchanged. All completed solutions were independently offline-regraded with submitted tests, restored original regression tests and acceptance tests.', '',
+        '[Schedule](schedule.json) · [Methodology](methodology.md) · [Summary](summary.json) · [Statistics](statistics.json) · [Grading](grading.json) · [Variance](variance.json) · [Commands](commands.md) · [Measurement review](measurement-review.json) · [Checksums](checksums.json)', '',
+        'The public project README and prior evidence were not changed. This study alone makes no statistical-significance or universal performance claim.']
+    (PUBLIC/'README.md').write_text('\n'.join(lines)+'\n')
+    (PUBLIC/'methodology.md').write_text('''# Repeated study methodology
+
+Harness v4 at ae8653b123bdb4c686ee36825c80db851c8595ea; CI Quality run 37000975923 green on Python 3.11 and 3.14 before execution. No ContextLean or harness edits.
+
+Five task-specific suites use the unchanged runner's supported --tasks-file option and preserve each canonical task object and exact wrapped prompt bytes. This gives the explicitly requested V→C, C→V, V→C order for every task without changing the harness's task-index schedule behavior. The complete global schedule was frozen before execution. Each suite's local sequence is mapped to global sequence by 6 × task index + local sequence. No reordering or session retries.
+
+All thirty offline preparation slots were gated before the first model call. Live execution repeats all six preparation gates per suite and every actual session repeats its own v4 preflight. Native permission/runtime receipts and before/after Git/artifact inspection are exported. Cleanup covers the entire session root; the harness verifies absent roots and prior scratch absence, and orchestration checks roots between suites. The same model, high reasoning and 600-second session timeout apply throughout. Infrastructure/provider/quota interruptions stop the study; task failures are retained.
+
+Independent offline regrading uses a disposable copy of each saved original solution. It runs submitted tests, restores and runs canonical original regression tests, then runs the unchanged acceptance evaluator. Saved originals are hash-checked before/after grading. Tests remain offline, and no model sessions are launched by analysis.
+
+Usage is the exposed top-level provider turn aggregate. Cached input is a subset of input; total tokens = input + output. Unknown metrics remain null. Wall time covers the measured provider CLI execution, excluding preparation and grading. Raw provider stdout/stderr sizes use original private bytes. Tool output sizes use original exposed UTF-8 strings. Codex merged output has no fabricated stdout/stderr split. Command distribution counts shell tool calls rather than individual subcommands. Coverage parser v2 retains exact exposed test names and complete-list digests; compact output does not invent identities.
+
+Within each task/repetition, paired difference is ContextLean minus Vanilla; paired percentage divides by Vanilla. Sample standard deviation uses n−1. Approximately neutral means absolute paired percentage difference ≤1%, specified before results. All six observations per task and all fifteen pairs are retained. Task heterogeneity is visible; overall summaries are descriptive. No significance claim is made from n=3. Provider cache/service state and model trajectories are uncontrolled.
+
+Local private originals are excluded from public evidence. Public checksums cover sanitized exports. Existing result sets and the project README are unchanged. See harness-methodology-v4.md for unchanged v4 policy and limitations.
+''')
+
+if __name__=='__main__':
+    main()

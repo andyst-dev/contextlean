@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {
+      "id": "documentation-config",
+      "category": "documentation/configuration",
+      "prompt": "Change the configured default currency from USD to EUR and update the README to match. --currency GBP must still override the default. Keep expense amounts and grouping behavior unchanged. Verify the documented example commands and run the tests."
+    }
+  ]
+}

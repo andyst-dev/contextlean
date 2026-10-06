@@ -1,0 +1,10 @@
+{
+  "omitted_binary_paths": [
+    "expense_report/__pycache__/__init__.cpython-314.pyc",
+    "expense_report/__pycache__/cli.cpython-314.pyc",
+    "expense_report/__pycache__/filters.cpython-314.pyc",
+    "expense_report/__pycache__/report.cpython-314.pyc",
+    "expense_report/__pycache__/storage.cpython-314.pyc",
+    "tests/__pycache__/test_expenses.cpython-314.pyc"
+  ]
+}

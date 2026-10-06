@@ -1,0 +1,153 @@
+{
+  "success": true,
+  "usage": {
+    "input_tokens": 37353,
+    "cached_input_tokens": 23552,
+    "uncached_input_tokens": 13801,
+    "output_tokens": 503,
+    "total_tokens": 37856,
+    "reasoning_output_tokens": 129
+  },
+  "raw_usage": {
+    "input_tokens": 37353,
+    "cached_input_tokens": 23552,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 503,
+    "reasoning_output_tokens": 129
+  },
+  "error": null,
+  "final_response": "{\"loader\":\"expense_report/storage.py\",\"reporter\":\"expense_report/report.py\",\"cli_tests\":\"tests/test_expenses.py\",\"total\":\"40.00\",\"count\":3,\"currency\":\"USD\"}",
+  "commands": 2,
+  "event_count": 9,
+  "parse_error_lines": [],
+  "calls": [
+    {
+      "sequence": 1,
+      "event_line": 4,
+      "id": "item_1",
+      "tool": "command_execution",
+      "input": {
+        "command": "/bin/zsh -lc \"pwd && rg --files -g '\"'!*.pyc'\"' -g '\"'!__pycache__'\"' && rg -n \\\"csv|category|total|argparse|unittest|subprocess\\\" .\""
+      },
+      "command": "/bin/zsh -lc \"pwd && rg --files -g '\"'!*.pyc'\"' -g '\"'!__pycache__'\"' && rg -n \\\"csv|category|total|argparse|unittest|subprocess\\\" .\"",
+      "cwd": "<session-root>/repo",
+      "cwd_scope": "session cwd; shell may change cwd internally",
+      "timestamp": null,
+      "exit_code": 0,
+      "status": "completed",
+      "executed": true,
+      "denied": false,
+      "denial_reason": null,
+      "duration_seconds": null,
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "returned_content_bytes": null,
+      "files_changed_afterward": null,
+      "file_change_scope": "unavailable unless provider explicitly exposes changes",
+      "combined_output_bytes": 2961,
+      "result": "<session-root>/repo\nREADME.md\nexpense_report/filters.py\nexpense_report/report.py\nexpense_report/storage.py\nexpense_report/cli.py\nexpense_report/__init__.py\nconfig.json\ntests/test_expenses.py\ndata/sample.csv\n./data/sample.csv:1:category,amount\n./expense_report/filters.py:1:def normalize_category(value):\n./expense_report/filters.py:5:def select_category(expenses, category):\n./expense_report/filters.py:6:    if category is None:\n./expense_report/filters.py:10:        if normalize_category(expense[\"category\"]) == category\n./expense_report/report.py:4:def normalize_category(value):\n./expense_report/report.py:11:        key = normalize_category(expense[\"category\"])\n./expense_report/report.py:16:        \"total\": str(sum((item[\"amount\"] for item in expenses), Decimal(\"0\"))),\n./expense_report/storage.py:1:import csv\n./expense_report/storage.py:8:            {\"category\": row[\"category\"], \"amount\": Decimal(row[\"amount\"])}\n./expense_report/storage.py:9:            for row in csv.DictReader(handle)\n./README.md:3:A dependency-free Python tool that summarizes a CSV file with `category,amount`\n./README.md:5:`--currency` overrides it. Category totals are grouped without case sensitivity.\n./README.md:8:python3 -m expense_report.cli data/sample.csv\n./README.md:9:python3 -m expense_report.cli data/sample.csv --category food --currency GBP\n./README.md:10:python3 -m unittest discover -s tests -v\n./expense_report/cli.py:1:import argparse\n./expense_report/cli.py:5:from expense_report.filters import select_category\n./expense_report/cli.py:11:    parser = argparse.ArgumentParser(description=\"Summarize a CSV expense file.\")\n./expense_report/cli.py:13:    parser.add_argument(\"--category\")\n./expense_report/cli.py:17:    expenses = select_category(load_expenses(args.path), args.category)\n./tests/test_expenses.py:4:import subprocess\n./tests/test_expenses.py:6:import unittest\n./tests/test_expenses.py:8:from expense_report.filters import select_category\n./tests/test_expenses.py:13:class ExpenseTests(unittest.TestCase):\n./tests/test_expenses.py:15:        rows = load_expenses(\"data/sample.csv\")\n./tests/test_expenses.py:19:        rows = load_expenses(\"data/sample.csv\")\n./tests/test_expenses.py:20:        self.assertEqual(len(select_category(rows, \"food\")), 2)\n./tests/test_expenses.py:21:        self.assertEqual(len(select_category(rows, None)), 3)\n./tests/test_expenses.py:24:        report = build_report(load_expenses(\"data/sample.csv\"), \"GBP\")\n./tests/test_expenses.py:25:        self.assertEqual(report[\"total\"], \"40.00\")\n./tests/test_expenses.py:30:        result = subprocess.run(\n./tests/test_expenses.py:31:            [sys.executable, \"-m\", \"expense_report.cli\", \"data/sample.csv\", \"--currency\", \"GBP\"],\n./tests/test_expenses.py:37:        result = subprocess.run(\n./tests/test_expenses.py:38:            [sys.executable, \"-m\", \"expense_report.cli\", \"data/sample.csv\"],\n"
+    },
+    {
+      "sequence": 2,
+      "event_line": 6,
+      "id": "item_2",
+      "tool": "command_execution",
+      "input": {
+        "command": "/bin/zsh -lc \"sed -n '1,220p' expense_report/storage.py; sed -n '1,220p' expense_report/report.py; sed -n '1,240p' expense_report/cli.py; sed -n '1,260p' tests/test_expenses.py; python3 -m expense_report.cli data/sample.csv\""
+      },
+      "command": "/bin/zsh -lc \"sed -n '1,220p' expense_report/storage.py; sed -n '1,220p' expense_report/report.py; sed -n '1,240p' expense_report/cli.py; sed -n '1,260p' tests/test_expenses.py; python3 -m expense_report.cli data/sample.csv\"",
+      "cwd": "<session-root>/repo",
+      "cwd_scope": "session cwd; shell may change cwd internally",
+      "timestamp": null,
+      "exit_code": 0,
+      "status": "completed",
+      "executed": true,
+      "denied": false,
+      "denial_reason": null,
+      "duration_seconds": null,
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "returned_content_bytes": null,
+      "files_changed_afterward": null,
+      "file_change_scope": "unavailable unless provider explicitly exposes changes",
+      "combined_output_bytes": 102,
+      "result": "{\"currency\": \"USD\", \"count\": 3, \"total\": \"40.00\", \"categories\": {\"food\": \"20.00\", \"travel\": \"20.00\"}}\n"
+    }
+  ],
+  "verification": [
+    {
+      "coverage_parser_version": 2,
+      "command": "/bin/zsh -lc \"pwd && rg --files -g '\"'!*.pyc'\"' -g '\"'!__pycache__'\"' && rg -n \\\"csv|category|total|argparse|unittest|subprocess\\\" .\"",
+      "discovered_count": null,
+      "passed_count": null,
+      "failed_count": null,
+      "error_count": null,
+      "skipped_count": null,
+      "expected_failure_count": null,
+      "unexpected_success_count": null,
+      "status_counts_complete": false,
+      "status_count_scope": "exposed status rows only",
+      "test_names": [],
+      "test_list_complete": false,
+      "normalized_test_list_sha256": null,
+      "passed": false,
+      "identity_scope": "exposed test output only; hidden coverage unavailable",
+      "event_line": 5,
+      "command_sequence": 1,
+      "equivalent_previous_pass": null,
+      "intervening_relevant_change": null,
+      "change_scope": "exposed changes only; no hidden-state inference"
+    }
+  ],
+  "usage_records": [
+    {
+      "event_line": 9,
+      "scope": "top-level turn aggregate",
+      "raw": {
+        "input_tokens": 37353,
+        "cached_input_tokens": 23552,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 503,
+        "reasoning_output_tokens": 129
+      },
+      "normalized": {
+        "input_tokens": 37353,
+        "cached_input_tokens": 23552,
+        "uncached_input_tokens": 13801,
+        "output_tokens": 503,
+        "total_tokens": 37856,
+        "reasoning_output_tokens": 129
+      }
+    }
+  ],
+  "usage_scope": "top-level turn aggregate; internal request usage unavailable",
+  "primary_model_usage": null,
+  "auxiliary_model_usage": {},
+  "unclassified_model_usage": {},
+  "auxiliary_scope": "unavailable",
+  "reported_model": null,
+  "reported_permission_mode": null,
+  "session_identifiers": [
+    "01a0fc8d-9c40-76f2-9cdc-d2f08fece315"
+  ],
+  "request_identifiers": [],
+  "reported_turn_count": 1,
+  "assistant_message_count": null,
+  "output_byte_totals": {
+    "stdout_bytes": null,
+    "stderr_bytes": null,
+    "combined_output_bytes": 3063,
+    "returned_content_bytes": null
+  },
+  "output_byte_scope": "original exposed UTF-8 strings before sanitization; merged outputs are not counted again as stdout/stderr",
+  "cache_state": "uncontrolled",
+  "provider_result": null,
+  "duration_seconds": 32.607340540969744,
+  "exit_code": 0,
+  "raw_stdout_bytes": 5251,
+  "raw_stderr_bytes": 0,
+  "raw_stdout_sha256": "4ae9a51925b6936c56905e397f5e4f94c80fb6182278769c37abeaca32b0ef9b",
+  "raw_digest_scope": "decoded UTF-8 trace; byte-exact private stream retained separately",
+  "stderr": "",
+  "file_changes": {}
+}

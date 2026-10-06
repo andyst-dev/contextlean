@@ -1,0 +1,43 @@
+{
+  "benchmark_harness_version": 4,
+  "generated_at": "2026-10-02T12:17:07+00:00",
+  "order": [
+    {
+      "sequence": 1,
+      "task": "refactor",
+      "repeat": 1,
+      "condition": "vanilla"
+    },
+    {
+      "sequence": 2,
+      "task": "refactor",
+      "repeat": 1,
+      "condition": "contextlean"
+    },
+    {
+      "sequence": 3,
+      "task": "refactor",
+      "repeat": 2,
+      "condition": "contextlean"
+    },
+    {
+      "sequence": 4,
+      "task": "refactor",
+      "repeat": 2,
+      "condition": "vanilla"
+    },
+    {
+      "sequence": 5,
+      "task": "refactor",
+      "repeat": 3,
+      "condition": "vanilla"
+    },
+    {
+      "sequence": 6,
+      "task": "refactor",
+      "repeat": 3,
+      "condition": "contextlean"
+    }
+  ],
+  "method": "deterministic counterbalanced task/repetition parity"
+}

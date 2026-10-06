@@ -1,0 +1,2419 @@
+{
+  "git": {
+    "version": "git version 2.54.0 (Apple Git-157)",
+    "baseline_commit": "367762a0a395284c7d0b71d4d661fbf62e8d1ff8",
+    "tree": "2568e1e2326f085cae26b90efcbbc3623d15c223",
+    "clean": false,
+    "status": "M expense_report/report.py",
+    "branch": "main",
+    "config": "core.repositoryformatversion=0\ncore.filemode=false\ncore.bare=false\ncore.logallrefupdates=false\ncore.ignorecase=false\ncore.precomposeunicode=false\ncore.autocrlf=false\ncore.hookspath=/dev/null\nuser.name=Benchmark fixture\nuser.email=fixture@example.invalid\ncommit.gpgsign=false",
+    "remotes": "",
+    "hooks": []
+  },
+  "repo_changes": {
+    "expense_report/report.py": {
+      "before": {
+        "sha256": "a6054eafc61b537081ee06573065ecbe1d8ca0e0cd6712d6ffcce73c225e6b64",
+        "size": 567
+      },
+      "after": {
+        "sha256": "8fa24bad9e160b3c9390d2c3d9c8ddd2014a05f4558396226a68c433c5c7c271",
+        "size": 553
+      }
+    }
+  },
+  "tmp_files": {
+    "home/.bash_profile": {
+      "sha256": "9a720287c5abaca559239943c4aa5c7b63512ad281ba115e966d71efffb2e9a0",
+      "size": 2388
+    },
+    "home/.profile": {
+      "sha256": "9a720287c5abaca559239943c4aa5c7b63512ad281ba115e966d71efffb2e9a0",
+      "size": 2388
+    }
+  },
+  "unexpected_root_entries": [],
+  "outside_approved_visibility": "native write boundary; external hidden side effects unavailable",
+  "cache_before": {
+    "bin/cli": {
+      "kind": "file",
+      "size": 107
+    },
+    "bin/git": {
+      "kind": "file",
+      "size": 75
+    },
+    "bin/python": {
+      "kind": "file",
+      "size": 117
+    },
+    "bin/python3": {
+      "kind": "file",
+      "size": 117
+    },
+    "bin/rg": {
+      "kind": "file",
+      "size": 89
+    },
+    "bin/shell": {
+      "kind": "file",
+      "size": 29
+    },
+    "gitconfig": {
+      "kind": "file",
+      "size": 34
+    },
+    "profile/auth.json": {
+      "kind": "file",
+      "size": 3925
+    },
+    "profile/tmp/arg0/codex-arg0Vprc1s/.lock": {
+      "kind": "file",
+      "size": 0
+    },
+    "profile/tmp/arg0/codex-arg0Vprc1s/apply_patch": {
+      "kind": "symlink"
+    },
+    "profile/tmp/arg0/codex-arg0Vprc1s/applypatch": {
+      "kind": "symlink"
+    },
+    "profile/tmp/arg0/codex-arg0Vprc1s/codex-execve-wrapper": {
+      "kind": "symlink"
+    },
+    "shell/.zshenv": {
+      "kind": "file",
+      "size": 2408
+    },
+    "shell/environment": {
+      "kind": "file",
+      "size": 2388
+    }
+  },
+  "cache_after": {
+    "bin/cli": {
+      "kind": "file",
+      "size": 107
+    },
+    "bin/git": {
+      "kind": "file",
+      "size": 75
+    },
+    "bin/python": {
+      "kind": "file",
+      "size": 117
+    },
+    "bin/python3": {
+      "kind": "file",
+      "size": 117
+    },
+    "bin/rg": {
+      "kind": "file",
+      "size": 89
+    },
+    "bin/shell": {
+      "kind": "file",
+      "size": 29
+    },
+    "gitconfig": {
+      "kind": "file",
+      "size": 34
+    },
+    "profile/auth.json": {
+      "kind": "file",
+      "size": 3925
+    },
+    "profile/cache/codex_apps_server_info/b46bf5244141adc6b31ca53da7f13524174e892a.json": {
+      "kind": "file",
+      "size": 189
+    },
+    "profile/cache/codex_apps_tools/b46bf5244141adc6b31ca53da7f13524174e892a.json": {
+      "kind": "file",
+      "size": 2354818
+    },
+    "profile/cache/remote_plugin_catalog/e1f2010be4a4fcd7.json": {
+      "kind": "file",
+      "size": 29132144
+    },
+    "profile/config.toml": {
+      "kind": "file",
+      "size": 131
+    },
+    "profile/goals_1.sqlite": {
+      "kind": "file",
+      "size": 4096
+    },
+    "profile/goals_1.sqlite-shm": {
+      "kind": "file",
+      "size": 32768
+    },
+    "profile/goals_1.sqlite-wal": {
+      "kind": "file",
+      "size": 78312
+    },
+    "profile/installation_id": {
+      "kind": "file",
+      "size": 36
+    },
+    "profile/logs_2.sqlite": {
+      "kind": "file",
+      "size": 49152
+    },
+    "profile/memories_1.sqlite": {
+      "kind": "file",
+      "size": 40960
+    },
+    "profile/models_cache.json": {
+      "kind": "file",
+      "size": 158694
+    },
+    "profile/plugins/cache/created-by-me-remote/dev-6a7a0e63f1bc819197f4be8498265aca/.codex-remote-plugin-install.json": {
+      "kind": "file",
+      "size": 100
+    },
+    "profile/plugins/cache/created-by-me-remote/dev-6a7a0e63f1bc819197f4be8498265aca/1.0.0/.app.json": {
+      "kind": "file",
+      "size": 127
+    },
+    "profile/plugins/cache/created-by-me-remote/dev-6a7a0e63f1bc819197f4be8498265aca/1.0.0/.codex-plugin/plugin.json": {
+      "kind": "file",
+      "size": 404
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/.codex-remote-plugin-install.json": {
+      "kind": "file",
+      "size": 100
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/.app.json": {
+      "kind": "file",
+      "size": 152
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/.codex-plugin/plugin.json": {
+      "kind": "file",
+      "size": 3428
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ad-multiplier/SKILL.md": {
+      "kind": "file",
+      "size": 15405
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ad-multiplier/agents/openai.yaml": {
+      "kind": "file",
+      "size": 248
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ad-multiplier/references/media-pipeline.md": {
+      "kind": "file",
+      "size": 5056
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ad-multiplier/references/prompt-writer.md": {
+      "kind": "file",
+      "size": 16245
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/SKILL.md": {
+      "kind": "file",
+      "size": 18010
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/agents/openai.yaml": {
+      "kind": "file",
+      "size": 259
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/ai-avatar-creating.md": {
+      "kind": "file",
+      "size": 37266
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/anchor-prep.md": {
+      "kind": "file",
+      "size": 3797
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/assembly.md": {
+      "kind": "file",
+      "size": 25040
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/creative-review.md": {
+      "kind": "file",
+      "size": 6159
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/delivery.md": {
+      "kind": "file",
+      "size": 5362
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/edit-plan.md": {
+      "kind": "file",
+      "size": 15596
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/generation.md": {
+      "kind": "file",
+      "size": 35793
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/keyframe-prep.md": {
+      "kind": "file",
+      "size": 8314
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/migration-analysis.md": {
+      "kind": "file",
+      "size": 18927
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-design.md": {
+      "kind": "file",
+      "size": 16992
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-bold-editorial.md": {
+      "kind": "file",
+      "size": 3191
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-documentary-collage.md": {
+      "kind": "file",
+      "size": 3399
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-editorial-overlay.md": {
+      "kind": "file",
+      "size": 5283
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-funky-modular.md": {
+      "kind": "file",
+      "size": 3135
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-luminous-interface.md": {
+      "kind": "file",
+      "size": 3249
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-minimal.md": {
+      "kind": "file",
+      "size": 3551
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-press.md": {
+      "kind": "file",
+      "size": 5498
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-web-brutalism.md": {
+      "kind": "file",
+      "size": 4294
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-styles.md": {
+      "kind": "file",
+      "size": 9009
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/operations.md": {
+      "kind": "file",
+      "size": 5723
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/platform.md": {
+      "kind": "file",
+      "size": 664
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/renderer-compatibility.md": {
+      "kind": "file",
+      "size": 2527
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/script.md": {
+      "kind": "file",
+      "size": 7015
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/segment-editing.md": {
+      "kind": "file",
+      "size": 1391
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/supporting-media.md": {
+      "kind": "file",
+      "size": 11949
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/user-inputs.md": {
+      "kind": "file",
+      "size": 38207
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/SKILL.md": {
+      "kind": "file",
+      "size": 45955
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/agents/openai.yaml": {
+      "kind": "file",
+      "size": 324
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/assets/icon.svg": {
+      "kind": "file",
+      "size": 2094
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/generation-and-delivery.md": {
+      "kind": "file",
+      "size": 31717
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/history-longform.md": {
+      "kind": "file",
+      "size": 10257
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/intake-and-dispatch.md": {
+      "kind": "file",
+      "size": 21935
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/kids-song.md": {
+      "kind": "file",
+      "size": 8207
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/kids-styles.md": {
+      "kind": "file",
+      "size": 16093
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/kids-talking-characters.md": {
+      "kind": "file",
+      "size": 2383
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/picture-flow.md": {
+      "kind": "file",
+      "size": 16021
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/prompts.md": {
+      "kind": "file",
+      "size": 14613
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/style-cinematic-storybook.md": {
+      "kind": "file",
+      "size": 6108
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/style-editorial-collage.md": {
+      "kind": "file",
+      "size": 9051
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/style-mannequin.md": {
+      "kind": "file",
+      "size": 5243
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/style-paper-diorama.md": {
+      "kind": "file",
+      "size": 6342
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/vo_and_captions.md": {
+      "kind": "file",
+      "size": 7991
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/higgsfield/SKILL.md": {
+      "kind": "file",
+      "size": 4293
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/higgsfield/agents/openai.yaml": {
+      "kind": "file",
+      "size": 245
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/SKILL.md": {
+      "kind": "file",
+      "size": 3620
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/agents/openai.yaml": {
+      "kind": "file",
+      "size": 250
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/causality.md": {
+      "kind": "file",
+      "size": 871
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/composition.md": {
+      "kind": "file",
+      "size": 782
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/easing.md": {
+      "kind": "file",
+      "size": 978
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/qc.md": {
+      "kind": "file",
+      "size": 1082
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/recipes.md": {
+      "kind": "file",
+      "size": 915
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/stepped.md": {
+      "kind": "file",
+      "size": 970
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/timing.md": {
+      "kind": "file",
+      "size": 928
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/typography.md": {
+      "kind": "file",
+      "size": 835
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/narrator/SKILL.md": {
+      "kind": "file",
+      "size": 15536
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/narrator/agents/openai.yaml": {
+      "kind": "file",
+      "size": 316
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/narrator/assets/icon.svg": {
+      "kind": "file",
+      "size": 2094
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/narrator/references/presenter-mode.md": {
+      "kind": "file",
+      "size": 6883
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/subtitles/SKILL.md": {
+      "kind": "file",
+      "size": 17076
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/subtitles/agents/openai.yaml": {
+      "kind": "file",
+      "size": 282
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/subtitles/assets/icon.svg": {
+      "kind": "file",
+      "size": 1210
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/thumbnail-generation/SKILL.md": {
+      "kind": "file",
+      "size": 37084
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/thumbnail-generation/agents/openai.yaml": {
+      "kind": "file",
+      "size": 259
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/thumbnail-generation/references/text-overlay-bake.md": {
+      "kind": "file",
+      "size": 11385
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/thumbnail-generation/references/thumbnail-frameworks.md": {
+      "kind": "file",
+      "size": 4063
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-product-video/SKILL.md": {
+      "kind": "file",
+      "size": 12055
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-product-video/agents/openai.yaml": {
+      "kind": "file",
+      "size": 207
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-product-video/references/product-intake.md": {
+      "kind": "file",
+      "size": 6573
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-product-video/references/subtitles.md": {
+      "kind": "file",
+      "size": 5461
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-product-video/references/ugc-product-boards.md": {
+      "kind": "file",
+      "size": 61112
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-product-video/references/ugc-product-clip-prompt.md": {
+      "kind": "file",
+      "size": 57621
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/SKILL.md": {
+      "kind": "file",
+      "size": 17641
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/agents/openai.yaml": {
+      "kind": "file",
+      "size": 262
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/references/monologue-craft.md": {
+      "kind": "file",
+      "size": 13340
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/references/product-intake.md": {
+      "kind": "file",
+      "size": 6391
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/references/subtitles.md": {
+      "kind": "file",
+      "size": 5521
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/references/ugc-board.md": {
+      "kind": "file",
+      "size": 57628
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/references/ugc-character.md": {
+      "kind": "file",
+      "size": 64252
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/references/ugc-clip.md": {
+      "kind": "file",
+      "size": 61971
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-try-on-video/SKILL.md": {
+      "kind": "file",
+      "size": 13419
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-try-on-video/agents/openai.yaml": {
+      "kind": "file",
+      "size": 213
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-try-on-video/references/product-intake.md": {
+      "kind": "file",
+      "size": 6573
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-try-on-video/references/subtitles.md": {
+      "kind": "file",
+      "size": 5457
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-try-on-video/references/ugc-character.md": {
+      "kind": "file",
+      "size": 64060
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-try-on-video/references/ugc-try-board.md": {
+      "kind": "file",
+      "size": 100525
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-try-on-video/references/ugc-try-clip.md": {
+      "kind": "file",
+      "size": 99826
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-tutorial-video/SKILL.md": {
+      "kind": "file",
+      "size": 10742
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-tutorial-video/agents/openai.yaml": {
+      "kind": "file",
+      "size": 220
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-tutorial-video/references/product-intake.md": {
+      "kind": "file",
+      "size": 6573
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-tutorial-video/references/soul-v2-ugc-character.md": {
+      "kind": "file",
+      "size": 43041
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-tutorial-video/references/subtitles.md": {
+      "kind": "file",
+      "size": 5465
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-tutorial-video/references/ugc-tutorial-boards.md": {
+      "kind": "file",
+      "size": 51084
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-tutorial-video/references/ugc-tutorial-clip-prompt.md": {
+      "kind": "file",
+      "size": 52137
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-unboxing-video/SKILL.md": {
+      "kind": "file",
+      "size": 11066
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-unboxing-video/agents/openai.yaml": {
+      "kind": "file",
+      "size": 212
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-unboxing-video/references/product-intake.md": {
+      "kind": "file",
+      "size": 6573
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-unboxing-video/references/subtitles.md": {
+      "kind": "file",
+      "size": 5465
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-unboxing-video/references/ugc-character.md": {
+      "kind": "file",
+      "size": 63979
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-unboxing-video/references/ugc-unboxing-board.md": {
+      "kind": "file",
+      "size": 74818
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-unboxing-video/references/ugc-unboxing-clip.md": {
+      "kind": "file",
+      "size": 68318
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/SKILL.md": {
+      "kind": "file",
+      "size": 11500
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/agents/openai.yaml": {
+      "kind": "file",
+      "size": 201
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/references/saas-clip-prompt.md": {
+      "kind": "file",
+      "size": 5239
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/references/saas-monologue.md": {
+      "kind": "file",
+      "size": 11090
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/references/saas-ugc-character.md": {
+      "kind": "file",
+      "size": 6488
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/references/screen-broll-and-composite.md": {
+      "kind": "file",
+      "size": 7728
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/references/subtitles.md": {
+      "kind": "file",
+      "size": 5842
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/references/ugc-character.md": {
+      "kind": "file",
+      "size": 63979
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/references/website-capture.md": {
+      "kind": "file",
+      "size": 6021
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/SKILL.md": {
+      "kind": "file",
+      "size": 6043
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/agents/openai.yaml": {
+      "kind": "file",
+      "size": 261
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/animation-contract.md": {
+      "kind": "file",
+      "size": 2523
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/assembly.md": {
+      "kind": "file",
+      "size": 3421
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/caption-systems.md": {
+      "kind": "file",
+      "size": 2017
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/caption-titling.md": {
+      "kind": "file",
+      "size": 1873
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/clip-geometry.md": {
+      "kind": "file",
+      "size": 1905
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/compose.md": {
+      "kind": "file",
+      "size": 13832
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/editor-measured.md": {
+      "kind": "file",
+      "size": 2124
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/failure-modes.md": {
+      "kind": "file",
+      "size": 3219
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/motion-language.md": {
+      "kind": "file",
+      "size": 2249
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/provenance.md": {
+      "kind": "file",
+      "size": 651
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/shot-blueprints.md": {
+      "kind": "file",
+      "size": 2472
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/title-animation.md": {
+      "kind": "file",
+      "size": 2064
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/workflows.md": {
+      "kind": "file",
+      "size": 2009
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/SKILL.md": {
+      "kind": "file",
+      "size": 12680
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/agents/openai.yaml": {
+      "kind": "file",
+      "size": 248
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/app-cover.md": {
+      "kind": "file",
+      "size": 13925
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/app-flow.md": {
+      "kind": "file",
+      "size": 26159
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/app-layouts.md": {
+      "kind": "file",
+      "size": 4527
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/app-quickstart.md": {
+      "kind": "file",
+      "size": 12536
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/asset-system.md": {
+      "kind": "file",
+      "size": 14151
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/auth.md": {
+      "kind": "file",
+      "size": 14558
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/containers.md": {
+      "kind": "file",
+      "size": 16166
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/contest.md": {
+      "kind": "file",
+      "size": 4689
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/cover-animator.md": {
+      "kind": "file",
+      "size": 4776
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/design-recipe.md": {
+      "kind": "file",
+      "size": 10872
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/design-taste-frontend.md": {
+      "kind": "file",
+      "size": 87248
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/fnf-react.md": {
+      "kind": "file",
+      "size": 13026
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/fnf-sdk.md": {
+      "kind": "file",
+      "size": 36027
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/game-2d-animation.md": {
+      "kind": "file",
+      "size": 16969
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/game-audio.md": {
+      "kind": "file",
+      "size": 6259
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/game-design-system.md": {
+      "kind": "file",
+      "size": 16204
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/game-flow.md": {
+      "kind": "file",
+      "size": 5541
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/game-stylization.md": {
+      "kind": "file",
+      "size": 12637
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/game-textures.md": {
+      "kind": "file",
+      "size": 12351
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/image-to-code.md": {
+      "kind": "file",
+      "size": 6546
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/quanta-design.md": {
+      "kind": "file",
+      "size": 32303
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/reference-boards.md": {
+      "kind": "file",
+      "size": 6552
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/repo-and-sandbox.md": {
+      "kind": "file",
+      "size": 3749
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/review-rubric.md": {
+      "kind": "file",
+      "size": 8972
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/runtime-and-infra.md": {
+      "kind": "file",
+      "size": 9616
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/scroll-scrub-asset-css.md": {
+      "kind": "file",
+      "size": 6155
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/scroll-scrub-asset-react.md": {
+      "kind": "file",
+      "size": 21560
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/scroll-scrub-asset-video.md": {
+      "kind": "file",
+      "size": 2025
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/scroll-scrub.md": {
+      "kind": "file",
+      "size": 16411
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/security.md": {
+      "kind": "file",
+      "size": 38369
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/seo.md": {
+      "kind": "file",
+      "size": 36643
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/website-flow.md": {
+      "kind": "file",
+      "size": 32194
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/wow-catalog.md": {
+      "kind": "file",
+      "size": 8078
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/wow-maker.md": {
+      "kind": "file",
+      "size": 22549
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/SKILL.md": {
+      "kind": "file",
+      "size": 7979
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/agents/openai.yaml": {
+      "kind": "file",
+      "size": 265
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/business-finance-patterns.md": {
+      "kind": "file",
+      "size": 27933
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/business-finance.md": {
+      "kind": "file",
+      "size": 9017
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/commentary-patterns.md": {
+      "kind": "file",
+      "size": 27173
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/commentary.md": {
+      "kind": "file",
+      "size": 9998
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/explainer-patterns.md": {
+      "kind": "file",
+      "size": 27142
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/explainer.md": {
+      "kind": "file",
+      "size": 9321
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/storytelling-documentary-patterns.md": {
+      "kind": "file",
+      "size": 25126
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/storytelling-documentary.md": {
+      "kind": "file",
+      "size": 9367
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/tech-review-patterns.md": {
+      "kind": "file",
+      "size": 25841
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/tech-review.md": {
+      "kind": "file",
+      "size": 9559
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/true-crime-patterns.md": {
+      "kind": "file",
+      "size": 26066
+    },
+    "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/true-crime.md": {
+      "kind": "file",
+      "size": 10284
+    },
+    "profile/plugins/cache/openai-curated-remote/github/.codex-remote-plugin-install.json": {
+      "kind": "file",
+      "size": 104
+    },
+    "profile/plugins/cache/openai-curated-remote/github/0.1.12-5f7cd798dc99/.app.json": {
+      "kind": "file",
+      "size": 124
+    },
+    "profile/plugins/cache/openai-curated-remote/github/0.1.12-5f7cd798dc99/.codex-plugin/plugin.json": {
+      "kind": "file",
+      "size": 2027
+    },
+    "profile/plugins/cache/openai-curated-remote/github/0.1.12-5f7cd798dc99/assets/github-dark.png": {
+      "kind": "file",
+      "size": 27648
+    },
+    "profile/plugins/cache/openai-curated-remote/github/0.1.12-5f7cd798dc99/assets/github-small.svg": {
+      "kind": "file",
+      "size": 853
+    },
+    "profile/plugins/cache/openai-curated-remote/github/0.1.12-5f7cd798dc99/assets/github.png": {
+      "kind": "file",
+      "size": 9380
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/.codex-remote-plugin-install.json": {
+      "kind": "file",
+      "size": 104
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/.app.json": {
+      "kind": "file",
+      "size": 126
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/.codex-plugin/plugin.json": {
+      "kind": "file",
+      "size": 1610
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/README.md": {
+      "kind": "file",
+      "size": 1190
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/assets/icon.svg": {
+      "kind": "file",
+      "size": 1049
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-analytics-dashboard/SKILL.md": {
+      "kind": "file",
+      "size": 1497
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-analytics-dashboard/agents/openai.yaml": {
+      "kind": "file",
+      "size": 275
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-analytics-dashboard/artifact-template.json": {
+      "kind": "file",
+      "size": 125
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-analytics-dashboard/assets/preview.png": {
+      "kind": "file",
+      "size": 63062
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-analytics-dashboard/assets/reference.xlsx": {
+      "kind": "file",
+      "size": 26606
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-business-review/SKILL.md": {
+      "kind": "file",
+      "size": 1475
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-business-review/agents/openai.yaml": {
+      "kind": "file",
+      "size": 269
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-business-review/artifact-template.json": {
+      "kind": "file",
+      "size": 126
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-business-review/assets/preview.png": {
+      "kind": "file",
+      "size": 30573
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-business-review/assets/reference.pptx": {
+      "kind": "file",
+      "size": 2035231
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-design-report/SKILL.md": {
+      "kind": "file",
+      "size": 1437
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-design-report/agents/openai.yaml": {
+      "kind": "file",
+      "size": 257
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-design-report/artifact-template.json": {
+      "kind": "file",
+      "size": 122
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-design-report/assets/preview.png": {
+      "kind": "file",
+      "size": 202622
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-design-report/assets/reference.docx": {
+      "kind": "file",
+      "size": 2920999
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-experiment-analysis/SKILL.md": {
+      "kind": "file",
+      "size": 1456
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-experiment-analysis/agents/openai.yaml": {
+      "kind": "file",
+      "size": 269
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-experiment-analysis/artifact-template.json": {
+      "kind": "file",
+      "size": 122
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-experiment-analysis/assets/preview.png": {
+      "kind": "file",
+      "size": 15138
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-experiment-analysis/assets/reference.docx": {
+      "kind": "file",
+      "size": 204643
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-financial-budget/SKILL.md": {
+      "kind": "file",
+      "size": 1486
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-financial-budget/agents/openai.yaml": {
+      "kind": "file",
+      "size": 269
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-financial-budget/artifact-template.json": {
+      "kind": "file",
+      "size": 125
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-financial-budget/assets/preview.png": {
+      "kind": "file",
+      "size": 39032
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-financial-budget/assets/reference.xlsx": {
+      "kind": "file",
+      "size": 38153
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-investment-committee-memo/SKILL.md": {
+      "kind": "file",
+      "size": 1496
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-investment-committee-memo/agents/openai.yaml": {
+      "kind": "file",
+      "size": 281
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-investment-committee-memo/artifact-template.json": {
+      "kind": "file",
+      "size": 122
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-investment-committee-memo/assets/preview.png": {
+      "kind": "file",
+      "size": 30330
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-investment-committee-memo/assets/reference.docx": {
+      "kind": "file",
+      "size": 285035
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-legal-memorandum/SKILL.md": {
+      "kind": "file",
+      "size": 1434
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-legal-memorandum/agents/openai.yaml": {
+      "kind": "file",
+      "size": 263
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-legal-memorandum/artifact-template.json": {
+      "kind": "file",
+      "size": 122
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-legal-memorandum/assets/preview.png": {
+      "kind": "file",
+      "size": 64126
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-legal-memorandum/assets/reference.docx": {
+      "kind": "file",
+      "size": 593894
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-market-trends-report/SKILL.md": {
+      "kind": "file",
+      "size": 1498
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-market-trends-report/agents/openai.yaml": {
+      "kind": "file",
+      "size": 279
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-market-trends-report/artifact-template.json": {
+      "kind": "file",
+      "size": 126
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-market-trends-report/assets/preview.png": {
+      "kind": "file",
+      "size": 19232
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-market-trends-report/assets/reference.pptx": {
+      "kind": "file",
+      "size": 1972113
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-minimal-letterhead/SKILL.md": {
+      "kind": "file",
+      "size": 1470
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-minimal-letterhead/agents/openai.yaml": {
+      "kind": "file",
+      "size": 267
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-minimal-letterhead/artifact-template.json": {
+      "kind": "file",
+      "size": 122
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-minimal-letterhead/assets/preview.png": {
+      "kind": "file",
+      "size": 59454
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-minimal-letterhead/assets/reference.docx": {
+      "kind": "file",
+      "size": 10301
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-calendar/SKILL.md": {
+      "kind": "file",
+      "size": 1500
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-calendar/agents/openai.yaml": {
+      "kind": "file",
+      "size": 273
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-calendar/artifact-template.json": {
+      "kind": "file",
+      "size": 125
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-calendar/assets/preview.png": {
+      "kind": "file",
+      "size": 91416
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-calendar/assets/reference.xlsx": {
+      "kind": "file",
+      "size": 46268
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-review/SKILL.md": {
+      "kind": "file",
+      "size": 1483
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-review/agents/openai.yaml": {
+      "kind": "file",
+      "size": 271
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-review/artifact-template.json": {
+      "kind": "file",
+      "size": 126
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-review/assets/preview.png": {
+      "kind": "file",
+      "size": 37218
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-review/assets/reference.pptx": {
+      "kind": "file",
+      "size": 306716
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-kickoff/SKILL.md": {
+      "kind": "file",
+      "size": 1463
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-kickoff/agents/openai.yaml": {
+      "kind": "file",
+      "size": 269
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-kickoff/artifact-template.json": {
+      "kind": "file",
+      "size": 126
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-kickoff/assets/preview.png": {
+      "kind": "file",
+      "size": 25166
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-kickoff/assets/reference.pptx": {
+      "kind": "file",
+      "size": 2082300
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-tracker/SKILL.md": {
+      "kind": "file",
+      "size": 1484
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-tracker/agents/openai.yaml": {
+      "kind": "file",
+      "size": 267
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-tracker/artifact-template.json": {
+      "kind": "file",
+      "size": 125
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-tracker/assets/preview.png": {
+      "kind": "file",
+      "size": 40120
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-tracker/assets/reference.xlsx": {
+      "kind": "file",
+      "size": 14846
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-sales-pipeline/SKILL.md": {
+      "kind": "file",
+      "size": 1482
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-sales-pipeline/agents/openai.yaml": {
+      "kind": "file",
+      "size": 265
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-sales-pipeline/artifact-template.json": {
+      "kind": "file",
+      "size": 125
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-sales-pipeline/assets/preview.png": {
+      "kind": "file",
+      "size": 53355
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-sales-pipeline/assets/reference.xlsx": {
+      "kind": "file",
+      "size": 16979
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-dark-mode/SKILL.md": {
+      "kind": "file",
+      "size": 1478
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-dark-mode/agents/openai.yaml": {
+      "kind": "file",
+      "size": 271
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-dark-mode/artifact-template.json": {
+      "kind": "file",
+      "size": 126
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-dark-mode/assets/preview.png": {
+      "kind": "file",
+      "size": 115324
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-dark-mode/assets/reference.pptx": {
+      "kind": "file",
+      "size": 3244996
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-light-mode/SKILL.md": {
+      "kind": "file",
+      "size": 1487
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-light-mode/agents/openai.yaml": {
+      "kind": "file",
+      "size": 273
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-light-mode/artifact-template.json": {
+      "kind": "file",
+      "size": 126
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-light-mode/assets/preview.png": {
+      "kind": "file",
+      "size": 28676
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-light-mode/assets/reference.pptx": {
+      "kind": "file",
+      "size": 1519451
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-strategy-memorandum/SKILL.md": {
+      "kind": "file",
+      "size": 1446
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-strategy-memorandum/agents/openai.yaml": {
+      "kind": "file",
+      "size": 269
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-strategy-memorandum/artifact-template.json": {
+      "kind": "file",
+      "size": 122
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-strategy-memorandum/assets/preview.png": {
+      "kind": "file",
+      "size": 16294
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-strategy-memorandum/assets/reference.docx": {
+      "kind": "file",
+      "size": 2686019
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-system-design/SKILL.md": {
+      "kind": "file",
+      "size": 1445
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-system-design/agents/openai.yaml": {
+      "kind": "file",
+      "size": 257
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-system-design/artifact-template.json": {
+      "kind": "file",
+      "size": 122
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-system-design/assets/preview.png": {
+      "kind": "file",
+      "size": 23946
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-system-design/assets/reference.docx": {
+      "kind": "file",
+      "size": 501311
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-team-alignment/SKILL.md": {
+      "kind": "file",
+      "size": 1473
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-team-alignment/agents/openai.yaml": {
+      "kind": "file",
+      "size": 267
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-team-alignment/artifact-template.json": {
+      "kind": "file",
+      "size": 126
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-team-alignment/assets/preview.png": {
+      "kind": "file",
+      "size": 66065
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-team-alignment/assets/reference.pptx": {
+      "kind": "file",
+      "size": 7330920
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-three-statement-forecast/SKILL.md": {
+      "kind": "file",
+      "size": 1552
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-three-statement-forecast/agents/openai.yaml": {
+      "kind": "file",
+      "size": 285
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-three-statement-forecast/artifact-template.json": {
+      "kind": "file",
+      "size": 125
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-three-statement-forecast/assets/preview.png": {
+      "kind": "file",
+      "size": 53375
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-three-statement-forecast/assets/reference.xlsx": {
+      "kind": "file",
+      "size": 136927
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/tests/__pycache__/test_openai_templates_plugin.cpython-312-pytest-9.0.3.pyc": {
+      "kind": "file",
+      "size": 31707
+    },
+    "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/tests/test_openai_templates_plugin.py": {
+      "kind": "file",
+      "size": 9266
+    },
+    "profile/plugins/cache/openai-curated-remote/plugin-management/.codex-remote-plugin-install.json": {
+      "kind": "file",
+      "size": 104
+    },
+    "profile/plugins/cache/openai-curated-remote/plugin-management/0.1.0/.app.json": {
+      "kind": "file",
+      "size": 126
+    },
+    "profile/plugins/cache/openai-curated-remote/plugin-management/0.1.0/.codex-plugin/plugin.json": {
+      "kind": "file",
+      "size": 1538
+    },
+    "profile/plugins/cache/openai-curated-remote/plugin-management/0.1.0/assets/plugin-management.svg": {
+      "kind": "file",
+      "size": 455
+    },
+    "profile/plugins/cache/openai-curated-remote/plugin-management/0.1.0/skills/plugin-management/SKILL.md": {
+      "kind": "file",
+      "size": 2983
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/.codex-remote-plugin-install.json": {
+      "kind": "file",
+      "size": 104
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/.app.json": {
+      "kind": "file",
+      "size": 122
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/.codex-plugin/plugin.json": {
+      "kind": "file",
+      "size": 1881
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/OWNERS": {
+      "kind": "file",
+      "size": 32
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/README.md": {
+      "kind": "file",
+      "size": 2516
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/analytics.yaml": {
+      "kind": "file",
+      "size": 2754
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/assets/icon.svg": {
+      "kind": "file",
+      "size": 742
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/assets/logo.svg": {
+      "kind": "file",
+      "size": 742
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/assets/pnpm/README.md": {
+      "kind": "file",
+      "size": 7045
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/assets/pnpm/vinext/bootstrap.json": {
+      "kind": "file",
+      "size": 514
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/assets/pnpm/vinext/pnpm-lock.yaml": {
+      "kind": "file",
+      "size": 345021
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/assets/pnpm/vinext/pnpm-workspace.yaml": {
+      "kind": "file",
+      "size": 680
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/scripts/build-site.mjs": {
+      "kind": "file",
+      "size": 817
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/scripts/configure-execution-profile.mjs": {
+      "kind": "file",
+      "size": 2335
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/scripts/install-dependencies.mjs": {
+      "kind": "file",
+      "size": 3629
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/scripts/install-report.mjs": {
+      "kind": "file",
+      "size": 5961
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/scripts/package-manager.mjs": {
+      "kind": "file",
+      "size": 5877
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/scripts/package-site.mjs": {
+      "kind": "file",
+      "size": 330
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/scripts/pnpm-bootstrap.mjs": {
+      "kind": "file",
+      "size": 17198
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/scripts/project-setup.mjs": {
+      "kind": "file",
+      "size": 5478
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/scripts/set-project-id.mjs": {
+      "kind": "file",
+      "size": 2101
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/scripts/site-workflow.mjs": {
+      "kind": "file",
+      "size": 17583
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/scripts/validate-pnpm.mjs": {
+      "kind": "file",
+      "size": 5610
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/scripts/workflow-metrics.mjs": {
+      "kind": "file",
+      "size": 5553
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/SKILL.md": {
+      "kind": "file",
+      "size": 12041
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/references/app-integrations.md": {
+      "kind": "file",
+      "size": 9153
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/references/browser-agent-support.md": {
+      "kind": "file",
+      "size": 3505
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/references/design/presentation-led.md": {
+      "kind": "file",
+      "size": 985
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/references/identity-and-secrets.md": {
+      "kind": "file",
+      "size": 3714
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/references/preview/local.md": {
+      "kind": "file",
+      "size": 848
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/references/preview/managed.md": {
+      "kind": "file",
+      "size": 1167
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/references/recurring-updates.md": {
+      "kind": "file",
+      "size": 3411
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/references/site-mcp-server.md": {
+      "kind": "file",
+      "size": 1976
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/references/storage.md": {
+      "kind": "file",
+      "size": 1885
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/references/troubleshooting.md": {
+      "kind": "file",
+      "size": 1965
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/scripts/package-site.sh": {
+      "kind": "file",
+      "size": 1971
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/scripts/prepare-site-build.cjs": {
+      "kind": "file",
+      "size": 6809
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/.gitignore": {
+      "kind": "file",
+      "size": 598
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/.npmrc": {
+      "kind": "file",
+      "size": 45
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/.openai/hosting.json": {
+      "kind": "file",
+      "size": 31
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/README.md": {
+      "kind": "file",
+      "size": 10120
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/app/<redacted>-auth.ts": {
+      "kind": "file",
+      "size": 2550
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/app/globals.css": {
+      "kind": "file",
+      "size": 3928
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/app/layout.tsx": {
+      "kind": "file",
+      "size": 523
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/app/page.tsx": {
+      "kind": "file",
+      "size": 4466
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/build/connector-preview-plugin.mjs": {
+      "kind": "file",
+      "size": 7211
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/build/connector-preview-worker.mjs": {
+      "kind": "file",
+      "size": 594
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/build/sites-vite-plugin.LICENSE": {
+      "kind": "file",
+      "size": 1063
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/build/sites-vite-plugin.ts": {
+      "kind": "file",
+      "size": 7185
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/build/sites-worker.ts": {
+      "kind": "file",
+      "size": 1279
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/cloudflare-env.d.ts": {
+      "kind": "file",
+      "size": 99
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/connector-error.tsx": {
+      "kind": "file",
+      "size": 1082
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/accordion.tsx": {
+      "kind": "file",
+      "size": 2048
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/alert-dialog.tsx": {
+      "kind": "file",
+      "size": 5439
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/alert.tsx": {
+      "kind": "file",
+      "size": 1614
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/aspect-ratio.tsx": {
+      "kind": "file",
+      "size": 274
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/attachment.tsx": {
+      "kind": "file",
+      "size": 6002
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/avatar.tsx": {
+      "kind": "file",
+      "size": 2916
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/badge.tsx": {
+      "kind": "file",
+      "size": 1776
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/breadcrumb.tsx": {
+      "kind": "file",
+      "size": 2350
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/bubble.tsx": {
+      "kind": "file",
+      "size": 4699
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/button-group.tsx": {
+      "kind": "file",
+      "size": 2202
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/button.tsx": {
+      "kind": "file",
+      "size": 2392
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/calendar.tsx": {
+      "kind": "file",
+      "size": 7832
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/card.tsx": {
+      "kind": "file",
+      "size": 1987
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/carousel.tsx": {
+      "kind": "file",
+      "size": 5556
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/chart.tsx": {
+      "kind": "file",
+      "size": 10614
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/checkbox.tsx": {
+      "kind": "file",
+      "size": 1214
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/collapsible.tsx": {
+      "kind": "file",
+      "size": 795
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/combobox.tsx": {
+      "kind": "file",
+      "size": 9158
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/command.tsx": {
+      "kind": "file",
+      "size": 4818
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/context-menu.tsx": {
+      "kind": "file",
+      "size": 8268
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/dialog.tsx": {
+      "kind": "file",
+      "size": 4303
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/direction.tsx": {
+      "kind": "file",
+      "size": 506
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/drawer.tsx": {
+      "kind": "file",
+      "size": 4255
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/dropdown-menu.tsx": {
+      "kind": "file",
+      "size": 8418
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/empty.tsx": {
+      "kind": "file",
+      "size": 2396
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/field.tsx": {
+      "kind": "file",
+      "size": 6159
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/form.tsx": {
+      "kind": "file",
+      "size": 3757
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/hover-card.tsx": {
+      "kind": "file",
+      "size": 1526
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/input-group.tsx": {
+      "kind": "file",
+      "size": 5065
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/input-otp.tsx": {
+      "kind": "file",
+      "size": 2254
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/input.tsx": {
+      "kind": "file",
+      "size": 962
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/item.tsx": {
+      "kind": "file",
+      "size": 4486
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/kbd.tsx": {
+      "kind": "file",
+      "size": 862
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/label.tsx": {
+      "kind": "file",
+      "size": 606
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/marker.tsx": {
+      "kind": "file",
+      "size": 1864
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/menubar.tsx": {
+      "kind": "file",
+      "size": 8389
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/message-scroller.tsx": {
+      "kind": "file",
+      "size": 3992
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/message.tsx": {
+      "kind": "file",
+      "size": 2232
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/native-select.tsx": {
+      "kind": "file",
+      "size": 1995
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/navigation-menu.tsx": {
+      "kind": "file",
+      "size": 6658
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/pagination.tsx": {
+      "kind": "file",
+      "size": 2717
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/popover.tsx": {
+      "kind": "file",
+      "size": 2357
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/progress.tsx": {
+      "kind": "file",
+      "size": 755
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/radio-group.tsx": {
+      "kind": "file",
+      "size": 1460
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/resizable.tsx": {
+      "kind": "file",
+      "size": 1815
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/scroll-area.tsx": {
+      "kind": "file",
+      "size": 1639
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/select.tsx": {
+      "kind": "file",
+      "size": 6353
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/separator.tsx": {
+      "kind": "file",
+      "size": 694
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/sheet.tsx": {
+      "kind": "file",
+      "size": 4188
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/sidebar.tsx": {
+      "kind": "file",
+      "size": 21526
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/skeleton.tsx": {
+      "kind": "file",
+      "size": 276
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/slider.tsx": {
+      "kind": "file",
+      "size": 1991
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/sonner.tsx": {
+      "kind": "file",
+      "size": 1034
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/spinner.tsx": {
+      "kind": "file",
+      "size": 331
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/switch.tsx": {
+      "kind": "file",
+      "size": 1408
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/table.tsx": {
+      "kind": "file",
+      "size": 2478
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/tabs.tsx": {
+      "kind": "file",
+      "size": 3782
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/textarea.tsx": {
+      "kind": "file",
+      "size": 759
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/toggle-group.tsx": {
+      "kind": "file",
+      "size": 2308
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/toggle.tsx": {
+      "kind": "file",
+      "size": 1565
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components/ui/tooltip.tsx": {
+      "kind": "file",
+      "size": 1830
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/components.json": {
+      "kind": "file",
+      "size": 420
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/db/index.ts": {
+      "kind": "file",
+      "size": 423
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/db/schema.ts": {
+      "kind": "file",
+      "size": 169
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/drizzle/meta/_journal.json": {
+      "kind": "file",
+      "size": 61
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/drizzle.config.ts": {
+      "kind": "file",
+      "size": 148
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/eslint.config.mjs": {
+      "kind": "file",
+      "size": 846
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/examples/d1/app/api/notes/route.ts": {
+      "kind": "file",
+      "size": 1700
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/examples/d1/db/schema.ts": {
+      "kind": "file",
+      "size": 370
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/hooks/use-mobile.ts": {
+      "kind": "file",
+      "size": 565
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/lib/connector-context.ts": {
+      "kind": "file",
+      "size": 612
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/lib/connector-contract.mts": {
+      "kind": "file",
+      "size": 5362
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/lib/connector-errors.mts": {
+      "kind": "file",
+      "size": 2717
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/lib/connector-preview.d.ts": {
+      "kind": "file",
+      "size": 433
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/lib/connectors.ts": {
+      "kind": "file",
+      "size": 416
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/lib/utils.ts": {
+      "kind": "file",
+      "size": 177
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/next.config.ts": {
+      "kind": "file",
+      "size": 133
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/package-lock.json": {
+      "kind": "file",
+      "size": 504152
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/package.json": {
+      "kind": "file",
+      "size": 2102
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/postcss.config.mjs": {
+      "kind": "file",
+      "size": 94
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/public/favicon.svg": {
+      "kind": "file",
+      "size": 712
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/public/file.svg": {
+      "kind": "file",
+      "size": 392
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/public/globe.svg": {
+      "kind": "file",
+      "size": 1036
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/public/window.svg": {
+      "kind": "file",
+      "size": 386
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/scripts/build-verified.sh": {
+      "kind": "file",
+      "size": 661
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/scripts/connector-preview/connector-preview-session.mjs": {
+      "kind": "file",
+      "size": 6855
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/scripts/connector-preview/host-binding.mjs": {
+      "kind": "file",
+      "size": 7793
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/scripts/connector-preview/protocol.mjs": {
+      "kind": "file",
+      "size": 1781
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/scripts/execution-profile.mjs": {
+      "kind": "file",
+      "size": 624
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/scripts/install-ci.mjs": {
+      "kind": "file",
+      "size": 1685
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/scripts/install-ci.sh": {
+      "kind": "file",
+      "size": 6783
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/scripts/install-pnpm.sh": {
+      "kind": "file",
+      "size": 9015
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/scripts/npm-install.mjs": {
+      "kind": "file",
+      "size": 7025
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/scripts/pnpm-install.mjs": {
+      "kind": "file",
+      "size": 10633
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/scripts/run-framework.mjs": {
+      "kind": "file",
+      "size": 993
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/scripts/sites-env.mjs": {
+      "kind": "file",
+      "size": 906
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/scripts/sites-env.sh": {
+      "kind": "file",
+      "size": 1530
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/tsconfig.json": {
+      "kind": "file",
+      "size": 800
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/vendor/shadcn-tailwind-4.13.0.LICENSE.md": {
+      "kind": "file",
+      "size": 1063
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/vendor/shadcn-tailwind-4.13.0.css": {
+      "kind": "file",
+      "size": 16041
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/vinext-starter/vite.config.ts": {
+      "kind": "file",
+      "size": 3115
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/worker-esm-starter/.gitignore": {
+      "kind": "file",
+      "size": 18
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/worker-esm-starter/.openai/hosting.json": {
+      "kind": "file",
+      "size": 31
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/worker-esm-starter/README.md": {
+      "kind": "file",
+      "size": 954
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/worker-esm-starter/package.json": {
+      "kind": "file",
+      "size": 191
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/worker-esm-starter/scripts/build.sh": {
+      "kind": "file",
+      "size": 366
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/worker-esm-starter/scripts/validate-artifact.mjs": {
+      "kind": "file",
+      "size": 953
+    },
+    "profile/plugins/cache/openai-curated-remote/sites/1.0.0-c/skills/sites/templates/worker-esm-starter/worker/index.js": {
+      "kind": "file",
+      "size": 1346
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/.codex-remote-plugin-install.json": {
+      "kind": "file",
+      "size": 104
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/.app.json": {
+      "kind": "file",
+      "size": 116
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/.codex-plugin/plugin.json": {
+      "kind": "file",
+      "size": 1837
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/assets/egg.svg": {
+      "kind": "file",
+      "size": 1440
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/references/sprite-sheet-contract.md": {
+      "kind": "file",
+      "size": 22252
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/references/upload-session.md": {
+      "kind": "file",
+      "size": 1215
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/SKILL.md": {
+      "kind": "file",
+      "size": 17353
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/agents/openai.yaml": {
+      "kind": "file",
+      "size": 219
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/references/animation-rows.md": {
+      "kind": "file",
+      "size": 2583
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/assemble_extended_atlas.py": {
+      "kind": "file",
+      "size": 21681
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/combine_direction_blind_verdicts.py": {
+      "kind": "file",
+      "size": 1962
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/compose_atlas.py": {
+      "kind": "file",
+      "size": 5756
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/compose_cardinal_anchor_strip.py": {
+      "kind": "file",
+      "size": 1401
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/derive_running_left_from_running_right.py": {
+      "kind": "file",
+      "size": 5183
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/despill_chroma_edges.py": {
+      "kind": "file",
+      "size": 10839
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/extract_cardinal_anchors.py": {
+      "kind": "file",
+      "size": 5006
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/extract_strip_frames.py": {
+      "kind": "file",
+      "size": 14090
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/inspect_frames.py": {
+      "kind": "file",
+      "size": 9456
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/make_contact_sheet.py": {
+      "kind": "file",
+      "size": 3450
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/make_direction_blind_qa_sheet.py": {
+      "kind": "file",
+      "size": 5370
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/make_direction_qa_sheet.py": {
+      "kind": "file",
+      "size": 4929
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/measure_direction_continuity.py": {
+      "kind": "file",
+      "size": 6706
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/prepare_pet_run.py": {
+      "kind": "file",
+      "size": 51327
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/render_animation_previews.py": {
+      "kind": "file",
+      "size": 2549
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/validate_atlas.py": {
+      "kind": "file",
+      "size": 10678
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/validate_direction_blind_verdicts.py": {
+      "kind": "file",
+      "size": 3836
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/validate_pet_quality.py": {
+      "kind": "file",
+      "size": 12965
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/pets/SKILL.md": {
+      "kind": "file",
+      "size": 3552
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/pets/agents/openai.yaml": {
+      "kind": "file",
+      "size": 204
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/update-pet/SKILL.md": {
+      "kind": "file",
+      "size": 4272
+    },
+    "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/update-pet/agents/openai.yaml": {
+      "kind": "file",
+      "size": 220
+    },
+    "profile/queue_1.sqlite": {
+      "kind": "file",
+      "size": 28672
+    },
+    "profile/skills/.system/.codex-system-skills.marker": {
+      "kind": "file",
+      "size": 17
+    },
+    "profile/skills/.system/imagegen/LICENSE.txt": {
+      "kind": "file",
+      "size": 10776
+    },
+    "profile/skills/.system/imagegen/SKILL.md": {
+      "kind": "file",
+      "size": 24003
+    },
+    "profile/skills/.system/imagegen/agents/openai.yaml": {
+      "kind": "file",
+      "size": 275
+    },
+    "profile/skills/.system/imagegen/assets/imagegen-small.svg": {
+      "kind": "file",
+      "size": 2889
+    },
+    "profile/skills/.system/imagegen/assets/imagegen.png": {
+      "kind": "file",
+      "size": 1711
+    },
+    "profile/skills/.system/imagegen/references/cli.md": {
+      "kind": "file",
+      "size": 10188
+    },
+    "profile/skills/.system/imagegen/references/codex-network.md": {
+      "kind": "file",
+      "size": 1779
+    },
+    "profile/skills/.system/imagegen/references/image-api.md": {
+      "kind": "file",
+      "size": 6079
+    },
+    "profile/skills/.system/imagegen/references/prompting.md": {
+      "kind": "file",
+      "size": 9896
+    },
+    "profile/skills/.system/imagegen/references/sample-prompts.md": {
+      "kind": "file",
+      "size": 19239
+    },
+    "profile/skills/.system/imagegen/scripts/image_gen.py": {
+      "kind": "file",
+      "size": 34271
+    },
+    "profile/skills/.system/imagegen/scripts/remove_chroma_key.py": {
+      "kind": "file",
+      "size": 13836
+    },
+    "profile/skills/.system/openai-docs/LICENSE.txt": {
+      "kind": "file",
+      "size": 10776
+    },
+    "profile/skills/.system/openai-docs/SKILL.md": {
+      "kind": "file",
+      "size": 5446
+    },
+    "profile/skills/.system/openai-docs/agents/openai.yaml": {
+      "kind": "file",
+      "size": 370
+    },
+    "profile/skills/.system/openai-docs/assets/openai-small.svg": {
+      "kind": "file",
+      "size": 1091
+    },
+    "profile/skills/.system/openai-docs/assets/openai.png": {
+      "kind": "file",
+      "size": 1429
+    },
+    "profile/skills/.system/openai-docs/references/codex-self-knowledge.md": {
+      "kind": "file",
+      "size": 7417
+    },
+    "profile/skills/.system/openai-docs/references/latest-model.md": {
+      "kind": "file",
+      "size": 2094
+    },
+    "profile/skills/.system/openai-docs/references/mcp-diagnostics.md": {
+      "kind": "file",
+      "size": 2318
+    },
+    "profile/skills/.system/openai-docs/references/model-migration.md": {
+      "kind": "file",
+      "size": 5054
+    },
+    "profile/skills/.system/openai-docs/references/model-selection.md": {
+      "kind": "file",
+      "size": 1344
+    },
+    "profile/skills/.system/openai-docs/references/official-docs.md": {
+      "kind": "file",
+      "size": 3337
+    },
+    "profile/skills/.system/openai-docs/references/prompting-guide.md": {
+      "kind": "file",
+      "size": 15747
+    },
+    "profile/skills/.system/openai-docs/references/upgrade-guide.md": {
+      "kind": "file",
+      "size": 1050
+    },
+    "profile/skills/.system/openai-docs/references/upgrading-to-gpt-5p6-sol.md": {
+      "kind": "file",
+      "size": 23093
+    },
+    "profile/skills/.system/openai-docs/scripts/fetch-codex-manual.mjs": {
+      "kind": "file",
+      "size": 16085
+    },
+    "profile/skills/.system/openai-docs/scripts/resolve-latest-model-info": {
+      "kind": "file",
+      "size": 1038
+    },
+    "profile/skills/.system/openai-docs/scripts/resolve-latest-model-info.cjs": {
+      "kind": "file",
+      "size": 3937
+    },
+    "profile/skills/.system/plugin-creator/SKILL.md": {
+      "kind": "file",
+      "size": 11040
+    },
+    "profile/skills/.system/plugin-creator/agents/openai.yaml": {
+      "kind": "file",
+      "size": 339
+    },
+    "profile/skills/.system/plugin-creator/assets/plugin-creator-small.svg": {
+      "kind": "file",
+      "size": 1319
+    },
+    "profile/skills/.system/plugin-creator/assets/plugin-creator.png": {
+      "kind": "file",
+      "size": 1563
+    },
+    "profile/skills/.system/plugin-creator/references/installing-and-updating.md": {
+      "kind": "file",
+      "size": 5874
+    },
+    "profile/skills/.system/plugin-creator/references/plugin-json-spec.md": {
+      "kind": "file",
+      "size": 9179
+    },
+    "profile/skills/.system/plugin-creator/scripts/create_basic_plugin.py": {
+      "kind": "file",
+      "size": 11185
+    },
+    "profile/skills/.system/plugin-creator/scripts/read_marketplace_name.py": {
+      "kind": "file",
+      "size": 1497
+    },
+    "profile/skills/.system/plugin-creator/scripts/update_plugin_cachebuster.py": {
+      "kind": "file",
+      "size": 2686
+    },
+    "profile/skills/.system/plugin-creator/scripts/validate_plugin.py": {
+      "kind": "file",
+      "size": 21180
+    },
+    "profile/skills/.system/review-agent/SKILL.md": {
+      "kind": "file",
+      "size": 2661
+    },
+    "profile/skills/.system/review-agent/agents/openai.yaml": {
+      "kind": "file",
+      "size": 252
+    },
+    "profile/skills/.system/skill-creator/SKILL.md": {
+      "kind": "file",
+      "size": 22047
+    },
+    "profile/skills/.system/skill-creator/agents/openai.yaml": {
+      "kind": "file",
+      "size": 183
+    },
+    "profile/skills/.system/skill-creator/assets/skill-creator-small.svg": {
+      "kind": "file",
+      "size": 1319
+    },
+    "profile/skills/.system/skill-creator/assets/skill-creator.png": {
+      "kind": "file",
+      "size": 1563
+    },
+    "profile/skills/.system/skill-creator/license.txt": {
+      "kind": "file",
+      "size": 11358
+    },
+    "profile/skills/.system/skill-creator/references/openai_yaml.md": {
+      "kind": "file",
+      "size": 2356
+    },
+    "profile/skills/.system/skill-creator/scripts/generate_openai_yaml.py": {
+      "kind": "file",
+      "size": 6619
+    },
+    "profile/skills/.system/skill-creator/scripts/init_skill.py": {
+      "kind": "file",
+      "size": 14602
+    },
+    "profile/skills/.system/skill-creator/scripts/quick_validate.py": {
+      "kind": "file",
+      "size": 3293
+    },
+    "profile/skills/.system/skill-installer/LICENSE.txt": {
+      "kind": "file",
+      "size": 11358
+    },
+    "profile/skills/.system/skill-installer/SKILL.md": {
+      "kind": "file",
+      "size": 3367
+    },
+    "profile/skills/.system/skill-installer/agents/openai.yaml": {
+      "kind": "file",
+      "size": 221
+    },
+    "profile/skills/.system/skill-installer/assets/skill-installer-small.svg": {
+      "kind": "file",
+      "size": 923
+    },
+    "profile/skills/.system/skill-installer/assets/skill-installer.png": {
+      "kind": "file",
+      "size": 1086
+    },
+    "profile/skills/.system/skill-installer/scripts/github_utils.py": {
+      "kind": "file",
+      "size": 659
+    },
+    "profile/skills/.system/skill-installer/scripts/install-skill-from-github.py": {
+      "kind": "file",
+      "size": 10096
+    },
+    "profile/skills/.system/skill-installer/scripts/list-skills.py": {
+      "kind": "file",
+      "size": 2967
+    },
+    "profile/state_5.sqlite": {
+      "kind": "file",
+      "size": 4096
+    },
+    "profile/state_5.sqlite-shm": {
+      "kind": "file",
+      "size": 32768
+    },
+    "profile/state_5.sqlite-wal": {
+      "kind": "file",
+      "size": 1549152
+    },
+    "shell/.zshenv": {
+      "kind": "file",
+      "size": 2408
+    },
+    "shell/environment": {
+      "kind": "file",
+      "size": 2388
+    }
+  },
+  "control_artifacts": {},
+  "control_receipts": {
+    "preflight.json": {
+      "kind": "file",
+      "size": 43240
+    }
+  },
+  "omitted_binary_paths": [],
+  "evidence_complete": true
+}

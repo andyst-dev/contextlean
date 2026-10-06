@@ -1,0 +1,253 @@
+{
+  "benchmark_harness_version": 4,
+  "files": [
+    {
+      "path": ".contextlean/bootstrap-report.json",
+      "vanilla": {
+        "sha256": "e7e874e599d2937fe9ef62d5795c0bcce18625f213298278145b6ebe8d2bfd39",
+        "size": 2559
+      },
+      "contextlean": {
+        "sha256": "e7e874e599d2937fe9ef62d5795c0bcce18625f213298278145b6ebe8d2bfd39",
+        "size": 2559
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": ".gitignore",
+      "vanilla": {
+        "sha256": "66556d3cf14a84a8c025c4e396fa1842c41d1dd09c98dc25ec3f2ae6ac878db5",
+        "size": 37
+      },
+      "contextlean": {
+        "sha256": "66556d3cf14a84a8c025c4e396fa1842c41d1dd09c98dc25ec3f2ae6ac878db5",
+        "size": 37
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": "AGENTS.md",
+      "vanilla": null,
+      "contextlean": {
+        "sha256": "4b1547fdba42a849d1558e54fbf8249213c7164644e8a501a309b631bdfdf1d3",
+        "size": 932
+      },
+      "condition_specific": true,
+      "status": "contextlean-guidance"
+    },
+    {
+      "path": "CLAUDE.md",
+      "vanilla": null,
+      "contextlean": {
+        "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+        "size": 11
+      },
+      "condition_specific": true,
+      "status": "contextlean-guidance"
+    },
+    {
+      "path": "README.md",
+      "vanilla": {
+        "sha256": "3bc7002182a17904d8435a5cb95fca7c0095d809d441f22a9f4572ac60c06722",
+        "size": 435
+      },
+      "contextlean": {
+        "sha256": "3bc7002182a17904d8435a5cb95fca7c0095d809d441f22a9f4572ac60c06722",
+        "size": 435
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": "config.json",
+      "vanilla": {
+        "sha256": "6a8c29bd630822a34ee4ed59e0d2591f9afa4b7a310db08b6aa528039a443da4",
+        "size": 20
+      },
+      "contextlean": {
+        "sha256": "6a8c29bd630822a34ee4ed59e0d2591f9afa4b7a310db08b6aa528039a443da4",
+        "size": 20
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": "data/sample.csv",
+      "vanilla": {
+        "sha256": "c39faa15a1d1eefbf2ee2402f88cfe7d88e22aeddacfeedb538203044e60163e",
+        "size": 50
+      },
+      "contextlean": {
+        "sha256": "c39faa15a1d1eefbf2ee2402f88cfe7d88e22aeddacfeedb538203044e60163e",
+        "size": 50
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": "expense_report/__init__.py",
+      "vanilla": {
+        "sha256": "f6b1efb33c8e51aa4ebf4d7ea4a1fade259d94b019ade83dd241271118529a47",
+        "size": 51
+      },
+      "contextlean": {
+        "sha256": "f6b1efb33c8e51aa4ebf4d7ea4a1fade259d94b019ade83dd241271118529a47",
+        "size": 51
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": "expense_report/__pycache__/__init__.cpython-314.pyc",
+      "vanilla": {
+        "sha256": "a55e55ce1c5c2e347fec6b6a43f3082c91f951ee1f7d062147a1da0f5000d9a2",
+        "size": 253
+      },
+      "contextlean": {
+        "sha256": "a55e55ce1c5c2e347fec6b6a43f3082c91f951ee1f7d062147a1da0f5000d9a2",
+        "size": 253
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": "expense_report/__pycache__/cli.cpython-314.pyc",
+      "vanilla": {
+        "sha256": "a48a2cd6e9849ce32f23636ef4c0bebda420ad4709630e235a29959c5932e681",
+        "size": 1660
+      },
+      "contextlean": {
+        "sha256": "a48a2cd6e9849ce32f23636ef4c0bebda420ad4709630e235a29959c5932e681",
+        "size": 1660
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": "expense_report/__pycache__/filters.cpython-314.pyc",
+      "vanilla": {
+        "sha256": "8646657772d686eb733f335ae8de4ab12b3d3f7af50561705a13a980ace68038",
+        "size": 751
+      },
+      "contextlean": {
+        "sha256": "8646657772d686eb733f335ae8de4ab12b3d3f7af50561705a13a980ace68038",
+        "size": 751
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": "expense_report/__pycache__/report.cpython-314.pyc",
+      "vanilla": {
+        "sha256": "324c73c3daafb09bb4a76ae5c385c046f7d3ae8018099a8ae7b78124fdd57968",
+        "size": 1422
+      },
+      "contextlean": {
+        "sha256": "324c73c3daafb09bb4a76ae5c385c046f7d3ae8018099a8ae7b78124fdd57968",
+        "size": 1422
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": "expense_report/__pycache__/storage.cpython-314.pyc",
+      "vanilla": {
+        "sha256": "c6815396ddc6f9a02fbbb3a17c895b5dcffc0d0608f7ba439eee60c6d2316fe0",
+        "size": 822
+      },
+      "contextlean": {
+        "sha256": "c6815396ddc6f9a02fbbb3a17c895b5dcffc0d0608f7ba439eee60c6d2316fe0",
+        "size": 822
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": "expense_report/cli.py",
+      "vanilla": {
+        "sha256": "6a681929dc3b3fc7149084ce6d97db797dcabaee51e44e54f8f517c3fa8d89ab",
+        "size": 722
+      },
+      "contextlean": {
+        "sha256": "6a681929dc3b3fc7149084ce6d97db797dcabaee51e44e54f8f517c3fa8d89ab",
+        "size": 722
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": "expense_report/filters.py",
+      "vanilla": {
+        "sha256": "8825e48b6a21b716bc6b074284378bc42c13be48ca16c4450184d449cb65a9f7",
+        "size": 287
+      },
+      "contextlean": {
+        "sha256": "8825e48b6a21b716bc6b074284378bc42c13be48ca16c4450184d449cb65a9f7",
+        "size": 287
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": "expense_report/report.py",
+      "vanilla": {
+        "sha256": "a6054eafc61b537081ee06573065ecbe1d8ca0e0cd6712d6ffcce73c225e6b64",
+        "size": 567
+      },
+      "contextlean": {
+        "sha256": "a6054eafc61b537081ee06573065ecbe1d8ca0e0cd6712d6ffcce73c225e6b64",
+        "size": 567
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": "expense_report/storage.py",
+      "vanilla": {
+        "sha256": "97eb5325d6b0a78427875ad0774856b1b3249ed5f939fc22ccb0a43efd9f69b4",
+        "size": 276
+      },
+      "contextlean": {
+        "sha256": "97eb5325d6b0a78427875ad0774856b1b3249ed5f939fc22ccb0a43efd9f69b4",
+        "size": 276
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": "tests/__pycache__/test_expenses.cpython-314.pyc",
+      "vanilla": {
+        "sha256": "0841d1251aea87d4df05c455a299bdf9ed051edf8d1dd6637210226c687ae8b4",
+        "size": 3308
+      },
+      "contextlean": {
+        "sha256": "0841d1251aea87d4df05c455a299bdf9ed051edf8d1dd6637210226c687ae8b4",
+        "size": 3308
+      },
+      "condition_specific": false,
+      "status": "identical"
+    },
+    {
+      "path": "tests/test_expenses.py",
+      "vanilla": {
+        "sha256": "542ad1c532288b3c460269224ecf161dd560e6e0d5c9c783f83cec4e593a194b",
+        "size": 1570
+      },
+      "contextlean": {
+        "sha256": "542ad1c532288b3c460269224ecf161dd560e6e0d5c9c783f83cec4e593a194b",
+        "size": 1570
+      },
+      "condition_specific": false,
+      "status": "identical"
+    }
+  ],
+  "task_prompts": {
+    "feature": {
+      "sha256": "9536be5c20cdb42ff3283091b2d6fd91616ae7294a779b2d55bd0e3b40f3d77d",
+      "size": 578,
+      "pair_bytes_equal": true
+    }
+  }
+}

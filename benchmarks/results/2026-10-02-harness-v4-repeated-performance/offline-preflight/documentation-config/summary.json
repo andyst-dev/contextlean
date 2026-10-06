@@ -1,0 +1,278 @@
+{
+  "schema_version": 4,
+  "benchmark_harness_version": 4,
+  "kind": "contextlean-graded-validation",
+  "experiment_kind": "performance",
+  "status": "preflight-passed",
+  "contextlean_version": "0.2.1",
+  "started_at": "2026-10-02T12:17:14+00:00",
+  "model": "gpt-5.6-sol",
+  "provider": "codex",
+  "reasoning": "high",
+  "repeats": 3,
+  "expected_runs": 6,
+  "schedule": [
+    {
+      "sequence": 1,
+      "task": "documentation-config",
+      "repeat": 1,
+      "condition": "vanilla"
+    },
+    {
+      "sequence": 2,
+      "task": "documentation-config",
+      "repeat": 1,
+      "condition": "contextlean"
+    },
+    {
+      "sequence": 3,
+      "task": "documentation-config",
+      "repeat": 2,
+      "condition": "contextlean"
+    },
+    {
+      "sequence": 4,
+      "task": "documentation-config",
+      "repeat": 2,
+      "condition": "vanilla"
+    },
+    {
+      "sequence": 5,
+      "task": "documentation-config",
+      "repeat": 3,
+      "condition": "vanilla"
+    },
+    {
+      "sequence": 6,
+      "task": "documentation-config",
+      "repeat": 3,
+      "condition": "contextlean"
+    }
+  ],
+  "runtime": {
+    "os": "Darwin",
+    "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+    "architecture": "arm64",
+    "binaries": {
+      "python3": {
+        "path": "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "version": "Python 3.14.4",
+        "sha256": "b874063062531b7ac73b400141e9ce95184945f86fa1bda91bab5c6671a55149",
+        "selection": "resolved executable"
+      },
+      "git": {
+        "path": "/Applications/Xcode.app/Contents/Developer/usr/bin/git",
+        "version": "git version 2.54.0 (Apple Git-157)",
+        "sha256": "9a1c8fc68dc75e1b3c0cd8e5ad9d13ac9bc92cb53c9578b3cff4beaf2e9b1e70",
+        "selection": "active developer directory; bypass Apple xcrun launcher",
+        "exec_path": "/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core"
+      },
+      "rg": {
+        "path": "/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path/rg",
+        "version": "ripgrep 15.2.0 (rev e89fff89ac)\n\nfeatures:+pcre2\nsimd(compile):+NEON\nsimd(runtime):+NEON\n\nPCRE2 10.45 is available (JIT is available)",
+        "sha256": "c755a455049f3b1408f6525a54a139135cf145f5a2b68ab3ebdc64e821b87ea0",
+        "selection": "resolved executable"
+      },
+      "cli": {
+        "path": "<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin/codex",
+        "version": "codex-cli 0.147.0",
+        "sha256": "19c4f144c5226a9f17c58e6f0fa854843b0f77a6eb420f40e2745a12f10f5d37",
+        "selection": "resolved executable"
+      },
+      "shell": {
+        "path": "/bin/zsh",
+        "version": "zsh 5.9 (arm64-apple-darwin26.0)",
+        "sha256": "abc56520c469fa4985fca02c5f55621932ad79de4f36440a64a27526f4b535ef",
+        "selection": "resolved executable"
+      }
+    },
+    "dependency_environment": "standard-library-only; dependencies are not installed"
+  },
+  "fixture_digest": "7642a99b1020d72fd33f9f6e23f53ed42d1f1b26bdb9a24d9b08ed25e8899dbe",
+  "input_hashes": {
+    "benchmarks/evaluate.py": "3200e20da7522c1a063cda247433efcdcaf2e6f945c7cdf951dee35e624fd686",
+    "benchmarks/tasks/suite.json": "bc40082c4e77dc11a268b5593f313d6b1b4b51062c3818effb64bfe03a744c62",
+    "benchmarks/run_benchmark.py": "b2c94aed01c614104266a344461f3ba81ded41457c9cf8859fb9bc5e819c0fac",
+    "benchmarks/harness.py": "b44a58caf5006a3f6535402d6884fc3ad39c18130aeeb97681d8c4cb65ce2541",
+    "benchmarks/execution.py": "04d91222a0451758ead777d28339e45844cddf8134f2984c99a7232041fa1f31",
+    "benchmarks/runtime.py": "45dd1cd45a3d4bb37ce814c270685ac6bb48fcef259244fc4b2ef6ceb9d336c9",
+    "benchmarks/trace.py": "1493b336ad1c7e45acf4e04d65ffa1bb39ce3b3ae165000b2fc3ded62af2baa6",
+    "benchmarks/prepare_fixture.py": "2709f571c6cb9e36618db60fc2478cc19ae8dd571b572cf91111028359dfa075",
+    "skills/benchmark/scripts/benchmark.py": "64602349dd6c60e159024160db7d5d768e73053a1d544eb97469b17be9414311"
+  },
+  "tasks_file_sha256": "e3dcf87c2b3c0572cab212ddf92ffcdaa7b1b2a248866338b805bed31cd432e8",
+  "quota": {
+    "state": "unknown",
+    "reliable_check_available": false
+  },
+  "cache_state": "uncontrolled",
+  "tasks": [
+    {
+      "id": "documentation-config",
+      "category": "documentation/configuration",
+      "prompt": "Change the configured default currency from USD to EUR and update the README to match. --currency GBP must still override the default. Keep expense amounts and grouping behavior unchanged. Verify the documented example commands and run the tests.",
+      "executed_prompt": "Work only in this local sample repository. Do not use network services, install dependencies or change agent guidance. Use the existing standard-library tests.\n\nChange the configured default currency from USD to EUR and update the README to match. --currency GBP must still override the default. Keep expense amounts and grouping behavior unchanged. Verify the documented example commands and run the tests."
+    }
+  ],
+  "runs": [],
+  "preparation_slots": [
+    {
+      "sequence": 1,
+      "task": "documentation-config",
+      "repeat": 1,
+      "condition": "vanilla",
+      "preparation_passed": true,
+      "cleanup_verified": true,
+      "root": "<session-root>",
+      "previous_roots_absent": true,
+      "session_artifacts": {
+        "home/.bash_profile": {
+          "kind": "file",
+          "size": 2388
+        },
+        "home/.profile": {
+          "kind": "file",
+          "size": 2388
+        },
+        "previous-slot-scratch": {
+          "kind": "file",
+          "size": 20
+        }
+      },
+      "root_absent": true
+    },
+    {
+      "sequence": 2,
+      "task": "documentation-config",
+      "repeat": 1,
+      "condition": "contextlean",
+      "preparation_passed": true,
+      "cleanup_verified": true,
+      "root": "<session-root>",
+      "previous_roots_absent": true,
+      "session_artifacts": {
+        "home/.bash_profile": {
+          "kind": "file",
+          "size": 2388
+        },
+        "home/.profile": {
+          "kind": "file",
+          "size": 2388
+        },
+        "previous-slot-scratch": {
+          "kind": "file",
+          "size": 20
+        }
+      },
+      "root_absent": true
+    },
+    {
+      "sequence": 3,
+      "task": "documentation-config",
+      "repeat": 2,
+      "condition": "contextlean",
+      "preparation_passed": true,
+      "cleanup_verified": true,
+      "root": "<session-root>",
+      "previous_roots_absent": true,
+      "session_artifacts": {
+        "home/.bash_profile": {
+          "kind": "file",
+          "size": 2388
+        },
+        "home/.profile": {
+          "kind": "file",
+          "size": 2388
+        },
+        "previous-slot-scratch": {
+          "kind": "file",
+          "size": 20
+        }
+      },
+      "root_absent": true
+    },
+    {
+      "sequence": 4,
+      "task": "documentation-config",
+      "repeat": 2,
+      "condition": "vanilla",
+      "preparation_passed": true,
+      "cleanup_verified": true,
+      "root": "<session-root>",
+      "previous_roots_absent": true,
+      "session_artifacts": {
+        "home/.bash_profile": {
+          "kind": "file",
+          "size": 2388
+        },
+        "home/.profile": {
+          "kind": "file",
+          "size": 2388
+        },
+        "previous-slot-scratch": {
+          "kind": "file",
+          "size": 20
+        }
+      },
+      "root_absent": true
+    },
+    {
+      "sequence": 5,
+      "task": "documentation-config",
+      "repeat": 3,
+      "condition": "vanilla",
+      "preparation_passed": true,
+      "cleanup_verified": true,
+      "root": "<session-root>",
+      "previous_roots_absent": true,
+      "session_artifacts": {
+        "home/.bash_profile": {
+          "kind": "file",
+          "size": 2388
+        },
+        "home/.profile": {
+          "kind": "file",
+          "size": 2388
+        },
+        "previous-slot-scratch": {
+          "kind": "file",
+          "size": 20
+        }
+      },
+      "root_absent": true
+    },
+    {
+      "sequence": 6,
+      "task": "documentation-config",
+      "repeat": 3,
+      "condition": "contextlean",
+      "preparation_passed": true,
+      "cleanup_verified": true,
+      "root": "<session-root>",
+      "previous_roots_absent": true,
+      "session_artifacts": {
+        "home/.bash_profile": {
+          "kind": "file",
+          "size": 2388
+        },
+        "home/.profile": {
+          "kind": "file",
+          "size": 2388
+        },
+        "previous-slot-scratch": {
+          "kind": "file",
+          "size": 20
+        }
+      },
+      "root_absent": true
+    }
+  ],
+  "limitations": [
+    "Model stochasticity, cache/service load and hidden provider implementation are uncontrolled.",
+    "Only exposed command/usage/coverage events are captured; no per-action token estimates.",
+    "Native filesystem boundary is required; unavailable or failed boundaries block execution."
+  ],
+  "result": "Deterministic preflight passed; zero model calls.",
+  "summary": [],
+  "model_calls": 0
+}

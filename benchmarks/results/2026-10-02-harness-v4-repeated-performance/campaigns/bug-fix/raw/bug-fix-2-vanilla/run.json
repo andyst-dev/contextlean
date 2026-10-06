@@ -1,0 +1,2478 @@
+{
+  "sequence": 4,
+  "task": "bug-fix",
+  "repeat": 2,
+  "condition": "vanilla",
+  "benchmark_harness_version": 4,
+  "timestamp": "2026-10-02T12:23:42+00:00",
+  "model_invocation_attempted": true,
+  "started_at": "2026-10-02T12:23:44+00:00",
+  "receipt": {
+    "benchmark_harness_version": 4,
+    "runtime": {
+      "os": "Darwin",
+      "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+      "architecture": "arm64",
+      "binaries": {
+        "python3": {
+          "path": "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+          "version": "Python 3.14.4",
+          "sha256": "b874063062531b7ac73b400141e9ce95184945f86fa1bda91bab5c6671a55149",
+          "selection": "resolved executable"
+        },
+        "git": {
+          "path": "/Applications/Xcode.app/Contents/Developer/usr/bin/git",
+          "version": "git version 2.54.0 (Apple Git-157)",
+          "sha256": "9a1c8fc68dc75e1b3c0cd8e5ad9d13ac9bc92cb53c9578b3cff4beaf2e9b1e70",
+          "selection": "active developer directory; bypass Apple xcrun launcher",
+          "exec_path": "/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core"
+        },
+        "rg": {
+          "path": "/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path/rg",
+          "version": "ripgrep 15.2.0 (rev e89fff89ac)\n\nfeatures:+pcre2\nsimd(compile):+NEON\nsimd(runtime):+NEON\n\nPCRE2 10.45 is available (JIT is available)",
+          "sha256": "c755a455049f3b1408f6525a54a139135cf145f5a2b68ab3ebdc64e821b87ea0",
+          "selection": "resolved executable"
+        },
+        "cli": {
+          "path": "<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin/codex",
+          "version": "codex-cli 0.147.0",
+          "sha256": "19c4f144c5226a9f17c58e6f0fa854843b0f77a6eb420f40e2745a12f10f5d37",
+          "selection": "resolved executable"
+        },
+        "shell": {
+          "path": "/bin/zsh",
+          "version": "zsh 5.9 (arm64-apple-darwin26.0)",
+          "sha256": "abc56520c469fa4985fca02c5f55621932ad79de4f36440a64a27526f4b535ef",
+          "selection": "resolved executable"
+        }
+      },
+      "dependency_environment": "standard-library-only; dependencies are not installed"
+    },
+    "effective_runtime": {
+      "passed": true,
+      "requested": {
+        "os": "Darwin",
+        "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+        "architecture": "arm64",
+        "binaries": {
+          "python3": {
+            "path": "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+            "version": "Python 3.14.4",
+            "sha256": "b874063062531b7ac73b400141e9ce95184945f86fa1bda91bab5c6671a55149",
+            "selection": "resolved executable"
+          },
+          "git": {
+            "path": "/Applications/Xcode.app/Contents/Developer/usr/bin/git",
+            "version": "git version 2.54.0 (Apple Git-157)",
+            "sha256": "9a1c8fc68dc75e1b3c0cd8e5ad9d13ac9bc92cb53c9578b3cff4beaf2e9b1e70",
+            "selection": "active developer directory; bypass Apple xcrun launcher",
+            "exec_path": "/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core"
+          },
+          "rg": {
+            "path": "/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path/rg",
+            "version": "ripgrep 15.2.0 (rev e89fff89ac)\n\nfeatures:+pcre2\nsimd(compile):+NEON\nsimd(runtime):+NEON\n\nPCRE2 10.45 is available (JIT is available)",
+            "sha256": "c755a455049f3b1408f6525a54a139135cf145f5a2b68ab3ebdc64e821b87ea0",
+            "selection": "resolved executable"
+          },
+          "cli": {
+            "path": "<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin/codex",
+            "version": "codex-cli 0.147.0",
+            "sha256": "19c4f144c5226a9f17c58e6f0fa854843b0f77a6eb420f40e2745a12f10f5d37",
+            "selection": "resolved executable"
+          },
+          "shell": {
+            "path": "/bin/zsh",
+            "version": "zsh 5.9 (arm64-apple-darwin26.0)",
+            "sha256": "abc56520c469fa4985fca02c5f55621932ad79de4f36440a64a27526f4b535ef",
+            "selection": "resolved executable"
+          }
+        },
+        "dependency_environment": "standard-library-only; dependencies are not installed"
+      },
+      "effective": {
+        "binaries": {
+          "python3": {
+            "path": "<session-root>/cache/bin/python3",
+            "version": "Python 3.14.4",
+            "exit_code": 0,
+            "stderr": ""
+          },
+          "git": {
+            "path": "<session-root>/cache/bin/git",
+            "version": "git version 2.54.0 (Apple Git-157)",
+            "exit_code": 0,
+            "stderr": ""
+          },
+          "rg": {
+            "path": "<session-root>/cache/bin/rg",
+            "version": "ripgrep 15.2.0 (rev e89fff89ac)\n\nfeatures:+pcre2\nsimd(compile):+NEON\nsimd(runtime):+NEON\n\nPCRE2 10.45 is available (JIT is available)",
+            "exit_code": 0,
+            "stderr": ""
+          }
+        },
+        "environment": {
+          "LANG": "C.UTF-8",
+          "LC_ALL": "C.UTF-8",
+          "TERM": "dumb",
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "TZ": "UTC",
+          "GIT_CONFIG_NOSYSTEM": "1",
+          "GIT_CONFIG_GLOBAL": "<session-root>/cache/gitconfig",
+          "GIT_ATTR_NOSYSTEM": "1",
+          "GIT_AUTHOR_NAME": "Benchmark fixture",
+          "GIT_COMMITTER_NAME": "Benchmark fixture",
+          "GIT_AUTHOR_EMAIL": "<redacted>",
+          "GIT_COMMITTER_EMAIL": "<redacted>",
+          "GIT_AUTHOR_DATE": "2000-01-01T00:00:00Z",
+          "GIT_COMMITTER_DATE": "2000-01-01T00:00:00Z",
+          "HOME": "<session-root>/tmp/home",
+          "XDG_CACHE_HOME": "<session-root>/tmp/cache",
+          "XDG_CONFIG_HOME": "<session-root>/tmp/config",
+          "PYTHONPYCACHEPREFIX": "<session-root>/tmp/pycache",
+          "PYTHONUSERBASE": "<session-root>/tmp/python-user",
+          "PATH": "<session-root>/cache/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+          "SHELL": "/bin/zsh",
+          "TMPDIR": "<session-root>/tmp",
+          "TMP": "<session-root>/tmp",
+          "TEMP": "<session-root>/tmp",
+          "CODEX_HOME": "<session-root>/cache/profile",
+          "CLAUDE_CONFIG_DIR": "<session-root>/cache/profile",
+          "ZDOTDIR": "<session-root>/cache/shell",
+          "ENV": "<session-root>/cache/shell/environment",
+          "BASH_ENV": "<session-root>/cache/shell/environment",
+          "GIT_EXEC_PATH": "/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core",
+          "PYTHONNOUSERSITE": "1"
+        },
+        "shell": {
+          "identity": "/bin/zsh",
+          "version": "5.9"
+        },
+        "python_executable": "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "git_config": {
+          "stdout": "file:.git/config\tcore.repositoryformatversion=0\nfile:.git/config\tcore.filemode=false\nfile:.git/config\tcore.bare=false\nfile:.git/config\tcore.logallrefupdates=false\nfile:.git/config\tcore.ignorecase=false\nfile:.git/config\tcore.precomposeunicode=false\nfile:.git/config\tcore.autocrlf=false\nfile:.git/config\tcore.hookspath=/dev/null\nfile:.git/config\tuser.name=Benchmark fixture\nfile:.git/config\tuser.email=fixture@example.invalid\nfile:.git/config\tcommit.gpgsign=false\n",
+          "stderr": "",
+          "exit_code": 0
+        },
+        "cache_writes": {
+          "HOME": true,
+          "TMPDIR": true,
+          "XDG_CACHE_HOME": true,
+          "XDG_CONFIG_HOME": true,
+          "PYTHONPYCACHEPREFIX": true,
+          "PYTHONUSERBASE": true
+        }
+      },
+      "invocation": [
+        "<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin/codex",
+        "sandbox",
+        "--permission-profile",
+        "contextlean-session",
+        "--include-managed-config",
+        "--cd",
+        "<session-root>/repo",
+        "--config",
+        "default_permissions=\"contextlean-session\"",
+        "--config",
+        "permissions.contextlean-session={\"filesystem\"={\":root\"=\"deny\",\":minimal\"=\"read\",\"/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path\"=\"read\",\"/Applications/Xcode.app/Contents/Developer/usr/bin\"=\"read\",\"/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core\"=\"read\",\"<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin\"=\"read\",\"/bin\"=\"read\",\"/opt/homebrew\"=\"read\",\"/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14\"=\"read\",\"/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/bin\"=\"read\",\"<session-root>/cache/bin\"=\"read\",\"<session-root>/cache/gitconfig\"=\"read\",\"<session-root>/cache/profile\"=\"read\",\"<session-root>/cache/shell\"=\"read\",\"<evidence>\"=\"deny\",\"<session-root>/repo\"=\"write\",\"<session-root>/repo/.git\"=\"read\",\"<session-root>/tmp\"=\"write\"},\"network\"={\"enabled\"=false}}",
+        "--config",
+        "approval_policy=\"never\"",
+        "--config",
+        "web_search=\"disabled\"",
+        "--config",
+        "shell_environment_policy={\"inherit\"=\"none\",\"set\"={\"LANG\"=\"C.UTF-8\",\"LC_ALL\"=\"C.UTF-8\",\"TERM\"=\"dumb\",\"PYTHONDONTWRITEBYTECODE\"=\"1\",\"TZ\"=\"UTC\",\"GIT_CONFIG_NOSYSTEM\"=\"1\",\"GIT_CONFIG_GLOBAL\"=\"<session-root>/cache/gitconfig\",\"GIT_ATTR_NOSYSTEM\"=\"1\",\"GIT_AUTHOR_NAME\"=\"Benchmark fixture\",\"GIT_COMMITTER_NAME\"=\"Benchmark fixture\",\"GIT_AUTHOR_EMAIL\"=\"fixture@example.invalid\",\"GIT_COMMITTER_EMAIL\"=\"fixture@example.invalid\",\"GIT_AUTHOR_DATE\"=\"2000-01-01T00:00:00Z\",\"GIT_COMMITTER_DATE\"=\"2000-01-01T00:00:00Z\",\"HOME\"=\"<session-root>/tmp/home\",\"XDG_CACHE_HOME\"=\"<session-root>/tmp/cache\",\"XDG_CONFIG_HOME\"=\"<session-root>/tmp/config\",\"PYTHONPYCACHEPREFIX\"=\"<session-root>/tmp/pycache\",\"PYTHONUSERBASE\"=\"<session-root>/tmp/python-user\",\"PATH\"=\"<session-root>/cache/bin:/usr/bin:/bin:/usr/sbin:/sbin\",\"SHELL\"=\"/bin/zsh\",\"TMPDIR\"=\"<session-root>/tmp\",\"TMP\"=\"<session-root>/tmp\",\"TEMP\"=\"<session-root>/tmp\",\"CODEX_HOME\"=\"<session-root>/cache/profile\",\"CLAUDE_CONFIG_DIR\"=\"<session-root>/cache/profile\",\"ZDOTDIR\"=\"<session-root>/cache/shell\",\"ENV\"=\"<session-root>/cache/shell/environment\",\"BASH_ENV\"=\"<session-root>/cache/shell/environment\",\"GIT_EXEC_PATH\"=\"/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core\",\"PYTHONNOUSERSITE\"=\"1\"},\"experimental_use_profile\"=false}",
+        "--",
+        "/bin/zsh",
+        "-lc",
+        "python3 -c 'environment_names = ['\"'\"'LANG'\"'\"', '\"'\"'LC_ALL'\"'\"', '\"'\"'TERM'\"'\"', '\"'\"'PYTHONDONTWRITEBYTECODE'\"'\"', '\"'\"'TZ'\"'\"', '\"'\"'GIT_CONFIG_NOSYSTEM'\"'\"', '\"'\"'GIT_CONFIG_GLOBAL'\"'\"', '\"'\"'GIT_ATTR_NOSYSTEM'\"'\"', '\"'\"'GIT_AUTHOR_NAME'\"'\"', '\"'\"'GIT_COMMITTER_NAME'\"'\"', '\"'\"'GIT_AUTHOR_EMAIL'\"'\"', '\"'\"'GIT_COMMITTER_EMAIL'\"'\"', '\"'\"'GIT_AUTHOR_DATE'\"'\"', '\"'\"'GIT_COMMITTER_DATE'\"'\"', '\"'\"'HOME'\"'\"', '\"'\"'XDG_CACHE_HOME'\"'\"', '\"'\"'XDG_CONFIG_HOME'\"'\"', '\"'\"'PYTHONPYCACHEPREFIX'\"'\"', '\"'\"'PYTHONUSERBASE'\"'\"', '\"'\"'PATH'\"'\"', '\"'\"'SHELL'\"'\"', '\"'\"'TMPDIR'\"'\"', '\"'\"'TMP'\"'\"', '\"'\"'TEMP'\"'\"', '\"'\"'CODEX_HOME'\"'\"', '\"'\"'CLAUDE_CONFIG_DIR'\"'\"', '\"'\"'ZDOTDIR'\"'\"', '\"'\"'ENV'\"'\"', '\"'\"'BASH_ENV'\"'\"', '\"'\"'GIT_EXEC_PATH'\"'\"', '\"'\"'PYTHONNOUSERSITE'\"'\"']\nimport json, os, pathlib, subprocess, sys\nobserved = {\"binaries\": {}, \"environment\": {k: os.environ.get(k) for k in environment_names},\n            \"shell\": {\"identity\": sys.argv[1], \"version\": sys.argv[2]}}\nfor name, path in zip([\"python3\", \"git\", \"rg\"], sys.argv[3:]):\n    result = subprocess.run([name, \"--version\"], capture_output=True, text=True)\n    observed[\"binaries\"][name] = {\"path\": path, \"version\": result.stdout.strip(),\n        \"exit_code\": result.returncode, \"stderr\": result.stderr}\nobserved[\"python_executable\"] = sys.executable\nresult = subprocess.run([\"git\", \"config\", \"--show-origin\", \"--list\"],\n                        capture_output=True, text=True)\nobserved[\"git_config\"] = {\"stdout\": result.stdout, \"stderr\": result.stderr,\n                          \"exit_code\": result.returncode}\nobserved[\"cache_writes\"] = {}\nfor name in [\"HOME\", \"TMPDIR\", \"XDG_CACHE_HOME\", \"XDG_CONFIG_HOME\",\n             \"PYTHONPYCACHEPREFIX\", \"PYTHONUSERBASE\"]:\n    path = pathlib.Path(os.environ[name]) / \"runtime-cache-probe\"\n    path.write_text(\"session-local\")\n    path.unlink()\n    observed[\"cache_writes\"][name] = True\nprint(json.dumps(observed))\n' \"$0\" \"${ZSH_VERSION:-${BASH_VERSION:-}}\" \"$(command -v python3)\" \"$(command -v git)\" \"$(command -v rg)\""
+      ],
+      "exit_code": 0,
+      "stdout": "{\"binaries\": {\"python3\": {\"path\": \"<session-root>/cache/bin/python3\", \"version\": \"Python 3.14.4\", \"exit_code\": 0, \"stderr\": \"\"}, \"git\": {\"path\": \"<session-root>/cache/bin/git\", \"version\": \"git version 2.54.0 (Apple Git-157)\", \"exit_code\": 0, \"stderr\": \"\"}, \"rg\": {\"path\": \"<session-root>/cache/bin/rg\", \"version\": \"ripgrep 15.2.0 (rev e89fff89ac)\\n\\nfeatures:+pcre2\\nsimd(compile):+NEON\\nsimd(runtime):+NEON\\n\\nPCRE2 10.45 is available (JIT is available)\", \"exit_code\": 0, \"stderr\": \"\"}}, \"environment\": {\"LANG\": \"C.UTF-8\", \"LC_ALL\": \"C.UTF-8\", \"TERM\": \"dumb\", \"PYTHONDONTWRITEBYTECODE\": \"1\", \"TZ\": \"UTC\", \"GIT_CONFIG_NOSYSTEM\": \"1\", \"GIT_CONFIG_GLOBAL\": \"<session-root>/cache/gitconfig\", \"GIT_ATTR_NOSYSTEM\": \"1\", \"GIT_AUTHOR_NAME\": \"Benchmark fixture\", \"GIT_COMMITTER_NAME\": \"Benchmark fixture\", \"GIT_AUTHOR_EMAIL\": \"fixture@example.invalid\", \"GIT_COMMITTER_EMAIL\": \"fixture@example.invalid\", \"GIT_AUTHOR_DATE\": \"2000-01-01T00:00:00Z\", \"GIT_COMMITTER_DATE\": \"2000-01-01T00:00:00Z\", \"HOME\": \"<session-root>/tmp/home\", \"XDG_CACHE_HOME\": \"<session-root>/tmp/cache\", \"XDG_CONFIG_HOME\": \"<session-root>/tmp/config\", \"PYTHONPYCACHEPREFIX\": \"<session-root>/tmp/pycache\", \"PYTHONUSERBASE\": \"<session-root>/tmp/python-user\", \"PATH\": \"<session-root>/cache/bin:/usr/bin:/bin:/usr/sbin:/sbin\", \"SHELL\": \"/bin/zsh\", \"TMPDIR\": \"<session-root>/tmp\", \"TMP\": \"<session-root>/tmp\", \"TEMP\": \"<session-root>/tmp\", \"CODEX_HOME\": \"<session-root>/cache/profile\", \"CLAUDE_CONFIG_DIR\": \"<session-root>/cache/profile\", \"ZDOTDIR\": \"<session-root>/cache/shell\", \"ENV\": \"<session-root>/cache/shell/environment\", \"BASH_ENV\": \"<session-root>/cache/shell/environment\", \"GIT_EXEC_PATH\": \"/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core\", \"PYTHONNOUSERSITE\": \"1\"}, \"shell\": {\"identity\": \"/bin/zsh\", \"version\": \"5.9\"}, \"python_executable\": \"/opt/homebrew/opt/python@3.14/bin/python3.14\", \"git_config\": {\"stdout\": \"file:.git/config\\tcore.repositoryformatversion=0\\nfile:.git/config\\tcore.filemode=false\\nfile:.git/config\\tcore.bare=false\\nfile:.git/config\\tcore.logallrefupdates=false\\nfile:.git/config\\tcore.ignorecase=false\\nfile:.git/config\\tcore.precomposeunicode=false\\nfile:.git/config\\tcore.autocrlf=false\\nfile:.git/config\\tcore.hookspath=/dev/null\\nfile:.git/config\\tuser.name=Benchmark fixture\\nfile:.git/config\\tuser.email=fixture@example.invalid\\nfile:.git/config\\tcommit.gpgsign=false\\n\", \"stderr\": \"\", \"exit_code\": 0}, \"cache_writes\": {\"HOME\": true, \"TMPDIR\": true, \"XDG_CACHE_HOME\": true, \"XDG_CONFIG_HOME\": true, \"PYTHONPYCACHEPREFIX\": true, \"PYTHONUSERBASE\": true}}\n",
+      "stderr": "",
+      "errors": [],
+      "scope": "offline CLI-native login-shell command path; no model request"
+    },
+    "coverage_parser_version": 2,
+    "cwd": "<session-root>/repo",
+    "environment": {
+      "BASH_ENV": {
+        "present": true,
+        "value": "<session-root>/cache/shell/environment"
+      },
+      "CLAUDE_CONFIG_DIR": {
+        "present": true,
+        "value": "<session-root>/cache/profile"
+      },
+      "CODEX_HOME": {
+        "present": true,
+        "value": "<session-root>/cache/profile"
+      },
+      "ENV": {
+        "present": true,
+        "value": "<session-root>/cache/shell/environment"
+      },
+      "GIT_ATTR_NOSYSTEM": {
+        "present": true,
+        "value": "1"
+      },
+      "GIT_AUTHOR_DATE": {
+        "present": true,
+        "value": "2000-01-01T00:00:00Z"
+      },
+      "GIT_AUTHOR_EMAIL": {
+        "present": true
+      },
+      "GIT_AUTHOR_NAME": {
+        "present": true,
+        "value": "Benchmark fixture"
+      },
+      "GIT_COMMITTER_DATE": {
+        "present": true,
+        "value": "2000-01-01T00:00:00Z"
+      },
+      "GIT_COMMITTER_EMAIL": {
+        "present": true
+      },
+      "GIT_COMMITTER_NAME": {
+        "present": true,
+        "value": "Benchmark fixture"
+      },
+      "GIT_CONFIG_GLOBAL": {
+        "present": true,
+        "value": "<session-root>/cache/gitconfig"
+      },
+      "GIT_CONFIG_NOSYSTEM": {
+        "present": true,
+        "value": "1"
+      },
+      "GIT_EXEC_PATH": {
+        "present": true,
+        "value": "/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core"
+      },
+      "HOME": {
+        "present": true,
+        "value": "<session-root>/tmp/home"
+      },
+      "LANG": {
+        "present": true,
+        "value": "C.UTF-8"
+      },
+      "LC_ALL": {
+        "present": true,
+        "value": "C.UTF-8"
+      },
+      "PATH": {
+        "present": true,
+        "value": "<session-root>/cache/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      },
+      "PYTHONDONTWRITEBYTECODE": {
+        "present": true,
+        "value": "1"
+      },
+      "PYTHONNOUSERSITE": {
+        "present": true,
+        "value": "1"
+      },
+      "PYTHONPYCACHEPREFIX": {
+        "present": true,
+        "value": "<session-root>/tmp/pycache"
+      },
+      "PYTHONUSERBASE": {
+        "present": true,
+        "value": "<session-root>/tmp/python-user"
+      },
+      "SHELL": {
+        "present": true,
+        "value": "/bin/zsh"
+      },
+      "TEMP": {
+        "present": true,
+        "value": "<session-root>/tmp"
+      },
+      "TERM": {
+        "present": true,
+        "value": "dumb"
+      },
+      "TMP": {
+        "present": true,
+        "value": "<session-root>/tmp"
+      },
+      "TMPDIR": {
+        "present": true,
+        "value": "<session-root>/tmp"
+      },
+      "TZ": {
+        "present": true,
+        "value": "UTC"
+      },
+      "XDG_CACHE_HOME": {
+        "present": true,
+        "value": "<session-root>/tmp/cache"
+      },
+      "XDG_CONFIG_HOME": {
+        "present": true,
+        "value": "<session-root>/tmp/config"
+      },
+      "ZDOTDIR": {
+        "present": true,
+        "value": "<session-root>/cache/shell"
+      },
+      "OPENAI_API_KEY": {
+        "present": false
+      },
+      "CLAUDE_CODE_OAUTH_TOKEN": {
+        "present": false
+      },
+      "ANTHROPIC_API_KEY": {
+        "present": false
+      }
+    },
+    "permission": {
+      "execution_strategy": "provider-native",
+      "provider_native_sandbox": true,
+      "outer_os_sandbox": false,
+      "benchmark_harness_version": 4,
+      "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+      "os": "Darwin",
+      "backend": "codex-native",
+      "primitive_backend": "sandbox-exec",
+      "provider": "codex",
+      "cli_version": "codex-cli 0.147.0",
+      "sandbox": "workspace-write",
+      "permission_mode": "approval-never",
+      "effective_writable_roots": [
+        "<session-root>/repo",
+        "<session-root>/tmp"
+      ],
+      "cli_control_writable": [
+        "<session-root>/cache",
+        "<session-root>/artifacts",
+        "<session-root>/receipts"
+      ],
+      "cwd_policy": "isolated session repository",
+      "environment_policy": "allowlisted environment; session-local home/temp/cache; pinned PATH",
+      "evidence_readable": false,
+      "shared_tmp_writable": false,
+      "native_preflight": {
+        "repo_write": true,
+        "tmp_write": true,
+        "parent_write": false,
+        "outside_write": false,
+        "evidence_read": false,
+        "outside_read": false
+      },
+      "task_control_writable": false,
+      "native_sandbox_available": true,
+      "probe_scope": "provider CLI native-command path",
+      "permission_probe": {
+        "passed": true,
+        "primitive_passed": null,
+        "invocation": [
+          "<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin/codex",
+          "sandbox",
+          "--permission-profile",
+          "contextlean-session",
+          "--include-managed-config",
+          "--cd",
+          "<session-root>/repo",
+          "--config",
+          "default_permissions=\"contextlean-session\"",
+          "--config",
+          "permissions.contextlean-session={\"filesystem\"={\":root\"=\"deny\",\":minimal\"=\"read\",\"/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path\"=\"read\",\"/Applications/Xcode.app/Contents/Developer/usr/bin\"=\"read\",\"/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core\"=\"read\",\"<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin\"=\"read\",\"/bin\"=\"read\",\"/opt/homebrew\"=\"read\",\"/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14\"=\"read\",\"/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/bin\"=\"read\",\"<session-root>/cache/bin\"=\"read\",\"<session-root>/cache/gitconfig\"=\"read\",\"<session-root>/cache/profile\"=\"read\",\"<session-root>/cache/shell\"=\"read\",\"<evidence>\"=\"deny\",\"<session-root>/repo\"=\"write\",\"<session-root>/repo/.git\"=\"read\",\"<session-root>/tmp\"=\"write\"},\"network\"={\"enabled\"=false}}",
+          "--config",
+          "approval_policy=\"never\"",
+          "--config",
+          "web_search=\"disabled\"",
+          "--config",
+          "shell_environment_policy={\"inherit\"=\"none\",\"set\"={\"LANG\"=\"C.UTF-8\",\"LC_ALL\"=\"C.UTF-8\",\"TERM\"=\"dumb\",\"PYTHONDONTWRITEBYTECODE\"=\"1\",\"TZ\"=\"UTC\",\"GIT_CONFIG_NOSYSTEM\"=\"1\",\"GIT_CONFIG_GLOBAL\"=\"<session-root>/cache/gitconfig\",\"GIT_ATTR_NOSYSTEM\"=\"1\",\"GIT_AUTHOR_NAME\"=\"Benchmark fixture\",\"GIT_COMMITTER_NAME\"=\"Benchmark fixture\",\"GIT_AUTHOR_EMAIL\"=\"fixture@example.invalid\",\"GIT_COMMITTER_EMAIL\"=\"fixture@example.invalid\",\"GIT_AUTHOR_DATE\"=\"2000-01-01T00:00:00Z\",\"GIT_COMMITTER_DATE\"=\"2000-01-01T00:00:00Z\",\"HOME\"=\"<session-root>/tmp/home\",\"XDG_CACHE_HOME\"=\"<session-root>/tmp/cache\",\"XDG_CONFIG_HOME\"=\"<session-root>/tmp/config\",\"PYTHONPYCACHEPREFIX\"=\"<session-root>/tmp/pycache\",\"PYTHONUSERBASE\"=\"<session-root>/tmp/python-user\",\"PATH\"=\"<session-root>/cache/bin:/usr/bin:/bin:/usr/sbin:/sbin\",\"SHELL\"=\"/bin/zsh\",\"TMPDIR\"=\"<session-root>/tmp\",\"TMP\"=\"<session-root>/tmp\",\"TEMP\"=\"<session-root>/tmp\",\"CODEX_HOME\"=\"<session-root>/cache/profile\",\"CLAUDE_CONFIG_DIR\"=\"<session-root>/cache/profile\",\"ZDOTDIR\"=\"<session-root>/cache/shell\",\"ENV\"=\"<session-root>/cache/shell/environment\",\"BASH_ENV\"=\"<session-root>/cache/shell/environment\",\"GIT_EXEC_PATH\"=\"/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core\",\"PYTHONNOUSERSITE\"=\"1\"},\"experimental_use_profile\"=false}",
+          "--",
+          "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+          "-c",
+          "import pathlib,sys,json; r=[]\nfor s in sys.argv[1:-2]:\n try:\n  p=pathlib.Path(s);p.write_text('probe');p.unlink();r.append(True)\n except PermissionError:r.append(False)\nfor s in sys.argv[-2:]:\n try:\n  pathlib.Path(s).read_bytes();r.append(True)\n except (PermissionError,FileNotFoundError):r.append(False)\nprint(json.dumps(r))\n",
+          "<session-root>/repo/.permission-probe",
+          "<session-root>/tmp/probe",
+          "<session-root>/parent-probe",
+          "<host-path>",
+          "<evidence>/permission-read-probe",
+          "<host-path>"
+        ],
+        "exit_code": 0,
+        "stdout": "[true, true, false, false, false, false]\n",
+        "stderr": "",
+        "operations": {
+          "repo_write": true,
+          "tmp_write": true,
+          "parent_write": false,
+          "outside_write": false,
+          "evidence_read": false,
+          "outside_read": false
+        },
+        "operation_exit_codes": {
+          "repo_write": null,
+          "tmp_write": null,
+          "parent_write": null,
+          "outside_write": null,
+          "evidence_read": null,
+          "outside_read": null
+        },
+        "operation_result_scope": "each operation reports allowed/denied; exit code belongs to the enclosing CLI probe"
+      },
+      "effective_runtime": {
+        "passed": true,
+        "requested": {
+          "os": "Darwin",
+          "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+          "architecture": "arm64",
+          "binaries": {
+            "python3": {
+              "path": "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+              "version": "Python 3.14.4",
+              "sha256": "b874063062531b7ac73b400141e9ce95184945f86fa1bda91bab5c6671a55149",
+              "selection": "resolved executable"
+            },
+            "git": {
+              "path": "/Applications/Xcode.app/Contents/Developer/usr/bin/git",
+              "version": "git version 2.54.0 (Apple Git-157)",
+              "sha256": "9a1c8fc68dc75e1b3c0cd8e5ad9d13ac9bc92cb53c9578b3cff4beaf2e9b1e70",
+              "selection": "active developer directory; bypass Apple xcrun launcher",
+              "exec_path": "/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core"
+            },
+            "rg": {
+              "path": "/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path/rg",
+              "version": "ripgrep 15.2.0 (rev e89fff89ac)\n\nfeatures:+pcre2\nsimd(compile):+NEON\nsimd(runtime):+NEON\n\nPCRE2 10.45 is available (JIT is available)",
+              "sha256": "c755a455049f3b1408f6525a54a139135cf145f5a2b68ab3ebdc64e821b87ea0",
+              "selection": "resolved executable"
+            },
+            "cli": {
+              "path": "<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin/codex",
+              "version": "codex-cli 0.147.0",
+              "sha256": "19c4f144c5226a9f17c58e6f0fa854843b0f77a6eb420f40e2745a12f10f5d37",
+              "selection": "resolved executable"
+            },
+            "shell": {
+              "path": "/bin/zsh",
+              "version": "zsh 5.9 (arm64-apple-darwin26.0)",
+              "sha256": "abc56520c469fa4985fca02c5f55621932ad79de4f36440a64a27526f4b535ef",
+              "selection": "resolved executable"
+            }
+          },
+          "dependency_environment": "standard-library-only; dependencies are not installed"
+        },
+        "effective": {
+          "binaries": {
+            "python3": {
+              "path": "<session-root>/cache/bin/python3",
+              "version": "Python 3.14.4",
+              "exit_code": 0,
+              "stderr": ""
+            },
+            "git": {
+              "path": "<session-root>/cache/bin/git",
+              "version": "git version 2.54.0 (Apple Git-157)",
+              "exit_code": 0,
+              "stderr": ""
+            },
+            "rg": {
+              "path": "<session-root>/cache/bin/rg",
+              "version": "ripgrep 15.2.0 (rev e89fff89ac)\n\nfeatures:+pcre2\nsimd(compile):+NEON\nsimd(runtime):+NEON\n\nPCRE2 10.45 is available (JIT is available)",
+              "exit_code": 0,
+              "stderr": ""
+            }
+          },
+          "environment": {
+            "LANG": "C.UTF-8",
+            "LC_ALL": "C.UTF-8",
+            "TERM": "dumb",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "TZ": "UTC",
+            "GIT_CONFIG_NOSYSTEM": "1",
+            "GIT_CONFIG_GLOBAL": "<session-root>/cache/gitconfig",
+            "GIT_ATTR_NOSYSTEM": "1",
+            "GIT_AUTHOR_NAME": "Benchmark fixture",
+            "GIT_COMMITTER_NAME": "Benchmark fixture",
+            "GIT_AUTHOR_EMAIL": "<redacted>",
+            "GIT_COMMITTER_EMAIL": "<redacted>",
+            "GIT_AUTHOR_DATE": "2000-01-01T00:00:00Z",
+            "GIT_COMMITTER_DATE": "2000-01-01T00:00:00Z",
+            "HOME": "<session-root>/tmp/home",
+            "XDG_CACHE_HOME": "<session-root>/tmp/cache",
+            "XDG_CONFIG_HOME": "<session-root>/tmp/config",
+            "PYTHONPYCACHEPREFIX": "<session-root>/tmp/pycache",
+            "PYTHONUSERBASE": "<session-root>/tmp/python-user",
+            "PATH": "<session-root>/cache/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+            "SHELL": "/bin/zsh",
+            "TMPDIR": "<session-root>/tmp",
+            "TMP": "<session-root>/tmp",
+            "TEMP": "<session-root>/tmp",
+            "CODEX_HOME": "<session-root>/cache/profile",
+            "CLAUDE_CONFIG_DIR": "<session-root>/cache/profile",
+            "ZDOTDIR": "<session-root>/cache/shell",
+            "ENV": "<session-root>/cache/shell/environment",
+            "BASH_ENV": "<session-root>/cache/shell/environment",
+            "GIT_EXEC_PATH": "/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core",
+            "PYTHONNOUSERSITE": "1"
+          },
+          "shell": {
+            "identity": "/bin/zsh",
+            "version": "5.9"
+          },
+          "python_executable": "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "git_config": {
+            "stdout": "file:.git/config\tcore.repositoryformatversion=0\nfile:.git/config\tcore.filemode=false\nfile:.git/config\tcore.bare=false\nfile:.git/config\tcore.logallrefupdates=false\nfile:.git/config\tcore.ignorecase=false\nfile:.git/config\tcore.precomposeunicode=false\nfile:.git/config\tcore.autocrlf=false\nfile:.git/config\tcore.hookspath=/dev/null\nfile:.git/config\tuser.name=Benchmark fixture\nfile:.git/config\tuser.email=fixture@example.invalid\nfile:.git/config\tcommit.gpgsign=false\n",
+            "stderr": "",
+            "exit_code": 0
+          },
+          "cache_writes": {
+            "HOME": true,
+            "TMPDIR": true,
+            "XDG_CACHE_HOME": true,
+            "XDG_CONFIG_HOME": true,
+            "PYTHONPYCACHEPREFIX": true,
+            "PYTHONUSERBASE": true
+          }
+        },
+        "invocation": [
+          "<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin/codex",
+          "sandbox",
+          "--permission-profile",
+          "contextlean-session",
+          "--include-managed-config",
+          "--cd",
+          "<session-root>/repo",
+          "--config",
+          "default_permissions=\"contextlean-session\"",
+          "--config",
+          "permissions.contextlean-session={\"filesystem\"={\":root\"=\"deny\",\":minimal\"=\"read\",\"/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path\"=\"read\",\"/Applications/Xcode.app/Contents/Developer/usr/bin\"=\"read\",\"/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core\"=\"read\",\"<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin\"=\"read\",\"/bin\"=\"read\",\"/opt/homebrew\"=\"read\",\"/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14\"=\"read\",\"/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/bin\"=\"read\",\"<session-root>/cache/bin\"=\"read\",\"<session-root>/cache/gitconfig\"=\"read\",\"<session-root>/cache/profile\"=\"read\",\"<session-root>/cache/shell\"=\"read\",\"<evidence>\"=\"deny\",\"<session-root>/repo\"=\"write\",\"<session-root>/repo/.git\"=\"read\",\"<session-root>/tmp\"=\"write\"},\"network\"={\"enabled\"=false}}",
+          "--config",
+          "approval_policy=\"never\"",
+          "--config",
+          "web_search=\"disabled\"",
+          "--config",
+          "shell_environment_policy={\"inherit\"=\"none\",\"set\"={\"LANG\"=\"C.UTF-8\",\"LC_ALL\"=\"C.UTF-8\",\"TERM\"=\"dumb\",\"PYTHONDONTWRITEBYTECODE\"=\"1\",\"TZ\"=\"UTC\",\"GIT_CONFIG_NOSYSTEM\"=\"1\",\"GIT_CONFIG_GLOBAL\"=\"<session-root>/cache/gitconfig\",\"GIT_ATTR_NOSYSTEM\"=\"1\",\"GIT_AUTHOR_NAME\"=\"Benchmark fixture\",\"GIT_COMMITTER_NAME\"=\"Benchmark fixture\",\"GIT_AUTHOR_EMAIL\"=\"fixture@example.invalid\",\"GIT_COMMITTER_EMAIL\"=\"fixture@example.invalid\",\"GIT_AUTHOR_DATE\"=\"2000-01-01T00:00:00Z\",\"GIT_COMMITTER_DATE\"=\"2000-01-01T00:00:00Z\",\"HOME\"=\"<session-root>/tmp/home\",\"XDG_CACHE_HOME\"=\"<session-root>/tmp/cache\",\"XDG_CONFIG_HOME\"=\"<session-root>/tmp/config\",\"PYTHONPYCACHEPREFIX\"=\"<session-root>/tmp/pycache\",\"PYTHONUSERBASE\"=\"<session-root>/tmp/python-user\",\"PATH\"=\"<session-root>/cache/bin:/usr/bin:/bin:/usr/sbin:/sbin\",\"SHELL\"=\"/bin/zsh\",\"TMPDIR\"=\"<session-root>/tmp\",\"TMP\"=\"<session-root>/tmp\",\"TEMP\"=\"<session-root>/tmp\",\"CODEX_HOME\"=\"<session-root>/cache/profile\",\"CLAUDE_CONFIG_DIR\"=\"<session-root>/cache/profile\",\"ZDOTDIR\"=\"<session-root>/cache/shell\",\"ENV\"=\"<session-root>/cache/shell/environment\",\"BASH_ENV\"=\"<session-root>/cache/shell/environment\",\"GIT_EXEC_PATH\"=\"/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core\",\"PYTHONNOUSERSITE\"=\"1\"},\"experimental_use_profile\"=false}",
+          "--",
+          "/bin/zsh",
+          "-lc",
+          "python3 -c 'environment_names = ['\"'\"'LANG'\"'\"', '\"'\"'LC_ALL'\"'\"', '\"'\"'TERM'\"'\"', '\"'\"'PYTHONDONTWRITEBYTECODE'\"'\"', '\"'\"'TZ'\"'\"', '\"'\"'GIT_CONFIG_NOSYSTEM'\"'\"', '\"'\"'GIT_CONFIG_GLOBAL'\"'\"', '\"'\"'GIT_ATTR_NOSYSTEM'\"'\"', '\"'\"'GIT_AUTHOR_NAME'\"'\"', '\"'\"'GIT_COMMITTER_NAME'\"'\"', '\"'\"'GIT_AUTHOR_EMAIL'\"'\"', '\"'\"'GIT_COMMITTER_EMAIL'\"'\"', '\"'\"'GIT_AUTHOR_DATE'\"'\"', '\"'\"'GIT_COMMITTER_DATE'\"'\"', '\"'\"'HOME'\"'\"', '\"'\"'XDG_CACHE_HOME'\"'\"', '\"'\"'XDG_CONFIG_HOME'\"'\"', '\"'\"'PYTHONPYCACHEPREFIX'\"'\"', '\"'\"'PYTHONUSERBASE'\"'\"', '\"'\"'PATH'\"'\"', '\"'\"'SHELL'\"'\"', '\"'\"'TMPDIR'\"'\"', '\"'\"'TMP'\"'\"', '\"'\"'TEMP'\"'\"', '\"'\"'CODEX_HOME'\"'\"', '\"'\"'CLAUDE_CONFIG_DIR'\"'\"', '\"'\"'ZDOTDIR'\"'\"', '\"'\"'ENV'\"'\"', '\"'\"'BASH_ENV'\"'\"', '\"'\"'GIT_EXEC_PATH'\"'\"', '\"'\"'PYTHONNOUSERSITE'\"'\"']\nimport json, os, pathlib, subprocess, sys\nobserved = {\"binaries\": {}, \"environment\": {k: os.environ.get(k) for k in environment_names},\n            \"shell\": {\"identity\": sys.argv[1], \"version\": sys.argv[2]}}\nfor name, path in zip([\"python3\", \"git\", \"rg\"], sys.argv[3:]):\n    result = subprocess.run([name, \"--version\"], capture_output=True, text=True)\n    observed[\"binaries\"][name] = {\"path\": path, \"version\": result.stdout.strip(),\n        \"exit_code\": result.returncode, \"stderr\": result.stderr}\nobserved[\"python_executable\"] = sys.executable\nresult = subprocess.run([\"git\", \"config\", \"--show-origin\", \"--list\"],\n                        capture_output=True, text=True)\nobserved[\"git_config\"] = {\"stdout\": result.stdout, \"stderr\": result.stderr,\n                          \"exit_code\": result.returncode}\nobserved[\"cache_writes\"] = {}\nfor name in [\"HOME\", \"TMPDIR\", \"XDG_CACHE_HOME\", \"XDG_CONFIG_HOME\",\n             \"PYTHONPYCACHEPREFIX\", \"PYTHONUSERBASE\"]:\n    path = pathlib.Path(os.environ[name]) / \"runtime-cache-probe\"\n    path.write_text(\"session-local\")\n    path.unlink()\n    observed[\"cache_writes\"][name] = True\nprint(json.dumps(observed))\n' \"$0\" \"${ZSH_VERSION:-${BASH_VERSION:-}}\" \"$(command -v python3)\" \"$(command -v git)\" \"$(command -v rg)\""
+        ],
+        "exit_code": 0,
+        "stdout": "{\"binaries\": {\"python3\": {\"path\": \"<session-root>/cache/bin/python3\", \"version\": \"Python 3.14.4\", \"exit_code\": 0, \"stderr\": \"\"}, \"git\": {\"path\": \"<session-root>/cache/bin/git\", \"version\": \"git version 2.54.0 (Apple Git-157)\", \"exit_code\": 0, \"stderr\": \"\"}, \"rg\": {\"path\": \"<session-root>/cache/bin/rg\", \"version\": \"ripgrep 15.2.0 (rev e89fff89ac)\\n\\nfeatures:+pcre2\\nsimd(compile):+NEON\\nsimd(runtime):+NEON\\n\\nPCRE2 10.45 is available (JIT is available)\", \"exit_code\": 0, \"stderr\": \"\"}}, \"environment\": {\"LANG\": \"C.UTF-8\", \"LC_ALL\": \"C.UTF-8\", \"TERM\": \"dumb\", \"PYTHONDONTWRITEBYTECODE\": \"1\", \"TZ\": \"UTC\", \"GIT_CONFIG_NOSYSTEM\": \"1\", \"GIT_CONFIG_GLOBAL\": \"<session-root>/cache/gitconfig\", \"GIT_ATTR_NOSYSTEM\": \"1\", \"GIT_AUTHOR_NAME\": \"Benchmark fixture\", \"GIT_COMMITTER_NAME\": \"Benchmark fixture\", \"GIT_AUTHOR_EMAIL\": \"fixture@example.invalid\", \"GIT_COMMITTER_EMAIL\": \"fixture@example.invalid\", \"GIT_AUTHOR_DATE\": \"2000-01-01T00:00:00Z\", \"GIT_COMMITTER_DATE\": \"2000-01-01T00:00:00Z\", \"HOME\": \"<session-root>/tmp/home\", \"XDG_CACHE_HOME\": \"<session-root>/tmp/cache\", \"XDG_CONFIG_HOME\": \"<session-root>/tmp/config\", \"PYTHONPYCACHEPREFIX\": \"<session-root>/tmp/pycache\", \"PYTHONUSERBASE\": \"<session-root>/tmp/python-user\", \"PATH\": \"<session-root>/cache/bin:/usr/bin:/bin:/usr/sbin:/sbin\", \"SHELL\": \"/bin/zsh\", \"TMPDIR\": \"<session-root>/tmp\", \"TMP\": \"<session-root>/tmp\", \"TEMP\": \"<session-root>/tmp\", \"CODEX_HOME\": \"<session-root>/cache/profile\", \"CLAUDE_CONFIG_DIR\": \"<session-root>/cache/profile\", \"ZDOTDIR\": \"<session-root>/cache/shell\", \"ENV\": \"<session-root>/cache/shell/environment\", \"BASH_ENV\": \"<session-root>/cache/shell/environment\", \"GIT_EXEC_PATH\": \"/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core\", \"PYTHONNOUSERSITE\": \"1\"}, \"shell\": {\"identity\": \"/bin/zsh\", \"version\": \"5.9\"}, \"python_executable\": \"/opt/homebrew/opt/python@3.14/bin/python3.14\", \"git_config\": {\"stdout\": \"file:.git/config\\tcore.repositoryformatversion=0\\nfile:.git/config\\tcore.filemode=false\\nfile:.git/config\\tcore.bare=false\\nfile:.git/config\\tcore.logallrefupdates=false\\nfile:.git/config\\tcore.ignorecase=false\\nfile:.git/config\\tcore.precomposeunicode=false\\nfile:.git/config\\tcore.autocrlf=false\\nfile:.git/config\\tcore.hookspath=/dev/null\\nfile:.git/config\\tuser.name=Benchmark fixture\\nfile:.git/config\\tuser.email=fixture@example.invalid\\nfile:.git/config\\tcommit.gpgsign=false\\n\", \"stderr\": \"\", \"exit_code\": 0}, \"cache_writes\": {\"HOME\": true, \"TMPDIR\": true, \"XDG_CACHE_HOME\": true, \"XDG_CONFIG_HOME\": true, \"PYTHONPYCACHEPREFIX\": true, \"PYTHONUSERBASE\": true}}\n",
+        "stderr": "",
+        "errors": [],
+        "scope": "offline CLI-native login-shell command path; no model request"
+      }
+    },
+    "auth": {
+      "source": "auth-only-profile",
+      "present": true
+    },
+    "git": {
+      "version": "git version 2.54.0 (Apple Git-157)",
+      "baseline_commit": "8f3011a9c5a479197c94fc4de530161af14162e9",
+      "tree": "4f9f7cde75caf6401c37b8d61d0d39537d21e606",
+      "clean": true,
+      "status": "",
+      "branch": "main",
+      "config": "core.repositoryformatversion=0\ncore.filemode=false\ncore.bare=false\ncore.logallrefupdates=false\ncore.ignorecase=false\ncore.precomposeunicode=false\ncore.autocrlf=false\ncore.hookspath=/dev/null\nuser.name=Benchmark fixture\nuser.email=fixture@example.invalid\ncommit.gpgsign=false",
+      "remotes": "",
+      "hooks": []
+    },
+    "prompt_sha256": "cc5c4f5a7cb8d4b29b4f90e02474e7bc3e402ff85e9dd81f02eb6fed3d640c3c",
+    "prompt_size": 500,
+    "preflight_coverage": {
+      "coverage_parser_version": 2,
+      "command": "python3 -m unittest discover -s tests -v",
+      "discovered_count": 5,
+      "passed_count": 5,
+      "failed_count": 0,
+      "error_count": 0,
+      "skipped_count": 0,
+      "expected_failure_count": 0,
+      "unexpected_success_count": 0,
+      "status_counts_complete": true,
+      "status_count_scope": "single unittest footer; no identities inferred",
+      "test_names": [
+        "test_expenses.ExpenseTests.test_cli_override",
+        "test_expenses.ExpenseTests.test_configured_default",
+        "test_expenses.ExpenseTests.test_filter",
+        "test_expenses.ExpenseTests.test_load_decimal",
+        "test_expenses.ExpenseTests.test_report"
+      ],
+      "test_list_complete": true,
+      "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+      "passed": true,
+      "identity_scope": "exposed test output only; hidden coverage unavailable"
+    },
+    "grader_sha256": "3200e20da7522c1a063cda247433efcdcaf2e6f945c7cdf951dee35e624fd686",
+    "git_policy": {
+      "config": "core.repositoryformatversion=0\ncore.filemode=false\ncore.bare=false\ncore.logallrefupdates=false\ncore.ignorecase=false\ncore.precomposeunicode=false\ncore.autocrlf=false\ncore.hookspath=/dev/null\nuser.name=Benchmark fixture\nuser.email=fixture@example.invalid\ncommit.gpgsign=false",
+      "branch": "main",
+      "clean": true,
+      "remotes": "",
+      "hooks": []
+    },
+    "quota": {
+      "state": "unknown",
+      "reliable_check_available": false
+    },
+    "provider": {
+      "provider": "codex",
+      "requested_model": "gpt-5.6-sol",
+      "reasoning_effort": "high",
+      "timeout_seconds": 600,
+      "cli_version": "codex-cli 0.147.0",
+      "cwd": "<session-root>/repo",
+      "invocation": [
+        "<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin/codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "--ignore-rules",
+        "--strict-config",
+        "--model",
+        "gpt-5.6-sol",
+        "--config",
+        "model_reasoning_effort=\"high\"",
+        "--config",
+        "default_permissions=\"contextlean-session\"",
+        "--config",
+        "permissions.contextlean-session={\"filesystem\"={\":root\"=\"deny\",\":minimal\"=\"read\",\"/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path\"=\"read\",\"/Applications/Xcode.app/Contents/Developer/usr/bin\"=\"read\",\"/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core\"=\"read\",\"<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin\"=\"read\",\"/bin\"=\"read\",\"/opt/homebrew\"=\"read\",\"/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14\"=\"read\",\"/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/bin\"=\"read\",\"<session-root>/cache/bin\"=\"read\",\"<session-root>/cache/gitconfig\"=\"read\",\"<session-root>/cache/profile\"=\"read\",\"<session-root>/cache/shell\"=\"read\",\"<evidence>\"=\"deny\",\"<session-root>/repo\"=\"write\",\"<session-root>/repo/.git\"=\"read\",\"<session-root>/tmp\"=\"write\"},\"network\"={\"enabled\"=false}}",
+        "--config",
+        "approval_policy=\"never\"",
+        "--config",
+        "web_search=\"disabled\"",
+        "--config",
+        "shell_environment_policy={\"inherit\"=\"none\",\"set\"={\"LANG\"=\"C.UTF-8\",\"LC_ALL\"=\"C.UTF-8\",\"TERM\"=\"dumb\",\"PYTHONDONTWRITEBYTECODE\"=\"1\",\"TZ\"=\"UTC\",\"GIT_CONFIG_NOSYSTEM\"=\"1\",\"GIT_CONFIG_GLOBAL\"=\"<session-root>/cache/gitconfig\",\"GIT_ATTR_NOSYSTEM\"=\"1\",\"GIT_AUTHOR_NAME\"=\"Benchmark fixture\",\"GIT_COMMITTER_NAME\"=\"Benchmark fixture\",\"GIT_AUTHOR_EMAIL\"=\"fixture@example.invalid\",\"GIT_COMMITTER_EMAIL\"=\"fixture@example.invalid\",\"GIT_AUTHOR_DATE\"=\"2000-01-01T00:00:00Z\",\"GIT_COMMITTER_DATE\"=\"2000-01-01T00:00:00Z\",\"HOME\"=\"<session-root>/tmp/home\",\"XDG_CACHE_HOME\"=\"<session-root>/tmp/cache\",\"XDG_CONFIG_HOME\"=\"<session-root>/tmp/config\",\"PYTHONPYCACHEPREFIX\"=\"<session-root>/tmp/pycache\",\"PYTHONUSERBASE\"=\"<session-root>/tmp/python-user\",\"PATH\"=\"<session-root>/cache/bin:/usr/bin:/bin:/usr/sbin:/sbin\",\"SHELL\"=\"/bin/zsh\",\"TMPDIR\"=\"<session-root>/tmp\",\"TMP\"=\"<session-root>/tmp\",\"TEMP\"=\"<session-root>/tmp\",\"CODEX_HOME\"=\"<session-root>/cache/profile\",\"CLAUDE_CONFIG_DIR\"=\"<session-root>/cache/profile\",\"ZDOTDIR\"=\"<session-root>/cache/shell\",\"ENV\"=\"<session-root>/cache/shell/environment\",\"BASH_ENV\"=\"<session-root>/cache/shell/environment\",\"GIT_EXEC_PATH\"=\"/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core\",\"PYTHONNOUSERSITE\"=\"1\"},\"experimental_use_profile\"=false}",
+        "--cd",
+        "<session-root>/repo",
+        "-"
+      ],
+      "reported_model": null,
+      "reported_permission_mode": null,
+      "session_identifiers": [
+        "01a0fc92-0bc8-77c1-98d1-9289d493b7e9"
+      ],
+      "request_identifiers": [],
+      "auxiliary_model_usage": {}
+    }
+  },
+  "finished_at": "2026-10-02T12:24:48+00:00",
+  "metrics": {
+    "input_tokens": 62516,
+    "cached_input_tokens": 56320,
+    "uncached_input_tokens": 6196,
+    "output_tokens": 1072,
+    "reasoning_output_tokens": 126,
+    "total_tokens": 63588,
+    "command_calls": 3,
+    "duration_seconds": 63.963489584159106
+  },
+  "evaluation": {
+    "tests_passed": true,
+    "agent_tests_passed": true,
+    "acceptance_passed": true,
+    "task_success": true
+  },
+  "failure_category": null,
+  "execution_success": true,
+  "error": null,
+  "exit_code": 0,
+  "raw_directory": "raw/bug-fix-2-vanilla",
+  "measurement_complete": true,
+  "post_run": {
+    "git": {
+      "version": "git version 2.54.0 (Apple Git-157)",
+      "baseline_commit": "8f3011a9c5a479197c94fc4de530161af14162e9",
+      "tree": "4f9f7cde75caf6401c37b8d61d0d39537d21e606",
+      "clean": false,
+      "status": "M expense_report/filters.py\n M tests/test_expenses.py",
+      "branch": "main",
+      "config": "core.repositoryformatversion=0\ncore.filemode=false\ncore.bare=false\ncore.logallrefupdates=false\ncore.ignorecase=false\ncore.precomposeunicode=false\ncore.autocrlf=false\ncore.hookspath=/dev/null\nuser.name=Benchmark fixture\nuser.email=fixture@example.invalid\ncommit.gpgsign=false",
+      "remotes": "",
+      "hooks": []
+    },
+    "repo_changes": {
+      "tests/test_expenses.py": {
+        "before": {
+          "sha256": "542ad1c532288b3c460269224ecf161dd560e6e0d5c9c783f83cec4e593a194b",
+          "size": 1570
+        },
+        "after": {
+          "sha256": "7d5d7a5f886c910e10fd1fb4e2abaaf72a4936105c2c2fb21b45ea1f9d95c1ca",
+          "size": 2004
+        }
+      },
+      "expense_report/filters.py": {
+        "before": {
+          "sha256": "8825e48b6a21b716bc6b074284378bc42c13be48ca16c4450184d449cb65a9f7",
+          "size": 287
+        },
+        "after": {
+          "sha256": "bffbf7c2b716772264961cf0d3cdb7a6f75f41d0f37cfc23e8de991d0644caea",
+          "size": 331
+        }
+      }
+    },
+    "tmp_files": {
+      "home/.bash_profile": {
+        "sha256": "7baa4024f4e77817f01f250cf3a7789945f07359b3d93046672f2cad2a47b824",
+        "size": 2388
+      },
+      "home/.profile": {
+        "sha256": "7baa4024f4e77817f01f250cf3a7789945f07359b3d93046672f2cad2a47b824",
+        "size": 2388
+      }
+    },
+    "unexpected_root_entries": [],
+    "outside_approved_visibility": "native write boundary; external hidden side effects unavailable",
+    "cache_before": {
+      "bin/cli": {
+        "kind": "file",
+        "size": 107
+      },
+      "bin/git": {
+        "kind": "file",
+        "size": 75
+      },
+      "bin/python": {
+        "kind": "file",
+        "size": 117
+      },
+      "bin/python3": {
+        "kind": "file",
+        "size": 117
+      },
+      "bin/rg": {
+        "kind": "file",
+        "size": 89
+      },
+      "bin/shell": {
+        "kind": "file",
+        "size": 29
+      },
+      "gitconfig": {
+        "kind": "file",
+        "size": 34
+      },
+      "profile/auth.json": {
+        "kind": "file",
+        "size": 3925
+      },
+      "profile/tmp/arg0/codex-arg0DP3IzC/.lock": {
+        "kind": "file",
+        "size": 0
+      },
+      "profile/tmp/arg0/codex-arg0DP3IzC/apply_patch": {
+        "kind": "symlink"
+      },
+      "profile/tmp/arg0/codex-arg0DP3IzC/applypatch": {
+        "kind": "symlink"
+      },
+      "profile/tmp/arg0/codex-arg0DP3IzC/codex-execve-wrapper": {
+        "kind": "symlink"
+      },
+      "shell/.zshenv": {
+        "kind": "file",
+        "size": 2408
+      },
+      "shell/environment": {
+        "kind": "file",
+        "size": 2388
+      }
+    },
+    "cache_after": {
+      "bin/cli": {
+        "kind": "file",
+        "size": 107
+      },
+      "bin/git": {
+        "kind": "file",
+        "size": 75
+      },
+      "bin/python": {
+        "kind": "file",
+        "size": 117
+      },
+      "bin/python3": {
+        "kind": "file",
+        "size": 117
+      },
+      "bin/rg": {
+        "kind": "file",
+        "size": 89
+      },
+      "bin/shell": {
+        "kind": "file",
+        "size": 29
+      },
+      "gitconfig": {
+        "kind": "file",
+        "size": 34
+      },
+      "profile/auth.json": {
+        "kind": "file",
+        "size": 3925
+      },
+      "profile/cache/codex_apps_server_info/b46bf5244141adc6b31ca53da7f13524174e892a.json": {
+        "kind": "file",
+        "size": 189
+      },
+      "profile/cache/codex_apps_tools/b46bf5244141adc6b31ca53da7f13524174e892a.json": {
+        "kind": "file",
+        "size": 1888802
+      },
+      "profile/cache/remote_plugin_catalog/e1f2010be4a4fcd7.json": {
+        "kind": "file",
+        "size": 28469866
+      },
+      "profile/config.toml": {
+        "kind": "file",
+        "size": 131
+      },
+      "profile/goals_1.sqlite": {
+        "kind": "file",
+        "size": 4096
+      },
+      "profile/goals_1.sqlite-shm": {
+        "kind": "file",
+        "size": 32768
+      },
+      "profile/goals_1.sqlite-wal": {
+        "kind": "file",
+        "size": 78312
+      },
+      "profile/installation_id": {
+        "kind": "file",
+        "size": 36
+      },
+      "profile/logs_2.sqlite": {
+        "kind": "file",
+        "size": 49152
+      },
+      "profile/memories_1.sqlite": {
+        "kind": "file",
+        "size": 40960
+      },
+      "profile/models_cache.json": {
+        "kind": "file",
+        "size": 158694
+      },
+      "profile/plugins/cache/created-by-me-remote/dev-6a7a0e63f1bc819197f4be8498265aca/.codex-remote-plugin-install.json": {
+        "kind": "file",
+        "size": 100
+      },
+      "profile/plugins/cache/created-by-me-remote/dev-6a7a0e63f1bc819197f4be8498265aca/1.0.0/.app.json": {
+        "kind": "file",
+        "size": 127
+      },
+      "profile/plugins/cache/created-by-me-remote/dev-6a7a0e63f1bc819197f4be8498265aca/1.0.0/.codex-plugin/plugin.json": {
+        "kind": "file",
+        "size": 404
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/.codex-remote-plugin-install.json": {
+        "kind": "file",
+        "size": 100
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/.app.json": {
+        "kind": "file",
+        "size": 152
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/.codex-plugin/plugin.json": {
+        "kind": "file",
+        "size": 3428
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ad-multiplier/SKILL.md": {
+        "kind": "file",
+        "size": 15405
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ad-multiplier/agents/openai.yaml": {
+        "kind": "file",
+        "size": 248
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ad-multiplier/references/media-pipeline.md": {
+        "kind": "file",
+        "size": 5056
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ad-multiplier/references/prompt-writer.md": {
+        "kind": "file",
+        "size": 16245
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/SKILL.md": {
+        "kind": "file",
+        "size": 18010
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/agents/openai.yaml": {
+        "kind": "file",
+        "size": 259
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/ai-avatar-creating.md": {
+        "kind": "file",
+        "size": 37266
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/anchor-prep.md": {
+        "kind": "file",
+        "size": 3797
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/assembly.md": {
+        "kind": "file",
+        "size": 25040
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/creative-review.md": {
+        "kind": "file",
+        "size": 6159
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/delivery.md": {
+        "kind": "file",
+        "size": 5362
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/edit-plan.md": {
+        "kind": "file",
+        "size": 15596
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/generation.md": {
+        "kind": "file",
+        "size": 35793
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/keyframe-prep.md": {
+        "kind": "file",
+        "size": 8314
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/migration-analysis.md": {
+        "kind": "file",
+        "size": 18927
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-design.md": {
+        "kind": "file",
+        "size": 16992
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-bold-editorial.md": {
+        "kind": "file",
+        "size": 3191
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-documentary-collage.md": {
+        "kind": "file",
+        "size": 3399
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-editorial-overlay.md": {
+        "kind": "file",
+        "size": 5283
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-funky-modular.md": {
+        "kind": "file",
+        "size": 3135
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-luminous-interface.md": {
+        "kind": "file",
+        "size": 3249
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-minimal.md": {
+        "kind": "file",
+        "size": 3551
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-press.md": {
+        "kind": "file",
+        "size": 5498
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-style-web-brutalism.md": {
+        "kind": "file",
+        "size": 4294
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/motion-styles.md": {
+        "kind": "file",
+        "size": 9009
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/operations.md": {
+        "kind": "file",
+        "size": 5723
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/platform.md": {
+        "kind": "file",
+        "size": 664
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/renderer-compatibility.md": {
+        "kind": "file",
+        "size": 2527
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/script.md": {
+        "kind": "file",
+        "size": 7015
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/segment-editing.md": {
+        "kind": "file",
+        "size": 1391
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/supporting-media.md": {
+        "kind": "file",
+        "size": 11949
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ai-host-video/references/user-inputs.md": {
+        "kind": "file",
+        "size": 38207
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/SKILL.md": {
+        "kind": "file",
+        "size": 45955
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/agents/openai.yaml": {
+        "kind": "file",
+        "size": 324
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/assets/icon.svg": {
+        "kind": "file",
+        "size": 2094
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/generation-and-delivery.md": {
+        "kind": "file",
+        "size": 31717
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/history-longform.md": {
+        "kind": "file",
+        "size": 10257
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/intake-and-dispatch.md": {
+        "kind": "file",
+        "size": 21935
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/kids-song.md": {
+        "kind": "file",
+        "size": 8207
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/kids-styles.md": {
+        "kind": "file",
+        "size": 16093
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/kids-talking-characters.md": {
+        "kind": "file",
+        "size": 2383
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/picture-flow.md": {
+        "kind": "file",
+        "size": 16021
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/prompts.md": {
+        "kind": "file",
+        "size": 14613
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/style-cinematic-storybook.md": {
+        "kind": "file",
+        "size": 6108
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/style-editorial-collage.md": {
+        "kind": "file",
+        "size": 9051
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/style-mannequin.md": {
+        "kind": "file",
+        "size": 5243
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/style-paper-diorama.md": {
+        "kind": "file",
+        "size": 6342
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/faceless-video/references/vo_and_captions.md": {
+        "kind": "file",
+        "size": 7991
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/higgsfield/SKILL.md": {
+        "kind": "file",
+        "size": 4293
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/higgsfield/agents/openai.yaml": {
+        "kind": "file",
+        "size": 245
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/SKILL.md": {
+        "kind": "file",
+        "size": 3620
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/agents/openai.yaml": {
+        "kind": "file",
+        "size": 250
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/causality.md": {
+        "kind": "file",
+        "size": 871
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/composition.md": {
+        "kind": "file",
+        "size": 782
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/easing.md": {
+        "kind": "file",
+        "size": 978
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/qc.md": {
+        "kind": "file",
+        "size": 1082
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/recipes.md": {
+        "kind": "file",
+        "size": 915
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/stepped.md": {
+        "kind": "file",
+        "size": 970
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/timing.md": {
+        "kind": "file",
+        "size": 928
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/motion-craft/references/typography.md": {
+        "kind": "file",
+        "size": 835
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/narrator/SKILL.md": {
+        "kind": "file",
+        "size": 15536
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/narrator/agents/openai.yaml": {
+        "kind": "file",
+        "size": 316
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/narrator/assets/icon.svg": {
+        "kind": "file",
+        "size": 2094
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/narrator/references/presenter-mode.md": {
+        "kind": "file",
+        "size": 6883
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/subtitles/SKILL.md": {
+        "kind": "file",
+        "size": 17076
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/subtitles/agents/openai.yaml": {
+        "kind": "file",
+        "size": 282
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/subtitles/assets/icon.svg": {
+        "kind": "file",
+        "size": 1210
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/thumbnail-generation/SKILL.md": {
+        "kind": "file",
+        "size": 37084
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/thumbnail-generation/agents/openai.yaml": {
+        "kind": "file",
+        "size": 259
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/thumbnail-generation/references/text-overlay-bake.md": {
+        "kind": "file",
+        "size": 11385
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/thumbnail-generation/references/thumbnail-frameworks.md": {
+        "kind": "file",
+        "size": 4063
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-product-video/SKILL.md": {
+        "kind": "file",
+        "size": 12055
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-product-video/agents/openai.yaml": {
+        "kind": "file",
+        "size": 207
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-product-video/references/product-intake.md": {
+        "kind": "file",
+        "size": 6573
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-product-video/references/subtitles.md": {
+        "kind": "file",
+        "size": 5461
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-product-video/references/ugc-product-boards.md": {
+        "kind": "file",
+        "size": 61112
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-product-video/references/ugc-product-clip-prompt.md": {
+        "kind": "file",
+        "size": 57621
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/SKILL.md": {
+        "kind": "file",
+        "size": 17641
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/agents/openai.yaml": {
+        "kind": "file",
+        "size": 262
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/references/monologue-craft.md": {
+        "kind": "file",
+        "size": 13340
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/references/product-intake.md": {
+        "kind": "file",
+        "size": 6391
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/references/subtitles.md": {
+        "kind": "file",
+        "size": 5521
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/references/ugc-board.md": {
+        "kind": "file",
+        "size": 57628
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/references/ugc-character.md": {
+        "kind": "file",
+        "size": 64252
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-review-video/references/ugc-clip.md": {
+        "kind": "file",
+        "size": 61971
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-try-on-video/SKILL.md": {
+        "kind": "file",
+        "size": 13419
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-try-on-video/agents/openai.yaml": {
+        "kind": "file",
+        "size": 213
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-try-on-video/references/product-intake.md": {
+        "kind": "file",
+        "size": 6573
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-try-on-video/references/subtitles.md": {
+        "kind": "file",
+        "size": 5457
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-try-on-video/references/ugc-character.md": {
+        "kind": "file",
+        "size": 64060
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-try-on-video/references/ugc-try-board.md": {
+        "kind": "file",
+        "size": 100525
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-try-on-video/references/ugc-try-clip.md": {
+        "kind": "file",
+        "size": 99826
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-tutorial-video/SKILL.md": {
+        "kind": "file",
+        "size": 10742
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-tutorial-video/agents/openai.yaml": {
+        "kind": "file",
+        "size": 220
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-tutorial-video/references/product-intake.md": {
+        "kind": "file",
+        "size": 6573
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-tutorial-video/references/soul-v2-ugc-character.md": {
+        "kind": "file",
+        "size": 43041
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-tutorial-video/references/subtitles.md": {
+        "kind": "file",
+        "size": 5465
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-tutorial-video/references/ugc-tutorial-boards.md": {
+        "kind": "file",
+        "size": 51084
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-tutorial-video/references/ugc-tutorial-clip-prompt.md": {
+        "kind": "file",
+        "size": 52137
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-unboxing-video/SKILL.md": {
+        "kind": "file",
+        "size": 11066
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-unboxing-video/agents/openai.yaml": {
+        "kind": "file",
+        "size": 212
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-unboxing-video/references/product-intake.md": {
+        "kind": "file",
+        "size": 6573
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-unboxing-video/references/subtitles.md": {
+        "kind": "file",
+        "size": 5465
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-unboxing-video/references/ugc-character.md": {
+        "kind": "file",
+        "size": 63979
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-unboxing-video/references/ugc-unboxing-board.md": {
+        "kind": "file",
+        "size": 74818
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-unboxing-video/references/ugc-unboxing-clip.md": {
+        "kind": "file",
+        "size": 68318
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/SKILL.md": {
+        "kind": "file",
+        "size": 11500
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/agents/openai.yaml": {
+        "kind": "file",
+        "size": 201
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/references/saas-clip-prompt.md": {
+        "kind": "file",
+        "size": 5239
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/references/saas-monologue.md": {
+        "kind": "file",
+        "size": 11090
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/references/saas-ugc-character.md": {
+        "kind": "file",
+        "size": 6488
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/references/screen-broll-and-composite.md": {
+        "kind": "file",
+        "size": 7728
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/references/subtitles.md": {
+        "kind": "file",
+        "size": 5842
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/references/ugc-character.md": {
+        "kind": "file",
+        "size": 63979
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/ugc-website-video/references/website-capture.md": {
+        "kind": "file",
+        "size": 6021
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/SKILL.md": {
+        "kind": "file",
+        "size": 6043
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/agents/openai.yaml": {
+        "kind": "file",
+        "size": 261
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/animation-contract.md": {
+        "kind": "file",
+        "size": 2523
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/assembly.md": {
+        "kind": "file",
+        "size": 3421
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/caption-systems.md": {
+        "kind": "file",
+        "size": 2017
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/caption-titling.md": {
+        "kind": "file",
+        "size": 1873
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/clip-geometry.md": {
+        "kind": "file",
+        "size": 1905
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/compose.md": {
+        "kind": "file",
+        "size": 13832
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/editor-measured.md": {
+        "kind": "file",
+        "size": 2124
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/failure-modes.md": {
+        "kind": "file",
+        "size": 3219
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/motion-language.md": {
+        "kind": "file",
+        "size": 2249
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/provenance.md": {
+        "kind": "file",
+        "size": 651
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/shot-blueprints.md": {
+        "kind": "file",
+        "size": 2472
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/title-animation.md": {
+        "kind": "file",
+        "size": 2064
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/video-editing/references/workflows.md": {
+        "kind": "file",
+        "size": 2009
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/SKILL.md": {
+        "kind": "file",
+        "size": 12680
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/agents/openai.yaml": {
+        "kind": "file",
+        "size": 248
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/app-cover.md": {
+        "kind": "file",
+        "size": 13925
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/app-flow.md": {
+        "kind": "file",
+        "size": 26159
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/app-layouts.md": {
+        "kind": "file",
+        "size": 4527
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/app-quickstart.md": {
+        "kind": "file",
+        "size": 12536
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/asset-system.md": {
+        "kind": "file",
+        "size": 14151
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/auth.md": {
+        "kind": "file",
+        "size": 14558
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/containers.md": {
+        "kind": "file",
+        "size": 16166
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/contest.md": {
+        "kind": "file",
+        "size": 4689
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/cover-animator.md": {
+        "kind": "file",
+        "size": 4776
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/design-recipe.md": {
+        "kind": "file",
+        "size": 10872
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/design-taste-frontend.md": {
+        "kind": "file",
+        "size": 87248
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/fnf-react.md": {
+        "kind": "file",
+        "size": 13026
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/fnf-sdk.md": {
+        "kind": "file",
+        "size": 36027
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/game-2d-animation.md": {
+        "kind": "file",
+        "size": 16969
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/game-audio.md": {
+        "kind": "file",
+        "size": 6259
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/game-design-system.md": {
+        "kind": "file",
+        "size": 16204
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/game-flow.md": {
+        "kind": "file",
+        "size": 5541
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/game-stylization.md": {
+        "kind": "file",
+        "size": 12637
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/game-textures.md": {
+        "kind": "file",
+        "size": 12351
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/image-to-code.md": {
+        "kind": "file",
+        "size": 6546
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/quanta-design.md": {
+        "kind": "file",
+        "size": 32303
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/reference-boards.md": {
+        "kind": "file",
+        "size": 6552
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/repo-and-sandbox.md": {
+        "kind": "file",
+        "size": 3749
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/review-rubric.md": {
+        "kind": "file",
+        "size": 8972
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/runtime-and-infra.md": {
+        "kind": "file",
+        "size": 9616
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/scroll-scrub-asset-css.md": {
+        "kind": "file",
+        "size": 6155
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/scroll-scrub-asset-react.md": {
+        "kind": "file",
+        "size": 21560
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/scroll-scrub-asset-video.md": {
+        "kind": "file",
+        "size": 2025
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/scroll-scrub.md": {
+        "kind": "file",
+        "size": 16411
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/security.md": {
+        "kind": "file",
+        "size": 38369
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/seo.md": {
+        "kind": "file",
+        "size": 36643
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/website-flow.md": {
+        "kind": "file",
+        "size": 32194
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/wow-catalog.md": {
+        "kind": "file",
+        "size": 8078
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/website-builder/references/wow-maker.md": {
+        "kind": "file",
+        "size": 22549
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/SKILL.md": {
+        "kind": "file",
+        "size": 7979
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/agents/openai.yaml": {
+        "kind": "file",
+        "size": 265
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/business-finance-patterns.md": {
+        "kind": "file",
+        "size": 27933
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/business-finance.md": {
+        "kind": "file",
+        "size": 9017
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/commentary-patterns.md": {
+        "kind": "file",
+        "size": 27173
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/commentary.md": {
+        "kind": "file",
+        "size": 9998
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/explainer-patterns.md": {
+        "kind": "file",
+        "size": 27142
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/explainer.md": {
+        "kind": "file",
+        "size": 9321
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/storytelling-documentary-patterns.md": {
+        "kind": "file",
+        "size": 25126
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/storytelling-documentary.md": {
+        "kind": "file",
+        "size": 9367
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/tech-review-patterns.md": {
+        "kind": "file",
+        "size": 25841
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/tech-review.md": {
+        "kind": "file",
+        "size": 9559
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/true-crime-patterns.md": {
+        "kind": "file",
+        "size": 26066
+      },
+      "profile/plugins/cache/openai-curated-remote/app-6a3293e129088191abf0875820e839da/2.1.0/skills/youtube-script/references/true-crime.md": {
+        "kind": "file",
+        "size": 10284
+      },
+      "profile/plugins/cache/openai-curated-remote/github/.codex-remote-plugin-install.json": {
+        "kind": "file",
+        "size": 104
+      },
+      "profile/plugins/cache/openai-curated-remote/github/0.1.12-5f7cd798dc99/.app.json": {
+        "kind": "file",
+        "size": 124
+      },
+      "profile/plugins/cache/openai-curated-remote/github/0.1.12-5f7cd798dc99/.codex-plugin/plugin.json": {
+        "kind": "file",
+        "size": 2027
+      },
+      "profile/plugins/cache/openai-curated-remote/github/0.1.12-5f7cd798dc99/assets/github-dark.png": {
+        "kind": "file",
+        "size": 27648
+      },
+      "profile/plugins/cache/openai-curated-remote/github/0.1.12-5f7cd798dc99/assets/github-small.svg": {
+        "kind": "file",
+        "size": 853
+      },
+      "profile/plugins/cache/openai-curated-remote/github/0.1.12-5f7cd798dc99/assets/github.png": {
+        "kind": "file",
+        "size": 9380
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/.codex-remote-plugin-install.json": {
+        "kind": "file",
+        "size": 104
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/.app.json": {
+        "kind": "file",
+        "size": 126
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/.codex-plugin/plugin.json": {
+        "kind": "file",
+        "size": 1610
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/README.md": {
+        "kind": "file",
+        "size": 1190
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/assets/icon.svg": {
+        "kind": "file",
+        "size": 1049
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-analytics-dashboard/SKILL.md": {
+        "kind": "file",
+        "size": 1497
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-analytics-dashboard/agents/openai.yaml": {
+        "kind": "file",
+        "size": 275
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-analytics-dashboard/artifact-template.json": {
+        "kind": "file",
+        "size": 125
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-analytics-dashboard/assets/preview.png": {
+        "kind": "file",
+        "size": 63062
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-analytics-dashboard/assets/reference.xlsx": {
+        "kind": "file",
+        "size": 26606
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-business-review/SKILL.md": {
+        "kind": "file",
+        "size": 1475
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-business-review/agents/openai.yaml": {
+        "kind": "file",
+        "size": 269
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-business-review/artifact-template.json": {
+        "kind": "file",
+        "size": 126
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-business-review/assets/preview.png": {
+        "kind": "file",
+        "size": 30573
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-business-review/assets/reference.pptx": {
+        "kind": "file",
+        "size": 2035231
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-design-report/SKILL.md": {
+        "kind": "file",
+        "size": 1437
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-design-report/agents/openai.yaml": {
+        "kind": "file",
+        "size": 257
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-design-report/artifact-template.json": {
+        "kind": "file",
+        "size": 122
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-design-report/assets/preview.png": {
+        "kind": "file",
+        "size": 202622
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-design-report/assets/reference.docx": {
+        "kind": "file",
+        "size": 2920999
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-experiment-analysis/SKILL.md": {
+        "kind": "file",
+        "size": 1456
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-experiment-analysis/agents/openai.yaml": {
+        "kind": "file",
+        "size": 269
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-experiment-analysis/artifact-template.json": {
+        "kind": "file",
+        "size": 122
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-experiment-analysis/assets/preview.png": {
+        "kind": "file",
+        "size": 15138
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-experiment-analysis/assets/reference.docx": {
+        "kind": "file",
+        "size": 204643
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-financial-budget/SKILL.md": {
+        "kind": "file",
+        "size": 1486
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-financial-budget/agents/openai.yaml": {
+        "kind": "file",
+        "size": 269
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-financial-budget/artifact-template.json": {
+        "kind": "file",
+        "size": 125
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-financial-budget/assets/preview.png": {
+        "kind": "file",
+        "size": 39032
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-financial-budget/assets/reference.xlsx": {
+        "kind": "file",
+        "size": 38153
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-investment-committee-memo/SKILL.md": {
+        "kind": "file",
+        "size": 1496
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-investment-committee-memo/agents/openai.yaml": {
+        "kind": "file",
+        "size": 281
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-investment-committee-memo/artifact-template.json": {
+        "kind": "file",
+        "size": 122
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-investment-committee-memo/assets/preview.png": {
+        "kind": "file",
+        "size": 30330
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-investment-committee-memo/assets/reference.docx": {
+        "kind": "file",
+        "size": 285035
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-legal-memorandum/SKILL.md": {
+        "kind": "file",
+        "size": 1434
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-legal-memorandum/agents/openai.yaml": {
+        "kind": "file",
+        "size": 263
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-legal-memorandum/artifact-template.json": {
+        "kind": "file",
+        "size": 122
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-legal-memorandum/assets/preview.png": {
+        "kind": "file",
+        "size": 64126
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-legal-memorandum/assets/reference.docx": {
+        "kind": "file",
+        "size": 593894
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-market-trends-report/SKILL.md": {
+        "kind": "file",
+        "size": 1498
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-market-trends-report/agents/openai.yaml": {
+        "kind": "file",
+        "size": 279
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-market-trends-report/artifact-template.json": {
+        "kind": "file",
+        "size": 126
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-market-trends-report/assets/preview.png": {
+        "kind": "file",
+        "size": 19232
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-market-trends-report/assets/reference.pptx": {
+        "kind": "file",
+        "size": 1972113
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-minimal-letterhead/SKILL.md": {
+        "kind": "file",
+        "size": 1470
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-minimal-letterhead/agents/openai.yaml": {
+        "kind": "file",
+        "size": 267
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-minimal-letterhead/artifact-template.json": {
+        "kind": "file",
+        "size": 122
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-minimal-letterhead/assets/preview.png": {
+        "kind": "file",
+        "size": 59454
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-minimal-letterhead/assets/reference.docx": {
+        "kind": "file",
+        "size": 10301
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-calendar/SKILL.md": {
+        "kind": "file",
+        "size": 1500
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-calendar/agents/openai.yaml": {
+        "kind": "file",
+        "size": 273
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-calendar/artifact-template.json": {
+        "kind": "file",
+        "size": 125
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-calendar/assets/preview.png": {
+        "kind": "file",
+        "size": 91416
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-calendar/assets/reference.xlsx": {
+        "kind": "file",
+        "size": 46268
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-review/SKILL.md": {
+        "kind": "file",
+        "size": 1483
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-review/agents/openai.yaml": {
+        "kind": "file",
+        "size": 271
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-review/artifact-template.json": {
+        "kind": "file",
+        "size": 126
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-review/assets/preview.png": {
+        "kind": "file",
+        "size": 37218
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-review/assets/reference.pptx": {
+        "kind": "file",
+        "size": 306716
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-kickoff/SKILL.md": {
+        "kind": "file",
+        "size": 1463
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-kickoff/agents/openai.yaml": {
+        "kind": "file",
+        "size": 269
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-kickoff/artifact-template.json": {
+        "kind": "file",
+        "size": 126
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-kickoff/assets/preview.png": {
+        "kind": "file",
+        "size": 25166
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-kickoff/assets/reference.pptx": {
+        "kind": "file",
+        "size": 2082300
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-tracker/SKILL.md": {
+        "kind": "file",
+        "size": 1484
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-tracker/agents/openai.yaml": {
+        "kind": "file",
+        "size": 267
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-tracker/artifact-template.json": {
+        "kind": "file",
+        "size": 125
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-tracker/assets/preview.png": {
+        "kind": "file",
+        "size": 40120
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-tracker/assets/reference.xlsx": {
+        "kind": "file",
+        "size": 14846
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-sales-pipeline/SKILL.md": {
+        "kind": "file",
+        "size": 1482
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-sales-pipeline/agents/openai.yaml": {
+        "kind": "file",
+        "size": 265
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-sales-pipeline/artifact-template.json": {
+        "kind": "file",
+        "size": 125
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-sales-pipeline/assets/preview.png": {
+        "kind": "file",
+        "size": 53355
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-sales-pipeline/assets/reference.xlsx": {
+        "kind": "file",
+        "size": 16979
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-dark-mode/SKILL.md": {
+        "kind": "file",
+        "size": 1478
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-dark-mode/agents/openai.yaml": {
+        "kind": "file",
+        "size": 271
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-dark-mode/artifact-template.json": {
+        "kind": "file",
+        "size": 126
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-dark-mode/assets/preview.png": {
+        "kind": "file",
+        "size": 115324
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-dark-mode/assets/reference.pptx": {
+        "kind": "file",
+        "size": 3244996
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-light-mode/SKILL.md": {
+        "kind": "file",
+        "size": 1487
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-light-mode/agents/openai.yaml": {
+        "kind": "file",
+        "size": 273
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-light-mode/artifact-template.json": {
+        "kind": "file",
+        "size": 126
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-light-mode/assets/preview.png": {
+        "kind": "file",
+        "size": 28676
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-light-mode/assets/reference.pptx": {
+        "kind": "file",
+        "size": 1519451
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-strategy-memorandum/SKILL.md": {
+        "kind": "file",
+        "size": 1446
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-strategy-memorandum/agents/openai.yaml": {
+        "kind": "file",
+        "size": 269
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-strategy-memorandum/artifact-template.json": {
+        "kind": "file",
+        "size": 122
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-strategy-memorandum/assets/preview.png": {
+        "kind": "file",
+        "size": 16294
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-strategy-memorandum/assets/reference.docx": {
+        "kind": "file",
+        "size": 2686019
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-system-design/SKILL.md": {
+        "kind": "file",
+        "size": 1445
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-system-design/agents/openai.yaml": {
+        "kind": "file",
+        "size": 257
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-system-design/artifact-template.json": {
+        "kind": "file",
+        "size": 122
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-system-design/assets/preview.png": {
+        "kind": "file",
+        "size": 23946
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-system-design/assets/reference.docx": {
+        "kind": "file",
+        "size": 501311
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-team-alignment/SKILL.md": {
+        "kind": "file",
+        "size": 1473
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-team-alignment/agents/openai.yaml": {
+        "kind": "file",
+        "size": 267
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-team-alignment/artifact-template.json": {
+        "kind": "file",
+        "size": 126
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-team-alignment/assets/preview.png": {
+        "kind": "file",
+        "size": 66065
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-team-alignment/assets/reference.pptx": {
+        "kind": "file",
+        "size": 7330920
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-three-statement-forecast/SKILL.md": {
+        "kind": "file",
+        "size": 1552
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-three-statement-forecast/agents/openai.yaml": {
+        "kind": "file",
+        "size": 285
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-three-statement-forecast/artifact-template.json": {
+        "kind": "file",
+        "size": 125
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-three-statement-forecast/assets/preview.png": {
+        "kind": "file",
+        "size": 53375
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-three-statement-forecast/assets/reference.xlsx": {
+        "kind": "file",
+        "size": 136927
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/tests/__pycache__/test_openai_templates_plugin.cpython-312-pytest-9.0.3.pyc": {
+        "kind": "file",
+        "size": 31707
+      },
+      "profile/plugins/cache/openai-curated-remote/openai-templates/0.1.1/tests/test_openai_templates_plugin.py": {
+        "kind": "file",
+        "size": 9266
+      },
+      "profile/plugins/cache/openai-curated-remote/plugin-management/.codex-remote-plugin-install.json": {
+        "kind": "file",
+        "size": 104
+      },
+      "profile/plugins/cache/openai-curated-remote/plugin-management/0.1.0/.app.json": {
+        "kind": "file",
+        "size": 126
+      },
+      "profile/plugins/cache/openai-curated-remote/plugin-management/0.1.0/.codex-plugin/plugin.json": {
+        "kind": "file",
+        "size": 1538
+      },
+      "profile/plugins/cache/openai-curated-remote/plugin-management/0.1.0/assets/plugin-management.svg": {
+        "kind": "file",
+        "size": 455
+      },
+      "profile/plugins/cache/openai-curated-remote/plugin-management/0.1.0/skills/plugin-management/SKILL.md": {
+        "kind": "file",
+        "size": 2983
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/.codex-remote-plugin-install.json": {
+        "kind": "file",
+        "size": 104
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/.app.json": {
+        "kind": "file",
+        "size": 116
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/.codex-plugin/plugin.json": {
+        "kind": "file",
+        "size": 1837
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/assets/egg.svg": {
+        "kind": "file",
+        "size": 1440
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/references/sprite-sheet-contract.md": {
+        "kind": "file",
+        "size": 22252
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/references/upload-session.md": {
+        "kind": "file",
+        "size": 1215
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/SKILL.md": {
+        "kind": "file",
+        "size": 17353
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/agents/openai.yaml": {
+        "kind": "file",
+        "size": 219
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/references/animation-rows.md": {
+        "kind": "file",
+        "size": 2583
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/assemble_extended_atlas.py": {
+        "kind": "file",
+        "size": 21681
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/combine_direction_blind_verdicts.py": {
+        "kind": "file",
+        "size": 1962
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/compose_atlas.py": {
+        "kind": "file",
+        "size": 5756
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/compose_cardinal_anchor_strip.py": {
+        "kind": "file",
+        "size": 1401
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/derive_running_left_from_running_right.py": {
+        "kind": "file",
+        "size": 5183
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/despill_chroma_edges.py": {
+        "kind": "file",
+        "size": 10839
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/extract_cardinal_anchors.py": {
+        "kind": "file",
+        "size": 5006
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/extract_strip_frames.py": {
+        "kind": "file",
+        "size": 14090
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/inspect_frames.py": {
+        "kind": "file",
+        "size": 9456
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/make_contact_sheet.py": {
+        "kind": "file",
+        "size": 3450
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/make_direction_blind_qa_sheet.py": {
+        "kind": "file",
+        "size": 5370
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/make_direction_qa_sheet.py": {
+        "kind": "file",
+        "size": 4929
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/measure_direction_continuity.py": {
+        "kind": "file",
+        "size": 6706
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/prepare_pet_run.py": {
+        "kind": "file",
+        "size": 51327
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/render_animation_previews.py": {
+        "kind": "file",
+        "size": 2549
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/validate_atlas.py": {
+        "kind": "file",
+        "size": 10678
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/validate_direction_blind_verdicts.py": {
+        "kind": "file",
+        "size": 3836
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/create-pet/scripts/validate_pet_quality.py": {
+        "kind": "file",
+        "size": 12965
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/pets/SKILL.md": {
+        "kind": "file",
+        "size": 3552
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/pets/agents/openai.yaml": {
+        "kind": "file",
+        "size": 204
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/update-pet/SKILL.md": {
+        "kind": "file",
+        "size": 4272
+      },
+      "profile/plugins/cache/openai-curated-remote/work-pets/0.1.6/skills/update-pet/agents/openai.yaml": {
+        "kind": "file",
+        "size": 220
+      },
+      "profile/queue_1.sqlite": {
+        "kind": "file",
+        "size": 28672
+      },
+      "profile/skills/.system/.codex-system-skills.marker": {
+        "kind": "file",
+        "size": 17
+      },
+      "profile/skills/.system/imagegen/LICENSE.txt": {
+        "kind": "file",
+        "size": 10776
+      },
+      "profile/skills/.system/imagegen/SKILL.md": {
+        "kind": "file",
+        "size": 24003
+      },
+      "profile/skills/.system/imagegen/agents/openai.yaml": {
+        "kind": "file",
+        "size": 275
+      },
+      "profile/skills/.system/imagegen/assets/imagegen-small.svg": {
+        "kind": "file",
+        "size": 2889
+      },
+      "profile/skills/.system/imagegen/assets/imagegen.png": {
+        "kind": "file",
+        "size": 1711
+      },
+      "profile/skills/.system/imagegen/references/cli.md": {
+        "kind": "file",
+        "size": 10188
+      },
+      "profile/skills/.system/imagegen/references/codex-network.md": {
+        "kind": "file",
+        "size": 1779
+      },
+      "profile/skills/.system/imagegen/references/image-api.md": {
+        "kind": "file",
+        "size": 6079
+      },
+      "profile/skills/.system/imagegen/references/prompting.md": {
+        "kind": "file",
+        "size": 9896
+      },
+      "profile/skills/.system/imagegen/references/sample-prompts.md": {
+        "kind": "file",
+        "size": 19239
+      },
+      "profile/skills/.system/imagegen/scripts/image_gen.py": {
+        "kind": "file",
+        "size": 34271
+      },
+      "profile/skills/.system/imagegen/scripts/remove_chroma_key.py": {
+        "kind": "file",
+        "size": 13836
+      },
+      "profile/skills/.system/openai-docs/LICENSE.txt": {
+        "kind": "file",
+        "size": 10776
+      },
+      "profile/skills/.system/openai-docs/SKILL.md": {
+        "kind": "file",
+        "size": 5446
+      },
+      "profile/skills/.system/openai-docs/agents/openai.yaml": {
+        "kind": "file",
+        "size": 370
+      },
+      "profile/skills/.system/openai-docs/assets/openai-small.svg": {
+        "kind": "file",
+        "size": 1091
+      },
+      "profile/skills/.system/openai-docs/assets/openai.png": {
+        "kind": "file",
+        "size": 1429
+      },
+      "profile/skills/.system/openai-docs/references/codex-self-knowledge.md": {
+        "kind": "file",
+        "size": 7417
+      },
+      "profile/skills/.system/openai-docs/references/latest-model.md": {
+        "kind": "file",
+        "size": 2094
+      },
+      "profile/skills/.system/openai-docs/references/mcp-diagnostics.md": {
+        "kind": "file",
+        "size": 2318
+      },
+      "profile/skills/.system/openai-docs/references/model-migration.md": {
+        "kind": "file",
+        "size": 5054
+      },
+      "profile/skills/.system/openai-docs/references/model-selection.md": {
+        "kind": "file",
+        "size": 1344
+      },
+      "profile/skills/.system/openai-docs/references/official-docs.md": {
+        "kind": "file",
+        "size": 3337
+      },
+      "profile/skills/.system/openai-docs/references/prompting-guide.md": {
+        "kind": "file",
+        "size": 15747
+      },
+      "profile/skills/.system/openai-docs/references/upgrade-guide.md": {
+        "kind": "file",
+        "size": 1050
+      },
+      "profile/skills/.system/openai-docs/references/upgrading-to-gpt-5p6-sol.md": {
+        "kind": "file",
+        "size": 23093
+      },
+      "profile/skills/.system/openai-docs/scripts/fetch-codex-manual.mjs": {
+        "kind": "file",
+        "size": 16085
+      },
+      "profile/skills/.system/openai-docs/scripts/resolve-latest-model-info": {
+        "kind": "file",
+        "size": 1038
+      },
+      "profile/skills/.system/openai-docs/scripts/resolve-latest-model-info.cjs": {
+        "kind": "file",
+        "size": 3937
+      },
+      "profile/skills/.system/plugin-creator/SKILL.md": {
+        "kind": "file",
+        "size": 11040
+      },
+      "profile/skills/.system/plugin-creator/agents/openai.yaml": {
+        "kind": "file",
+        "size": 339
+      },
+      "profile/skills/.system/plugin-creator/assets/plugin-creator-small.svg": {
+        "kind": "file",
+        "size": 1319
+      },
+      "profile/skills/.system/plugin-creator/assets/plugin-creator.png": {
+        "kind": "file",
+        "size": 1563
+      },
+      "profile/skills/.system/plugin-creator/references/installing-and-updating.md": {
+        "kind": "file",
+        "size": 5874
+      },
+      "profile/skills/.system/plugin-creator/references/plugin-json-spec.md": {
+        "kind": "file",
+        "size": 9179
+      },
+      "profile/skills/.system/plugin-creator/scripts/create_basic_plugin.py": {
+        "kind": "file",
+        "size": 11185
+      },
+      "profile/skills/.system/plugin-creator/scripts/read_marketplace_name.py": {
+        "kind": "file",
+        "size": 1497
+      },
+      "profile/skills/.system/plugin-creator/scripts/update_plugin_cachebuster.py": {
+        "kind": "file",
+        "size": 2686
+      },
+      "profile/skills/.system/plugin-creator/scripts/validate_plugin.py": {
+        "kind": "file",
+        "size": 21180
+      },
+      "profile/skills/.system/review-agent/SKILL.md": {
+        "kind": "file",
+        "size": 2661
+      },
+      "profile/skills/.system/review-agent/agents/openai.yaml": {
+        "kind": "file",
+        "size": 252
+      },
+      "profile/skills/.system/skill-creator/SKILL.md": {
+        "kind": "file",
+        "size": 22047
+      },
+      "profile/skills/.system/skill-creator/agents/openai.yaml": {
+        "kind": "file",
+        "size": 183
+      },
+      "profile/skills/.system/skill-creator/assets/skill-creator-small.svg": {
+        "kind": "file",
+        "size": 1319
+      },
+      "profile/skills/.system/skill-creator/assets/skill-creator.png": {
+        "kind": "file",
+        "size": 1563
+      },
+      "profile/skills/.system/skill-creator/license.txt": {
+        "kind": "file",
+        "size": 11358
+      },
+      "profile/skills/.system/skill-creator/references/openai_yaml.md": {
+        "kind": "file",
+        "size": 2356
+      },
+      "profile/skills/.system/skill-creator/scripts/generate_openai_yaml.py": {
+        "kind": "file",
+        "size": 6619
+      },
+      "profile/skills/.system/skill-creator/scripts/init_skill.py": {
+        "kind": "file",
+        "size": 14602
+      },
+      "profile/skills/.system/skill-creator/scripts/quick_validate.py": {
+        "kind": "file",
+        "size": 3293
+      },
+      "profile/skills/.system/skill-installer/LICENSE.txt": {
+        "kind": "file",
+        "size": 11358
+      },
+      "profile/skills/.system/skill-installer/SKILL.md": {
+        "kind": "file",
+        "size": 3367
+      },
+      "profile/skills/.system/skill-installer/agents/openai.yaml": {
+        "kind": "file",
+        "size": 221
+      },
+      "profile/skills/.system/skill-installer/assets/skill-installer-small.svg": {
+        "kind": "file",
+        "size": 923
+      },
+      "profile/skills/.system/skill-installer/assets/skill-installer.png": {
+        "kind": "file",
+        "size": 1086
+      },
+      "profile/skills/.system/skill-installer/scripts/github_utils.py": {
+        "kind": "file",
+        "size": 659
+      },
+      "profile/skills/.system/skill-installer/scripts/install-skill-from-github.py": {
+        "kind": "file",
+        "size": 10096
+      },
+      "profile/skills/.system/skill-installer/scripts/list-skills.py": {
+        "kind": "file",
+        "size": 2967
+      },
+      "profile/state_5.sqlite": {
+        "kind": "file",
+        "size": 4096
+      },
+      "profile/state_5.sqlite-shm": {
+        "kind": "file",
+        "size": 32768
+      },
+      "profile/state_5.sqlite-wal": {
+        "kind": "file",
+        "size": 1549152
+      },
+      "shell/.zshenv": {
+        "kind": "file",
+        "size": 2408
+      },
+      "shell/environment": {
+        "kind": "file",
+        "size": 2388
+      }
+    },
+    "control_artifacts": {},
+    "control_receipts": {
+      "preflight.json": {
+        "kind": "file",
+        "size": 42777
+      }
+    },
+    "omitted_binary_paths": [
+      "expense_report/__pycache__/__init__.cpython-314.pyc",
+      "expense_report/__pycache__/cli.cpython-314.pyc",
+      "expense_report/__pycache__/filters.cpython-314.pyc",
+      "expense_report/__pycache__/report.cpython-314.pyc",
+      "expense_report/__pycache__/storage.cpython-314.pyc",
+      "tests/__pycache__/test_expenses.cpython-314.pyc"
+    ],
+    "evidence_complete": true
+  },
+  "cleanup_verified": true
+}

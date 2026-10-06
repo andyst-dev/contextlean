@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {
+      "id": "bug-fix",
+      "category": "small bug fix",
+      "prompt": "Fix category filtering so --category accepts mixed case and surrounding whitespace, just as stored category names do. For example --category ' FOOD ' must select both food expenses from data/sample.csv and produce total 20.00. Preserve unfiltered reports, decimal arithmetic and currency overrides. Add a regression test and run the tests."
+    }
+  ]
+}

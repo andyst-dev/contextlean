@@ -1,0 +1,224 @@
+{
+  "generated_at": "2026-10-02T12:16:05.002775+00:00",
+  "frozen_revision": "ae8653b123bdb4c686ee36825c80db851c8595ea",
+  "benchmark_harness_version": 4,
+  "model": "gpt-5.6-sol",
+  "reasoning": "high",
+  "expected_model_calls": 30,
+  "timeout_seconds": 600,
+  "approximately_neutral_percentage": 1.0,
+  "dispatch": "Five supported single-task suites; no harness modifications. All offline gates precede all live dispatch.",
+  "retries": 0,
+  "order": [
+    {
+      "sequence": 1,
+      "task": "navigation",
+      "repeat": 1,
+      "condition": "vanilla",
+      "harness_sequence": 1
+    },
+    {
+      "sequence": 2,
+      "task": "navigation",
+      "repeat": 1,
+      "condition": "contextlean",
+      "harness_sequence": 2
+    },
+    {
+      "sequence": 3,
+      "task": "navigation",
+      "repeat": 2,
+      "condition": "contextlean",
+      "harness_sequence": 3
+    },
+    {
+      "sequence": 4,
+      "task": "navigation",
+      "repeat": 2,
+      "condition": "vanilla",
+      "harness_sequence": 4
+    },
+    {
+      "sequence": 5,
+      "task": "navigation",
+      "repeat": 3,
+      "condition": "vanilla",
+      "harness_sequence": 5
+    },
+    {
+      "sequence": 6,
+      "task": "navigation",
+      "repeat": 3,
+      "condition": "contextlean",
+      "harness_sequence": 6
+    },
+    {
+      "sequence": 7,
+      "task": "bug-fix",
+      "repeat": 1,
+      "condition": "vanilla",
+      "harness_sequence": 1
+    },
+    {
+      "sequence": 8,
+      "task": "bug-fix",
+      "repeat": 1,
+      "condition": "contextlean",
+      "harness_sequence": 2
+    },
+    {
+      "sequence": 9,
+      "task": "bug-fix",
+      "repeat": 2,
+      "condition": "contextlean",
+      "harness_sequence": 3
+    },
+    {
+      "sequence": 10,
+      "task": "bug-fix",
+      "repeat": 2,
+      "condition": "vanilla",
+      "harness_sequence": 4
+    },
+    {
+      "sequence": 11,
+      "task": "bug-fix",
+      "repeat": 3,
+      "condition": "vanilla",
+      "harness_sequence": 5
+    },
+    {
+      "sequence": 12,
+      "task": "bug-fix",
+      "repeat": 3,
+      "condition": "contextlean",
+      "harness_sequence": 6
+    },
+    {
+      "sequence": 13,
+      "task": "feature",
+      "repeat": 1,
+      "condition": "vanilla",
+      "harness_sequence": 1
+    },
+    {
+      "sequence": 14,
+      "task": "feature",
+      "repeat": 1,
+      "condition": "contextlean",
+      "harness_sequence": 2
+    },
+    {
+      "sequence": 15,
+      "task": "feature",
+      "repeat": 2,
+      "condition": "contextlean",
+      "harness_sequence": 3
+    },
+    {
+      "sequence": 16,
+      "task": "feature",
+      "repeat": 2,
+      "condition": "vanilla",
+      "harness_sequence": 4
+    },
+    {
+      "sequence": 17,
+      "task": "feature",
+      "repeat": 3,
+      "condition": "vanilla",
+      "harness_sequence": 5
+    },
+    {
+      "sequence": 18,
+      "task": "feature",
+      "repeat": 3,
+      "condition": "contextlean",
+      "harness_sequence": 6
+    },
+    {
+      "sequence": 19,
+      "task": "refactor",
+      "repeat": 1,
+      "condition": "vanilla",
+      "harness_sequence": 1
+    },
+    {
+      "sequence": 20,
+      "task": "refactor",
+      "repeat": 1,
+      "condition": "contextlean",
+      "harness_sequence": 2
+    },
+    {
+      "sequence": 21,
+      "task": "refactor",
+      "repeat": 2,
+      "condition": "contextlean",
+      "harness_sequence": 3
+    },
+    {
+      "sequence": 22,
+      "task": "refactor",
+      "repeat": 2,
+      "condition": "vanilla",
+      "harness_sequence": 4
+    },
+    {
+      "sequence": 23,
+      "task": "refactor",
+      "repeat": 3,
+      "condition": "vanilla",
+      "harness_sequence": 5
+    },
+    {
+      "sequence": 24,
+      "task": "refactor",
+      "repeat": 3,
+      "condition": "contextlean",
+      "harness_sequence": 6
+    },
+    {
+      "sequence": 25,
+      "task": "documentation-config",
+      "repeat": 1,
+      "condition": "vanilla",
+      "harness_sequence": 1
+    },
+    {
+      "sequence": 26,
+      "task": "documentation-config",
+      "repeat": 1,
+      "condition": "contextlean",
+      "harness_sequence": 2
+    },
+    {
+      "sequence": 27,
+      "task": "documentation-config",
+      "repeat": 2,
+      "condition": "contextlean",
+      "harness_sequence": 3
+    },
+    {
+      "sequence": 28,
+      "task": "documentation-config",
+      "repeat": 2,
+      "condition": "vanilla",
+      "harness_sequence": 4
+    },
+    {
+      "sequence": 29,
+      "task": "documentation-config",
+      "repeat": 3,
+      "condition": "vanilla",
+      "harness_sequence": 5
+    },
+    {
+      "sequence": 30,
+      "task": "documentation-config",
+      "repeat": 3,
+      "condition": "contextlean",
+      "harness_sequence": 6
+    }
+  ]
+}

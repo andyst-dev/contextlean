@@ -1,0 +1,834 @@
+{
+  "comparison_adapter_version": 1,
+  "benchmark_harness_version": 4,
+  "condition_kind": "guided_product_revision",
+  "conditions": {
+    "old": {
+      "condition_kind": "guided_product_revision",
+      "condition_name": "old",
+      "product_revision": "ae8653b123bdb4c686ee36825c80db851c8595ea",
+      "guidance_files": {
+        "AGENTS.md": {
+          "sha256": "209e63926369bd2893eff49ee3b4e3ef6e51ca258956b4fb188a8535cd9d9635",
+          "size": 5475
+        },
+        "CLAUDE.md": {
+          "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+          "size": 11
+        },
+        "PROJECT_REFERENCE.md": {
+          "sha256": "ecac8f12737b0a25ab826b74476a170e1c3a2ee85bd0bb23e0431e4284c28025",
+          "size": 3922
+        }
+      },
+      "automatic_guidance_bytes": 5486
+    },
+    "balanced": {
+      "condition_kind": "guided_product_revision",
+      "condition_name": "balanced",
+      "product_revision": "1a6e67fb9e5c3d5a91ca89a9f5466d2fa037ea52",
+      "guidance_files": {
+        "AGENTS.md": {
+          "sha256": "c545c2d0fb3d3695cb674aeb59c482552583a6849bcaacbda05df02b99f03981",
+          "size": 4741
+        },
+        "CLAUDE.md": {
+          "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+          "size": 11
+        }
+      },
+      "automatic_guidance_bytes": 4752
+    }
+  },
+  "files": [
+    {
+      "path": ".gitignore",
+      "condition_specific": false,
+      "old": {
+        "sha256": "66556d3cf14a84a8c025c4e396fa1842c41d1dd09c98dc25ec3f2ae6ac878db5",
+        "size": 37
+      },
+      "balanced": {
+        "sha256": "66556d3cf14a84a8c025c4e396fa1842c41d1dd09c98dc25ec3f2ae6ac878db5",
+        "size": 37
+      }
+    },
+    {
+      "path": "AGENTS.md",
+      "condition_specific": true,
+      "old": {
+        "sha256": "209e63926369bd2893eff49ee3b4e3ef6e51ca258956b4fb188a8535cd9d9635",
+        "size": 5475
+      },
+      "balanced": {
+        "sha256": "c545c2d0fb3d3695cb674aeb59c482552583a6849bcaacbda05df02b99f03981",
+        "size": 4741
+      }
+    },
+    {
+      "path": "CLAUDE.md",
+      "condition_specific": true,
+      "old": {
+        "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+        "size": 11
+      },
+      "balanced": {
+        "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+        "size": 11
+      }
+    },
+    {
+      "path": "PROJECT_REFERENCE.md",
+      "condition_specific": true,
+      "old": {
+        "sha256": "ecac8f12737b0a25ab826b74476a170e1c3a2ee85bd0bb23e0431e4284c28025",
+        "size": 3922
+      },
+      "balanced": null
+    },
+    {
+      "path": "README.md",
+      "condition_specific": false,
+      "old": {
+        "sha256": "3bc7002182a17904d8435a5cb95fca7c0095d809d441f22a9f4572ac60c06722",
+        "size": 435
+      },
+      "balanced": {
+        "sha256": "3bc7002182a17904d8435a5cb95fca7c0095d809d441f22a9f4572ac60c06722",
+        "size": 435
+      }
+    },
+    {
+      "path": "config.json",
+      "condition_specific": false,
+      "old": {
+        "sha256": "6a8c29bd630822a34ee4ed59e0d2591f9afa4b7a310db08b6aa528039a443da4",
+        "size": 20
+      },
+      "balanced": {
+        "sha256": "6a8c29bd630822a34ee4ed59e0d2591f9afa4b7a310db08b6aa528039a443da4",
+        "size": 20
+      }
+    },
+    {
+      "path": "data/sample.csv",
+      "condition_specific": false,
+      "old": {
+        "sha256": "c39faa15a1d1eefbf2ee2402f88cfe7d88e22aeddacfeedb538203044e60163e",
+        "size": 50
+      },
+      "balanced": {
+        "sha256": "c39faa15a1d1eefbf2ee2402f88cfe7d88e22aeddacfeedb538203044e60163e",
+        "size": 50
+      }
+    },
+    {
+      "path": "expense_report/__init__.py",
+      "condition_specific": false,
+      "old": {
+        "sha256": "f6b1efb33c8e51aa4ebf4d7ea4a1fade259d94b019ade83dd241271118529a47",
+        "size": 51
+      },
+      "balanced": {
+        "sha256": "f6b1efb33c8e51aa4ebf4d7ea4a1fade259d94b019ade83dd241271118529a47",
+        "size": 51
+      }
+    },
+    {
+      "path": "expense_report/cli.py",
+      "condition_specific": false,
+      "old": {
+        "sha256": "6a681929dc3b3fc7149084ce6d97db797dcabaee51e44e54f8f517c3fa8d89ab",
+        "size": 722
+      },
+      "balanced": {
+        "sha256": "6a681929dc3b3fc7149084ce6d97db797dcabaee51e44e54f8f517c3fa8d89ab",
+        "size": 722
+      }
+    },
+    {
+      "path": "expense_report/filters.py",
+      "condition_specific": false,
+      "old": {
+        "sha256": "8825e48b6a21b716bc6b074284378bc42c13be48ca16c4450184d449cb65a9f7",
+        "size": 287
+      },
+      "balanced": {
+        "sha256": "8825e48b6a21b716bc6b074284378bc42c13be48ca16c4450184d449cb65a9f7",
+        "size": 287
+      }
+    },
+    {
+      "path": "expense_report/report.py",
+      "condition_specific": false,
+      "old": {
+        "sha256": "a6054eafc61b537081ee06573065ecbe1d8ca0e0cd6712d6ffcce73c225e6b64",
+        "size": 567
+      },
+      "balanced": {
+        "sha256": "a6054eafc61b537081ee06573065ecbe1d8ca0e0cd6712d6ffcce73c225e6b64",
+        "size": 567
+      }
+    },
+    {
+      "path": "expense_report/storage.py",
+      "condition_specific": false,
+      "old": {
+        "sha256": "97eb5325d6b0a78427875ad0774856b1b3249ed5f939fc22ccb0a43efd9f69b4",
+        "size": 276
+      },
+      "balanced": {
+        "sha256": "97eb5325d6b0a78427875ad0774856b1b3249ed5f939fc22ccb0a43efd9f69b4",
+        "size": 276
+      }
+    },
+    {
+      "path": "tests/test_expenses.py",
+      "condition_specific": false,
+      "old": {
+        "sha256": "542ad1c532288b3c460269224ecf161dd560e6e0d5c9c783f83cec4e593a194b",
+        "size": 1570
+      },
+      "balanced": {
+        "sha256": "542ad1c532288b3c460269224ecf161dd560e6e0d5c9c783f83cec4e593a194b",
+        "size": 1570
+      }
+    }
+  ],
+  "prompt_sha256": "464e90080aad8fbba255ac27e48b7bd0faa0fc33098d3eba0a6c3473da7589e3",
+  "prompt_size": 552,
+  "source_inputs": {
+    "old": {
+      "benchmarks/evaluate.py": {
+        "sha256": "3200e20da7522c1a063cda247433efcdcaf2e6f945c7cdf951dee35e624fd686",
+        "size": 4780
+      },
+      "benchmarks/execution.py": {
+        "sha256": "04d91222a0451758ead777d28339e45844cddf8134f2984c99a7232041fa1f31",
+        "size": 9887
+      },
+      "benchmarks/fixtures/expense-report/.gitignore": {
+        "sha256": "66556d3cf14a84a8c025c4e396fa1842c41d1dd09c98dc25ec3f2ae6ac878db5",
+        "size": 37
+      },
+      "benchmarks/fixtures/expense-report/AGENTS.md": {
+        "sha256": "4b1547fdba42a849d1558e54fbf8249213c7164644e8a501a309b631bdfdf1d3",
+        "size": 932
+      },
+      "benchmarks/fixtures/expense-report/CLAUDE.md": {
+        "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+        "size": 11
+      },
+      "benchmarks/fixtures/expense-report/README.md": {
+        "sha256": "3bc7002182a17904d8435a5cb95fca7c0095d809d441f22a9f4572ac60c06722",
+        "size": 435
+      },
+      "benchmarks/fixtures/expense-report/config.json": {
+        "sha256": "6a8c29bd630822a34ee4ed59e0d2591f9afa4b7a310db08b6aa528039a443da4",
+        "size": 20
+      },
+      "benchmarks/fixtures/expense-report/data/sample.csv": {
+        "sha256": "c39faa15a1d1eefbf2ee2402f88cfe7d88e22aeddacfeedb538203044e60163e",
+        "size": 50
+      },
+      "benchmarks/fixtures/expense-report/expense_report/__init__.py": {
+        "sha256": "f6b1efb33c8e51aa4ebf4d7ea4a1fade259d94b019ade83dd241271118529a47",
+        "size": 51
+      },
+      "benchmarks/fixtures/expense-report/expense_report/cli.py": {
+        "sha256": "6a681929dc3b3fc7149084ce6d97db797dcabaee51e44e54f8f517c3fa8d89ab",
+        "size": 722
+      },
+      "benchmarks/fixtures/expense-report/expense_report/filters.py": {
+        "sha256": "8825e48b6a21b716bc6b074284378bc42c13be48ca16c4450184d449cb65a9f7",
+        "size": 287
+      },
+      "benchmarks/fixtures/expense-report/expense_report/report.py": {
+        "sha256": "a6054eafc61b537081ee06573065ecbe1d8ca0e0cd6712d6ffcce73c225e6b64",
+        "size": 567
+      },
+      "benchmarks/fixtures/expense-report/expense_report/storage.py": {
+        "sha256": "97eb5325d6b0a78427875ad0774856b1b3249ed5f939fc22ccb0a43efd9f69b4",
+        "size": 276
+      },
+      "benchmarks/fixtures/expense-report/tests/test_expenses.py": {
+        "sha256": "542ad1c532288b3c460269224ecf161dd560e6e0d5c9c783f83cec4e593a194b",
+        "size": 1570
+      },
+      "benchmarks/harness.py": {
+        "sha256": "b44a58caf5006a3f6535402d6884fc3ad39c18130aeeb97681d8c4cb65ce2541",
+        "size": 31289
+      },
+      "benchmarks/prepare_fixture.py": {
+        "sha256": "2709f571c6cb9e36618db60fc2478cc19ae8dd571b572cf91111028359dfa075",
+        "size": 7027
+      },
+      "benchmarks/runtime.py": {
+        "sha256": "45dd1cd45a3d4bb37ce814c270685ac6bb48fcef259244fc4b2ef6ceb9d336c9",
+        "size": 6843
+      },
+      "benchmarks/tasks/suite.json": {
+        "sha256": "bc40082c4e77dc11a268b5593f313d6b1b4b51062c3818effb64bfe03a744c62",
+        "size": 2403
+      },
+      "benchmarks/trace.py": {
+        "sha256": "1493b336ad1c7e45acf4e04d65ffa1bb39ce3b3ae165000b2fc3ded62af2baa6",
+        "size": 18103
+      },
+      "skills/benchmark/scripts/benchmark.py": {
+        "sha256": "64602349dd6c60e159024160db7d5d768e73053a1d544eb97469b17be9414311",
+        "size": 43180
+      },
+      "skills/bootstrap/SKILL.md": {
+        "sha256": "2bf86f5b534583ad2741b4a53e3ee664cbd8016535c77105cd3deb71b2b8a872",
+        "size": 1814
+      },
+      "skills/bootstrap/agents/openai.yaml": {
+        "sha256": "65cba04ef8f44630675df084cbf3c0c3dc0a9e6ff596d4c18c846d55b2224265",
+        "size": 241
+      },
+      "skills/bootstrap/references/bootstrap-spec.md": {
+        "sha256": "8b8ddcf6d952d7672962aa9708bfbb9c4401ea26dd122d660df09594c67436d0",
+        "size": 13905
+      },
+      "skills/bootstrap/references/permanent-rules.json": {
+        "sha256": "c7dde89812f4e7ea184b9c7097e87bb5e391ce53fc7d7b73dcf6ff205c5be5db",
+        "size": 14078
+      },
+      "skills/bootstrap/scripts/verify_transfer.py": {
+        "sha256": "253d2910fc06d50d6095da2488eeff7887fa17a66969df86049073bbdd1aaa34",
+        "size": 7916
+      },
+      "skills/lean-review/SKILL.md": {
+        "sha256": "f31c0849a5c11757b8f200dd2c030b04d6cdf78c364a95ba7c5b329512aebed9",
+        "size": 2069
+      },
+      "skills/lean-review/agents/openai.yaml": {
+        "sha256": "d334aa4944fc3009033d29e5a198e71446879637140d867a900987ffcb8c6c14",
+        "size": 211
+      },
+      "tests/bootstrap_fixture.py": {
+        "sha256": "f6f508f833bbaf3d7dca79e1e16d90df4676f4131150a9982216ddf6624806a2",
+        "size": 3004
+      },
+      "tests/fixtures/benchmark/failed.jsonl": {
+        "sha256": "91e1ee47af5d7c750085442c567344b168fefae3959c3c86728f542798b2d51c",
+        "size": 258
+      },
+      "tests/fixtures/benchmark/invalid-usage.jsonl": {
+        "sha256": "c07667bbb7c0f3f4968408a241d9b606d888d6e662355c2c8d9ab9a9aec4d601",
+        "size": 208
+      },
+      "tests/fixtures/benchmark/success.jsonl": {
+        "sha256": "358e589e62ac2e9a742b8cb496408d2f18961d6fc0409abe6823d67725733be9",
+        "size": 719
+      },
+      "tests/fixtures/benchmark/v3-unittest-output.json": {
+        "sha256": "f019edae3e35335028c4ced20bf662d61c170df1980cccb35706dfb555706363",
+        "size": 4360
+      },
+      "tests/fixtures/bootstrap-transfer/AGENTS.md": {
+        "sha256": "209e63926369bd2893eff49ee3b4e3ef6e51ca258956b4fb188a8535cd9d9635",
+        "size": 5475
+      },
+      "tests/fixtures/bootstrap-transfer/CLAUDE.md": {
+        "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+        "size": 11
+      },
+      "tests/fixtures/bootstrap-transfer/PROJECT_REFERENCE.md": {
+        "sha256": "ecac8f12737b0a25ab826b74476a170e1c3a2ee85bd0bb23e0431e4284c28025",
+        "size": 3922
+      },
+      "tests/fixtures/bootstrap-transfer/transfer.json": {
+        "sha256": "86d8eeff9b69c2e995605b9a7e643ac45d246b92d9809914403edfe26c23903f",
+        "size": 11908
+      },
+      "tests/fixtures/projects/clean/AGENTS.md": {
+        "sha256": "ab86d63637f08d0f88cf6b75fc3eb61a9270e513369e39033598ef980776ce54",
+        "size": 101
+      },
+      "tests/fixtures/projects/clean/CLAUDE.md": {
+        "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+        "size": 11
+      },
+      "tests/fixtures/projects/clean/fixture.json": {
+        "sha256": "c601253f3dbec1b805af0575cbb56d0429895eaa8d3e3b18aebea14534f8ca8e",
+        "size": 70
+      },
+      "tests/fixtures/projects/clean/src/tool.py": {
+        "sha256": "a58a12d2f2ca0b214789dc81d173eba9d323a07372a183dd50728f95d6661bc7",
+        "size": 50
+      },
+      "tests/fixtures/projects/monorepo-docs/apps/web/src/index.ts": {
+        "sha256": "a8e4ee6a4da7bdfbb866c5e8aa382db0ec8a430b762914cc719963f87552acd1",
+        "size": 101
+      },
+      "tests/fixtures/projects/monorepo-docs/docs/ARCHITECTURE.md": {
+        "sha256": "e6034760a5c79db22f6bd2e076ea59954648160e60dbe42de712e65a1f4104fa",
+        "size": 1467
+      },
+      "tests/fixtures/projects/monorepo-docs/fixture.json": {
+        "sha256": "4103a93156b1f21f71eb4db5de568f6c55c25d35503dae6928be2dc51c0f8bf6",
+        "size": 154
+      },
+      "tests/fixtures/projects/monorepo-docs/package.json": {
+        "sha256": "e51a8cca0d6cf83eacc4b92be9d8446914db0653e891c66d0d4956b86725ff16",
+        "size": 94
+      },
+      "tests/fixtures/projects/monorepo-docs/packages/shared/src/id.ts": {
+        "sha256": "a9a3d36bc685c638ab079dfec75d93bc5df7fa7446853ac5bed355cb995a1a5e",
+        "size": 81
+      },
+      "tests/fixtures/projects/node-large-claude/CLAUDE.md": {
+        "sha256": "3e355be79fd694285a0b8909e9b80cef4e513ba013cb706d3bebf5797f115ec9",
+        "size": 2213
+      },
+      "tests/fixtures/projects/node-large-claude/fixture.json": {
+        "sha256": "7feb333a5afeeebee80b23c392cb16387561ab35bda17206a59cf2f1bf875b74",
+        "size": 105
+      },
+      "tests/fixtures/projects/node-large-claude/package.json": {
+        "sha256": "6543d375bd587880c70fce2e8463370a678d49b190890564d52363e4d6a6e0e0",
+        "size": 102
+      },
+      "tests/fixtures/projects/node-large-claude/src/index.ts": {
+        "sha256": "0f9c87e792f741fdad86d910f28c8d54fbecc121ca80d6d57563fcf76246945f",
+        "size": 94
+      },
+      "tests/fixtures/projects/python-existing/AGENTS.md": {
+        "sha256": "2def9d0a8b71cc56432addf567c24d8f002820f62c4bebb856312e2ac403553d",
+        "size": 107
+      },
+      "tests/fixtures/projects/python-existing/fixture.json": {
+        "sha256": "6a471fb2ce76f14d3adbcc965572e5e28aa98573346bb5ce49087051c94254ac",
+        "size": 136
+      },
+      "tests/fixtures/projects/python-existing/pyproject.toml": {
+        "sha256": "dd1fc8fbe3f1b9a4c4a2070756b15d62d5ebeaf9229fb0b69b4dd23ad2385c5b",
+        "size": 124
+      },
+      "tests/fixtures/projects/python-existing/src/greeting.py": {
+        "sha256": "7d180e1afb7777ad22495996b5c0d3fa3cf8df9e420f400e2dc7782dcfaec91b",
+        "size": 58
+      },
+      "tests/fixtures/projects/python-existing/tests/test_greeting.py": {
+        "sha256": "43dde3dd199b3b9758fa3f058e715c65ba1379d02e99e695f394f6a56a8a332f",
+        "size": 174
+      },
+      "tests/fixtures/reviews/duplicate-helper.diff": {
+        "sha256": "e97196d736ff1caa50b9f6466bc3b4fdfa80430e4df321ff9afe790498ea8de8",
+        "size": 577
+      },
+      "tests/fixtures/reviews/expected.json": {
+        "sha256": "588365bf9cfdfec9dcf3b2a543d0d2a2636c9db0ad875bd38d43a814a8adcad1",
+        "size": 101
+      },
+      "tests/fixtures/reviews/focused-change.diff": {
+        "sha256": "6bfff36524d49afd2810234d706045b84539fae2168eb9a62d4c66b71a5e8322",
+        "size": 286
+      }
+    },
+    "balanced": {
+      "benchmarks/evaluate.py": {
+        "sha256": "3200e20da7522c1a063cda247433efcdcaf2e6f945c7cdf951dee35e624fd686",
+        "size": 4780
+      },
+      "benchmarks/execution.py": {
+        "sha256": "04d91222a0451758ead777d28339e45844cddf8134f2984c99a7232041fa1f31",
+        "size": 9887
+      },
+      "benchmarks/fixtures/expense-report/.gitignore": {
+        "sha256": "66556d3cf14a84a8c025c4e396fa1842c41d1dd09c98dc25ec3f2ae6ac878db5",
+        "size": 37
+      },
+      "benchmarks/fixtures/expense-report/AGENTS.md": {
+        "sha256": "4b1547fdba42a849d1558e54fbf8249213c7164644e8a501a309b631bdfdf1d3",
+        "size": 932
+      },
+      "benchmarks/fixtures/expense-report/CLAUDE.md": {
+        "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+        "size": 11
+      },
+      "benchmarks/fixtures/expense-report/README.md": {
+        "sha256": "3bc7002182a17904d8435a5cb95fca7c0095d809d441f22a9f4572ac60c06722",
+        "size": 435
+      },
+      "benchmarks/fixtures/expense-report/config.json": {
+        "sha256": "6a8c29bd630822a34ee4ed59e0d2591f9afa4b7a310db08b6aa528039a443da4",
+        "size": 20
+      },
+      "benchmarks/fixtures/expense-report/data/sample.csv": {
+        "sha256": "c39faa15a1d1eefbf2ee2402f88cfe7d88e22aeddacfeedb538203044e60163e",
+        "size": 50
+      },
+      "benchmarks/fixtures/expense-report/expense_report/__init__.py": {
+        "sha256": "f6b1efb33c8e51aa4ebf4d7ea4a1fade259d94b019ade83dd241271118529a47",
+        "size": 51
+      },
+      "benchmarks/fixtures/expense-report/expense_report/cli.py": {
+        "sha256": "6a681929dc3b3fc7149084ce6d97db797dcabaee51e44e54f8f517c3fa8d89ab",
+        "size": 722
+      },
+      "benchmarks/fixtures/expense-report/expense_report/filters.py": {
+        "sha256": "8825e48b6a21b716bc6b074284378bc42c13be48ca16c4450184d449cb65a9f7",
+        "size": 287
+      },
+      "benchmarks/fixtures/expense-report/expense_report/report.py": {
+        "sha256": "a6054eafc61b537081ee06573065ecbe1d8ca0e0cd6712d6ffcce73c225e6b64",
+        "size": 567
+      },
+      "benchmarks/fixtures/expense-report/expense_report/storage.py": {
+        "sha256": "97eb5325d6b0a78427875ad0774856b1b3249ed5f939fc22ccb0a43efd9f69b4",
+        "size": 276
+      },
+      "benchmarks/fixtures/expense-report/tests/test_expenses.py": {
+        "sha256": "542ad1c532288b3c460269224ecf161dd560e6e0d5c9c783f83cec4e593a194b",
+        "size": 1570
+      },
+      "benchmarks/harness.py": {
+        "sha256": "b44a58caf5006a3f6535402d6884fc3ad39c18130aeeb97681d8c4cb65ce2541",
+        "size": 31289
+      },
+      "benchmarks/prepare_fixture.py": {
+        "sha256": "2709f571c6cb9e36618db60fc2478cc19ae8dd571b572cf91111028359dfa075",
+        "size": 7027
+      },
+      "benchmarks/runtime.py": {
+        "sha256": "45dd1cd45a3d4bb37ce814c270685ac6bb48fcef259244fc4b2ef6ceb9d336c9",
+        "size": 6843
+      },
+      "benchmarks/tasks/suite.json": {
+        "sha256": "bc40082c4e77dc11a268b5593f313d6b1b4b51062c3818effb64bfe03a744c62",
+        "size": 2403
+      },
+      "benchmarks/trace.py": {
+        "sha256": "1493b336ad1c7e45acf4e04d65ffa1bb39ce3b3ae165000b2fc3ded62af2baa6",
+        "size": 18103
+      },
+      "skills/benchmark/scripts/benchmark.py": {
+        "sha256": "64602349dd6c60e159024160db7d5d768e73053a1d544eb97469b17be9414311",
+        "size": 43180
+      },
+      "skills/bootstrap/SKILL.md": {
+        "sha256": "23cf7ac6a202c15c5f816b75468f2957303e84d53f1ca3cad7c7b68ed4b4e369",
+        "size": 1292
+      },
+      "skills/bootstrap/agents/openai.yaml": {
+        "sha256": "65cba04ef8f44630675df084cbf3c0c3dc0a9e6ff596d4c18c846d55b2224265",
+        "size": 241
+      },
+      "skills/bootstrap/references/bootstrap-spec.md": {
+        "sha256": "fb25427bf1735f401485454990508a706bc1957b4339aab17eb5dbc4ff988431",
+        "size": 8032
+      },
+      "skills/bootstrap/references/core-guidance.md": {
+        "sha256": "7d222bb97613a253510eb860d1e8822986a1596527bb2f01b695bc410399aa62",
+        "size": 3557
+      },
+      "skills/bootstrap/references/permanent-rules.json": {
+        "sha256": "c7dde89812f4e7ea184b9c7097e87bb5e391ce53fc7d7b73dcf6ff205c5be5db",
+        "size": 14078
+      },
+      "skills/bootstrap/scripts/verify_transfer.py": {
+        "sha256": "c6bfa9d3cdb484dbed0dd4b816ee297b38cbb3ec6caadeb39a8307f80fbd7df3",
+        "size": 7907
+      },
+      "skills/lean-review/SKILL.md": {
+        "sha256": "a575ed565eec41775f940f1e69c1f847e2713c039df3df9733f2eb4c07c064eb",
+        "size": 2416
+      },
+      "skills/lean-review/agents/openai.yaml": {
+        "sha256": "17444f555aef9f343cf3cd258e2ce5da83af7b5bdf8acd538c0249f0f6bff2e0",
+        "size": 254
+      },
+      "skills/lean-review/references/architecture.md": {
+        "sha256": "e9c854eb5e36dd640336def4962e16bf7f32cd1d31f97467ec14f0ea8476d28c",
+        "size": 2303
+      },
+      "tests/bootstrap_fixture.py": {
+        "sha256": "db0dee5b77117d1aaa254835746ec441c4213b7aba9f09426dc2d6034773d8f1",
+        "size": 1056
+      },
+      "tests/fixtures/benchmark/failed.jsonl": {
+        "sha256": "91e1ee47af5d7c750085442c567344b168fefae3959c3c86728f542798b2d51c",
+        "size": 258
+      },
+      "tests/fixtures/benchmark/invalid-usage.jsonl": {
+        "sha256": "c07667bbb7c0f3f4968408a241d9b606d888d6e662355c2c8d9ab9a9aec4d601",
+        "size": 208
+      },
+      "tests/fixtures/benchmark/success.jsonl": {
+        "sha256": "358e589e62ac2e9a742b8cb496408d2f18961d6fc0409abe6823d67725733be9",
+        "size": 719
+      },
+      "tests/fixtures/benchmark/v3-unittest-output.json": {
+        "sha256": "f019edae3e35335028c4ced20bf662d61c170df1980cccb35706dfb555706363",
+        "size": 4360
+      },
+      "tests/fixtures/bootstrap-core/historical-hashes.json": {
+        "sha256": "ad669bff8c66597e5eb9cdde215a870a816d2cab2846f0eb77f8581c61257c01",
+        "size": 935
+      },
+      "tests/fixtures/bootstrap-core/project-map.md": {
+        "sha256": "2a38ad13d2166b48a8f87d1fb108f78c77115796debfb065176151c38fb33e1f",
+        "size": 1211
+      },
+      "tests/fixtures/bootstrap-transfer/AGENTS.md": {
+        "sha256": "209e63926369bd2893eff49ee3b4e3ef6e51ca258956b4fb188a8535cd9d9635",
+        "size": 5475
+      },
+      "tests/fixtures/bootstrap-transfer/CLAUDE.md": {
+        "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+        "size": 11
+      },
+      "tests/fixtures/bootstrap-transfer/PROJECT_REFERENCE.md": {
+        "sha256": "ecac8f12737b0a25ab826b74476a170e1c3a2ee85bd0bb23e0431e4284c28025",
+        "size": 3922
+      },
+      "tests/fixtures/bootstrap-transfer/transfer.json": {
+        "sha256": "86d8eeff9b69c2e995605b9a7e643ac45d246b92d9809914403edfe26c23903f",
+        "size": 11908
+      },
+      "tests/fixtures/projects/clean/AGENTS.md": {
+        "sha256": "ab86d63637f08d0f88cf6b75fc3eb61a9270e513369e39033598ef980776ce54",
+        "size": 101
+      },
+      "tests/fixtures/projects/clean/CLAUDE.md": {
+        "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+        "size": 11
+      },
+      "tests/fixtures/projects/clean/fixture.json": {
+        "sha256": "c601253f3dbec1b805af0575cbb56d0429895eaa8d3e3b18aebea14534f8ca8e",
+        "size": 70
+      },
+      "tests/fixtures/projects/clean/src/tool.py": {
+        "sha256": "a58a12d2f2ca0b214789dc81d173eba9d323a07372a183dd50728f95d6661bc7",
+        "size": 50
+      },
+      "tests/fixtures/projects/monorepo-docs/apps/web/src/index.ts": {
+        "sha256": "a8e4ee6a4da7bdfbb866c5e8aa382db0ec8a430b762914cc719963f87552acd1",
+        "size": 101
+      },
+      "tests/fixtures/projects/monorepo-docs/docs/ARCHITECTURE.md": {
+        "sha256": "e6034760a5c79db22f6bd2e076ea59954648160e60dbe42de712e65a1f4104fa",
+        "size": 1467
+      },
+      "tests/fixtures/projects/monorepo-docs/fixture.json": {
+        "sha256": "4103a93156b1f21f71eb4db5de568f6c55c25d35503dae6928be2dc51c0f8bf6",
+        "size": 154
+      },
+      "tests/fixtures/projects/monorepo-docs/package.json": {
+        "sha256": "e51a8cca0d6cf83eacc4b92be9d8446914db0653e891c66d0d4956b86725ff16",
+        "size": 94
+      },
+      "tests/fixtures/projects/monorepo-docs/packages/shared/src/id.ts": {
+        "sha256": "a9a3d36bc685c638ab079dfec75d93bc5df7fa7446853ac5bed355cb995a1a5e",
+        "size": 81
+      },
+      "tests/fixtures/projects/node-large-claude/CLAUDE.md": {
+        "sha256": "3e355be79fd694285a0b8909e9b80cef4e513ba013cb706d3bebf5797f115ec9",
+        "size": 2213
+      },
+      "tests/fixtures/projects/node-large-claude/fixture.json": {
+        "sha256": "7feb333a5afeeebee80b23c392cb16387561ab35bda17206a59cf2f1bf875b74",
+        "size": 105
+      },
+      "tests/fixtures/projects/node-large-claude/package.json": {
+        "sha256": "6543d375bd587880c70fce2e8463370a678d49b190890564d52363e4d6a6e0e0",
+        "size": 102
+      },
+      "tests/fixtures/projects/node-large-claude/src/index.ts": {
+        "sha256": "0f9c87e792f741fdad86d910f28c8d54fbecc121ca80d6d57563fcf76246945f",
+        "size": 94
+      },
+      "tests/fixtures/projects/python-existing/AGENTS.md": {
+        "sha256": "2def9d0a8b71cc56432addf567c24d8f002820f62c4bebb856312e2ac403553d",
+        "size": 107
+      },
+      "tests/fixtures/projects/python-existing/fixture.json": {
+        "sha256": "6a471fb2ce76f14d3adbcc965572e5e28aa98573346bb5ce49087051c94254ac",
+        "size": 136
+      },
+      "tests/fixtures/projects/python-existing/pyproject.toml": {
+        "sha256": "dd1fc8fbe3f1b9a4c4a2070756b15d62d5ebeaf9229fb0b69b4dd23ad2385c5b",
+        "size": 124
+      },
+      "tests/fixtures/projects/python-existing/src/greeting.py": {
+        "sha256": "7d180e1afb7777ad22495996b5c0d3fa3cf8df9e420f400e2dc7782dcfaec91b",
+        "size": 58
+      },
+      "tests/fixtures/projects/python-existing/tests/test_greeting.py": {
+        "sha256": "43dde3dd199b3b9758fa3f058e715c65ba1379d02e99e695f394f6a56a8a332f",
+        "size": 174
+      },
+      "tests/fixtures/reviews/duplicate-helper.diff": {
+        "sha256": "e97196d736ff1caa50b9f6466bc3b4fdfa80430e4df321ff9afe790498ea8de8",
+        "size": 577
+      },
+      "tests/fixtures/reviews/expected.json": {
+        "sha256": "588365bf9cfdfec9dcf3b2a543d0d2a2636c9db0ad875bd38d43a814a8adcad1",
+        "size": 101
+      },
+      "tests/fixtures/reviews/focused-change.diff": {
+        "sha256": "6bfff36524d49afd2810234d706045b84539fae2168eb9a62d4c66b71a5e8322",
+        "size": 286
+      }
+    }
+  },
+  "reviews": {
+    "old": {
+      "semantics_reviewed": true,
+      "entries": {
+        "expense_report/cli.py": {
+          "responsibility": "arguments/configuration and orchestration.",
+          "evidence": [
+            {
+              "path": "expense_report/cli.py",
+              "contains": "args.currency or config[\"currency\"]"
+            }
+          ]
+        },
+        "expense_report/storage.py": {
+          "responsibility": "CSV loading and Decimal conversion.",
+          "evidence": [
+            {
+              "path": "expense_report/storage.py",
+              "contains": "Decimal(row[\"amount\"])"
+            }
+          ]
+        },
+        "expense_report/filters.py": {
+          "responsibility": "category normalization/selection.",
+          "evidence": [
+            {
+              "path": "expense_report/filters.py",
+              "contains": "if normalize_category(expense[\"category\"]) == category"
+            }
+          ]
+        },
+        "expense_report/report.py": {
+          "responsibility": "normalized grouping and totals.",
+          "evidence": [
+            {
+              "path": "expense_report/report.py",
+              "contains": "categories[key] = categories.get(key, Decimal(\"0\"))"
+            }
+          ]
+        },
+        "config.json": {
+          "responsibility": "default currency; CLI options override it.",
+          "evidence": [
+            {
+              "path": "config.json",
+              "contains": "{\"currency\": \"USD\"}"
+            }
+          ]
+        },
+        "tests/test_expenses.py": {
+          "responsibility": "loading, filtering, report and CLI regression tests.",
+          "evidence": [
+            {
+              "path": "tests/test_expenses.py",
+              "contains": "def test_configured_default(self):"
+            }
+          ]
+        },
+        "data/sample.csv": {
+          "responsibility": "runnable input.",
+          "evidence": [
+            {
+              "path": "data/sample.csv",
+              "contains": "Food,12.50"
+            }
+          ]
+        },
+        "README.md": {
+          "responsibility": "usage/development; search relevant sections when needed.",
+          "evidence": [
+            {
+              "path": "README.md",
+              "contains": "python3 -m unittest discover -s tests -v"
+            }
+          ]
+        }
+      }
+    },
+    "balanced": {
+      "semantics_reviewed": true,
+      "entries": {
+        "expense_report/cli.py": {
+          "responsibility": "arguments/configuration and orchestration.",
+          "evidence": [
+            {
+              "path": "expense_report/cli.py",
+              "contains": "args.currency or config[\"currency\"]"
+            }
+          ]
+        },
+        "expense_report/storage.py": {
+          "responsibility": "CSV loading and Decimal conversion.",
+          "evidence": [
+            {
+              "path": "expense_report/storage.py",
+              "contains": "Decimal(row[\"amount\"])"
+            }
+          ]
+        },
+        "expense_report/filters.py": {
+          "responsibility": "category normalization/selection.",
+          "evidence": [
+            {
+              "path": "expense_report/filters.py",
+              "contains": "if normalize_category(expense[\"category\"]) == category"
+            }
+          ]
+        },
+        "expense_report/report.py": {
+          "responsibility": "normalized grouping and totals.",
+          "evidence": [
+            {
+              "path": "expense_report/report.py",
+              "contains": "categories[key] = categories.get(key, Decimal(\"0\"))"
+            }
+          ]
+        },
+        "config.json": {
+          "responsibility": "default currency; CLI options override it.",
+          "evidence": [
+            {
+              "path": "config.json",
+              "contains": "{\"currency\": \"USD\"}"
+            }
+          ]
+        },
+        "tests/test_expenses.py": {
+          "responsibility": "loading, filtering, report and CLI regression tests.",
+          "evidence": [
+            {
+              "path": "tests/test_expenses.py",
+              "contains": "def test_configured_default(self):"
+            }
+          ]
+        },
+        "data/sample.csv": {
+          "responsibility": "runnable input.",
+          "evidence": [
+            {
+              "path": "data/sample.csv",
+              "contains": "Food,12.50"
+            }
+          ]
+        },
+        "README.md": {
+          "responsibility": "usage/development; search relevant sections when needed.",
+          "evidence": [
+            {
+              "path": "README.md",
+              "contains": "python3 -m unittest discover -s tests -v"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

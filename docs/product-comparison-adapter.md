@@ -61,7 +61,12 @@ whole-tree commits would contradict the intended guidance difference.
 
 ## Offline preparation
 
-Run from a checkout containing both immutable Git objects:
+Run from the CI-green adapter checkout at
+`43972cb610755dde7a2866595a8e1f34f2b2d907`, containing both immutable Git objects.
+The adapter deliberately requires matching helper bytes; v0.3.0 changes the product
+version metadata in the measurement helper, so use that frozen adapter revision
+for this historical comparison. The [completed validation](../benchmarks/results/2026-10-06-balanced-product-change/README.md)
+is retained separately; no new runs are needed for the release.
 
 ```bash
 python3 -B benchmarks/compare_products.py --preflight-only \

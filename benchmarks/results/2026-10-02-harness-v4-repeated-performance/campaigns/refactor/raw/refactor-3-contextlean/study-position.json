@@ -1,0 +1,7 @@
+{
+  "sequence": 24,
+  "harness_sequence": 6,
+  "task": "refactor",
+  "repeat": 3,
+  "condition": "contextlean"
+}

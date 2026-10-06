@@ -1,6 +1,6 @@
 # Balanced ContextLean product contract
 
-Balanced is the current working-tree contract: produce a reliable project map and a
+Balanced is the ContextLean v0.3.0 product contract: produce a reliable project map and a
 compact coding discipline that helps agents find owners, limit exploration, preserve
 constraints, make focused changes, and verify sufficient coverage.
 
@@ -69,7 +69,8 @@ current setup prerequisites. No replacement per-project facet ledger is introduc
 The [original bootstrap](reference/original-agent-bootstrap.md) and
 [old coverage matrix](bootstrap-coverage.md) remain historical evidence. Previous
 benchmarks describe their frozen products, not Balanced. Their evidence is unchanged;
-no model benchmark is used to select or validate this contract.
+the separate [Balanced product-change validation](../benchmarks/results/2026-10-06-balanced-product-change/README.md)
+checks the tested Refactor behavior, not general performance or complex-refactor equivalence.
 
 The comparison is **55 legacy-equivalent PASS / 13 intentionally RE-SCOPED /
 6 intentionally RETIRED / 2 previously REPLACED**. PASS means equivalent behavior

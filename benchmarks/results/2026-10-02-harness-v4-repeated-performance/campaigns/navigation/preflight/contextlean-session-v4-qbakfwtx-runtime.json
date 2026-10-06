@@ -1,0 +1,143 @@
+{
+  "passed": true,
+  "requested": {
+    "os": "Darwin",
+    "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+    "architecture": "arm64",
+    "binaries": {
+      "python3": {
+        "path": "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "version": "Python 3.14.4",
+        "sha256": "b874063062531b7ac73b400141e9ce95184945f86fa1bda91bab5c6671a55149",
+        "selection": "resolved executable"
+      },
+      "git": {
+        "path": "/Applications/Xcode.app/Contents/Developer/usr/bin/git",
+        "version": "git version 2.54.0 (Apple Git-157)",
+        "sha256": "9a1c8fc68dc75e1b3c0cd8e5ad9d13ac9bc92cb53c9578b3cff4beaf2e9b1e70",
+        "selection": "active developer directory; bypass Apple xcrun launcher",
+        "exec_path": "/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core"
+      },
+      "rg": {
+        "path": "/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path/rg",
+        "version": "ripgrep 15.2.0 (rev e89fff89ac)\n\nfeatures:+pcre2\nsimd(compile):+NEON\nsimd(runtime):+NEON\n\nPCRE2 10.45 is available (JIT is available)",
+        "sha256": "c755a455049f3b1408f6525a54a139135cf145f5a2b68ab3ebdc64e821b87ea0",
+        "selection": "resolved executable"
+      },
+      "cli": {
+        "path": "<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin/codex",
+        "version": "codex-cli 0.147.0",
+        "sha256": "19c4f144c5226a9f17c58e6f0fa854843b0f77a6eb420f40e2745a12f10f5d37",
+        "selection": "resolved executable"
+      },
+      "shell": {
+        "path": "/bin/zsh",
+        "version": "zsh 5.9 (arm64-apple-darwin26.0)",
+        "sha256": "abc56520c469fa4985fca02c5f55621932ad79de4f36440a64a27526f4b535ef",
+        "selection": "resolved executable"
+      }
+    },
+    "dependency_environment": "standard-library-only; dependencies are not installed"
+  },
+  "effective": {
+    "binaries": {
+      "python3": {
+        "path": "<session-root>/cache/bin/python3",
+        "version": "Python 3.14.4",
+        "exit_code": 0,
+        "stderr": ""
+      },
+      "git": {
+        "path": "<session-root>/cache/bin/git",
+        "version": "git version 2.54.0 (Apple Git-157)",
+        "exit_code": 0,
+        "stderr": ""
+      },
+      "rg": {
+        "path": "<session-root>/cache/bin/rg",
+        "version": "ripgrep 15.2.0 (rev e89fff89ac)\n\nfeatures:+pcre2\nsimd(compile):+NEON\nsimd(runtime):+NEON\n\nPCRE2 10.45 is available (JIT is available)",
+        "exit_code": 0,
+        "stderr": ""
+      }
+    },
+    "environment": {
+      "LANG": "C.UTF-8",
+      "TERM": "dumb",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "LC_ALL": "C.UTF-8",
+      "TZ": "UTC",
+      "GIT_CONFIG_NOSYSTEM": "1",
+      "GIT_CONFIG_GLOBAL": "<session-root>/cache/gitconfig",
+      "GIT_ATTR_NOSYSTEM": "1",
+      "GIT_AUTHOR_NAME": "Benchmark fixture",
+      "GIT_COMMITTER_NAME": "Benchmark fixture",
+      "GIT_AUTHOR_EMAIL": "<redacted>",
+      "GIT_COMMITTER_EMAIL": "<redacted>",
+      "GIT_AUTHOR_DATE": "2000-01-01T00:00:00Z",
+      "GIT_COMMITTER_DATE": "2000-01-01T00:00:00Z",
+      "HOME": "<session-root>/tmp/home",
+      "XDG_CACHE_HOME": "<session-root>/tmp/cache",
+      "XDG_CONFIG_HOME": "<session-root>/tmp/config",
+      "PYTHONPYCACHEPREFIX": "<session-root>/tmp/pycache",
+      "PYTHONUSERBASE": "<session-root>/tmp/python-user",
+      "PATH": "<session-root>/cache/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+      "SHELL": "/bin/zsh",
+      "TMPDIR": "<session-root>/tmp",
+      "TMP": "<session-root>/tmp",
+      "TEMP": "<session-root>/tmp",
+      "CODEX_HOME": "<session-root>/cache/profile",
+      "CLAUDE_CONFIG_DIR": "<session-root>/cache/profile",
+      "ZDOTDIR": "<session-root>/cache/shell",
+      "ENV": "<session-root>/cache/shell/environment",
+      "BASH_ENV": "<session-root>/cache/shell/environment",
+      "GIT_EXEC_PATH": "/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core",
+      "PYTHONNOUSERSITE": "1"
+    },
+    "shell": {
+      "identity": "/bin/zsh",
+      "version": "5.9"
+    },
+    "python_executable": "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "git_config": {
+      "stdout": "file:.git/config\tcore.repositoryformatversion=0\nfile:.git/config\tcore.filemode=false\nfile:.git/config\tcore.bare=false\nfile:.git/config\tcore.logallrefupdates=false\nfile:.git/config\tcore.ignorecase=false\nfile:.git/config\tcore.precomposeunicode=false\nfile:.git/config\tcore.autocrlf=false\nfile:.git/config\tcore.hookspath=/dev/null\nfile:.git/config\tuser.name=Benchmark fixture\nfile:.git/config\tuser.email=fixture@example.invalid\nfile:.git/config\tcommit.gpgsign=false\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "cache_writes": {
+      "HOME": true,
+      "TMPDIR": true,
+      "XDG_CACHE_HOME": true,
+      "XDG_CONFIG_HOME": true,
+      "PYTHONPYCACHEPREFIX": true,
+      "PYTHONUSERBASE": true
+    }
+  },
+  "invocation": [
+    "<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin/codex",
+    "sandbox",
+    "--permission-profile",
+    "contextlean-session",
+    "--include-managed-config",
+    "--cd",
+    "<session-root>/repo",
+    "--config",
+    "default_permissions=\"contextlean-session\"",
+    "--config",
+    "permissions.contextlean-session={\"filesystem\"={\":root\"=\"deny\",\":minimal\"=\"read\",\"/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path\"=\"read\",\"/Applications/Xcode.app/Contents/Developer/usr/bin\"=\"read\",\"/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core\"=\"read\",\"<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin\"=\"read\",\"/bin\"=\"read\",\"/opt/homebrew\"=\"read\",\"/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14\"=\"read\",\"/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/bin\"=\"read\",\"<session-root>/cache/bin\"=\"read\",\"<session-root>/cache/gitconfig\"=\"read\",\"<session-root>/cache/profile\"=\"read\",\"<session-root>/cache/shell\"=\"read\",\"<evidence>\"=\"deny\",\"<session-root>/repo\"=\"read\",\"<session-root>/repo/.git\"=\"read\",\"<session-root>/tmp\"=\"write\"},\"network\"={\"enabled\"=false}}",
+    "--config",
+    "approval_policy=\"never\"",
+    "--config",
+    "web_search=\"disabled\"",
+    "--config",
+    "shell_environment_policy={\"inherit\"=\"none\",\"set\"={\"LANG\"=\"C.UTF-8\",\"TERM\"=\"dumb\",\"PYTHONDONTWRITEBYTECODE\"=\"1\",\"LC_ALL\"=\"C.UTF-8\",\"TZ\"=\"UTC\",\"GIT_CONFIG_NOSYSTEM\"=\"1\",\"GIT_CONFIG_GLOBAL\"=\"<session-root>/cache/gitconfig\",\"GIT_ATTR_NOSYSTEM\"=\"1\",\"GIT_AUTHOR_NAME\"=\"Benchmark fixture\",\"GIT_COMMITTER_NAME\"=\"Benchmark fixture\",\"GIT_AUTHOR_EMAIL\"=\"fixture@example.invalid\",\"GIT_COMMITTER_EMAIL\"=\"fixture@example.invalid\",\"GIT_AUTHOR_DATE\"=\"2000-01-01T00:00:00Z\",\"GIT_COMMITTER_DATE\"=\"2000-01-01T00:00:00Z\",\"HOME\"=\"<session-root>/tmp/home\",\"XDG_CACHE_HOME\"=\"<session-root>/tmp/cache\",\"XDG_CONFIG_HOME\"=\"<session-root>/tmp/config\",\"PYTHONPYCACHEPREFIX\"=\"<session-root>/tmp/pycache\",\"PYTHONUSERBASE\"=\"<session-root>/tmp/python-user\",\"PATH\"=\"<session-root>/cache/bin:/usr/bin:/bin:/usr/sbin:/sbin\",\"SHELL\"=\"/bin/zsh\",\"TMPDIR\"=\"<session-root>/tmp\",\"TMP\"=\"<session-root>/tmp\",\"TEMP\"=\"<session-root>/tmp\",\"CODEX_HOME\"=\"<session-root>/cache/profile\",\"CLAUDE_CONFIG_DIR\"=\"<session-root>/cache/profile\",\"ZDOTDIR\"=\"<session-root>/cache/shell\",\"ENV\"=\"<session-root>/cache/shell/environment\",\"BASH_ENV\"=\"<session-root>/cache/shell/environment\",\"GIT_EXEC_PATH\"=\"/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core\",\"PYTHONNOUSERSITE\"=\"1\"},\"experimental_use_profile\"=false}",
+    "--",
+    "/bin/zsh",
+    "-lc",
+    "python3 -c 'environment_names = ['\"'\"'LANG'\"'\"', '\"'\"'TERM'\"'\"', '\"'\"'PYTHONDONTWRITEBYTECODE'\"'\"', '\"'\"'LC_ALL'\"'\"', '\"'\"'TZ'\"'\"', '\"'\"'GIT_CONFIG_NOSYSTEM'\"'\"', '\"'\"'GIT_CONFIG_GLOBAL'\"'\"', '\"'\"'GIT_ATTR_NOSYSTEM'\"'\"', '\"'\"'GIT_AUTHOR_NAME'\"'\"', '\"'\"'GIT_COMMITTER_NAME'\"'\"', '\"'\"'GIT_AUTHOR_EMAIL'\"'\"', '\"'\"'GIT_COMMITTER_EMAIL'\"'\"', '\"'\"'GIT_AUTHOR_DATE'\"'\"', '\"'\"'GIT_COMMITTER_DATE'\"'\"', '\"'\"'HOME'\"'\"', '\"'\"'XDG_CACHE_HOME'\"'\"', '\"'\"'XDG_CONFIG_HOME'\"'\"', '\"'\"'PYTHONPYCACHEPREFIX'\"'\"', '\"'\"'PYTHONUSERBASE'\"'\"', '\"'\"'PATH'\"'\"', '\"'\"'SHELL'\"'\"', '\"'\"'TMPDIR'\"'\"', '\"'\"'TMP'\"'\"', '\"'\"'TEMP'\"'\"', '\"'\"'CODEX_HOME'\"'\"', '\"'\"'CLAUDE_CONFIG_DIR'\"'\"', '\"'\"'ZDOTDIR'\"'\"', '\"'\"'ENV'\"'\"', '\"'\"'BASH_ENV'\"'\"', '\"'\"'GIT_EXEC_PATH'\"'\"', '\"'\"'PYTHONNOUSERSITE'\"'\"']\nimport json, os, pathlib, subprocess, sys\nobserved = {\"binaries\": {}, \"environment\": {k: os.environ.get(k) for k in environment_names},\n            \"shell\": {\"identity\": sys.argv[1], \"version\": sys.argv[2]}}\nfor name, path in zip([\"python3\", \"git\", \"rg\"], sys.argv[3:]):\n    result = subprocess.run([name, \"--version\"], capture_output=True, text=True)\n    observed[\"binaries\"][name] = {\"path\": path, \"version\": result.stdout.strip(),\n        \"exit_code\": result.returncode, \"stderr\": result.stderr}\nobserved[\"python_executable\"] = sys.executable\nresult = subprocess.run([\"git\", \"config\", \"--show-origin\", \"--list\"],\n                        capture_output=True, text=True)\nobserved[\"git_config\"] = {\"stdout\": result.stdout, \"stderr\": result.stderr,\n                          \"exit_code\": result.returncode}\nobserved[\"cache_writes\"] = {}\nfor name in [\"HOME\", \"TMPDIR\", \"XDG_CACHE_HOME\", \"XDG_CONFIG_HOME\",\n             \"PYTHONPYCACHEPREFIX\", \"PYTHONUSERBASE\"]:\n    path = pathlib.Path(os.environ[name]) / \"runtime-cache-probe\"\n    path.write_text(\"session-local\")\n    path.unlink()\n    observed[\"cache_writes\"][name] = True\nprint(json.dumps(observed))\n' \"$0\" \"${ZSH_VERSION:-${BASH_VERSION:-}}\" \"$(command -v python3)\" \"$(command -v git)\" \"$(command -v rg)\""
+  ],
+  "exit_code": 0,
+  "stdout": "{\"binaries\": {\"python3\": {\"path\": \"<session-root>/cache/bin/python3\", \"version\": \"Python 3.14.4\", \"exit_code\": 0, \"stderr\": \"\"}, \"git\": {\"path\": \"<session-root>/cache/bin/git\", \"version\": \"git version 2.54.0 (Apple Git-157)\", \"exit_code\": 0, \"stderr\": \"\"}, \"rg\": {\"path\": \"<session-root>/cache/bin/rg\", \"version\": \"ripgrep 15.2.0 (rev e89fff89ac)\\n\\nfeatures:+pcre2\\nsimd(compile):+NEON\\nsimd(runtime):+NEON\\n\\nPCRE2 10.45 is available (JIT is available)\", \"exit_code\": 0, \"stderr\": \"\"}}, \"environment\": {\"LANG\": \"C.UTF-8\", \"TERM\": \"dumb\", \"PYTHONDONTWRITEBYTECODE\": \"1\", \"LC_ALL\": \"C.UTF-8\", \"TZ\": \"UTC\", \"GIT_CONFIG_NOSYSTEM\": \"1\", \"GIT_CONFIG_GLOBAL\": \"<session-root>/cache/gitconfig\", \"GIT_ATTR_NOSYSTEM\": \"1\", \"GIT_AUTHOR_NAME\": \"Benchmark fixture\", \"GIT_COMMITTER_NAME\": \"Benchmark fixture\", \"GIT_AUTHOR_EMAIL\": \"fixture@example.invalid\", \"GIT_COMMITTER_EMAIL\": \"fixture@example.invalid\", \"GIT_AUTHOR_DATE\": \"2000-01-01T00:00:00Z\", \"GIT_COMMITTER_DATE\": \"2000-01-01T00:00:00Z\", \"HOME\": \"<session-root>/tmp/home\", \"XDG_CACHE_HOME\": \"<session-root>/tmp/cache\", \"XDG_CONFIG_HOME\": \"<session-root>/tmp/config\", \"PYTHONPYCACHEPREFIX\": \"<session-root>/tmp/pycache\", \"PYTHONUSERBASE\": \"<session-root>/tmp/python-user\", \"PATH\": \"<session-root>/cache/bin:/usr/bin:/bin:/usr/sbin:/sbin\", \"SHELL\": \"/bin/zsh\", \"TMPDIR\": \"<session-root>/tmp\", \"TMP\": \"<session-root>/tmp\", \"TEMP\": \"<session-root>/tmp\", \"CODEX_HOME\": \"<session-root>/cache/profile\", \"CLAUDE_CONFIG_DIR\": \"<session-root>/cache/profile\", \"ZDOTDIR\": \"<session-root>/cache/shell\", \"ENV\": \"<session-root>/cache/shell/environment\", \"BASH_ENV\": \"<session-root>/cache/shell/environment\", \"GIT_EXEC_PATH\": \"/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core\", \"PYTHONNOUSERSITE\": \"1\"}, \"shell\": {\"identity\": \"/bin/zsh\", \"version\": \"5.9\"}, \"python_executable\": \"/opt/homebrew/opt/python@3.14/bin/python3.14\", \"git_config\": {\"stdout\": \"file:.git/config\\tcore.repositoryformatversion=0\\nfile:.git/config\\tcore.filemode=false\\nfile:.git/config\\tcore.bare=false\\nfile:.git/config\\tcore.logallrefupdates=false\\nfile:.git/config\\tcore.ignorecase=false\\nfile:.git/config\\tcore.precomposeunicode=false\\nfile:.git/config\\tcore.autocrlf=false\\nfile:.git/config\\tcore.hookspath=/dev/null\\nfile:.git/config\\tuser.name=Benchmark fixture\\nfile:.git/config\\tuser.email=fixture@example.invalid\\nfile:.git/config\\tcommit.gpgsign=false\\n\", \"stderr\": \"\", \"exit_code\": 0}, \"cache_writes\": {\"HOME\": true, \"TMPDIR\": true, \"XDG_CACHE_HOME\": true, \"XDG_CONFIG_HOME\": true, \"PYTHONPYCACHEPREFIX\": true, \"PYTHONUSERBASE\": true}}\n",
+  "stderr": "",
+  "errors": [],
+  "scope": "offline CLI-native login-shell command path; no model request"
+}

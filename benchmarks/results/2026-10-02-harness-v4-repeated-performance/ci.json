@@ -1,0 +1,26 @@
+{
+  "headSha": "ae8653b123bdb4c686ee36825c80db851c8595ea",
+  "databaseId": 37000975923,
+  "workflowName": "Quality",
+  "status": "completed",
+  "conclusion": "success",
+  "url": "https://github.com/andyst-dev/contextlean/actions/runs/37000975923",
+  "jobs": [
+    {
+      "name": "offline (3.14)",
+      "conclusion": "success",
+      "lint": "success",
+      "formatting": "success",
+      "offline_contracts": "success",
+      "whitespace": "success"
+    },
+    {
+      "name": "offline (3.11)",
+      "conclusion": "success",
+      "lint": "success",
+      "formatting": "success",
+      "offline_contracts": "success",
+      "whitespace": "success"
+    }
+  ]
+}

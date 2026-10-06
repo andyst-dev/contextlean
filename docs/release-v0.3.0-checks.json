@@ -1,0 +1,79 @@
+{
+  "version": "0.3.0",
+  "model_sessions_during_release": 0,
+  "historical_archive_files_unchanged": 1393,
+  "previously_tracked_historical_files_unchanged": 655,
+  "checksum_ledgers_verified": 8,
+  "checksum_entries_verified": 2719,
+  "public_evidence_files_reviewed": 1602,
+  "private_paths_or_credential_patterns_found": false,
+  "measured_numbers_unchanged": true,
+  "statistics_reconciled": true,
+  "balanced_release_offline_regrading": [
+    {
+      "run": "refactor-1-old",
+      "tests_passed": true,
+      "agent_tests_passed": true,
+      "acceptance_passed": true,
+      "task_success": true
+    },
+    {
+      "run": "refactor-1-balanced",
+      "tests_passed": true,
+      "agent_tests_passed": true,
+      "acceptance_passed": true,
+      "task_success": true
+    },
+    {
+      "run": "refactor-2-balanced",
+      "tests_passed": true,
+      "agent_tests_passed": true,
+      "acceptance_passed": true,
+      "task_success": true
+    },
+    {
+      "run": "refactor-2-old",
+      "tests_passed": true,
+      "agent_tests_passed": true,
+      "acceptance_passed": true,
+      "task_success": true
+    },
+    {
+      "run": "refactor-3-old",
+      "tests_passed": true,
+      "agent_tests_passed": true,
+      "acceptance_passed": true,
+      "task_success": true
+    },
+    {
+      "run": "refactor-3-balanced",
+      "tests_passed": true,
+      "agent_tests_passed": true,
+      "acceptance_passed": true,
+      "task_success": true
+    }
+  ],
+  "fresh_representative_guidance_bytes": {
+    "AGENTS.md": 4741,
+    "CLAUDE.md": 11
+  },
+  "automatic_context_bytes": 4752,
+  "previous_automatic_context_bytes": 5486,
+  "reduction_percent": 13.38,
+  "adapter_and_harness_unchanged": true,
+  "guidance_matches_tested_balanced_revision": true,
+  "offline_tests": {
+    "passed": 135,
+    "failed": 0,
+    "seconds": 79.33
+  },
+  "ruff_version": "0.15.7",
+  "ruff_lint": "PASS",
+  "ruff_format": "PASS (24 files)",
+  "codex_plugin_validator": "PASS",
+  "packaged_skill_validators": "4/4 PASS",
+  "claude_plugin_and_catalog_validators": "PASS with existing root CLAUDE.md and ignored catalog policy warnings",
+  "relative_links": "PASS",
+  "whitespace": "PASS with .gitattributes limited to frozen solution.diff artifacts and historical commands.md; 196 original evidence whitespace lines retained",
+  "ci": "Required green on preparation commit before tag; see GitHub Actions for immutable commit receipt."
+}

@@ -1,0 +1,2999 @@
+[
+  {
+    "sequence": 1,
+    "task": "navigation",
+    "repeat": 1,
+    "condition": "vanilla",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 2,
+    "task": "navigation",
+    "repeat": 1,
+    "condition": "contextlean",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 3,
+    "task": "navigation",
+    "repeat": 2,
+    "condition": "contextlean",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 4,
+    "task": "navigation",
+    "repeat": 2,
+    "condition": "vanilla",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 5,
+    "task": "navigation",
+    "repeat": 3,
+    "condition": "vanilla",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 6,
+    "task": "navigation",
+    "repeat": 3,
+    "condition": "contextlean",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 7,
+    "task": "bug-fix",
+    "repeat": 1,
+    "condition": "vanilla",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 598,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 6,
+          "passed_count": 6,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_surrounding_whitespace",
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "2fb02547701e96726b9399e9abef5d8d5b47f37b3aef3a16077188b03dea3b47",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 8,
+    "task": "bug-fix",
+    "repeat": 1,
+    "condition": "contextlean",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 598,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 6,
+          "passed_count": 6,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_surrounding_whitespace",
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "2fb02547701e96726b9399e9abef5d8d5b47f37b3aef3a16077188b03dea3b47",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 9,
+    "task": "bug-fix",
+    "repeat": 2,
+    "condition": "contextlean",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 574,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 6,
+          "passed_count": 6,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_whitespace",
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "1028d88132704ea49d2d35b63a828fc8550a98652329d560903d41f54a9fc677",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 10,
+    "task": "bug-fix",
+    "repeat": 2,
+    "condition": "vanilla",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 598,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 6,
+          "passed_count": 6,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_surrounding_whitespace",
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "2fb02547701e96726b9399e9abef5d8d5b47f37b3aef3a16077188b03dea3b47",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 11,
+    "task": "bug-fix",
+    "repeat": 3,
+    "condition": "vanilla",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 574,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 6,
+          "passed_count": 6,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_whitespace",
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "1028d88132704ea49d2d35b63a828fc8550a98652329d560903d41f54a9fc677",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 12,
+    "task": "bug-fix",
+    "repeat": 3,
+    "condition": "contextlean",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 574,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 6,
+          "passed_count": 6,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_whitespace",
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "1028d88132704ea49d2d35b63a828fc8550a98652329d560903d41f54a9fc677",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 13,
+    "task": "feature",
+    "repeat": 1,
+    "condition": "vanilla",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 706,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 8,
+          "passed_count": 8,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+            "test_expenses.ExpenseTests.test_cli_min_amount",
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_min_amount_filter",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "5ae4a765141ac6ac53963b5aab2df56c3e6fc9c995c9303ada79df939a7edc35",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 14,
+    "task": "feature",
+    "repeat": 1,
+    "condition": "contextlean",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 624,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 7,
+          "passed_count": 7,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+            "test_expenses.ExpenseTests.test_cli_min_amount",
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "483bd2e96292ace6fe0283f8bdf3fba5b73ca4530a9c4b747f0773263df7f94a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 15,
+    "task": "feature",
+    "repeat": 2,
+    "condition": "contextlean",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 706,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 8,
+          "passed_count": 8,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+            "test_expenses.ExpenseTests.test_cli_min_amount",
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_min_amount_filter",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "5ae4a765141ac6ac53963b5aab2df56c3e6fc9c995c9303ada79df939a7edc35",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 16,
+    "task": "feature",
+    "repeat": 2,
+    "condition": "vanilla",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 706,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 8,
+          "passed_count": 8,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+            "test_expenses.ExpenseTests.test_cli_min_amount",
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_min_amount_filter",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "5ae4a765141ac6ac53963b5aab2df56c3e6fc9c995c9303ada79df939a7edc35",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 17,
+    "task": "feature",
+    "repeat": 3,
+    "condition": "vanilla",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 732,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 8,
+          "passed_count": 8,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+            "test_expenses.ExpenseTests.test_cli_min_amount",
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_min_amount_filter_is_inclusive",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "bad0fc35815b7227d4ad4460bced2dcd1a0031fac52e41cf6c75c88fc8a8d653",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 18,
+    "task": "feature",
+    "repeat": 3,
+    "condition": "contextlean",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 706,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 8,
+          "passed_count": 8,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+            "test_expenses.ExpenseTests.test_cli_min_amount",
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_min_amount_filter",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "5ae4a765141ac6ac53963b5aab2df56c3e6fc9c995c9303ada79df939a7edc35",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 19,
+    "task": "refactor",
+    "repeat": 1,
+    "condition": "vanilla",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 20,
+    "task": "refactor",
+    "repeat": 1,
+    "condition": "contextlean",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 21,
+    "task": "refactor",
+    "repeat": 2,
+    "condition": "contextlean",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 688,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 7,
+          "passed_count": 7,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_filter_query_is_not_normalized",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_normalize_category_is_shared_and_compatible",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "187195b6cc7292199ab831415458a7de8f437d28a96258cc4b15ea8bdb32d682",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 22,
+    "task": "refactor",
+    "repeat": 2,
+    "condition": "vanilla",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 23,
+    "task": "refactor",
+    "repeat": 3,
+    "condition": "vanilla",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 24,
+    "task": "refactor",
+    "repeat": 3,
+    "condition": "contextlean",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 688,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 7,
+          "passed_count": 7,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_filter_query_is_not_normalized",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_normalize_category_is_shared_and_compatible",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "187195b6cc7292199ab831415458a7de8f437d28a96258cc4b15ea8bdb32d682",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 25,
+    "task": "documentation-config",
+    "repeat": 1,
+    "condition": "vanilla",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 26,
+    "task": "documentation-config",
+    "repeat": 1,
+    "condition": "contextlean",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 27,
+    "task": "documentation-config",
+    "repeat": 2,
+    "condition": "contextlean",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 28,
+    "task": "documentation-config",
+    "repeat": 2,
+    "condition": "vanilla",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 29,
+    "task": "documentation-config",
+    "repeat": 3,
+    "condition": "vanilla",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  },
+  {
+    "sequence": 30,
+    "task": "documentation-config",
+    "repeat": 3,
+    "condition": "contextlean",
+    "stages": {
+      "submitted": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "original": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 446,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 5,
+          "passed_count": 5,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "test_expenses.ExpenseTests.test_cli_override",
+            "test_expenses.ExpenseTests.test_configured_default",
+            "test_expenses.ExpenseTests.test_filter",
+            "test_expenses.ExpenseTests.test_load_decimal",
+            "test_expenses.ExpenseTests.test_report"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      },
+      "acceptance": {
+        "exit_code": 0,
+        "passed": true,
+        "stdout_bytes": 0,
+        "stderr_bytes": 278,
+        "coverage": {
+          "coverage_parser_version": 2,
+          "command": "unittest",
+          "discovered_count": 2,
+          "passed_count": 2,
+          "failed_count": 0,
+          "error_count": 0,
+          "skipped_count": 0,
+          "expected_failure_count": 0,
+          "unexpected_success_count": 0,
+          "status_counts_complete": true,
+          "status_count_scope": "single unittest footer; no identities inferred",
+          "test_names": [
+            "__main__.evaluate.<locals>.Acceptance.test_preserved_behavior",
+            "__main__.evaluate.<locals>.Acceptance.test_task_contract"
+          ],
+          "test_list_complete": true,
+          "normalized_test_list_sha256": "c761cf9796c1726165026db187b11a7a8ec5adb118c840287e5b7e61322c977f",
+          "passed": true,
+          "identity_scope": "exposed test output only; hidden coverage unavailable"
+        }
+      }
+    },
+    "task_success": true,
+    "classification": "successful-task",
+    "saved_solution_unchanged": true,
+    "grading_root_removed": true
+  }
+]

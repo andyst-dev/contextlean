@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "contextlean_digest": "7642a99b1020d72fd33f9f6e23f53ed42d1f1b26bdb9a24d9b08ed25e8899dbe",
+  "vanilla_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+  "baseline_non_instruction_digest": "361ede5431a41c0e1fcba8b5cecca598d3090eb5d775a25c4e128cbf0a1a12f2",
+  "review": {
+    "semantics_reviewed": true,
+    "entries": {
+      "expense_report/cli.py": {
+        "responsibility": "argument parsing and orchestration.",
+        "evidence": [
+          {
+            "path": "expense_report/cli.py",
+            "contains": "parser = argparse.ArgumentParser(description=\"Summarize a CSV expense file.\")"
+          }
+        ]
+      },
+      "expense_report/storage.py": {
+        "responsibility": "CSV loading and decimal conversion.",
+        "evidence": [
+          {
+            "path": "expense_report/storage.py",
+            "contains": "for row in csv.DictReader(handle)"
+          }
+        ]
+      },
+      "expense_report/filters.py": {
+        "responsibility": "category selection.",
+        "evidence": [
+          {
+            "path": "expense_report/filters.py",
+            "contains": "def select_category(expenses, category):"
+          }
+        ]
+      },
+      "expense_report/report.py": {
+        "responsibility": "totals and category grouping.",
+        "evidence": [
+          {
+            "path": "expense_report/report.py",
+            "contains": "def build_report(expenses, currency):"
+          }
+        ]
+      },
+      "config.json": {
+        "responsibility": "default currency; CLI overrides take precedence.",
+        "evidence": [
+          {
+            "path": "config.json",
+            "contains": "{\"currency\": \"USD\"}"
+          }
+        ]
+      },
+      "tests/test_expenses.py": {
+        "responsibility": "unit tests and CLI checks.",
+        "evidence": [
+          {
+            "path": "tests/test_expenses.py",
+            "contains": "def test_cli_override(self):"
+          }
+        ]
+      },
+      "README.md": {
+        "responsibility": "usage",
+        "evidence": [
+          {
+            "path": "README.md",
+            "contains": "python3 -m expense_report.cli data/sample.csv"
+          }
+        ]
+      },
+      "data/sample.csv": {
+        "responsibility": "example input.",
+        "evidence": [
+          {
+            "path": "data/sample.csv",
+            "contains": "category,amount\nFood,12.50\ntravel,20.00\nfood,7.50"
+          }
+        ]
+      }
+    }
+  }
+}

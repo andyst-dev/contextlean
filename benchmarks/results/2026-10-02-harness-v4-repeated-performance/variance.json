@@ -1,0 +1,1996 @@
+[
+  {
+    "sequence": 1,
+    "task": "navigation",
+    "repeat": 1,
+    "condition": "vanilla",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 1,
+      "git": 0,
+      "verification": 2
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [],
+    "added_test_identities": [],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc \"sed -n '1,160p' expense_report/storage.py; sed -n '1,200p' expense_report/report.py; sed -n '1,180p' expense_report/cli.py; sed -n '1,180p' tests/test_expenses.py; sed -n '1,80p' data/sample.csv; python3 -m expense_report.cli data/sample.csv; python3 -m unittest\"",
+        "discovered_count": 0,
+        "passed_count": null,
+        "failed_count": null,
+        "error_count": null,
+        "skipped_count": null,
+        "expected_failure_count": null,
+        "unexpected_success_count": null,
+        "status_counts_complete": false,
+        "status_count_scope": "exposed status rows only",
+        "test_names": [],
+        "test_list_complete": false,
+        "normalized_test_list_sha256": null,
+        "passed": false,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 6,
+        "command_sequence": 2,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      },
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 5,
+        "passed_count": 5,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 8,
+        "command_sequence": 3,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 1,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 2748,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 40064,
+    "uncached_input_tokens": 10297,
+    "command_count": 3
+  },
+  {
+    "sequence": 2,
+    "task": "navigation",
+    "repeat": 1,
+    "condition": "contextlean",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 0,
+      "git": 0,
+      "verification": 1
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [],
+    "added_test_identities": [],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'rg -n \"def |Decimal|category|cli|unittest\" expense_report tests && python3 -m expense_report.cli data/sample.csv'",
+        "discovered_count": null,
+        "passed_count": null,
+        "failed_count": null,
+        "error_count": null,
+        "skipped_count": null,
+        "expected_failure_count": null,
+        "unexpected_success_count": null,
+        "status_counts_complete": false,
+        "status_count_scope": "exposed status rows only",
+        "test_names": [],
+        "test_list_complete": false,
+        "normalized_test_list_sha256": null,
+        "passed": false,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 5,
+        "command_sequence": 1,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 2353,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 19584,
+    "uncached_input_tokens": 4474,
+    "command_count": 1
+  },
+  {
+    "sequence": 3,
+    "task": "navigation",
+    "repeat": 2,
+    "condition": "contextlean",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 0,
+      "git": 0,
+      "verification": 1
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [],
+    "added_test_identities": [],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'rg -n \"''^(def |class )|Decimal|category|cli|unittest|subprocess\" expense_report tests && python3 -m expense_report.cli data/sample.csv'",
+        "discovered_count": null,
+        "passed_count": null,
+        "failed_count": null,
+        "error_count": null,
+        "skipped_count": null,
+        "expected_failure_count": null,
+        "unexpected_success_count": null,
+        "status_counts_complete": false,
+        "status_count_scope": "exposed status rows only",
+        "test_names": [],
+        "test_list_complete": false,
+        "normalized_test_list_sha256": null,
+        "passed": false,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 5,
+        "command_sequence": 1,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 2284,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 0,
+    "uncached_input_tokens": 24078,
+    "command_count": 1
+  },
+  {
+    "sequence": 4,
+    "task": "navigation",
+    "repeat": 2,
+    "condition": "vanilla",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 1,
+      "git": 0,
+      "verification": 2
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [],
+    "added_test_identities": [],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc \"pwd && rg --files -g '\"'!*.pyc'\"' -g '\"'!__pycache__'\"' && rg -n \\\"csv|category|total|argparse|unittest|subprocess\\\" .\"",
+        "discovered_count": null,
+        "passed_count": null,
+        "failed_count": null,
+        "error_count": null,
+        "skipped_count": null,
+        "expected_failure_count": null,
+        "unexpected_success_count": null,
+        "status_counts_complete": false,
+        "status_count_scope": "exposed status rows only",
+        "test_names": [],
+        "test_list_complete": false,
+        "normalized_test_list_sha256": null,
+        "passed": false,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 5,
+        "command_sequence": 1,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 3063,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 23552,
+    "uncached_input_tokens": 13801,
+    "command_count": 2
+  },
+  {
+    "sequence": 5,
+    "task": "navigation",
+    "repeat": 3,
+    "condition": "vanilla",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 1,
+      "git": 0,
+      "verification": 2
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [],
+    "added_test_identities": [],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc \"pwd && rg --files -g '\"'!*.pyc'\"' -g '\"'!__pycache__'\"' && rg -n \\\"csv|category|total|amount|argparse|unittest|CLI\\\" .\"",
+        "discovered_count": null,
+        "passed_count": null,
+        "failed_count": null,
+        "error_count": null,
+        "skipped_count": null,
+        "expected_failure_count": null,
+        "unexpected_success_count": null,
+        "status_counts_complete": false,
+        "status_count_scope": "exposed status rows only",
+        "test_names": [],
+        "test_list_complete": false,
+        "normalized_test_list_sha256": null,
+        "passed": false,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 5,
+        "command_sequence": 1,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      },
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc \"sed -n '1,220p' expense_report/storage.py\nsed -n '1,220p' expense_report/report.py\nsed -n '1,240p' expense_report/cli.py\nsed -n '1,260p' tests/test_expenses.py\npython3 -m unittest discover -s tests -v\npython3 -m expense_report.cli data/sample.csv\"",
+        "discovered_count": 5,
+        "passed_count": 5,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 7,
+        "command_sequence": 2,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 3542,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 27264,
+    "uncached_input_tokens": 10131,
+    "command_count": 2
+  },
+  {
+    "sequence": 6,
+    "task": "navigation",
+    "repeat": 3,
+    "condition": "contextlean",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 0,
+      "git": 0,
+      "verification": 1
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [],
+    "added_test_identities": [],
+    "verification": [],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 2355,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 19584,
+    "uncached_input_tokens": 4608,
+    "command_count": 1
+  },
+  {
+    "sequence": 7,
+    "task": "bug-fix",
+    "repeat": 1,
+    "condition": "vanilla",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 1,
+      "git": 2,
+      "verification": 1
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "expense_report/filters.py",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [
+      "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_surrounding_whitespace"
+    ],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 6,
+        "passed_count": 6,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_surrounding_whitespace",
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "2fb02547701e96726b9399e9abef5d8d5b47f37b3aef3a16077188b03dea3b47",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 12,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 5810,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 64896,
+    "uncached_input_tokens": 12101,
+    "command_count": 4
+  },
+  {
+    "sequence": 8,
+    "task": "bug-fix",
+    "repeat": 1,
+    "condition": "contextlean",
+    "shell_call_categories": {
+      "searches": 0,
+      "reads": 2,
+      "git": 2,
+      "verification": 2
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "expense_report/filters.py",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [
+      "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_surrounding_whitespace"
+    ],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 6,
+        "passed_count": 6,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_surrounding_whitespace",
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "2fb02547701e96726b9399e9abef5d8d5b47f37b3aef3a16077188b03dea3b47",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 12,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 5612,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 67328,
+    "uncached_input_tokens": 11654,
+    "command_count": 5
+  },
+  {
+    "sequence": 9,
+    "task": "bug-fix",
+    "repeat": 2,
+    "condition": "contextlean",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 1,
+      "git": 2,
+      "verification": 2
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "expense_report/filters.py",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [
+      "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_whitespace"
+    ],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 6,
+        "passed_count": 6,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_whitespace",
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "1028d88132704ea49d2d35b63a828fc8550a98652329d560903d41f54a9fc677",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 12,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 7266,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 72832,
+    "uncached_input_tokens": 7274,
+    "command_count": 4
+  },
+  {
+    "sequence": 10,
+    "task": "bug-fix",
+    "repeat": 2,
+    "condition": "vanilla",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 1,
+      "git": 2,
+      "verification": 1
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "expense_report/filters.py",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [
+      "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_surrounding_whitespace"
+    ],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v && git diff --check && git diff -- expense_report/filters.py tests/test_expenses.py'",
+        "discovered_count": 6,
+        "passed_count": 6,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_surrounding_whitespace",
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "2fb02547701e96726b9399e9abef5d8d5b47f37b3aef3a16077188b03dea3b47",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 12,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 4866,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 56320,
+    "uncached_input_tokens": 6196,
+    "command_count": 3
+  },
+  {
+    "sequence": 11,
+    "task": "bug-fix",
+    "repeat": 3,
+    "condition": "vanilla",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 4,
+      "git": 3,
+      "verification": 1
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "expense_report/filters.py",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [
+      "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_whitespace"
+    ],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 6,
+        "passed_count": 6,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_whitespace",
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "1028d88132704ea49d2d35b63a828fc8550a98652329d560903d41f54a9fc677",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 16,
+        "command_sequence": 6,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 6209,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 75520,
+    "uncached_input_tokens": 15462,
+    "command_count": 6
+  },
+  {
+    "sequence": 12,
+    "task": "bug-fix",
+    "repeat": 3,
+    "condition": "contextlean",
+    "shell_call_categories": {
+      "searches": 0,
+      "reads": 2,
+      "git": 2,
+      "verification": 2
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "expense_report/filters.py",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [
+      "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_whitespace"
+    ],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 6,
+        "passed_count": 6,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_category_ignores_case_and_whitespace",
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "1028d88132704ea49d2d35b63a828fc8550a98652329d560903d41f54a9fc677",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 14,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 5602,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 71936,
+    "uncached_input_tokens": 7174,
+    "command_count": 5
+  },
+  {
+    "sequence": 13,
+    "task": "feature",
+    "repeat": 1,
+    "condition": "vanilla",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 1,
+      "git": 2,
+      "verification": 2
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "README.md",
+      "expense_report/cli.py",
+      "expense_report/filters.py",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [
+      "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+      "test_expenses.ExpenseTests.test_cli_min_amount",
+      "test_expenses.ExpenseTests.test_min_amount_filter"
+    ],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 8,
+        "passed_count": 8,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+          "test_expenses.ExpenseTests.test_cli_min_amount",
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_min_amount_filter",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "5ae4a765141ac6ac53963b5aab2df56c3e6fc9c995c9303ada79df939a7edc35",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 12,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 9088,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 83200,
+    "uncached_input_tokens": 13587,
+    "command_count": 5
+  },
+  {
+    "sequence": 14,
+    "task": "feature",
+    "repeat": 1,
+    "condition": "contextlean",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 1,
+      "git": 2,
+      "verification": 1
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "README.md",
+      "expense_report/cli.py",
+      "expense_report/filters.py",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [
+      "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+      "test_expenses.ExpenseTests.test_cli_min_amount"
+    ],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 7,
+        "passed_count": 7,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+          "test_expenses.ExpenseTests.test_cli_min_amount",
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "483bd2e96292ace6fe0283f8bdf3fba5b73ca4530a9c4b747f0773263df7f94a",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 12,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 10809,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 66688,
+    "uncached_input_tokens": 17419,
+    "command_count": 4
+  },
+  {
+    "sequence": 15,
+    "task": "feature",
+    "repeat": 2,
+    "condition": "contextlean",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 2,
+      "git": 2,
+      "verification": 2
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "README.md",
+      "expense_report/cli.py",
+      "expense_report/filters.py",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [
+      "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+      "test_expenses.ExpenseTests.test_cli_min_amount",
+      "test_expenses.ExpenseTests.test_min_amount_filter"
+    ],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v && python3 -m expense_report.cli data/sample.csv --min-amount 10 && python3 -m expense_report.cli data/sample.csv --category food --min-amount 10 && git diff --check && git diff -- expense_report/cli.py expense_report/filters.py tests/test_expenses.py README.md'",
+        "discovered_count": 8,
+        "passed_count": 8,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+          "test_expenses.ExpenseTests.test_cli_min_amount",
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_min_amount_filter",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "5ae4a765141ac6ac53963b5aab2df56c3e6fc9c995c9303ada79df939a7edc35",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 12,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      },
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v && git diff --check && git status --short'",
+        "discovered_count": 8,
+        "passed_count": 8,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+          "test_expenses.ExpenseTests.test_cli_min_amount",
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_min_amount_filter",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "5ae4a765141ac6ac53963b5aab2df56c3e6fc9c995c9303ada79df939a7edc35",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 17,
+        "command_sequence": 6,
+        "equivalent_previous_pass": 4,
+        "intervening_relevant_change": true,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 11469,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 93824,
+    "uncached_input_tokens": 10670,
+    "command_count": 4
+  },
+  {
+    "sequence": 16,
+    "task": "feature",
+    "repeat": 2,
+    "condition": "vanilla",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 1,
+      "git": 2,
+      "verification": 2
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "README.md",
+      "expense_report/cli.py",
+      "expense_report/filters.py",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [
+      "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+      "test_expenses.ExpenseTests.test_cli_min_amount",
+      "test_expenses.ExpenseTests.test_min_amount_filter"
+    ],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 8,
+        "passed_count": 8,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+          "test_expenses.ExpenseTests.test_cli_min_amount",
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_min_amount_filter",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "5ae4a765141ac6ac53963b5aab2df56c3e6fc9c995c9303ada79df939a7edc35",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 12,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      },
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 8,
+        "passed_count": 8,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+          "test_expenses.ExpenseTests.test_cli_min_amount",
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_min_amount_filter",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "5ae4a765141ac6ac53963b5aab2df56c3e6fc9c995c9303ada79df939a7edc35",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 19,
+        "command_sequence": 7,
+        "equivalent_previous_pass": 4,
+        "intervening_relevant_change": true,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 10346,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 78976,
+    "uncached_input_tokens": 17931,
+    "command_count": 5
+  },
+  {
+    "sequence": 17,
+    "task": "feature",
+    "repeat": 3,
+    "condition": "vanilla",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 1,
+      "git": 2,
+      "verification": 1
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "README.md",
+      "expense_report/cli.py",
+      "expense_report/filters.py",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [
+      "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+      "test_expenses.ExpenseTests.test_cli_min_amount",
+      "test_expenses.ExpenseTests.test_min_amount_filter_is_inclusive"
+    ],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 8,
+        "passed_count": 8,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+          "test_expenses.ExpenseTests.test_cli_min_amount",
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_min_amount_filter_is_inclusive",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "bad0fc35815b7227d4ad4460bced2dcd1a0031fac52e41cf6c75c88fc8a8d653",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 12,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 9469,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 67584,
+    "uncached_input_tokens": 13057,
+    "command_count": 4
+  },
+  {
+    "sequence": 18,
+    "task": "feature",
+    "repeat": 3,
+    "condition": "contextlean",
+    "shell_call_categories": {
+      "searches": 0,
+      "reads": 2,
+      "git": 2,
+      "verification": 2
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "README.md",
+      "expense_report/cli.py",
+      "expense_report/filters.py",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [
+      "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+      "test_expenses.ExpenseTests.test_cli_min_amount",
+      "test_expenses.ExpenseTests.test_min_amount_filter"
+    ],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 8,
+        "passed_count": 8,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_category_and_min_amount",
+          "test_expenses.ExpenseTests.test_cli_min_amount",
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_min_amount_filter",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "5ae4a765141ac6ac53963b5aab2df56c3e6fc9c995c9303ada79df939a7edc35",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 16,
+        "command_sequence": 5,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 9286,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 36736,
+    "uncached_input_tokens": 31485,
+    "command_count": 5
+  },
+  {
+    "sequence": 19,
+    "task": "refactor",
+    "repeat": 1,
+    "condition": "vanilla",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 1,
+      "git": 4,
+      "verification": 2
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "expense_report/categories.py",
+      "expense_report/filters.py",
+      "expense_report/report.py"
+    ],
+    "added_test_identities": [],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 5,
+        "passed_count": 5,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 10,
+        "command_sequence": 3,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      },
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v && git diff --check && git diff -- expense_report/categories.py expense_report/filters.py expense_report/report.py && git status --short'",
+        "discovered_count": 5,
+        "passed_count": 5,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 14,
+        "command_sequence": 5,
+        "equivalent_previous_pass": 3,
+        "intervening_relevant_change": true,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 4880,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 79360,
+    "uncached_input_tokens": 11879,
+    "command_count": 5
+  },
+  {
+    "sequence": 20,
+    "task": "refactor",
+    "repeat": 1,
+    "condition": "contextlean",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 2,
+      "git": 2,
+      "verification": 1
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "expense_report/categories.py",
+      "expense_report/filters.py",
+      "expense_report/report.py"
+    ],
+    "added_test_identities": [],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 5,
+        "passed_count": 5,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 14,
+        "command_sequence": 5,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 6387,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 72448,
+    "uncached_input_tokens": 7626,
+    "command_count": 5
+  },
+  {
+    "sequence": 21,
+    "task": "refactor",
+    "repeat": 2,
+    "condition": "contextlean",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 3,
+      "git": 3,
+      "verification": 2
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "expense_report/categories.py",
+      "expense_report/filters.py",
+      "expense_report/report.py",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [
+      "test_expenses.ExpenseTests.test_filter_query_is_not_normalized",
+      "test_expenses.ExpenseTests.test_normalize_category_is_shared_and_compatible"
+    ],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'git diff --check && git diff -- expense_report/categories.py expense_report/filters.py expense_report/report.py tests/test_expenses.py && python3 -m unittest discover -s tests -v'",
+        "discovered_count": 7,
+        "passed_count": 7,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_filter_query_is_not_normalized",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_normalize_category_is_shared_and_compatible",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "187195b6cc7292199ab831415458a7de8f437d28a96258cc4b15ea8bdb32d682",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 12,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 4962,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 73472,
+    "uncached_input_tokens": 7851,
+    "command_count": 4
+  },
+  {
+    "sequence": 22,
+    "task": "refactor",
+    "repeat": 2,
+    "condition": "vanilla",
+    "shell_call_categories": {
+      "searches": 2,
+      "reads": 1,
+      "git": 3,
+      "verification": 1
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "expense_report/categories.py",
+      "expense_report/filters.py",
+      "expense_report/report.py"
+    ],
+    "added_test_identities": [],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'git diff --check && git diff -- expense_report/categories.py expense_report/filters.py expense_report/report.py && python3 -m unittest discover -s tests -v'",
+        "discovered_count": 5,
+        "passed_count": 5,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 12,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 6722,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 73856,
+    "uncached_input_tokens": 7904,
+    "command_count": 4
+  },
+  {
+    "sequence": 23,
+    "task": "refactor",
+    "repeat": 3,
+    "condition": "vanilla",
+    "shell_call_categories": {
+      "searches": 2,
+      "reads": 2,
+      "git": 4,
+      "verification": 1
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "expense_report/categories.py",
+      "expense_report/filters.py",
+      "expense_report/report.py"
+    ],
+    "added_test_identities": [],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'git diff --check && git diff && python3 -m unittest discover -s tests -v'",
+        "discovered_count": 5,
+        "passed_count": 5,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 14,
+        "command_sequence": 5,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 1,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 5912,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 78336,
+    "uncached_input_tokens": 13273,
+    "command_count": 5
+  },
+  {
+    "sequence": 24,
+    "task": "refactor",
+    "repeat": 3,
+    "condition": "contextlean",
+    "shell_call_categories": {
+      "searches": 2,
+      "reads": 2,
+      "git": 3,
+      "verification": 1
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "expense_report/categories.py",
+      "expense_report/filters.py",
+      "expense_report/report.py",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [
+      "test_expenses.ExpenseTests.test_filter_query_is_not_normalized",
+      "test_expenses.ExpenseTests.test_normalize_category_is_shared_and_compatible"
+    ],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v && git diff --check && git status --short && git diff -- expense_report tests'",
+        "discovered_count": 7,
+        "passed_count": 7,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_filter_query_is_not_normalized",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_normalize_category_is_shared_and_compatible",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "187195b6cc7292199ab831415458a7de8f437d28a96258cc4b15ea8bdb32d682",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 12,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 6444,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 58624,
+    "uncached_input_tokens": 7176,
+    "command_count": 3
+  },
+  {
+    "sequence": 25,
+    "task": "documentation-config",
+    "repeat": 1,
+    "condition": "vanilla",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 2,
+      "git": 2,
+      "verification": 3
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "README.md",
+      "config.json"
+    ],
+    "added_test_identities": [],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 5,
+        "passed_count": 5,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 16,
+        "command_sequence": 5,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 5260,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 54656,
+    "uncached_input_tokens": 22640,
+    "command_count": 6
+  },
+  {
+    "sequence": 26,
+    "task": "documentation-config",
+    "repeat": 1,
+    "condition": "contextlean",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 1,
+      "git": 2,
+      "verification": 3
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "README.md",
+      "config.json",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 5,
+        "passed_count": 5,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 16,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 7060,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 67328,
+    "uncached_input_tokens": 12933,
+    "command_count": 6
+  },
+  {
+    "sequence": 27,
+    "task": "documentation-config",
+    "repeat": 2,
+    "condition": "contextlean",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 1,
+      "git": 2,
+      "verification": 3
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "README.md",
+      "config.json",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 5,
+        "passed_count": 5,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 16,
+        "command_sequence": 5,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 6827,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 55040,
+    "uncached_input_tokens": 24652,
+    "command_count": 6
+  },
+  {
+    "sequence": 28,
+    "task": "documentation-config",
+    "repeat": 2,
+    "condition": "vanilla",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 1,
+      "git": 2,
+      "verification": 1
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "README.md",
+      "config.json"
+    ],
+    "added_test_identities": [],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m expense_report.cli data/sample.csv\npython3 -m expense_report.cli data/sample.csv --category food --currency GBP\npython3 -m unittest discover -s tests -v\ngit diff --check\ngit diff -- README.md config.json\ngit status --short'",
+        "discovered_count": 5,
+        "passed_count": 5,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 13,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 4213,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 51840,
+    "uncached_input_tokens": 10153,
+    "command_count": 3
+  },
+  {
+    "sequence": 29,
+    "task": "documentation-config",
+    "repeat": 3,
+    "condition": "vanilla",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 2,
+      "git": 2,
+      "verification": 3
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "README.md",
+      "config.json"
+    ],
+    "added_test_identities": [],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 5,
+        "passed_count": 5,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 19,
+        "command_sequence": 5,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 5445,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 62592,
+    "uncached_input_tokens": 27740,
+    "command_count": 7
+  },
+  {
+    "sequence": 30,
+    "task": "documentation-config",
+    "repeat": 3,
+    "condition": "contextlean",
+    "shell_call_categories": {
+      "searches": 1,
+      "reads": 1,
+      "git": 3,
+      "verification": 3
+    },
+    "category_scope": "Overlapping counts of command calls containing observed utilities; not file-open counts.",
+    "changed_files": [
+      "README.md",
+      "config.json",
+      "tests/test_expenses.py"
+    ],
+    "added_test_identities": [],
+    "verification": [
+      {
+        "coverage_parser_version": 2,
+        "command": "/bin/zsh -lc 'python3 -m unittest discover -s tests -v'",
+        "discovered_count": 5,
+        "passed_count": 5,
+        "failed_count": 0,
+        "error_count": 0,
+        "skipped_count": 0,
+        "expected_failure_count": 0,
+        "unexpected_success_count": 0,
+        "status_counts_complete": true,
+        "status_count_scope": "single unittest footer; no identities inferred",
+        "test_names": [
+          "test_expenses.ExpenseTests.test_cli_override",
+          "test_expenses.ExpenseTests.test_configured_default",
+          "test_expenses.ExpenseTests.test_filter",
+          "test_expenses.ExpenseTests.test_load_decimal",
+          "test_expenses.ExpenseTests.test_report"
+        ],
+        "test_list_complete": true,
+        "normalized_test_list_sha256": "3ecb703b5031cfb650873bd0c0da23174187806cebd6330acdfa7f843155f29a",
+        "passed": true,
+        "identity_scope": "exposed test output only; hidden coverage unavailable",
+        "event_line": 16,
+        "command_sequence": 4,
+        "equivalent_previous_pass": null,
+        "intervening_relevant_change": null,
+        "change_scope": "exposed changes only; no hidden-state inference"
+      }
+    ],
+    "command_failures": 0,
+    "denied_commands": 0,
+    "host_cache_diagnostics": [],
+    "tool_output_bytes": {
+      "stdout_bytes": null,
+      "stderr_bytes": null,
+      "combined_output_bytes": 5178,
+      "returned_content_bytes": null
+    },
+    "cached_input_tokens": 53888,
+    "uncached_input_tokens": 13143,
+    "command_count": 7
+  }
+]

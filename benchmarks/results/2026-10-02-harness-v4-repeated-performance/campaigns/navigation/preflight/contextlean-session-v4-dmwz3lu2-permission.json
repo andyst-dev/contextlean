@@ -1,0 +1,90 @@
+{
+  "execution_strategy": "provider-native",
+  "provider_native_sandbox": true,
+  "outer_os_sandbox": false,
+  "benchmark_harness_version": 4,
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "os": "Darwin",
+  "backend": "codex-native",
+  "primitive_backend": "sandbox-exec",
+  "provider": "codex",
+  "cli_version": "codex-cli 0.147.0",
+  "sandbox": "read-only",
+  "permission_mode": "approval-never",
+  "effective_writable_roots": [
+    "<session-root>/tmp"
+  ],
+  "cli_control_writable": [
+    "<session-root>/cache",
+    "<session-root>/artifacts",
+    "<session-root>/receipts"
+  ],
+  "cwd_policy": "isolated session repository",
+  "environment_policy": "allowlisted environment; session-local home/temp/cache; pinned PATH",
+  "evidence_readable": false,
+  "shared_tmp_writable": false,
+  "native_preflight": {
+    "repo_write": false,
+    "tmp_write": true,
+    "parent_write": false,
+    "outside_write": false,
+    "evidence_read": false,
+    "outside_read": false
+  },
+  "task_control_writable": false,
+  "native_sandbox_available": true,
+  "probe_scope": "provider CLI native-command path",
+  "permission_probe": {
+    "passed": true,
+    "primitive_passed": null,
+    "invocation": [
+      "<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin/codex",
+      "sandbox",
+      "--permission-profile",
+      "contextlean-session",
+      "--include-managed-config",
+      "--cd",
+      "<session-root>/repo",
+      "--config",
+      "default_permissions=\"contextlean-session\"",
+      "--config",
+      "permissions.contextlean-session={\"filesystem\"={\":root\"=\"deny\",\":minimal\"=\"read\",\"/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path\"=\"read\",\"/Applications/Xcode.app/Contents/Developer/usr/bin\"=\"read\",\"/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core\"=\"read\",\"<home>/.codex/packages/standalone/releases/0.147.0-aarch64-apple-darwin/bin\"=\"read\",\"/bin\"=\"read\",\"/opt/homebrew\"=\"read\",\"/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14\"=\"read\",\"/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/bin\"=\"read\",\"<session-root>/cache/bin\"=\"read\",\"<session-root>/cache/gitconfig\"=\"read\",\"<session-root>/cache/profile\"=\"read\",\"<session-root>/cache/shell\"=\"read\",\"<evidence>\"=\"deny\",\"<session-root>/repo\"=\"read\",\"<session-root>/repo/.git\"=\"read\",\"<session-root>/tmp\"=\"write\"},\"network\"={\"enabled\"=false}}",
+      "--config",
+      "approval_policy=\"never\"",
+      "--config",
+      "web_search=\"disabled\"",
+      "--config",
+      "shell_environment_policy={\"inherit\"=\"none\",\"set\"={\"LANG\"=\"C.UTF-8\",\"TERM\"=\"dumb\",\"PYTHONDONTWRITEBYTECODE\"=\"1\",\"LC_ALL\"=\"C.UTF-8\",\"TZ\"=\"UTC\",\"GIT_CONFIG_NOSYSTEM\"=\"1\",\"GIT_CONFIG_GLOBAL\"=\"<session-root>/cache/gitconfig\",\"GIT_ATTR_NOSYSTEM\"=\"1\",\"GIT_AUTHOR_NAME\"=\"Benchmark fixture\",\"GIT_COMMITTER_NAME\"=\"Benchmark fixture\",\"GIT_AUTHOR_EMAIL\"=\"fixture@example.invalid\",\"GIT_COMMITTER_EMAIL\"=\"fixture@example.invalid\",\"GIT_AUTHOR_DATE\"=\"2000-01-01T00:00:00Z\",\"GIT_COMMITTER_DATE\"=\"2000-01-01T00:00:00Z\",\"HOME\"=\"<session-root>/tmp/home\",\"XDG_CACHE_HOME\"=\"<session-root>/tmp/cache\",\"XDG_CONFIG_HOME\"=\"<session-root>/tmp/config\",\"PYTHONPYCACHEPREFIX\"=\"<session-root>/tmp/pycache\",\"PYTHONUSERBASE\"=\"<session-root>/tmp/python-user\",\"PATH\"=\"<session-root>/cache/bin:/usr/bin:/bin:/usr/sbin:/sbin\",\"SHELL\"=\"/bin/zsh\",\"TMPDIR\"=\"<session-root>/tmp\",\"TMP\"=\"<session-root>/tmp\",\"TEMP\"=\"<session-root>/tmp\",\"CODEX_HOME\"=\"<session-root>/cache/profile\",\"CLAUDE_CONFIG_DIR\"=\"<session-root>/cache/profile\",\"ZDOTDIR\"=\"<session-root>/cache/shell\",\"ENV\"=\"<session-root>/cache/shell/environment\",\"BASH_ENV\"=\"<session-root>/cache/shell/environment\",\"GIT_EXEC_PATH\"=\"/Applications/Xcode.app/Contents/Developer/usr/libexec/git-core\",\"PYTHONNOUSERSITE\"=\"1\"},\"experimental_use_profile\"=false}",
+      "--",
+      "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+      "-c",
+      "import pathlib,sys,json; r=[]\nfor s in sys.argv[1:-2]:\n try:\n  p=pathlib.Path(s);p.write_text('probe');p.unlink();r.append(True)\n except PermissionError:r.append(False)\nfor s in sys.argv[-2:]:\n try:\n  pathlib.Path(s).read_bytes();r.append(True)\n except (PermissionError,FileNotFoundError):r.append(False)\nprint(json.dumps(r))\n",
+      "<session-root>/repo/.permission-probe",
+      "<session-root>/tmp/probe",
+      "<session-root>/parent-probe",
+      "<host-path>",
+      "<evidence>/permission-read-probe",
+      "<host-path>"
+    ],
+    "exit_code": 0,
+    "stdout": "[false, true, false, false, false, false]\n",
+    "stderr": "",
+    "operations": {
+      "repo_write": false,
+      "tmp_write": true,
+      "parent_write": false,
+      "outside_write": false,
+      "evidence_read": false,
+      "outside_read": false
+    },
+    "operation_exit_codes": {
+      "repo_write": null,
+      "tmp_write": null,
+      "parent_write": null,
+      "outside_write": null,
+      "evidence_read": null,
+      "outside_read": null
+    },
+    "operation_result_scope": "each operation reports allowed/denied; exit code belongs to the enclosing CLI probe"
+  }
+}

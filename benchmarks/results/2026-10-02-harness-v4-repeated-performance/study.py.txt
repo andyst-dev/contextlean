@@ -1,0 +1,161 @@
+"""Study orchestration only. Never patch, replace, or retry harness behavior."""
+import hashlib
+import importlib.util
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+from datetime import datetime, timezone
+
+sys.dont_write_bytecode = True
+HERE = Path(__file__).resolve().parent
+REPO = HERE.parents[2]
+REVISION = 'ae8653b123bdb4c686ee36825c80db851c8595ea'
+TASKS = ['navigation', 'bug-fix', 'feature', 'refactor', 'documentation-config']
+
+def sha(p):
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+def load(p):
+    return json.loads(p.read_text())
+
+def save(p, value):
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(value, indent=2) + '\n')
+
+def now():
+    return datetime.now(timezone.utc).isoformat()
+
+def runner():
+    spec = importlib.util.spec_from_file_location('frozen_runner', REPO / 'benchmarks/run_benchmark.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+def freeze():
+    assert not (HERE / 'schedule.json').exists(), 'Schedule already frozen'
+    assert subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=REPO, text=True).strip() == REVISION
+    assert not subprocess.check_output(['git', 'status', '--porcelain'], cwd=REPO, text=True).strip()
+    m = runner()
+    suite = load(REPO / 'benchmarks/tasks/suite.json')
+    assert [t['id'] for t in suite['tasks']] == TASKS
+    plan = []
+    for t in suite['tasks']:
+        save(HERE / 'inputs' / (t['id'] + '.json'), {'schema_version': suite['schema_version'], 'tasks': [t]})
+        local = m.harness.schedule([t['id']], 3)
+        assert [r['condition'] for r in local] == ['vanilla','contextlean','contextlean','vanilla','vanilla','contextlean']
+        for item in local:
+            plan.append(dict(item, sequence=len(plan)+1, harness_sequence=item['sequence']))
+    save(HERE / 'schedule.json', dict(generated_at=now(), frozen_revision=REVISION,
+         benchmark_harness_version=4, model='gpt-5.6-sol', reasoning='high',
+         expected_model_calls=30, timeout_seconds=600, approximately_neutral_percentage=1.0,
+         dispatch='Five supported single-task suites; no harness modifications. All offline gates precede all live dispatch.',
+         retries=0, order=plan))
+    names = subprocess.check_output(['git', 'ls-files', '-z'], cwd=REPO).decode().split('\0')
+    hashes = {n: sha(REPO / n) for n in names if n}
+    source_record = REPO / '.contextlean/validation/2026-10-02-harness-v4-sol-refactor/inputs/preparation.json'
+    save(HERE / 'inputs/preparation.json', load(source_record))
+    m.preparation.validate_frozen(m.FIXTURE, HERE / 'inputs/preparation.json')
+    save(HERE / 'inputs/frozen.json', dict(revision=REVISION, tracked_hashes=hashes,
+         schedule_sha256=sha(HERE / 'schedule.json'),
+         input_hashes={p.name: sha(p) for p in (HERE / 'inputs').glob('*.json') if p.name != 'frozen.json'}))
+    print('Frozen schedule: 30 sessions; all five exact prompt objects preserved.', flush=True)
+
+def verify_frozen():
+    f = load(HERE / 'inputs/frozen.json')
+    assert sha(HERE / 'schedule.json') == f['schedule_sha256']
+    assert all(sha(REPO / n) == digest for n, digest in f['tracked_hashes'].items())
+    assert all(sha(HERE / 'inputs' / n) == digest for n, digest in f['input_hashes'].items())
+    assert subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=REPO, text=True).strip() == REVISION
+    assert not subprocess.check_output(['git','diff','--name-only'], cwd=REPO, text=True).strip()
+    return f
+
+def inspect_campaign(path, task, live):
+    report = load(path / 'summary.json')
+    assert report['schedule'] == runner().harness.schedule([task], 3)
+    assert report['benchmark_harness_version'] == 4
+    assert report['model'] == 'gpt-5.6-sol' and report['reasoning'] == 'high'
+    roots = []
+    for p in (path / 'private/preflight').glob('*runtime.json'):
+        r = load(p)
+        argv = r['invocation']
+        root = Path(argv[argv.index('--cd') + 1]).parent
+        assert not root.exists(), 'Prior session root remains'
+        roots.append(str(root))
+        assert r['passed'] and r['effective']['binaries']['python3']['version'] == 'Python 3.14.4'
+        assert r['effective']['binaries']['git']['version'] == 'git version 2.54.0 (Apple Git-157)'
+        assert r['effective']['binaries']['rg']['version'].startswith('ripgrep 15.2.0 ')
+    assert len(roots) == len(set(roots))
+    assert all(s['cleanup_verified'] and s['root_absent'] and s['previous_roots_absent'] for s in report['preparation_slots'])
+    for r in report['runs']:
+        if r.get('model_invocation_attempted'):
+            assert r['cleanup_verified']
+            private = path / 'private' / Path(r['raw_directory']).name
+            assert not Path(load(private / 'session.json')['cwd']).parent.exists()
+            assert all((private / n).exists() for n in ['events.jsonl','events.stderr.txt','solution'])
+    return dict(task=task, live=live, status=report['status'], model_calls=report.get('model_calls',0),
+                roots=roots, cleanup_verified=True, schedule_valid=True)
+
+def execute():
+    assert not (HERE / 'execution-state.json').exists(), 'Never restart or retry this study'
+    f = verify_frozen()
+    ci = load(HERE / 'ci.json')
+    assert ci['headSha'] == REVISION and ci['conclusion'] == 'success'
+    assert all(j['conclusion'] == 'success' for j in ci['jobs'])
+    m = runner()
+    runtime = m.harness.pin_runtime('codex')
+    assert runtime['binaries']['python3']['version'] == 'Python 3.14.4'
+    assert runtime['binaries']['git']['version'] == 'git version 2.54.0 (Apple Git-157)'
+    assert runtime['binaries']['rg']['version'].startswith('ripgrep 15.2.0 ')
+    state = dict(started_at=now(), status='preparing', attempts=[], model_calls=0)
+    save(HERE / 'execution-state.json', state)
+    try:
+        for live in [False, True]:
+            for task in TASKS:
+                verify_frozen()
+                output = HERE / ('campaigns' if live else 'offline-preflight') / task
+                argv = [sys.executable, '-B', str(REPO / 'benchmarks/run_benchmark.py'),
+                        '--provider','codex','--model','gpt-5.6-sol','--reasoning','high',
+                        '--experiment-kind','performance','--repeat','3','--timeout','600',
+                        '--tasks-file',str(HERE / 'inputs' / (task + '.json')),
+                        '--preparation-record',str(HERE / 'inputs/preparation.json'),
+                        '--output-dir',str(output), '--live' if live else '--preflight-only']
+                attempt = dict(task=task, live=live, started_at=now(), finished_at=None)
+                state['attempts'].append(attempt)
+                save(HERE / 'execution-state.json', state)
+                print(('LIVE' if live else 'OFFLINE') + ': ' + task, flush=True)
+                with (HERE / (('live-' if live else 'preflight-') + task + '.console.txt')).open('w') as log:
+                    result = subprocess.run(argv, cwd=REPO, env=dict(os.environ, PYTHONDONTWRITEBYTECODE='1'), stdout=log, stderr=subprocess.STDOUT)
+                attempt.update(exit_code=result.returncode, finished_at=now())
+                if (output / 'summary.json').exists():
+                    report = load(output / 'summary.json')
+                    state['model_calls'] += report.get('model_calls', sum(r.get('model_invocation_attempted', False) for r in report.get('runs', [])))
+                    attempt['status'] = report['status']
+                    if report['status'] in ['complete', 'preflight-passed']:
+                        attempt['inspection'] = inspect_campaign(output, task, live)
+                    else:
+                        raise RuntimeError('Stopped: ' + report['status'] + '; ' + report.get('error', 'see retained runs'))
+                if result.returncode and not (live and report['status'] == 'complete'):
+                    raise RuntimeError('Harness/preparation failure, exit ' + str(result.returncode))
+                save(HERE / 'execution-state.json', state)
+                verify_frozen()
+        assert state['model_calls'] == 30
+        state['status'] = 'complete'
+    except Exception as e:
+        state.update(status='stopped', error=str(e))
+        print(str(e), flush=True)
+    finally:
+        state['finished_at'] = now()
+        state['frozen_source_unchanged'] = bool(verify_frozen())
+        save(HERE / 'execution-state.json', state)
+    print(json.dumps({k:v for k,v in state.items() if k != 'attempts'}, indent=2), flush=True)
+    return 0 if state['status'] == 'complete' else 2
+
+if __name__ == '__main__':
+    if sys.argv[1] == 'freeze':
+        freeze()
+    elif sys.argv[1] == 'execute':
+        raise SystemExit(execute())
+    else:
+        raise SystemExit('Unsupported action')

@@ -1,11 +1,14 @@
+> Current release: [v0.3.0 deterministic verification](release-v0.3.0-verification.md).
+> The installation and earlier release observations below retain their original scope.
+
 # ContextLean 0.2.0 verification
 
-The current working-tree contract is [Balanced](balanced-contract.md). It intentionally
+The current v0.3.0 contract is [Balanced](balanced-contract.md). It intentionally
 retires full original-bootstrap compatibility. The release/coverage records below
 describe their historical revisions; they do not certify the Balanced contract.
-See [Balanced verification](balanced-verification.md) for current checks and limits.
+See [v0.3.0 verification](release-v0.3.0-verification.md) for current checks and limits.
 
-## Current released status
+## Historical v0.2.0 released status
 
 [ContextLean v0.2.0](https://github.com/andyst-dev/contextlean/releases/tag/v0.2.0)
 was publicly released on 2026-09-30. The annotated tag resolves to

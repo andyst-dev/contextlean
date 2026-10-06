@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-ContextLean 0.2.1 candidate is a dependency-free, skills-only Codex/Claude Code plugin: produce reliable maps and compact coding guidance under the Balanced contract; audit drift, review locality and measure context only on request. No MCP server, hooks, runtime package, telemetry or automatic benchmark; remain silent by default.
+ContextLean 0.3.0 is a dependency-free, skills-only Codex/Claude Code plugin: produce reliable maps and compact coding guidance under the Balanced contract; audit drift, review locality and measure context only on request. No MCP server, hooks, runtime package, telemetry or automatic benchmark; remain silent by default.
 
 ## Repository Map
 
@@ -36,6 +36,9 @@ tests/test_execution.py -> offline native sandbox composition, permission parity
 tests/test_runtime.py -> offline login-shell, effective-runtime, cache and coverage identity regressions
 docs/ -> visual, verification records and historical release notes
 docs/balanced-contract.md -> current product contract and intentional historical changes
+docs/evidence.md -> separates historical performance from Balanced behavioral validation
+docs/release-v0.3.0.md -> current release notes
+docs/release-v0.3.0-verification.md -> deterministic release checks
 docs/guidance-authoring.md -> optional map and project-Skill authoring/sharing
 docs/product-comparison-adapter.md -> comparison setup, invariants and offline validation record
 .github/workflows/quality.yml -> offline tests, lint, and formatting

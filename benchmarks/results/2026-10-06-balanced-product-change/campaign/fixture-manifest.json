@@ -1,0 +1,205 @@
+{
+  "comparison_adapter_version": 1,
+  "benchmark_harness_version": 4,
+  "condition_kind": "guided_product_revision",
+  "conditions": {
+    "old": {
+      "condition_kind": "guided_product_revision",
+      "condition_name": "old",
+      "product_revision": "ae8653b123bdb4c686ee36825c80db851c8595ea",
+      "guidance_files": {
+        "AGENTS.md": {
+          "sha256": "209e63926369bd2893eff49ee3b4e3ef6e51ca258956b4fb188a8535cd9d9635",
+          "size": 5475
+        },
+        "CLAUDE.md": {
+          "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+          "size": 11
+        },
+        "PROJECT_REFERENCE.md": {
+          "sha256": "ecac8f12737b0a25ab826b74476a170e1c3a2ee85bd0bb23e0431e4284c28025",
+          "size": 3922
+        }
+      },
+      "automatic_guidance_bytes": 5486
+    },
+    "balanced": {
+      "condition_kind": "guided_product_revision",
+      "condition_name": "balanced",
+      "product_revision": "1a6e67fb9e5c3d5a91ca89a9f5466d2fa037ea52",
+      "guidance_files": {
+        "AGENTS.md": {
+          "sha256": "c545c2d0fb3d3695cb674aeb59c482552583a6849bcaacbda05df02b99f03981",
+          "size": 4741
+        },
+        "CLAUDE.md": {
+          "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+          "size": 11
+        }
+      },
+      "automatic_guidance_bytes": 4752
+    }
+  },
+  "files": [
+    {
+      "path": ".gitignore",
+      "condition_specific": false,
+      "old": {
+        "sha256": "66556d3cf14a84a8c025c4e396fa1842c41d1dd09c98dc25ec3f2ae6ac878db5",
+        "size": 37
+      },
+      "balanced": {
+        "sha256": "66556d3cf14a84a8c025c4e396fa1842c41d1dd09c98dc25ec3f2ae6ac878db5",
+        "size": 37
+      }
+    },
+    {
+      "path": "AGENTS.md",
+      "condition_specific": true,
+      "old": {
+        "sha256": "209e63926369bd2893eff49ee3b4e3ef6e51ca258956b4fb188a8535cd9d9635",
+        "size": 5475
+      },
+      "balanced": {
+        "sha256": "c545c2d0fb3d3695cb674aeb59c482552583a6849bcaacbda05df02b99f03981",
+        "size": 4741
+      }
+    },
+    {
+      "path": "CLAUDE.md",
+      "condition_specific": true,
+      "old": {
+        "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+        "size": 11
+      },
+      "balanced": {
+        "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+        "size": 11
+      }
+    },
+    {
+      "path": "PROJECT_REFERENCE.md",
+      "condition_specific": true,
+      "old": {
+        "sha256": "ecac8f12737b0a25ab826b74476a170e1c3a2ee85bd0bb23e0431e4284c28025",
+        "size": 3922
+      },
+      "balanced": null
+    },
+    {
+      "path": "README.md",
+      "condition_specific": false,
+      "old": {
+        "sha256": "3bc7002182a17904d8435a5cb95fca7c0095d809d441f22a9f4572ac60c06722",
+        "size": 435
+      },
+      "balanced": {
+        "sha256": "3bc7002182a17904d8435a5cb95fca7c0095d809d441f22a9f4572ac60c06722",
+        "size": 435
+      }
+    },
+    {
+      "path": "config.json",
+      "condition_specific": false,
+      "old": {
+        "sha256": "6a8c29bd630822a34ee4ed59e0d2591f9afa4b7a310db08b6aa528039a443da4",
+        "size": 20
+      },
+      "balanced": {
+        "sha256": "6a8c29bd630822a34ee4ed59e0d2591f9afa4b7a310db08b6aa528039a443da4",
+        "size": 20
+      }
+    },
+    {
+      "path": "data/sample.csv",
+      "condition_specific": false,
+      "old": {
+        "sha256": "c39faa15a1d1eefbf2ee2402f88cfe7d88e22aeddacfeedb538203044e60163e",
+        "size": 50
+      },
+      "balanced": {
+        "sha256": "c39faa15a1d1eefbf2ee2402f88cfe7d88e22aeddacfeedb538203044e60163e",
+        "size": 50
+      }
+    },
+    {
+      "path": "expense_report/__init__.py",
+      "condition_specific": false,
+      "old": {
+        "sha256": "f6b1efb33c8e51aa4ebf4d7ea4a1fade259d94b019ade83dd241271118529a47",
+        "size": 51
+      },
+      "balanced": {
+        "sha256": "f6b1efb33c8e51aa4ebf4d7ea4a1fade259d94b019ade83dd241271118529a47",
+        "size": 51
+      }
+    },
+    {
+      "path": "expense_report/cli.py",
+      "condition_specific": false,
+      "old": {
+        "sha256": "6a681929dc3b3fc7149084ce6d97db797dcabaee51e44e54f8f517c3fa8d89ab",
+        "size": 722
+      },
+      "balanced": {
+        "sha256": "6a681929dc3b3fc7149084ce6d97db797dcabaee51e44e54f8f517c3fa8d89ab",
+        "size": 722
+      }
+    },
+    {
+      "path": "expense_report/filters.py",
+      "condition_specific": false,
+      "old": {
+        "sha256": "8825e48b6a21b716bc6b074284378bc42c13be48ca16c4450184d449cb65a9f7",
+        "size": 287
+      },
+      "balanced": {
+        "sha256": "8825e48b6a21b716bc6b074284378bc42c13be48ca16c4450184d449cb65a9f7",
+        "size": 287
+      }
+    },
+    {
+      "path": "expense_report/report.py",
+      "condition_specific": false,
+      "old": {
+        "sha256": "a6054eafc61b537081ee06573065ecbe1d8ca0e0cd6712d6ffcce73c225e6b64",
+        "size": 567
+      },
+      "balanced": {
+        "sha256": "a6054eafc61b537081ee06573065ecbe1d8ca0e0cd6712d6ffcce73c225e6b64",
+        "size": 567
+      }
+    },
+    {
+      "path": "expense_report/storage.py",
+      "condition_specific": false,
+      "old": {
+        "sha256": "97eb5325d6b0a78427875ad0774856b1b3249ed5f939fc22ccb0a43efd9f69b4",
+        "size": 276
+      },
+      "balanced": {
+        "sha256": "97eb5325d6b0a78427875ad0774856b1b3249ed5f939fc22ccb0a43efd9f69b4",
+        "size": 276
+      }
+    },
+    {
+      "path": "tests/test_expenses.py",
+      "condition_specific": false,
+      "old": {
+        "sha256": "542ad1c532288b3c460269224ecf161dd560e6e0d5c9c783f83cec4e593a194b",
+        "size": 1570
+      },
+      "balanced": {
+        "sha256": "542ad1c532288b3c460269224ecf161dd560e6e0d5c9c783f83cec4e593a194b",
+        "size": 1570
+      }
+    }
+  ],
+  "task_prompts": {
+    "refactor": {
+      "sha256": "464e90080aad8fbba255ac27e48b7bd0faa0fc33098d3eba0a6c3473da7589e3",
+      "size": 552,
+      "pair_bytes_equal": true
+    }
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "benchmark_harness_version": 4,
+  "generated_at": "2026-10-05T22:39:20+00:00",
+  "order": [
+    {
+      "sequence": 1,
+      "task": "refactor",
+      "repeat": 1,
+      "condition": "old",
+      "condition_kind": "guided_product_revision",
+      "condition_name": "old",
+      "product_revision": "ae8653b123bdb4c686ee36825c80db851c8595ea",
+      "guidance_files": {
+        "AGENTS.md": {
+          "sha256": "209e63926369bd2893eff49ee3b4e3ef6e51ca258956b4fb188a8535cd9d9635",
+          "size": 5475
+        },
+        "CLAUDE.md": {
+          "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+          "size": 11
+        },
+        "PROJECT_REFERENCE.md": {
+          "sha256": "ecac8f12737b0a25ab826b74476a170e1c3a2ee85bd0bb23e0431e4284c28025",
+          "size": 3922
+        }
+      },
+      "automatic_guidance_bytes": 5486
+    },
+    {
+      "sequence": 2,
+      "task": "refactor",
+      "repeat": 1,
+      "condition": "balanced",
+      "condition_kind": "guided_product_revision",
+      "condition_name": "balanced",
+      "product_revision": "1a6e67fb9e5c3d5a91ca89a9f5466d2fa037ea52",
+      "guidance_files": {
+        "AGENTS.md": {
+          "sha256": "c545c2d0fb3d3695cb674aeb59c482552583a6849bcaacbda05df02b99f03981",
+          "size": 4741
+        },
+        "CLAUDE.md": {
+          "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+          "size": 11
+        }
+      },
+      "automatic_guidance_bytes": 4752
+    },
+    {
+      "sequence": 3,
+      "task": "refactor",
+      "repeat": 2,
+      "condition": "balanced",
+      "condition_kind": "guided_product_revision",
+      "condition_name": "balanced",
+      "product_revision": "1a6e67fb9e5c3d5a91ca89a9f5466d2fa037ea52",
+      "guidance_files": {
+        "AGENTS.md": {
+          "sha256": "c545c2d0fb3d3695cb674aeb59c482552583a6849bcaacbda05df02b99f03981",
+          "size": 4741
+        },
+        "CLAUDE.md": {
+          "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+          "size": 11
+        }
+      },
+      "automatic_guidance_bytes": 4752
+    },
+    {
+      "sequence": 4,
+      "task": "refactor",
+      "repeat": 2,
+      "condition": "old",
+      "condition_kind": "guided_product_revision",
+      "condition_name": "old",
+      "product_revision": "ae8653b123bdb4c686ee36825c80db851c8595ea",
+      "guidance_files": {
+        "AGENTS.md": {
+          "sha256": "209e63926369bd2893eff49ee3b4e3ef6e51ca258956b4fb188a8535cd9d9635",
+          "size": 5475
+        },
+        "CLAUDE.md": {
+          "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+          "size": 11
+        },
+        "PROJECT_REFERENCE.md": {
+          "sha256": "ecac8f12737b0a25ab826b74476a170e1c3a2ee85bd0bb23e0431e4284c28025",
+          "size": 3922
+        }
+      },
+      "automatic_guidance_bytes": 5486
+    },
+    {
+      "sequence": 5,
+      "task": "refactor",
+      "repeat": 3,
+      "condition": "old",
+      "condition_kind": "guided_product_revision",
+      "condition_name": "old",
+      "product_revision": "ae8653b123bdb4c686ee36825c80db851c8595ea",
+      "guidance_files": {
+        "AGENTS.md": {
+          "sha256": "209e63926369bd2893eff49ee3b4e3ef6e51ca258956b4fb188a8535cd9d9635",
+          "size": 5475
+        },
+        "CLAUDE.md": {
+          "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+          "size": 11
+        },
+        "PROJECT_REFERENCE.md": {
+          "sha256": "ecac8f12737b0a25ab826b74476a170e1c3a2ee85bd0bb23e0431e4284c28025",
+          "size": 3922
+        }
+      },
+      "automatic_guidance_bytes": 5486
+    },
+    {
+      "sequence": 6,
+      "task": "refactor",
+      "repeat": 3,
+      "condition": "balanced",
+      "condition_kind": "guided_product_revision",
+      "condition_name": "balanced",
+      "product_revision": "1a6e67fb9e5c3d5a91ca89a9f5466d2fa037ea52",
+      "guidance_files": {
+        "AGENTS.md": {
+          "sha256": "c545c2d0fb3d3695cb674aeb59c482552583a6849bcaacbda05df02b99f03981",
+          "size": 4741
+        },
+        "CLAUDE.md": {
+          "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+          "size": 11
+        }
+      },
+      "automatic_guidance_bytes": 4752
+    }
+  ],
+  "method": "deterministic counterbalanced task/repetition parity"
+}

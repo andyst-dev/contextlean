@@ -1,6 +1,12 @@
+# Current release: v0.3.0 Balanced
+
+See [v0.3.0 release notes](release-v0.3.0.md) and the
+[deterministic release verification](release-v0.3.0-verification.md).
+The earlier release record below remains historical.
+
 # ContextLean v0.2.0
 
-The current working-tree contract is [Balanced](balanced-contract.md). It intentionally
+The current v0.3.0 contract is [Balanced](balanced-contract.md). It intentionally
 retires full original-bootstrap compatibility. The release/coverage records below
 describe their historical revisions; they do not certify the Balanced contract.
 

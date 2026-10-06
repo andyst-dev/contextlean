@@ -1,0 +1,7 @@
+{
+  "sequence": 25,
+  "harness_sequence": 1,
+  "task": "documentation-config",
+  "repeat": 1,
+  "condition": "vanilla"
+}

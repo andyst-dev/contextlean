@@ -1,0 +1,43 @@
+{
+  "scope": "All six saved diffs and exposed command trajectories; detailed retained-contract review of Balanced slots 2, 3 and 6.",
+  "recommendation": "keep Balanced",
+  "retained_contract_regression": false,
+  "findings": [
+    {
+      "guarantee": "Ownership and cohesion",
+      "result": "PASS",
+      "evidence": "Slots 2 and 3 extract the shared two-line normalization operation into categories.py. Slot 6 reuses the existing filters.normalize_category owner. All preserve a single implementation and the two existing imports; both ownership choices fit this small fixture."
+    },
+    {
+      "guarantee": "No unnecessary abstraction, arbitrary splitting or speculative refactoring",
+      "result": "PASS",
+      "evidence": "Slots 2 and 3 add one directly used shared function module; slot 6 changes only report.py. No wrappers, configuration, dependency injection, dependencies or unrelated cleanup."
+    },
+    {
+      "guarantee": "Public interfaces and behavior",
+      "result": "PASS",
+      "evidence": "Both public normalize_category imports resolve to the same function in every solution. Acceptance checks preserve grouping, totals, CLI override and existing unnormalized filter-query semantics."
+    },
+    {
+      "guarantee": "Cause and caller inspection",
+      "result": "PASS",
+      "evidence": "Every Balanced run searches the normalizer/usages, reads both owning modules and the relevant tests before editing. The change removes the duplicate implementation at its source. Root-cause bug investigation beyond this duplication is not exercised by this refactor task."
+    },
+    {
+      "guarantee": "Sufficient proportional verification",
+      "result": "PASS",
+      "evidence": "Every Balanced run executes the existing complete five-test suite once and explicit compatibility assertions. Slots 2 and 3 also assert filter-query semantics. Independent grading adds untouched regression and acceptance coverage. No relevant failed verification is ignored."
+    },
+    {
+      "guarantee": "Practical regression checks",
+      "result": "PASS within task scope",
+      "evidence": "Old slots 4 and 5 add persistent import-identity tests. Balanced uses recorded runnable assertions without adding test files. This simple extraction introduces no non-trivial new logic or bug fix, so the persistence difference is not treated as a retained-contract violation."
+    }
+  ],
+  "limitations": [
+    "Three repetitions per condition cannot establish statistical significance or generalize across refactor types.",
+    "None of the Old runs reads PROJECT_REFERENCE.md. This task therefore does not exercise Old conditional architecture procedures directly.",
+    "Source code and exposed events do not reveal hidden reasoning or all possible behavior; retained guarantees are assessed for this task only.",
+    "Provider cache state and service load are uncontrolled; the third pair dominates the mean token difference."
+  ]
+}

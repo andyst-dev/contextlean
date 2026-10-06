@@ -1,13 +1,15 @@
 # ContextLean
 
-Help coding agents find owners, limit exploration, and verify focused changes.
+**Bootstrap once. Read less. Change locally.**
 
 ContextLean produces a reliable project map and a compact coding discipline for
 Codex and Claude Code. It helps agents find responsible code, preserve important
 constraints, make focused changes, and verify sufficient coverage.
 
-The current **Balanced** contract focuses on ordinary coding work. Audit, Lean Review
-and measurement are optional, explicitly requested workflows.
+**v0.3.0 introduces the Balanced contract:** compact, maintained project guidance
+for ordinary coding work, with less setup administration in startup context. Audit,
+Lean Review and measurement remain optional, explicitly requested workflows.
+See the [v0.3.0 release notes](docs/release-v0.3.0.md).
 
 ![Without ContextLean: explore the repository to find relevant code. With ContextLean: use a small project map to reach relevant code and tests.](docs/assets/before-after.svg)
 
@@ -40,55 +42,24 @@ ContextLean does not guarantee savings or make a model inherently smarter.
 - **Benchmark Context Usage** measures structure offline or, when explicitly requested,
   compares real model runs and their outcomes.
 
-## Historical results (before Balanced)
+## Evidence and limits
 
-**Release-aligned v0.2.0 preliminary validation — one fresh run per condition per task.**
+- **Historical v0.2.1 performance evidence:** the
+  [30-session harness-v4 study](benchmarks/results/2026-10-02-harness-v4-repeated-performance/README.md)
+  measured a descriptive aggregate of **8.96% fewer tokens**, with mixed task-level
+  outcomes. It tested the previous v0.2.1 contract. This is **not a v0.3.0 result**.
+- **Balanced product-change validation:** the separate
+  [six-session Old-versus-Balanced Refactor validation](benchmarks/results/2026-10-06-balanced-product-change/README.md)
+  passed submitted tests, original regression tests and acceptance tests in **6/6**
+  solutions. No material retained-contract regression was found. Its primary result
+  is behavioral: Balanced preserved the tested Refactor behavior after simplifying
+  the runtime contract. It is not a general performance benchmark.
 
-Five existing tasks in a small Python expense-report fixture, tested on 2026-09-30 using
-`gpt-5.6-terra` with low reasoning. Product commit tested:
-`86043499d5a375cc6a3b295bc7c03b0999eb458c`. Vanilla contains no ContextLean guidance;
-ContextLean starts with equivalent code and fresh validated guidance from that commit.
-Exactly ten fresh calls; no historical or isolated Refactor result is reused. All ten
-pass acceptance, original regression and submitted tests, including independent offline regrading.
-
-| Task | Vanilla total | ContextLean total | Difference | V time | C time | Commands V/C | Success |
-|---|---:|---:|---:|---:|---:|---:|---|
-| navigation | 55,054 | 50,553 | -8.18% | 17.88s | 15.29s | 3/3 | Both pass |
-| bug-fix | 88,459 | 78,423 | -11.35% | 29.18s | 28.50s | 3/5 | Both pass |
-| feature | 94,876 | 77,823 | -17.97% | 60.41s | 39.68s | 3/3 | Both pass |
-| refactor | 99,049 | 75,257 | -24.02% | 37.17s | 28.18s | 5/3 | Both pass |
-| documentation-config | 144,586 | 59,620 | -58.77% | 45.33s | 22.88s | 4/2 | Both pass |
-
-| Aggregate | Vanilla | ContextLean | Difference |
-|---|---:|---:|---:|
-| Input tokens | 475,198 | 337,007 | -29.08% |
-| Cached input tokens (included in input) | 369,920 | 257,280 | -30.45% |
-| Output tokens | 6,826 | 4,669 | -31.60% |
-| Total tokens | 482,024 | 341,676 | -29.12% |
-| Wall time (s) | 189.97 | 134.52 | -29.19% |
-| Command calls | 18 | 16 | -11.11% |
-| Acceptance / original regression / submitted-test success | 5/5 each | 5/5 each | Same |
-
-ContextLean measured **29.12% fewer aggregate tokens**, **29.19% less wall time** and
-**11.11% fewer commands** in this batch. Unfavorable cases are preserved: Bug Fix uses
-35 more output tokens (+3.35%) and two more commands (3→5, +66.67%); Navigation's
-dated credit-equivalent is higher (0.76752→1.22746, +59.93%) because cache composition differs.
-All diagnostics and recoveries remain visible.
-
-These are **preliminary results for this tested configuration**, with no
-statistical-confidence claim and **no universal token-savings claim**. Provider caching,
-service load and stochasticity are uncontrolled. File reads and total tool calls are unavailable.
-[Release-aligned results and raw evidence](benchmarks/results/2026-09-30-release-aligned-0.2.0/README.md) ·
-[methodology](benchmarks/results/2026-09-30-release-aligned-0.2.0/methodology.md) ·
-[measurement review](benchmarks/results/2026-09-30-release-aligned-0.2.0/measurement-review.json).
-
-The [compact-final batch at `90ed9a4`](benchmarks/results/2026-09-30-compact-final-0.2.0/README.md),
-[previous clean-final batch](benchmarks/results/2026-09-30-clean-final-0.2.0/README.md) and
-[historical validation](benchmarks/results/2026-09-30-validation/README.md) remain separate,
-unchanged historical evidence. Between-batch differences establish no causal conclusion.
-The [diagnostic batch](benchmarks/results/2026-09-30-final-0.2.0/README.md) contains a map-preparation
-error and is **invalid for headline performance comparison**.
-[Root-cause analysis and harness repair](benchmarks/analysis/2026-09-30-final-0.2.0/README.md).
+The validation does not establish equivalence for complex architectural refactors;
+three paired repetitions do not justify statistical-significance claims. The
+representative automatic guidance is 4,752 bytes, down from 5,486 (13.38%); this is
+an instruction-size measurement, not a promised token saving.
+[Evidence provenance and earlier studies](docs/evidence.md).
 
 ## Quick start
 
@@ -232,8 +203,9 @@ There are two kinds of evidence:
   correctness unverified; it cannot support a gain claim.
 
 Live runs consume provider usage and are never part of CI.
-The [release-aligned validation record](benchmarks/results/2026-09-30-release-aligned-0.2.0/README.md)
-records the identical prompts, source snapshot, evaluator, ordering and raw outcomes.
+The [evidence guide](docs/evidence.md) separates historical performance studies
+from the Balanced product-change validation, with frozen prompts, source snapshots,
+evaluators, ordering and raw outcomes.
 Provider caching and service load were uncontrolled; the plugin itself was excluded
 from both conditions to isolate the generated guidance. For reproduction and grading,
 use the [benchmark guide](benchmarks/README.md).

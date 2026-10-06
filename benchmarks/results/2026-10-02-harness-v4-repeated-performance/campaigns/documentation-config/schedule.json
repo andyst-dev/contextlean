@@ -1,0 +1,43 @@
+{
+  "benchmark_harness_version": 4,
+  "generated_at": "2026-10-02T12:42:12+00:00",
+  "order": [
+    {
+      "sequence": 1,
+      "task": "documentation-config",
+      "repeat": 1,
+      "condition": "vanilla"
+    },
+    {
+      "sequence": 2,
+      "task": "documentation-config",
+      "repeat": 1,
+      "condition": "contextlean"
+    },
+    {
+      "sequence": 3,
+      "task": "documentation-config",
+      "repeat": 2,
+      "condition": "contextlean"
+    },
+    {
+      "sequence": 4,
+      "task": "documentation-config",
+      "repeat": 2,
+      "condition": "vanilla"
+    },
+    {
+      "sequence": 5,
+      "task": "documentation-config",
+      "repeat": 3,
+      "condition": "vanilla"
+    },
+    {
+      "sequence": 6,
+      "task": "documentation-config",
+      "repeat": 3,
+      "condition": "contextlean"
+    }
+  ],
+  "method": "deterministic counterbalanced task/repetition parity"
+}

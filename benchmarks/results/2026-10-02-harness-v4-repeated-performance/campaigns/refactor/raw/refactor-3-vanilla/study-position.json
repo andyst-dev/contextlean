@@ -1,0 +1,7 @@
+{
+  "sequence": 23,
+  "harness_sequence": 5,
+  "task": "refactor",
+  "repeat": 3,
+  "condition": "vanilla"
+}

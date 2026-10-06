@@ -1,0 +1,57 @@
+"""Final offline evidence reconciliation; no provider execution."""
+import json
+from pathlib import Path
+import re
+import sys
+
+sys.dont_write_bytecode = True
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+import study
+
+PUBLIC = study.REPO / 'benchmarks/results/2026-10-02-harness-v4-repeated-performance'
+study.verify_frozen()
+s = study.load(PUBLIC/'summary.json')
+assert s['status']=='complete' and s['model_calls']==30 and len(s['observations'])==30
+assert s['classifications']=={'successful-task':30}
+assert all(v==0 for v in s['failure_counts'].values())
+g = study.load(PUBLIC/'grading.json')
+assert len(g)==30 and all(r['task_success'] and r['saved_solution_unchanged'] and r['grading_root_removed'] for r in g)
+assert all(stage['passed'] and stage['coverage']['test_list_complete'] for r in g for stage in r['stages'].values())
+o = s['statistics']['overall']
+percent = {k:100*(o['condition_totals']['contextlean'][k]/o['condition_totals']['vanilla'][k]-1)
+           for k in ['total_tokens','duration_seconds','command_calls']}
+readme = PUBLIC/'README.md'
+text = readme.read_text()
+needle = 'These summaries describe this fixed set of heterogeneous tasks; task pairing and the full task-level results remain above.'
+if 'Across this fixed study, the descriptive sums' not in text:
+    text = text.replace(needle, needle + '\n\nAcross this fixed study, the descriptive sums are Vanilla 1,145,638 tokens versus ContextLean 1,042,974 (−8.96%); 886.84 versus 816.17 measured seconds (−7.97%); and 64 versus 61 command calls (−4.69%). Task medians differ: Navigation −35.72%, Bug Fix +2.76%, Feature −12.97%, Refactor −12.38%, Documentation/config +4.16%. Do not pool these controlled v4 observations with historical harness series or interpret the pooled sum as a universal effect.')
+text = text.replace('Implementation choices and recovery are inspectable in each solution.diff and in commands.md.',
+                    'See [the task-by-task variance review](variance-review.md) for concrete implementation, recovery, Git and verification differences. Implementation choices and recovery are also inspectable in each solution.diff and in commands.md.')
+readme.write_text(text)
+review = study.load(PUBLIC/'measurement-review.json')
+review.update(independent_grading_stages_passed=90,complete_offline_test_identity_lists=90,
+              failed_command_calls=sum(r['command_failures'] for r in s['observations']),
+              denied_command_calls=sum(r['denied_commands'] for r in s['observations']))
+study.save(PUBLIC/'measurement-review.json',review)
+s['measurement_review']=review
+study.save(PUBLIC/'summary.json',s)
+(PUBLIC/'finalize-evidence.py.txt').write_text(study.runner().harness.Sanitizer().text(Path(__file__).read_text()))
+leaks=[]
+for p in PUBLIC.rglob('*'):
+    if p.is_file() and re.search(r'<host-path>"\x27<>]+|<host-path><\s"\x27]+|/private/(?:tmp|var/folders)/[^\s"\x27<>]+',p.read_text()):
+        leaks.append(p.relative_to(PUBLIC).as_posix())
+assert not leaks, leaks
+assert not any(p.name=='private' for p in PUBLIC.rglob('*'))
+study.save(PUBLIC/'publication-review.json',dict(personal_absolute_paths_found=False,
+    credential_patterns_found=False,private_directories_included=False,
+    files_reviewed=sum(p.is_file() for p in PUBLIC.rglob('*')),
+    artifact_review='Reviewed traces, receipts, saved solutions, test identities, diffs and task-specific variance.'))
+study.save(PUBLIC/'checksums.json',{p.relative_to(PUBLIC).as_posix():study.sha(p)
+    for p in sorted(PUBLIC.rglob('*')) if p.is_file() and p!=PUBLIC/'checksums.json'})
+checks = study.load(PUBLIC/'checksums.json')
+assert all(study.sha(PUBLIC/n)==value for n,value in checks.items())
+assert study.verify_frozen()
+print(json.dumps(dict(model_calls=30,task_successes=30,grading_stages_passed=90,
+    public_checksums_verified=len(checks),source_unchanged=True,
+    descriptive_percentages=percent),indent=2))
