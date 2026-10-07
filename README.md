@@ -53,10 +53,13 @@ claude plugin update contextlean@contextlean-local --scope user
 ```
 
 Restart afterward. Project guidance and customizations remain yours. Claude's
-versioned installs update when the publisher changes the version; this pass keeps
-0.3.0. See the [installation guide](docs/installation.md) for requirements,
+versioned installs can now update from 0.3.0 to **0.3.1**. See the
+[installation guide](docs/installation.md) for requirements,
 verification, same-version refreshes, local packages, troubleshooting and safe
 uninstallation. [Distribution details](docs/distribution.md) cover maintainers.
+
+**v0.3.1 — Packaging and distribution readiness.** See the
+[v0.3.1 release notes](docs/release-v0.3.1.md). Balanced runtime guidance is unchanged.
 
 ## Balanced guidance
 
@@ -101,7 +104,7 @@ ContextLean does not guarantee savings or make a model inherently smarter.
 - **Historical v0.2.1 performance evidence:** the
   [30-session harness-v4 study](benchmarks/results/2026-10-02-harness-v4-repeated-performance/README.md)
   measured a descriptive aggregate of **8.96% fewer tokens**, with mixed task-level
-  outcomes. It tested the previous v0.2.1 contract. This is **not a v0.3.0 result**.
+  outcomes. It tested the previous v0.2.1 contract. This is **not a v0.3.1 performance result**.
 - **Balanced product-change validation:** the separate
   [six-session Old-versus-Balanced Refactor validation](benchmarks/results/2026-10-06-balanced-product-change/README.md)
   passed submitted tests, original regression tests and acceptance tests in **6/6**

@@ -1,6 +1,6 @@
 {
   "name": "contextlean",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "ContextLean creates compact maintained project guidance for coding agents so they can locate responsible code, avoid unnecessary exploration, make focused changes, and verify them proportionally.",
   "author": {
     "name": "ContextLean contributors"

@@ -75,7 +75,7 @@ class DistributionTests(unittest.TestCase):
             claude = json.loads((moved / ".claude-plugin/plugin.json").read_text())
             catalog = json.loads((moved / ".claude-plugin/marketplace.json").read_text())
             self.assertEqual(codex["version"], claude["version"])
-            self.assertEqual(codex["version"], "0.3.0")
+            self.assertEqual(codex["version"], "0.3.1")
             for key in (
                 "name",
                 "description",
@@ -181,7 +181,7 @@ class NativeInstallationTests(unittest.TestCase):
         for name in (".codex-plugin/plugin.json", ".claude-plugin/plugin.json"):
             path = self.source / name
             manifest = json.loads(path.read_text())
-            manifest["version"] = "0.3.1-test"
+            manifest["version"] = "0.3.2-test"
             path.write_text(json.dumps(manifest))
         (self.source / "README.md").write_text("Updated package marker\n")
 
@@ -203,7 +203,7 @@ class NativeInstallationTests(unittest.TestCase):
         hidden.rename(self.source)
         self.prepare_update()
         updated = json.loads(run("codex", "plugin", "add", PLUGIN, "--json"))
-        self.assertEqual(updated["version"], "0.3.1-test")
+        self.assertEqual(updated["version"], "0.3.2-test")
         self.assertEqual(snapshot(Path(updated["installedPath"])), snapshot(self.source))
         self.assert_preserved()
         run("codex", "plugin", "remove", PLUGIN)
@@ -257,7 +257,7 @@ class NativeInstallationTests(unittest.TestCase):
         self.prepare_update()
         run("claude", "plugin", "update", PLUGIN, "--scope", "user")
         updated = json.loads(run("claude", "plugin", "list", "--json"))[0]
-        self.assertEqual(updated["version"], "0.3.1-test")
+        self.assertEqual(updated["version"], "0.3.2-test")
         self.assertEqual(snapshot(Path(updated["installPath"])), snapshot(self.source))
         self.assert_preserved()
         run("claude", "plugin", "uninstall", PLUGIN, "--scope", "user")

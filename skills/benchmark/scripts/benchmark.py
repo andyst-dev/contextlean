@@ -20,7 +20,7 @@ import time
 from typing import Any, Iterable
 
 
-CONTEXTLEAN_VERSION = "0.3.0"
+CONTEXTLEAN_VERSION = "0.3.1"
 SCHEMA_VERSION = 1
 TOKEN_CHARS_ESTIMATE = 4
 LARGE_DOC_BYTES = 10_000

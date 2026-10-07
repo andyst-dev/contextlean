@@ -109,7 +109,7 @@ class IsolatedPlatform:
                     {
                         "clientInfo": {
                             "name": "contextlean_install_test",
-                            "version": "0.3.0",
+                            "version": "0.3.1",
                         }
                     },
                 )

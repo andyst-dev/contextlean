@@ -1,9 +1,15 @@
 # Evidence provenance
 
-ContextLean v0.3.0 uses the Balanced contract. Product-change validation and historical
-performance studies answer different questions; they must not be pooled.
+ContextLean v0.3.1 retains the v0.3.0 Balanced contract. Product-change validation
+and historical performance studies answer different questions; they must not be pooled.
 
-## Current release: v0.3.0 Balanced
+## Current release: v0.3.1 packaging patch
+
+The [v0.3.1 release](release-v0.3.1.md) changes packaging and release metadata only.
+Balanced runtime guidance and published evidence are unchanged; no model benchmarks
+were rerun. The behavioral evidence below remains the original v0.3.0 validation.
+
+## Balanced behavioral validation (v0.3.0)
 
 [Balanced product-change validation](../benchmarks/results/2026-10-06-balanced-product-change/README.md)
 compares Old `ae8653b123bdb4c686ee36825c80db851c8595ea` with Balanced
@@ -23,7 +29,7 @@ maintained as an active runner extension. Published source and outcomes remain u
 - [v0.2.1 performance study](../benchmarks/results/2026-10-02-harness-v4-repeated-performance/README.md):
   30 harness-v4 sessions at `ae8653b123bdb4c686ee36825c80db851c8595ea`, descriptive
   aggregate **8.96% fewer tokens**, with mixed task-level outcomes. This is not a
-  v0.3.0 performance result.
+  v0.3.1 performance result.
 - [Earlier evidence index](../benchmarks/results/README.md): frozen earlier products,
   preliminary release studies and diagnostic datasets; their original caveats apply.
 - [Preparation root-cause investigation](../benchmarks/analysis/2026-09-30-final-0.2.0/README.md)
@@ -37,9 +43,9 @@ sessions were run for the v0.3.0 release preparation.
 
 ## Publication integrity
 
-The 30-session archive was already complete locally before this release and is now
-included unchanged. All 1,393 pre-existing files retain their hashes, including its
-original checksum ledgers. Its methodology referenced a missing companion file;
+The 30-session archive was already complete locally before v0.3.0 and was
+included unchanged in that release. All 1,393 pre-existing files retain their hashes,
+including its original checksum ledgers. Its methodology referenced a missing companion file;
 `sandbox-composition.md` was added verbatim from the study's frozen revision to
 resolve that link. This is an additive documentation repair, not a changed result.
 The companion's SHA-256 is

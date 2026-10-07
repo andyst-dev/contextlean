@@ -1,8 +1,9 @@
 # ContextLean distribution
 
-Checked **2026-10-07**. Product version remains **0.3.0 Balanced**. This pass prepares
-installation and submission materials; it does not publish, register or release
-anything. Start with [installation](installation.md) for user commands.
+Checked **2026-10-07**. Product version is **0.3.1**, a packaging patch on the
+unchanged Balanced contract. The GitHub release includes a distribution ZIP;
+public-directory submissions remain separate. Start with
+[installation](installation.md) for user commands.
 
 ## Ownership and package structure
 
@@ -95,7 +96,7 @@ and policy acknowledgments remain publisher actions.
   outcome are **UNKNOWN**; no portal operation was performed.
 - Compatibility beyond the tested CLI versions and other operating systems is
   **UNKNOWN**. Neither manifest invents an unsupported compatibility field.
-- No public install counts, endorsements, broad model-equivalence claim or v0.3.0
+- No public install counts, endorsements, broad model-equivalence claim or v0.3.1
   performance-saving claim is made. The 30-run performance study belongs to v0.2.1.
 - Native GitHub transport and interactive desktop selectors were not exercised by
   the offline test suite. Official hosted installation commands are documented;
@@ -106,7 +107,7 @@ and policy acknowledgments remain publisher actions.
 From the checkout, choose a new output path outside it:
 
 ```sh
-python3 packaging/build.py /tmp/contextlean-0.3.0.zip
+python3 packaging/build.py /tmp/contextlean-0.3.1.zip
 ```
 
 The exporter refuses to overwrite an existing output. It produces a deterministic
@@ -135,9 +136,9 @@ read the source directory instead. Keep that directory for local development;
 use Git installation for an independent installed copy. Do not infer that cache
 metadata proves which files a local Claude session loaded.
 
-This pass changes no release version. A future published content update must get
-its own version decision. An intentional same-version reinstall is documented,
-but normal updates must not be advertised as delivering these edits automatically.
+Version 0.3.1 delivers the completed cleanup and packaging changes through normal
+versioned updates. Future published content changes also need a version change.
+An intentional same-version reinstall remains available for development.
 
 Both platforms' update/removal commands were tested against customized project
 `AGENTS.md`, `CLAUDE.md`, nested maps, and user-created Skills. All project bytes
@@ -161,7 +162,7 @@ all Skill bytes and references, check metadata/version consistency, reject missi
 Skills and symlinks, and verify deterministic output and package hygiene.
 Native lifecycle tests use **Codex 0.147.0** and **Claude Code 2.1.288**. They
 install the relocated ZIP through each real CLI, inspect four-Skill discovery,
-apply a synthetic `0.3.1-test` update inside the temporary directory, uninstall,
+apply a synthetic `0.3.2-test` update inside the temporary directory, uninstall,
 and check customized project files byte-for-byte. That synthetic version is not
 a product version declaration or release.
 
@@ -184,8 +185,10 @@ of the source root/catalog and do not occur as Skill/runtime failures.
 The completed run passed **139 tests with no skips** on the tested macOS host.
 Ruff 0.15.7 lint/format, whitespace checks, Codex package and all four Skill validators
 passed. Recursive links/anchors, 14 evidence ledgers (3,363 entries), eight historical
-fingerprints and Balanced contracts passed. All 2,256 published result files and all
-15 canonical Skill files remain byte-for-byte identical to the Deep Clean baseline.
+fingerprints and Balanced contracts passed. All 2,256 published result files and
+every Skill instruction/reference remain
+byte-for-byte identical to the distribution-readiness baseline. The optional
+measurement helper changes only its product version constant for 0.3.1.
 
 ## Security and privacy
 
@@ -209,8 +212,8 @@ is fabricated on the user's behalf.
 
 | Destination | Repository status | Remaining external actions or limitations |
 |---|---|---|
-| Codex repository catalog and skills-only public-directory package | **READY** for maintainer review and submission after approval | Publish the reviewed repository changes separately; build ZIP; verify publisher identity/access; run portal scans and submit for review. No result guaranteed. |
-| Claude Code repository catalog and directory submission | **READY** for maintainer review and submission after approval | Publish reviewed changes; connect an eligible GitHub/Claude account; run portal validation and complete data-handling/contact/policy steps. The evidence-heavy root can incur documented policy holds. |
+| Codex repository catalog and skills-only public-directory package | **READY** for maintainer review and submission after approval | Use the released ZIP; verify publisher identity/access; run portal scans and submit for review. No result guaranteed. |
+| Claude Code repository catalog and directory submission | **READY** for maintainer review and submission after approval | Use the released repository; connect an eligible GitHub/Claude account; run portal validation and complete data-handling/contact/policy steps. The evidence-heavy root can incur documented policy holds. |
 
 No repository file exceeds 5 MiB and the tracked source is about 35 MB before ZIP
 compression. The repository has over 512 files and contains immutable ZIPs and

@@ -84,8 +84,8 @@ offline structural estimate, explicit before/after capture and a read-only diagn
 navigation A/B mode. That mode does not grade answer correctness. It is not a
 replacement for this graded suite.
 
-[Evidence provenance](../docs/evidence.md) is the current results index: v0.3.0 has
-Balanced behavioral validation, while the 30-session performance study describes
+[Evidence provenance](../docs/evidence.md) is the current results index: v0.3.1
+retains v0.3.0 Balanced behavioral validation, while the 30-session performance study describes
 v0.2.1. Earlier diagnostic and release datasets retain their original limitations.
 
 The completed Old-versus-Balanced adapter is historical tooling, reproduced from
