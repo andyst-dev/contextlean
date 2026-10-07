@@ -3,7 +3,7 @@
 This maintainer record preserves the offline checks performed before committing and
 benchmarking the guidance changes. Its statements about uncommitted work, zero model
 calls and pending isolated validation apply only to those stages. For the released
-v0.2.0 status and subsequent validation, see [current verification](verification.md#current-released-status).
+v0.2.0 status and subsequent validation, see [current verification](verification.md#historical-v020-released-status).
 
 The initial record below describes frozen product `90ed9a4`. The subsequent general
 [refactor and repository state update](#refactor-and-repository-state-update) has its
@@ -18,13 +18,13 @@ prompt, grader, product or evidence changes.
 ## Semantic comparison
 
 The [76-row comparison](bootstrap-coverage.md#coverage-matrix) was reviewed again
-against the immutable [714-line historical specification](reference/original-agent-bootstrap.md).
+against the immutable [714-line historical specification](../reference/original-agent-bootstrap.md).
 Its original-body SHA-256 remains
 `ecc02ff12623297e057eafb78e16ab8020953b317cc07cbf27bf764ab60d3f05`.
 Setup scope, preservation, ordered analysis, command verification, compatible wrappers,
 exclusions, lifecycle and completion duties remain in the canonical bootstrap procedure.
 Permanent obligations have hash-bound durable destinations in the
-[worked transfer](../tests/fixtures/bootstrap-transfer/transfer.json).
+[worked transfer](../../tests/fixtures/bootstrap-transfer/transfer.json).
 
 The changes to destinations are:
 

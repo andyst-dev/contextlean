@@ -12,7 +12,7 @@ and does not acquire these stronger controls.
 
 Use one reviewed, frozen canonical fixture and an offline preparation attestation.
 The existing map checker validates explicit paths, responsibility evidence,
-guidance transfer and frozen hashes. Natural-language ownership review is still a
+guidance structure and frozen hashes. Natural-language ownership review is still a
 preparing agent/human responsibility; a hash does not prove semantic accuracy.
 
 Vanilla and ContextLean are derived from that one canonical fixture. An exhaustive
@@ -85,7 +85,7 @@ strategy, configured native/outer sandbox states, native availability as actuall
 probed (null if unverified), permission mode, effective writable roots, cwd and
 environment policy, probe scope/result and exit code. Normalized policy receipts
 must match between Vanilla and ContextLean. Only guidance/configuration differs.
-See [the sandbox composition diagnosis](sandbox-composition.md) for the exact
+See [the sandbox composition diagnosis](../docs/history/sandbox-composition.md) for the exact
 macOS failure and the provider-specific limits. Linux must pass the real CLI gate
 on its deployment host; macOS evidence does not establish Linux compatibility.
 

@@ -78,7 +78,7 @@ def capture(command, workspace, timeout=60, env=None):
         return False, type(error).__name__
 
 
-def grade(task, workspace, result, artifact_dir, session=None, fixture=None):
+def grade(task, workspace, result, artifact_dir, session=None):
     # Evaluate another copy, with original tests restored. Agent edits cannot weaken
     # the regression suite, and evaluation cannot contaminate measured artifacts.
     with tempfile.TemporaryDirectory(prefix="contextlean-evaluation-") as temporary:
@@ -97,7 +97,7 @@ def grade(task, workspace, result, artifact_dir, session=None, fixture=None):
             [python, "-m", "unittest", "discover", "-s", "tests", "-v"], evaluation, **options
         )
         shutil.rmtree(evaluation / "tests", ignore_errors=True)
-        shutil.copytree((fixture or FIXTURE) / "tests", evaluation / "tests")
+        shutil.copytree(FIXTURE / "tests", evaluation / "tests")
         response = Path(temporary) / "response.txt"
         response.write_text(result.get("final_response", ""), encoding="utf-8")
         regression, regression_log = capture(
@@ -138,11 +138,11 @@ def distribution(values):
     return harness.distribution(values)
 
 
-def summarize(runs, tasks, repeats, conditions=("vanilla", "contextlean")):
+def summarize(runs, tasks, repeats):
     summary = []
     for task in tasks:
         entry = {"task": task["id"], "category": task["category"]}
-        for condition in conditions:
+        for condition in ("vanilla", "contextlean"):
             selected = [
                 run for run in runs if run["task"] == task["id"] and run["condition"] == condition
             ]
@@ -230,7 +230,7 @@ def render(report):
         ]
     )
     for task in report["summary"]:
-        for condition in report.get("conditions", ("vanilla", "contextlean")):
+        for condition in ("vanilla", "contextlean"):
             item = task[condition]
 
             def span(key):
@@ -263,16 +263,14 @@ def render(report):
         ]
     )
     for task in report["summary"]:
-        for condition in report.get("conditions", ("vanilla", "contextlean")):
+        for condition in ("vanilla", "contextlean"):
             stats = task[condition]["metrics"]["total_tokens"]
             if stats:
                 sd = stats["sample_standard_deviation"]
                 lines.append(
                     f"| {task['task']} | {condition} | {stats['mean']:.2f} | {'unavailable' if sd is None else f'{sd:.2f}'} | {stats['range']} |"
                 )
-    lines.extend(
-        ["", report.get("paired_label", "Paired differences (ContextLean minus Vanilla):"), ""]
-    )
+    lines.extend(["", "Paired differences (ContextLean minus Vanilla):", ""])
     for item in report.get("paired_differences", []):
         stats = item["differences"]["total_tokens"]
         lines.append(
@@ -286,16 +284,7 @@ def render(report):
     return "\n".join(lines)
 
 
-def run(args, *, comparison=None):
-    # A separate guided-product adapter supplies artifacts/identity only. All
-    # isolation, preparation, execution, cleanup, tracing and grading stay here.
-    fixture = comparison.fixture if comparison else FIXTURE
-
-    def validate_prepared(expected=None):
-        if comparison:
-            return comparison.validate(expected)
-        return preparation.validate_frozen(fixture, args.preparation_record, expected)
-
+def run(args):
     tasks = load_suite(args.tasks_file)
     mode = getattr(args, "experiment_kind", "compatibility-smoke")
     provider = getattr(args, "provider", "codex")
@@ -304,32 +293,26 @@ def run(args, *, comparison=None):
             "positive timeout/repeats required; performance requires at least 3 repetitions (5 preferred)"
         )
     output = args.output_dir.resolve()
-    if output.is_relative_to(fixture.resolve()) or (output.exists() and any(output.iterdir())):
+    if output.is_relative_to(FIXTURE.resolve()) or (output.exists() and any(output.iterdir())):
         raise core.BenchmarkError("output must be new and outside the fixture")
-    prepared = validate_prepared()
+    prepared = preparation.validate_frozen(FIXTURE, args.preparation_record)
     if not getattr(args, "live", False) and not getattr(args, "preflight_only", False):
         raise core.BenchmarkError("explicit --live or --preflight-only required")
     if any(
         p.name.startswith("requirements") or p.name in {"pyproject.toml", "uv.lock", "poetry.lock"}
-        for p in fixture.rglob("*")
+        for p in FIXTURE.rglob("*")
     ):
         raise core.BenchmarkError(
             "this fixture requires a separately pinned dependency environment; standard-library harness will not install dependencies"
         )
-    source_digest = core.tree_digest(fixture)
-    canonical_inventory = harness.inventory(fixture)
+    source_digest = core.tree_digest(FIXTURE)
+    canonical_inventory = harness.inventory(FIXTURE)
     # Canonical preparation and map validation precede even CLI version probes.
     runtime = harness.pin_runtime(
         args.codex if provider == "codex" else args.claude, getattr(args, "shell", None)
     )
-    if comparison:
-        comparison.check_runtime(runtime)
     source_env = harness.environment_source(provider)
-    plan = (
-        comparison.schedule(tasks, args)
-        if comparison
-        else harness.schedule([t["id"] for t in tasks], args.repeat)
-    )
+    plan = harness.schedule([t["id"] for t in tasks], args.repeat)
     output.mkdir(parents=True, exist_ok=True)
     (output / "private").mkdir(mode=0o700)
     clean = harness.Sanitizer(
@@ -363,8 +346,6 @@ def run(args, *, comparison=None):
             "skills/benchmark/scripts/benchmark.py",
         ]
     }
-    if comparison:
-        inputs.update(comparison.input_hashes())
     tasks_sha = harness.digest(args.tasks_file.read_bytes())
     compile((ROOT / "benchmarks/evaluate.py").read_bytes(), "grader", "exec")
     # Canonical source and task/grader bytes, not the host checkout/private files.
@@ -375,7 +356,7 @@ def run(args, *, comparison=None):
         private_source = output / "private/source" / name
         private_source.parent.mkdir(parents=True, exist_ok=True)
         private_source.write_bytes((ROOT / name).read_bytes())
-    harness.copy_fixture(fixture, output / "private/canonical-fixture")
+    harness.copy_fixture(FIXTURE, output / "private/canonical-fixture")
     (output / "private/tasks.json").write_bytes(args.tasks_file.read_bytes())
     report = {
         "schema_version": harness.VERSION,
@@ -406,8 +387,6 @@ def run(args, *, comparison=None):
             "Native filesystem boundary is required; unavailable or failed boundaries block execution.",
         ],
     }
-    if comparison:
-        report.update(comparison.report_metadata())
     save(output / "preparation.json", prepared)
     save(output / "summary.json", report)
     reference_receipts = {}
@@ -416,19 +395,8 @@ def run(args, *, comparison=None):
         prefix=f"contextlean-canonical-v{harness.VERSION}-"
     ) as temporary:
         canonical = Path(temporary) / "conditions"
-        if comparison:
-            condition_paths = comparison.make_conditions(canonical)
-
-            def fixture_manifest(first_prompt, second_prompt):
-                return comparison.manifest(condition_paths, first_prompt, second_prompt)
-        else:
-            vanilla, contextlean = harness.make_conditions(fixture, canonical, harness.copy_fixture)
-            condition_paths = {"vanilla": vanilla, "contextlean": contextlean}
-
-            def fixture_manifest(first_prompt, second_prompt):
-                return harness.fixture_manifest(vanilla, contextlean, first_prompt, second_prompt)
-
-        manifest = fixture_manifest(b"", b"")
+        vanilla, contextlean = harness.make_conditions(FIXTURE, canonical, harness.copy_fixture)
+        manifest = harness.fixture_manifest(vanilla, contextlean, b"", b"")
         manifest.pop("prompt_sha256")
         manifest.pop("prompt_size")
         manifest["task_prompts"] = {
@@ -440,6 +408,7 @@ def run(args, *, comparison=None):
             for t in tasks
         }
         save(output / "fixture-manifest.json", manifest)
+        condition_paths = {"vanilla": vanilla, "contextlean": contextlean}
         for condition, path in condition_paths.items():
             harness.copy_fixture(path, output / "fixtures" / condition)
             omitted = harness.sanitize_tree(output / "fixtures" / condition, clean)
@@ -449,19 +418,17 @@ def run(args, *, comparison=None):
 
         def prepare_session(session, item):
             task = next(t for t in tasks if t["id"] == item["task"])
-            validate_prepared(prepared)
+            preparation.validate_frozen(FIXTURE, args.preparation_record, prepared)
             harness.compare_receipts(
-                canonical_inventory, harness.inventory(fixture), "canonical input"
+                canonical_inventory, harness.inventory(FIXTURE), "canonical input"
             )
             if (
                 tasks_sha != harness.digest(args.tasks_file.read_bytes())
-                or source_digest != core.tree_digest(fixture)
+                or source_digest != core.tree_digest(FIXTURE)
                 or any(harness.digest((ROOT / n).read_bytes()) != h for n, h in inputs.items())
             ):
                 raise harness.HarnessError("frozen input changed during campaign")
             harness.validate_runtime(runtime)
-            if comparison:
-                comparison.check_runtime(runtime)
             source = condition_paths[item["condition"]]
             # Session creates empty repo; copier requires a missing destination.
             session.repo.rmdir()
@@ -470,7 +437,7 @@ def run(args, *, comparison=None):
                 harness.inventory(source), harness.inventory(session.repo), "source fixture"
             )
             prompt = task_prompt(task).encode("utf-8")
-            pair_manifest = fixture_manifest(prompt, prompt)
+            pair_manifest = harness.fixture_manifest(vanilla, contextlean, prompt, prompt)
             baseline = harness.initialize_git(session)
             if not baseline["clean"] or baseline["remotes"] or baseline["hooks"]:
                 raise harness.HarnessError("unclean or inherited Git baseline")
@@ -526,9 +493,7 @@ def run(args, *, comparison=None):
                 },
                 "quota": report["quota"],
             }
-            if comparison:
-                receipt.update(comparison.identity(item["condition"]))
-            comparable = {
+            comparison = {
                 k: receipt[k]
                 for k in [
                     "runtime",
@@ -544,9 +509,9 @@ def run(args, *, comparison=None):
             }
             key = task["id"]
             if key in reference_receipts:
-                harness.compare_receipts(reference_receipts[key], comparable, "execution")
+                harness.compare_receipts(reference_receipts[key], comparison, "execution")
             else:
-                reference_receipts[key] = comparable
+                reference_receipts[key] = comparison
             return task, prompt.decode(), baseline, policy, receipt
 
         # Gate every planned task/condition before the first paid call. Each dry
@@ -637,8 +602,6 @@ def run(args, *, comparison=None):
                     )
                     run_record["finished_at"] = core.utc_now()
                     parsed = trace.parse(execution["stdout"], provider, str(session.repo))
-                    if comparison:
-                        parsed.update(comparison.identity(item["condition"]))
                     parsed["success"] = bool(
                         parsed["success"]
                         and execution["exit_code"] == 0
@@ -703,9 +666,7 @@ def run(args, *, comparison=None):
                             text = sanitizer.text(text)
                         (artifacts / filename).write_text(text, encoding="utf-8")
                     try:
-                        evaluation = grade(
-                            task, session.repo, parsed, artifacts, session=session, fixture=fixture
-                        )
+                        evaluation = grade(task, session.repo, parsed, artifacts, session=session)
                         category = harness.failure_category(parsed, evaluation)
                     except (
                         harness.HarnessError,
@@ -840,13 +801,9 @@ def run(args, *, comparison=None):
                 break  # No retries; scheduled, unattempted observations remain incomplete.
     report.update(
         finished_at=core.utc_now(),
-        summary=summarize(
-            report["runs"], tasks, args.repeat, report.get("conditions", ("vanilla", "contextlean"))
-        ),
-        paired_differences=(
-            comparison.paired_metrics(report["runs"])
-            if comparison
-            else harness.paired_metrics(report["runs"], [t["id"] for t in tasks], args.repeat)
+        summary=summarize(report["runs"], tasks, args.repeat),
+        paired_differences=harness.paired_metrics(
+            report["runs"], [t["id"] for t in tasks], args.repeat
         ),
     )
     complete = len(report["runs"]) == len(plan) and all(

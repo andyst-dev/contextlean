@@ -1,12 +1,12 @@
 # Current release: v0.3.0 Balanced
 
-See [v0.3.0 release notes](release-v0.3.0.md) and the
-[deterministic release verification](release-v0.3.0-verification.md).
+See [v0.3.0 release notes](../release-v0.3.0.md) and the
+[deterministic release verification](../release-v0.3.0-verification.md).
 The earlier release record below remains historical.
 
 # ContextLean v0.2.0
 
-The current v0.3.0 contract is [Balanced](balanced-contract.md). It intentionally
+The current v0.3.0 contract is [Balanced](../balanced-contract.md). It intentionally
 retires full original-bootstrap compatibility. The release/coverage records below
 describe their historical revisions; they do not certify the Balanced contract.
 
@@ -69,7 +69,7 @@ because cache composition differed. Raw diagnostics, recoveries and previous dat
 preserved separately.
 
 Product tested: `86043499d5a375cc6a3b295bc7c03b0999eb458c`.
-[Full committed evidence](../benchmarks/results/2026-09-30-release-aligned-0.2.0/README.md).
+[Full committed evidence](../../benchmarks/results/2026-09-30-release-aligned-0.2.0/README.md).
 
 ## Verification
 
@@ -77,4 +77,4 @@ Product tested: `86043499d5a375cc6a3b295bc7c03b0999eb458c`.
 validators, evidence checksums, relative links and hygiene pass. No model benchmark was
 rerun for release.
 
-[Installation and usage](../README.md) · [Preserved original bootstrap](reference/original-agent-bootstrap.md).
+[Installation and usage](../../README.md) · [Preserved original bootstrap](../reference/original-agent-bootstrap.md).

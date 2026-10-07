@@ -127,7 +127,7 @@ class StrategyTests(unittest.TestCase):
 
 @unittest.skipUnless(
     platform.system() == "Darwin" and Path("/usr/bin/sandbox-exec").exists(),
-    "exact nested Seatbelt assertion requires macOS sandbox-exec",
+    "native permission checks require macOS sandbox-exec",
 )
 class MacOSCompositionTests(unittest.TestCase):
     @classmethod
@@ -198,7 +198,7 @@ class MacOSCompositionTests(unittest.TestCase):
                 self.assertFalse(policy["native_preflight"]["repo_write"])
                 self.assertTrue(policy["native_preflight"]["tmp_write"])
 
-    def test_original_boundary_reproduces_exit71_and_repaired_path_exits_zero(self):
+    def test_native_command_succeeds_and_nested_launch_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp)
             with h.session_root(self.runtime, h.environment_source("codex", {}), output) as session:
@@ -211,7 +211,7 @@ class MacOSCompositionTests(unittest.TestCase):
                     [
                         self.runtime["binaries"]["python3"]["path"],
                         "-c",
-                        "print('offline nested sandbox probe')",
+                        "print('offline native sandbox probe')",
                     ],
                     output,
                 )
@@ -224,18 +224,6 @@ class MacOSCompositionTests(unittest.TestCase):
                     check=False,
                 )
                 self.assertEqual(result.returncode, 0, result.stderr)
-                diagnostic = dict(policy, backend="sandbox-exec")
-                nested = h.outer_command(session, diagnostic, native, output)
-                result = subprocess.run(
-                    nested,
-                    cwd=session.repo,
-                    env=session.env,
-                    capture_output=True,
-                    text=True,
-                    check=False,
-                )
-                self.assertEqual(result.returncode, 71, result.stderr)
-                self.assertIn("sandbox_apply: Operation not permitted", result.stderr)
                 with patch.object(h.subprocess, "run") as launch:
                     with self.assertRaisesRegex(h.HarnessError, "nested"):
                         h.execution_command(

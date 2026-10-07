@@ -5,8 +5,8 @@ import importlib.util
 import json
 from pathlib import Path
 import tempfile
-import zipfile
 
+from evidence_support import extract_archive
 import test_final_validation as diagnostic
 
 suite = diagnostic.suite
@@ -52,8 +52,7 @@ class CleanFinalValidationTests(diagnostic.FinalValidationTests):
         self.assertEqual(evidence["product_commit"], "52a2c34c091f9720076cc9685fb858347d9f6dcf")
         with tempfile.TemporaryDirectory() as temporary:
             source = Path(temporary) / "source"
-            with zipfile.ZipFile(self.data / "source-snapshot.zip") as archive:
-                archive.extractall(source)
+            extract_archive(self.data / "source-snapshot.zip", source)
             fixture = source / "benchmarks/fixtures/expense-report"
             receipt = json.loads((self.data / "preparation.json").read_text())
             self.assertEqual(suite.preparation.validate(fixture, receipt["review"]), receipt)

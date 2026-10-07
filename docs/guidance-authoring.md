@@ -33,8 +33,8 @@ just to match this example. Keep Skill invocation explicitly requested.
 ## Legacy material
 
 The [original bootstrap](reference/original-agent-bootstrap.md),
-[historical coverage](bootstrap-coverage.md), frozen transfer fixture and
-[legacy checker](../skills/bootstrap/scripts/verify_transfer.py) remain available for
+[historical coverage](history/bootstrap-coverage.md), frozen test fixture and
+[historical test checker](../tests/legacy_bootstrap.py) remain available for
 historical investigation. Existing receipts may be inspected explicitly against their
 matching plugin/source revision; hashes can legitimately differ across revisions.
 Do not regenerate historical evidence to make it match current behavior.

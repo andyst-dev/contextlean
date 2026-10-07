@@ -40,7 +40,7 @@ No model sessions were run during preparation.
 The comparison adapter and execution/trace/runtime/grader files remain unchanged;
 the measurement helper changes only its ContextLean version metadata. Reproducing
 the earlier comparison uses its exact frozen adapter revision, as described in the
-[adapter documentation](product-comparison-adapter.md).
+[adapter documentation](history/product-comparison-adapter.md).
 
 ## Publication gate
 

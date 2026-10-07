@@ -3,11 +3,33 @@
 ContextLean v0.3.0 uses the Balanced contract. Product-change validation and historical
 performance studies answer different questions; they must not be pooled.
 
-| Evidence | Product and scope | Interpretation |
-|---|---|---|
-| [Balanced product-change validation](../benchmarks/results/2026-10-06-balanced-product-change/README.md) | Old `ae8653b123bdb4c686ee36825c80db851c8595ea` versus Balanced `1a6e67fb9e5c3d5a91ca89a9f5466d2fa037ea52`; six Refactor sessions; adapter `43972cb610755dde7a2866595a8e1f34f2b2d907` | Behavioral validation: 6/6 fully graded solutions pass, no material retained-contract regression observed. Not general performance evidence or complex-refactor equivalence. |
-| [Historical v0.2.1 performance study](../benchmarks/results/2026-10-02-harness-v4-repeated-performance/README.md) | Previous v0.2.1 contract at `ae8653b123bdb4c686ee36825c80db851c8595ea`; harness v4; 30 sessions | Historical descriptive aggregate −8.96% tokens, mixed task-level behavior. Not a v0.3.0 result. |
-| [Earlier evidence index](../benchmarks/results/README.md) | Frozen earlier products, including v0.2.0 and v0.2.1 | Original scope and caveats apply; the frozen index and evidence are unchanged. |
+## Current release: v0.3.0 Balanced
+
+[Balanced product-change validation](../benchmarks/results/2026-10-06-balanced-product-change/README.md)
+compares Old `ae8653b123bdb4c686ee36825c80db851c8595ea` with Balanced
+`1a6e67fb9e5c3d5a91ca89a9f5466d2fa037ea52`: six Refactor sessions, all six fully
+graded solutions passing, with no material retained-contract regression observed.
+This is behavioral validation, not general performance evidence or proof of
+complex-refactor equivalence. The [release verification](release-v0.3.0-verification.md)
+records deterministic release checks.
+
+The comparison adapter is completed historical tooling. Reproduction uses frozen
+adapter commit `43972cb610755dde7a2866595a8e1f34f2b2d907` and matching inputs;
+see its [dated record](history/product-comparison-adapter.md). It is no longer
+maintained as an active runner extension. Published source and outcomes remain unchanged.
+
+## Historical performance and investigations
+
+- [v0.2.1 performance study](../benchmarks/results/2026-10-02-harness-v4-repeated-performance/README.md):
+  30 harness-v4 sessions at `ae8653b123bdb4c686ee36825c80db851c8595ea`, descriptive
+  aggregate **8.96% fewer tokens**, with mixed task-level outcomes. This is not a
+  v0.3.0 performance result.
+- [Earlier evidence index](../benchmarks/results/README.md): frozen earlier products,
+  preliminary release studies and diagnostic datasets; their original caveats apply.
+- [Preparation root-cause investigation](../benchmarks/analysis/2026-09-30-final-0.2.0/README.md)
+  explains the invalid diagnostic batch. Its evidence-linked location is preserved.
+- [Historical/design records](history/README.md) include bootstrap migration,
+  implementation verification and the harness sandbox diagnosis.
 
 Neither three-pair study supports statistical-significance claims. Cache state,
 service load and stochastic behavior limit performance interpretation. No model

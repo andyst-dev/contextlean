@@ -1,12 +1,12 @@
 # Bootstrap semantic preservation — 0.2.0 repair
 
-The current working-tree contract is [Balanced](balanced-contract.md). It intentionally
+The current working-tree contract is [Balanced](../balanced-contract.md). It intentionally
 retires full original-bootstrap compatibility. The release/coverage records below
 describe their historical revisions; they do not certify the Balanced contract.
 
 This is developer verification, not agent startup guidance. It revisits every grouped
 requirement in the owner-reviewed comparison against the supplied 714-line
-[`AGENT_BOOTSTRAP.md`, preserved as historical reference](reference/original-agent-bootstrap.md)
+[`AGENT_BOOTSTRAP.md`, preserved as historical reference](../reference/original-agent-bootstrap.md)
 (original-body SHA-256: `ecc02ff12623297e057eafb78e16ab8020953b317cc07cbf27bf764ab60d3f05`).
 Original line numbers below identify that preserved body, excluding its historical
 header; examples and repeated statements share a row with their behavior.
@@ -15,29 +15,29 @@ project startup guidance. Its rules are not modernized or maintained as a second
 The safe-removal contract verifies the body's original digest and that transfer still
 passes before and after removing a disposable copy of that exact original specification.
 
-The [canonical setup procedure](../skills/bootstrap/references/bootstrap-spec.md)
-owns setup only. [Permanent rules](../skills/bootstrap/references/permanent-rules.json)
+The [canonical setup procedure](../../skills/bootstrap/references/bootstrap-spec.md)
+owns setup only. [Permanent rules](../../tests/fixtures/bootstrap-transfer/permanent-rules.json)
 own 11 compact groups / 71 stable semantic facets. Bootstrap adapts their meaning
 into project guidance, preserving existing equivalent instructions. The complete
-[worked example](../tests/fixtures/bootstrap-transfer/AGENTS.md) keeps compact automatic
-rules and [conditional detail](../tests/fixtures/bootstrap-transfer/PROJECT_REFERENCE.md)
+[worked example](../../tests/fixtures/bootstrap-transfer/AGENTS.md) keeps compact automatic
+rules and [conditional detail](../../tests/fixtures/bootstrap-transfer/PROJECT_REFERENCE.md)
 with explicit task triggers. See [compact-context verification](compact-context.md) for
 current measurements; the repair measurements below are historical. Advisory review delegates to
-[Lean Change Review](../skills/lean-review/SKILL.md); separate drift inspection uses
-[Audit Context Locality](../skills/audit/SKILL.md). Neither replaces ordinary coding
+[Lean Change Review](../../skills/lean-review/SKILL.md); separate drift inspection uses
+[Audit Context Locality](../../skills/audit/SKILL.md). Neither replaces ordinary coding
 or after-task maintenance duties.
 
 ## Acceptance and transfer record
 
 Each permanent facet requires an agent's semantic review and one actual durable
-destination. The [read-only checker](../skills/bootstrap/scripts/verify_transfer.py)
+destination. The [read-only checker](../../tests/legacy_bootstrap.py)
 verifies completeness, reachability without setup files, explicit supported delegation
 and hashes of the reviewed destination sections. It **cannot prove natural-language
 meaning or future model compliance**. Semantic comparison, nested scope, reference
 applicability, configuration effectiveness and actual Skill discovery remain agent
 verification duties; do not treat the attestation flag as a substitute.
 
-The [example transfer record](../tests/fixtures/bootstrap-transfer/transfer.json)
+The [example transfer record](../../tests/fixtures/bootstrap-transfer/transfer.json)
 shows version 2: groups contain facet-level destinations, with reviewed automatic
 activation sections for conditional references. Version 1 remains supported for old
 receipts. It records section hashes, facet identifiers and review attestations,
@@ -248,17 +248,17 @@ Previous remote CI concerns the earlier committed revision, not these uncommitte
 
 Changed public files:
 
-- Bootstrap: [entry point](../skills/bootstrap/SKILL.md),
-  [procedure](../skills/bootstrap/references/bootstrap-spec.md),
-  [permanent rules](../skills/bootstrap/references/permanent-rules.json),
-  [transfer checker](../skills/bootstrap/scripts/verify_transfer.py).
-- Audit: [Skill](../skills/audit/SKILL.md).
-- Guidance/documentation: [repository map](../AGENTS.md), [README](../README.md),
+- Bootstrap: [entry point](../../skills/bootstrap/SKILL.md),
+  [procedure](../../skills/bootstrap/references/bootstrap-spec.md),
+  [permanent rules](../../tests/fixtures/bootstrap-transfer/permanent-rules.json),
+  [transfer checker](../../tests/legacy_bootstrap.py).
+- Audit: [Skill](../../skills/audit/SKILL.md).
+- Guidance/documentation: [repository map](../../AGENTS.md), [README](../../README.md),
   [historical verification note](verification.md), this coverage report.
-- Contracts/fixtures: [semantic tests](../tests/test_bootstrap_transfer.py),
-  [example AGENTS.md](../tests/fixtures/bootstrap-transfer/AGENTS.md),
-  [Claude wrapper](../tests/fixtures/bootstrap-transfer/CLAUDE.md),
-  [reviewed transfer record](../tests/fixtures/bootstrap-transfer/transfer.json).
+- Contracts/fixtures: [semantic tests](../../tests/test_bootstrap_contract.py),
+  [example AGENTS.md](../../tests/fixtures/bootstrap-transfer/AGENTS.md),
+  [Claude wrapper](../../tests/fixtures/bootstrap-transfer/CLAUDE.md),
+  [reviewed transfer record](../../tests/fixtures/bootstrap-transfer/transfer.json).
 
 The semantic acceptance criterion passes: ignoring/deleting the original target setup
 specification loses no required permanent behavior in the reviewed durable guidance.

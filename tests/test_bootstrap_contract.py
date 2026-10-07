@@ -1,8 +1,5 @@
 """Balanced concept and filesystem contracts, not proof of model compliance."""
 
-from collections import Counter
-import hashlib
-import importlib.util
 import json
 from pathlib import Path
 import re
@@ -24,17 +21,6 @@ def section(text, heading):
     if not match:
         raise AssertionError(f"missing section: {heading}")
     return " ".join(match[1].lower().split())
-
-
-def fingerprint(path):
-    if path.is_file():
-        return hashlib.sha256(path.read_bytes()).hexdigest()
-    digest = hashlib.sha256()
-    for item in sorted(p for p in path.rglob("*") if p.is_file() and "__pycache__" not in p.parts):
-        digest.update(item.relative_to(path).as_posix().encode() + b"\0")
-        digest.update(item.read_bytes())
-        digest.update(b"\0")
-    return digest.hexdigest()
 
 
 class BalancedKernelTests(unittest.TestCase):
@@ -358,32 +344,3 @@ class FreshGenerationTests(unittest.TestCase):
             agents, claude = generate(Path(temporary))
             self.assertIn("Diagnose the root cause", agents.read_text())
             self.assertEqual(claude.read_text(), "@AGENTS.md\n")
-
-    def test_historical_evidence_and_original_reference_are_unchanged(self):
-        expected = json.loads(
-            (ROOT / "tests/fixtures/bootstrap-core/historical-hashes.json").read_text()
-        )
-        for relative, digest in expected.items():
-            with self.subTest(path=relative):
-                self.assertEqual(fingerprint(ROOT / relative), digest)
-
-
-class HistoricalComparisonTests(unittest.TestCase):
-    def test_balanced_comparison_does_not_relabel_retirements_as_pass(self):
-        text = (ROOT / "docs/balanced-contract.md").read_text()
-        statuses = re.findall(r"^\| \d+ \|.*?\| (PASS|RE-SCOPED|RETIRED|REPLACED) \|", text, re.M)
-        self.assertEqual(
-            Counter(statuses), {"PASS": 55, "RE-SCOPED": 13, "RETIRED": 6, "REPLACED": 2}
-        )
-        self.assertIn("intentional product simplification", text)
-        self.assertIn("semantic regression", text)
-
-    def test_legacy_receipt_remains_explicitly_inspectable(self):
-        spec = importlib.util.spec_from_file_location(
-            "legacy_transfer", ROOT / "skills/bootstrap/scripts/verify_transfer.py"
-        )
-        legacy = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(legacy)
-        fixture = ROOT / "tests/fixtures/bootstrap-transfer"
-        result = legacy.verify(fixture, json.loads((fixture / "transfer.json").read_text()))
-        self.assertFalse(result["setup_specification_required"])

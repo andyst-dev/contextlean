@@ -1,5 +1,9 @@
 # Old-versus-Balanced product comparison adapter
 
+> Historical record of the completed validation. The active adapter was retired
+> after v0.3.0; commands below apply to its frozen revision, not the current checkout.
+> See the [history index](README.md) for reproduction and current locations.
+
 This is a separate product-change validation path, not a new headline benchmark.
 The adapter schema is **1**; execution remains **harness v4**, coverage parser **2**,
 and the ContextLean package version is unchanged. No model sessions, commit or push
@@ -29,11 +33,11 @@ again before every slot. Any undeclared difference fails closed.
 
 ## Architecture and unchanged behavior
 
-[compare_products.py](../benchmarks/compare_products.py) owns revision materialization,
+[compare_products.py](https://github.com/andyst-dev/contextlean/blob/43972cb610755dde7a2866595a8e1f34f2b2d907/benchmarks/compare_products.py) owns revision materialization,
 explicit `old` / `balanced` identity, guidance-only manifest assertions, the six-slot
 schedule, exact runtime requirements and paired product statistics.
 
-[run_benchmark.py](../benchmarks/run_benchmark.py) accepts an optional comparison input
+[run_benchmark.py](../../benchmarks/run_benchmark.py) accepts an optional comparison input
 through its Python API. Its public CLI has no guided-comparison switch. The same
 session loop still owns isolation, native sandbox probes, normalized environment,
 cache/profile setup, Git initialization, repeated gate checks, tracing, saved solutions,
@@ -65,7 +69,7 @@ Run from the CI-green adapter checkout at
 `43972cb610755dde7a2866595a8e1f34f2b2d907`, containing both immutable Git objects.
 The adapter deliberately requires matching helper bytes; v0.3.0 changes the product
 version metadata in the measurement helper, so use that frozen adapter revision
-for this historical comparison. The [completed validation](../benchmarks/results/2026-10-06-balanced-product-change/README.md)
+for this historical comparison. The [completed validation](../../benchmarks/results/2026-10-06-balanced-product-change/README.md)
 is retained separately; no new runs are needed for the release.
 
 ```bash

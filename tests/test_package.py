@@ -4,6 +4,9 @@ import unittest
 from pathlib import Path
 
 
+from document_links import link_errors, public_documents
+
+
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ("bootstrap", "audit", "lean-review", "benchmark")
 
@@ -54,8 +57,8 @@ class PackageContractTests(unittest.TestCase):
             "benchmarks/tasks/suite.json",
             "benchmarks/README.md",
             "docs/assets/before-after.svg",
-            "docs/verification.md",
-            "docs/release-notes.md",
+            "docs/installation.md",
+            "docs/history/README.md",
             ".github/workflows/quality.yml",
         ]
         required.extend(f"skills/{name}/SKILL.md" for name in SKILLS)
@@ -95,15 +98,9 @@ class PackageContractTests(unittest.TestCase):
         self.assertEqual(entry["policy"]["installation"], "AVAILABLE")
 
     def test_public_document_links_resolve(self) -> None:
-        documents = [ROOT / "README.md", ROOT / "benchmarks/README.md"]
-        documents.extend((ROOT / "docs").glob("*.md"))
-        documents.extend((ROOT / "benchmarks/results").rglob("*.md"))
-        for path in documents:
-            for target in re.findall(r"\]\(([^)]+)\)", path.read_text(encoding="utf-8")):
-                if "://" in target or target.startswith("#"):
-                    continue
-                with self.subTest(document=path.name, target=target):
-                    self.assertTrue((path.parent / target.split("#")[0]).exists())
+        for path in public_documents(ROOT):
+            with self.subTest(document=str(path.relative_to(ROOT))):
+                self.assertEqual(link_errors(path, ROOT), [])
 
     def test_skills_have_matching_names_and_no_placeholders(self) -> None:
         for name in SKILLS:

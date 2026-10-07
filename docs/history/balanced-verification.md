@@ -2,7 +2,7 @@
 
 This record concerns the uncommitted Balanced working-tree change verified on
 2026-10-05. Historical releases and benchmarks describe their own frozen products.
-The [Balanced contract](balanced-contract.md) owns the new behavior and comparison.
+The [Balanced contract](../balanced-contract.md) owns the new behavior and comparison.
 
 No model benchmark, external model invocation, commit, push or historical evidence
 edit was performed. Offline tests use deterministic fixtures, fake providers and local

@@ -1,12 +1,12 @@
-> Current release: [v0.3.0 deterministic verification](release-v0.3.0-verification.md).
+> Current release: [v0.3.0 deterministic verification](../release-v0.3.0-verification.md).
 > The installation and earlier release observations below retain their original scope.
 
 # ContextLean 0.2.0 verification
 
-The current v0.3.0 contract is [Balanced](balanced-contract.md). It intentionally
+The current v0.3.0 contract is [Balanced](../balanced-contract.md). It intentionally
 retires full original-bootstrap compatibility. The release/coverage records below
 describe their historical revisions; they do not certify the Balanced contract.
-See [v0.3.0 verification](release-v0.3.0-verification.md) for current checks and limits.
+See [v0.3.0 verification](../release-v0.3.0-verification.md) for current checks and limits.
 
 ## Historical v0.2.0 released status
 
@@ -28,7 +28,7 @@ Both manifests and the measurement helper identify 0.2.0.
   live workflow behavior or Claude's consumption of generated project imports.
 - Semantic coverage remains **74 PASS / 0 PARTIAL / 0 MISSING / 2 INTENTIONALLY
   REPLACED**, with **71/71 permanent facets** preserved.
-- The [release-aligned batch](../benchmarks/results/2026-09-30-release-aligned-0.2.0/README.md)
+- The [release-aligned batch](../../benchmarks/results/2026-09-30-release-aligned-0.2.0/README.md)
   has ten passing solutions and independent offline regrading. It is preliminary:
   one run per condition per task, with no statistical-confidence, causal or universal
   token-savings claim. Unfavorable submetrics and earlier datasets remain preserved.
@@ -118,7 +118,7 @@ They are optional development checks, not beginner installation prerequisites.
 - Public evidence tests check checksums, archive paths, frozen source/fixture/prompt/
   evaluator hashes, all ten recorded usage/command counts, negative cases and saved
   solutions. Regrading runs only local Python tests, with no model calls.
-- [Quality CI](../.github/workflows/quality.yml) runs tests, Ruff and formatting on
+- [Quality CI](../../.github/workflows/quality.yml) runs tests, Ruff and formatting on
   Python **3.11 and 3.14**, with read-only repository permission. No live benchmark
   command or provider authentication is part of CI. Python 3.11 and remote Actions
   execution had not yet been verified at this stage; the workflow awaited a committed push.
@@ -128,7 +128,7 @@ Ruff and PyYAML for official validators are development-only tools.
 
 ### Evidence and hygiene
 
-[Public validation](../benchmarks/results/2026-09-30-validation/README.md) retains
+[Public validation](../../benchmarks/results/2026-09-30-validation/README.md) retains
 all ten runs, original numeric records, prompts, diagnostics, grading and resulting
 solutions. The source archive retains the exact source files used, with ten Finder/
 linter metadata files excluded. The selection manifest records the original
@@ -183,19 +183,19 @@ No universal performance claim, v1.0 claim or public marketplace listing is made
 
 ## Historical clean-final benchmark verification — 2026-09-30
 
-The [clean final evidence](../benchmarks/results/2026-09-30-clean-final-0.2.0/README.md)
+The [clean final evidence](../../benchmarks/results/2026-09-30-clean-final-0.2.0/README.md)
 uses unchanged product commit `52a2c34` and the repaired preparation harness. All
 five paired preparations pass before model execution; all ten saved solutions pass
 offline regrading. The offline suite at this stage passed **92 tests**, with Ruff 0.15.7
 lint/format, all four Skill validators and both platform package validators passing.
-[Detailed quality record](../benchmarks/results/2026-09-30-clean-final-0.2.0/quality-checks.json)
+[Detailed quality record](../../benchmarks/results/2026-09-30-clean-final-0.2.0/quality-checks.json)
 retains link, hygiene and preservation checks. At this stage the README used this
 preliminary batch and disclosed its resource regressions. Historical and invalid diagnostic
 files remain unchanged. No tag, release or further repetition was created.
 
 ## Historical compact-final validation — 2026-09-30
 
-The [compact-final evidence](../benchmarks/results/2026-09-30-compact-final-0.2.0/README.md)
+The [compact-final evidence](../../benchmarks/results/2026-09-30-compact-final-0.2.0/README.md)
 uses frozen product `90ed9a4a049af519a40c36424ed1ff8b6acefe48`: the unchanged
 completed Bug Fix pair plus exactly eight new calls, one per condition for each
 remaining task. Every preparation passes before execution. All ten solutions pass
@@ -207,16 +207,16 @@ and Documentation/config in commands. At this stage the README headlined this
 preliminary tested configuration; previous datasets remain unchanged and are never pooled.
 Between-batch differences establish neither causality nor statistical confidence.
 
-The [quality record](../benchmarks/results/2026-09-30-compact-final-0.2.0/quality-checks.json)
+The [quality record](../../benchmarks/results/2026-09-30-compact-final-0.2.0/quality-checks.json)
 retains final offline test, Ruff, Skill/plugin validator, evidence/checksum, relative-link,
-hygiene and frozen-content checks. The [standalone offline evidence validator](../benchmarks/results/2026-09-30-compact-final-0.2.0/verify_evidence.py)
+hygiene and frozen-content checks. The [standalone offline evidence validator](../../benchmarks/results/2026-09-30-compact-final-0.2.0/verify_evidence.py)
 reconciles all ten conversations and independently regrades their archived solutions.
 Product implementation, benchmark tasks/prompts/graders and the historical bootstrap
 remain byte-identical to the frozen commit. Changes are documentation and evidence only.
 
 ## Historical release-aligned validation — 2026-09-30
 
-The [release-aligned evidence](../benchmarks/results/2026-09-30-release-aligned-0.2.0/README.md)
+The [release-aligned evidence](../../benchmarks/results/2026-09-30-release-aligned-0.2.0/README.md)
 tests frozen product `86043499d5a375cc6a3b295bc7c03b0999eb458c` with exactly ten
 fresh `gpt-5.6-terra` / low-reasoning calls: one per condition for each existing task.
 All five paired preparations validate before execution, including mapped ownership,
@@ -231,10 +231,10 @@ behavior-preserving verification; wider-impact expansion was not exercised.
 One run per condition per task is preliminary validation, with no statistical-confidence,
 causal or universal token-savings claim. Earlier datasets remain unchanged and separate.
 
-The [quality record](../benchmarks/results/2026-09-30-release-aligned-0.2.0/quality-checks.json)
+The [quality record](../../benchmarks/results/2026-09-30-release-aligned-0.2.0/quality-checks.json)
 records offline tests, Ruff, four Skill validators, Codex/Claude validators, semantic
 coverage, relative links, hygiene and protected-content hashes. The
-[standalone offline validator](../benchmarks/results/2026-09-30-release-aligned-0.2.0/verify_evidence.py)
+[standalone offline validator](../../benchmarks/results/2026-09-30-release-aligned-0.2.0/verify_evidence.py)
 checks source/fixture provenance, checksums, ten unique fresh conversations, exact
 usage/cost aggregation and all ten independent regrades without model calls.
 Product behavior, benchmark tasks/prompts/graders/measurement and the original bootstrap

@@ -9,8 +9,8 @@ import re
 import sys
 
 
-PLUGIN_ROOT = Path(__file__).resolve().parents[3]
-RULES = PLUGIN_ROOT / "skills/bootstrap/references/permanent-rules.json"
+PLUGIN_ROOT = Path(__file__).resolve().parents[1]
+RULES = PLUGIN_ROOT / "tests/fixtures/bootstrap-transfer/permanent-rules.json"
 SPEC_NAMES = {"AGENT_BOOTSTRAP.md", "bootstrap-spec.md", "permanent-rules.json"}
 
 

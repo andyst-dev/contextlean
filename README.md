@@ -107,7 +107,7 @@ public marketplace yet.
 
 If the four skills are missing, confirm the plugin is enabled and start a new session.
 Codex installs a cached copy: after editing the plugin, reinstall it and restart.
-See [installation details and verification status](docs/verification.md).
+See [installation details and verification status](docs/installation.md).
 
 ## What gets created?
 
@@ -221,7 +221,7 @@ The Codex desktop Plugins Directory is an alternative installation surface descr
 in the [official packaging guide](https://developers.openai.com/plugins/build/plugins).
 This change tests the CLI route. Claude session loading follows the
 [official plugin guide](https://code.claude.com/docs/en/plugins).
-No other agent integration is claimed. [Detailed verification](docs/verification.md)
+No other agent integration is claimed. [Detailed verification](docs/release-v0.3.0-verification.md)
 separates packaging checks from actual model execution.
 
 ## Limitations
@@ -249,7 +249,7 @@ ruff format --check .
 
 [Quality CI](.github/workflows/quality.yml) runs offline tests and checks on Python
 3.11 and 3.14. [Contributor guidance](AGENTS.md) maps the package, skills and benchmark
-owners. The [verification record](docs/verification.md) lists optional agent validators
+owners. The [installation guide](docs/installation.md) routes to optional validators
 and verification limits. Do not add runtime dependencies, hooks or automatic live runs.
 
 ## License

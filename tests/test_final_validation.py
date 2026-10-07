@@ -1,14 +1,14 @@
 """Reconcile the final candidate diagnostic batch offline; never invoke a model."""
 
-import hashlib
 import importlib.util
 import json
 from pathlib import Path
-import stat
 import tempfile
 import unittest
 from unittest.mock import patch
-import zipfile
+
+
+from evidence_support import assert_checksums, assert_usage, extract_archive
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -30,27 +30,19 @@ class FinalValidationTests(unittest.TestCase):
         )
         for key in ("tasks", "configuration", "environment", "model", "reasoning", "repeats"):
             self.assertEqual(report[key], previous[key])
-        checksums = json.loads((self.data / "checksums.json").read_text())
+        checksums = assert_checksums(self, self.data / "checksums.json")
         observed = {
             p.relative_to(self.data).as_posix()
             for p in self.data.rglob("*")
             if p.is_file() and p.name not in {"README.md", "checksums.json"}
         }
         self.assertEqual(observed, set(checksums))
-        for name, digest in checksums.items():
-            self.assertEqual(hashlib.sha256((self.data / name).read_bytes()).hexdigest(), digest)
         for run in report["runs"]:
             directory = self.data / run["raw_directory"]
             self.assertEqual(json.loads((directory / "run.json").read_text()), run)
             parsed = suite.core.parse_jsonl((directory / "events.jsonl").read_text())
             self.assertTrue(parsed["success"])
-            for key, value in parsed["usage"].items():
-                self.assertEqual(run["metrics"][key], value)
-            self.assertEqual(run["metrics"]["command_calls"], parsed["commands"])
-            self.assertEqual(
-                run["metrics"]["total_tokens"],
-                parsed["usage"]["input_tokens"] + parsed["usage"]["output_tokens"],
-            )
+            assert_usage(self, run, parsed)
             for key in ("file_reads", "tool_calls", "unique_files_inspected"):
                 self.assertIsNone(run["metrics"][key])
 
@@ -62,13 +54,7 @@ class FinalValidationTests(unittest.TestCase):
                 ("source-snapshot.zip", source),
                 ("solutions.zip", solutions),
             ):
-                with zipfile.ZipFile(self.data / name) as archive:
-                    for member in archive.infolist():
-                        path = Path(member.filename)
-                        self.assertFalse(path.is_absolute())
-                        self.assertNotIn("..", path.parts)
-                        self.assertFalse(stat.S_ISLNK(member.external_attr >> 16))
-                    archive.extractall(destination)
+                extract_archive(self.data / name, destination)
             self.assertEqual(suite.core.tree_digest(source), report["candidate_digest"])
             fixture = source / "benchmarks/fixtures/expense-report"
             self.assertEqual(suite.core.tree_digest(fixture), report["fixture_digest"])

@@ -131,6 +131,19 @@ class IsolationTests(unittest.TestCase):
             with self.assertRaisesRegex(h.HarnessError, "prompt bytes"):
                 h.fixture_manifest(v, c, b"a", b"b")
 
+    def test_vanilla_omits_and_rejects_guidance(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            v, c = h.make_conditions(suite.FIXTURE, Path(tmp) / "conditions", h.copy_fixture)
+            self.assertFalse(set(h.inventory(v)) & h.GUIDANCE)
+            h.fixture_manifest(v, c, b"prompt", b"prompt")
+            (v / "AGENTS.md").write_bytes((c / "AGENTS.md").read_bytes())
+            with self.assertRaisesRegex(h.HarnessError, "Vanilla must omit"):
+                h.fixture_manifest(v, c, b"prompt", b"prompt")
+            self.assertEqual(
+                [x["condition"] for x in h.schedule(["refactor"], 3)],
+                ["vanilla", "contextlean", "contextlean", "vanilla", "vanilla", "contextlean"],
+            )
+
     def test_path_escape_and_symlink_are_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp).resolve()
