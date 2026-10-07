@@ -1,12 +1,14 @@
 {
   "name": "contextlean-local",
-  "description": "Local development installation of ContextLean.",
-  "owner": {"name": "ContextLean contributors"},
+  "description": "ContextLean installation catalog for Codex and Claude Code.",
+  "owner": {
+    "name": "ContextLean contributors"
+  },
   "plugins": [
     {
       "name": "contextlean",
       "source": "./",
-      "description": "Small repository maps for Codex and Claude Code.",
+      "description": "ContextLean creates compact maintained project guidance for coding agents so they can locate responsible code, avoid unnecessary exploration, make focused changes, and verify them proportionally.",
       "category": "Developer Tools",
       "policy": {
         "installation": "AVAILABLE",

@@ -6,6 +6,60 @@ ContextLean produces a reliable project map and a compact coding discipline for
 Codex and Claude Code. It helps agents find responsible code, preserve important
 constraints, make focused changes, and verify sufficient coverage.
 
+## Install for Codex
+
+```sh
+codex plugin marketplace add andyst-dev/contextlean
+codex plugin add contextlean@contextlean-local
+```
+
+## Install for Claude Code
+
+```sh
+claude plugin marketplace add andyst-dev/contextlean
+claude plugin install contextlean@contextlean-local --scope user
+```
+
+These commands use our repository catalog, whose stable name is `contextlean-local`.
+ContextLean is not listed in either platform's public directory yet.
+
+## Bootstrap a project
+
+Start a fresh agent session in your project. In Codex, use `/skills` or `$` to
+select **Bootstrap Repository** (`contextlean:bootstrap`) and ask it to bootstrap
+this repository. In Claude Code:
+
+```text
+/contextlean:bootstrap Bootstrap this repository.
+```
+
+Review the generated guidance, commit useful changes with your project, and start
+a fresh session. Ordinary coding then uses your project's `AGENTS.md` and Claude
+imports independently of the plugin.
+
+## Update ContextLean
+
+Codex:
+
+```sh
+codex plugin marketplace upgrade contextlean-local
+codex plugin add contextlean@contextlean-local
+```
+
+Claude Code:
+
+```sh
+claude plugin update contextlean@contextlean-local --scope user
+```
+
+Restart afterward. Project guidance and customizations remain yours. Claude's
+versioned installs update when the publisher changes the version; this pass keeps
+0.3.0. See the [installation guide](docs/installation.md) for requirements,
+verification, same-version refreshes, local packages, troubleshooting and safe
+uninstallation. [Distribution details](docs/distribution.md) cover maintainers.
+
+## Balanced guidance
+
 **v0.3.0 introduces the Balanced contract:** compact, maintained project guidance
 for ordinary coding work, with less setup administration in startup context. Audit,
 Lean Review and measurement remain optional, explicitly requested workflows.
@@ -60,54 +114,6 @@ three paired repetitions do not justify statistical-significance claims. The
 representative automatic guidance is 4,752 bytes, down from 5,486 (13.38%); this is
 an instruction-size measurement, not a promised token saving.
 [Evidence provenance and earlier studies](docs/evidence.md).
-
-## Quick start
-
-You need an installed, working Codex or Claude Code. Python 3.11+ is needed only
-for optional measurement helpers and development checks. Use a local checkout of this repository; ContextLean is not in a
-public marketplace yet.
-
-1. **Install / load ContextLean.** For Codex, run these from the ContextLean checkout:
-
-   ```sh
-   codex plugin marketplace add .
-   codex plugin add contextlean@contextlean-local
-   ```
-
-   Claude Code can load the checkout for one session using `--plugin-dir` in step 2.
-   No separate plugin-authoring tool is needed.
-
-2. **Open your project.** Start a fresh agent session in the repository you want to configure:
-
-   ```sh
-   cd /path/to/my-project
-   codex
-   ```
-
-   Or, for Claude Code:
-
-   ```sh
-   cd /path/to/my-project
-   claude --plugin-dir /path/to/contextlean
-   ```
-
-3. **Invoke Bootstrap Repository.** In Codex CLI, open `/skills` or type `$`,
-   then select **Bootstrap Repository** from ContextLean (installed name
-   `contextlean:bootstrap`). Add “Bootstrap this repository.” In Claude Code, enter
-   `/contextlean:bootstrap` followed by the same request. `$bootstrap` alone is
-   not the installed plugin's full name.
-
-4. **Inspect the generated guidance.** Review the changes to `AGENTS.md`, any
-   `CLAUDE.md` imports, and related configuration. Select **Audit Context Locality**
-   in Codex, or enter `/contextlean:audit` in Claude Code, for an evidence-based check.
-   Commit useful guidance with your project.
-
-5. **Use the agent normally.** Start a new session so it loads the new guidance.
-   Ask for your usual coding tasks. Audit again when structure or commands change.
-
-If the four skills are missing, confirm the plugin is enabled and start a new session.
-Codex installs a cached copy: after editing the plugin, reinstall it and restart.
-See [installation details and verification status](docs/installation.md).
 
 ## What gets created?
 
@@ -214,15 +220,13 @@ use the [benchmark guide](benchmarks/README.md).
 
 | Agent | Integration | Verified scope |
 |---|---|---|
-| Codex CLI | Plugin + shared skills; project `AGENTS.md` | Fresh local installation and four packaged skills. Live guidance-consumption status is recorded separately. |
-| Claude Code | Same skills; project `CLAUDE.md` imports `AGENTS.md` | Manifest validation and session plugin discovery. Full live workflow is unverified. |
+| Codex CLI | Plugin + shared skills; project `AGENTS.md` | Isolated native installation, four-Skill discovery, relocation, update and uninstall. |
+| Claude Code | Same skills; project `CLAUDE.md` imports `AGENTS.md` | Isolated native installation, four-Skill discovery, relocation, update and uninstall. No live workflow run in this pass. |
 
-The Codex desktop Plugins Directory is an alternative installation surface described
-in the [official packaging guide](https://developers.openai.com/plugins/build/plugins).
-This change tests the CLI route. Claude session loading follows the
-[official plugin guide](https://code.claude.com/docs/en/plugins).
-No other agent integration is claimed. [Detailed verification](docs/release-v0.3.0-verification.md)
-separates packaging checks from actual model execution.
+The [distribution guide](docs/distribution.md) records current official platform
+requirements, tested CLI versions and publication limits. No other agent integration
+is claimed. The [release verification](docs/release-v0.3.0-verification.md) is the
+separate, preserved record of v0.3.0 validation.
 
 ## Limitations
 

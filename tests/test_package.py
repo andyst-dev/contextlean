@@ -58,6 +58,8 @@ class PackageContractTests(unittest.TestCase):
             "benchmarks/README.md",
             "docs/assets/before-after.svg",
             "docs/installation.md",
+            "docs/distribution.md",
+            "packaging/build.py",
             "docs/history/README.md",
             ".github/workflows/quality.yml",
         ]

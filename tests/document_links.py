@@ -61,6 +61,6 @@ def link_errors(document, root):
 
 def public_documents(root):
     documents = [root / "README.md", root / "AGENTS.md"]
-    for folder in ["docs", "skills", "benchmarks"]:
+    for folder in ["docs", "skills", "benchmarks", "packaging"]:
         documents.extend(p for p in (root / folder).rglob("*.md") if ".contextlean" not in p.parts)
     return sorted(set(documents))

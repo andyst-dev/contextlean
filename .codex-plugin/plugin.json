@@ -1,7 +1,7 @@
 {
   "name": "contextlean",
   "version": "0.3.0",
-  "description": "Bootstrap, maintain, and honestly measure repository context for focused coding-agent work.",
+  "description": "ContextLean creates compact maintained project guidance for coding agents so they can locate responsible code, avoid unnecessary exploration, make focused changes, and verify them proportionally.",
   "author": {
     "name": "ContextLean contributors"
   },
@@ -15,8 +15,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "ContextLean",
-    "shortDescription": "Bootstrap once. Read less. Change locally.",
-    "longDescription": "Configure repository maps once, audit them over time, review changes for unnecessary complexity, and measure context impact with static or controlled A/B benchmarks.",
+    "shortDescription": "Focused coding, guided locally",
+    "longDescription": "ContextLean creates compact maintained project guidance for coding agents so they can locate responsible code, avoid unnecessary exploration, make focused changes, and verify them proportionally.",
     "developerName": "ContextLean contributors",
     "category": "Developer Tools",
     "capabilities": [
@@ -27,6 +27,11 @@
       "Use $contextlean:bootstrap to bootstrap this repository.",
       "Use $contextlean:audit to audit this repository without changing it.",
       "Use $contextlean:lean-review to review my current change without editing it."
-    ]
-  }
+    ],
+    "websiteURL": "https://github.com/andyst-dev/contextlean",
+    "composerIcon": "./docs/assets/contextlean.svg",
+    "logo": "./docs/assets/contextlean.svg"
+  },
+  "homepage": "https://github.com/andyst-dev/contextlean#readme",
+  "repository": "https://github.com/andyst-dev/contextlean"
 }

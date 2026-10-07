@@ -9,7 +9,7 @@ Review and measurement run only on explicit request.
 - `skills/`: four canonical shared workflows. Each `SKILL.md` owns behavior;
   adjacent `agents/openai.yaml` owns Codex UI metadata. Bootstrap's targeted
   references own setup and ordinary coding guidance respectively.
-- `.codex-plugin/`, `.claude-plugin/`: platform manifests and the shared local
+- `.codex-plugin/`, `.claude-plugin/`: platform manifests and the shared
   installation catalog. Both platforms discover the same plugin-root Skills.
 - `docs/`: current installation, Balanced contract, authoring and evidence guides;
   `docs/history/` holds dated records. Start with `README.md` for public usage.
@@ -17,8 +17,9 @@ Review and measurement run only on explicit request.
   controls. `benchmarks/README.md` routes to the current methodology.
 - `benchmarks/results/`: immutable published evidence. `benchmarks/analysis/`
   retains linked historical investigations.
-- `tests/`: offline product, harness and historical preservation tests. Historical
-  support is test-only; it is not part of Bootstrap's current contract.
+- `packaging/`: deterministic ZIP export from canonical Skills; no installer runtime.
+- `tests/`: offline product, installation, harness and historical preservation tests.
+  Historical support is test-only; it is not part of Bootstrap's current contract.
 - `.github/workflows/quality.yml`, `pyproject.toml`: offline CI and development Ruff
   configuration. `LICENSE` contains the MIT terms.
 

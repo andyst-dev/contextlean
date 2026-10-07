@@ -3,7 +3,7 @@
   "name": "contextlean",
   "displayName": "ContextLean",
   "version": "0.3.0",
-  "description": "Bootstrap, maintain, and honestly measure repository context for focused coding-agent work.",
+  "description": "ContextLean creates compact maintained project guidance for coding agents so they can locate responsible code, avoid unnecessary exploration, make focused changes, and verify them proportionally.",
   "author": {
     "name": "ContextLean contributors"
   },
@@ -13,5 +13,10 @@
     "architecture",
     "context",
     "developer-tools"
-  ]
+  ],
+  "homepage": "https://github.com/andyst-dev/contextlean#readme",
+  "repository": "https://github.com/andyst-dev/contextlean",
+  "icon": "./docs/assets/contextlean.svg",
+  "documentationUrl": "https://github.com/andyst-dev/contextlean/blob/main/docs/installation.md",
+  "supportUrl": "https://github.com/andyst-dev/contextlean/issues"
 }
