@@ -1,6 +1,6 @@
 # ContextLean distribution
 
-Checked **2026-10-07**. Product version is **0.3.1**, a packaging patch on the
+Checked **2026-10-08**. Product version is **0.3.2**, a privacy disclosure patch on the
 unchanged Balanced contract. The GitHub release includes a distribution ZIP;
 public-directory submissions remain separate. Start with
 [installation](installation.md) for user commands.
@@ -107,12 +107,12 @@ and policy acknowledgments remain publisher actions.
 From the checkout, choose a new output path outside it:
 
 ```sh
-python3 packaging/build.py /tmp/contextlean-0.3.1.zip
+python3 packaging/build.py /tmp/contextlean-0.3.2.zip
 ```
 
 The exporter refuses to overwrite an existing output. It produces a deterministic
-ZIP with both manifests, the shared catalog, license, package README, listing icon
-and unchanged canonical Skill files. A small `benchmarks/README.md` points back to
+ZIP with both manifests, the shared catalog, license, privacy notice, package README,
+listing icon and unchanged canonical Skill files. A small `benchmarks/README.md` points back to
 the optional development suite so the existing Skill link resolves. It does not
 bundle benchmark datasets, historical records, contributor startup guidance,
 `.git`, ignored local reports or caches. There is no install/uninstall script.
@@ -162,7 +162,7 @@ all Skill bytes and references, check metadata/version consistency, reject missi
 Skills and symlinks, and verify deterministic output and package hygiene.
 Native lifecycle tests use **Codex 0.147.0** and **Claude Code 2.1.288**. They
 install the relocated ZIP through each real CLI, inspect four-Skill discovery,
-apply a synthetic `0.3.2-test` update inside the temporary directory, uninstall,
+apply a synthetic `0.3.3-test` update inside the temporary directory, uninstall,
 and check customized project files byte-for-byte. That synthetic version is not
 a product version declaration or release.
 
@@ -205,8 +205,8 @@ measurement remains local. Installing/updating from GitHub requires a repository
 download; invoking the host coding agent has that platform's normal network/data
 handling. No claim is made that the host applications themselves have no telemetry.
 Local measurement reports can contain project information and are never included
-by the package exporter. No privacy policy, publisher email or legal attestation
-is fabricated on the user's behalf.
+by the package exporter. The [privacy notice](privacy.md) documents these data flows
+and local storage. Legal attestations still require the publisher's confirmation.
 
 ## Publication readiness
 

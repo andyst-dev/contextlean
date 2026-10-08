@@ -1,6 +1,6 @@
 # ContextLean contributor guidance
 
-ContextLean v0.3.1 Balanced is a dependency-free, skills-only Codex/Claude Code
+ContextLean v0.3.2 Balanced is a dependency-free, skills-only Codex/Claude Code
 plugin. Bootstrap writes reliable maps and compact coding guidance. Audit, Lean
 Review and measurement run only on explicit request.
 

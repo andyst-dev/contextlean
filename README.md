@@ -53,13 +53,14 @@ claude plugin update contextlean@contextlean-local --scope user
 ```
 
 Restart afterward. Project guidance and customizations remain yours. Claude's
-versioned installs can now update from 0.3.0 to **0.3.1**. See the
+versioned installs can now update to **0.3.2**. See the
 [installation guide](docs/installation.md) for requirements,
 verification, same-version refreshes, local packages, troubleshooting and safe
 uninstallation. [Distribution details](docs/distribution.md) cover maintainers.
 
-**v0.3.1 — Packaging and distribution readiness.** See the
-[v0.3.1 release notes](docs/release-v0.3.1.md). Balanced runtime guidance is unchanged.
+**v0.3.2 — Privacy disclosure for directory submission.** See the
+[v0.3.2 release notes](docs/release-v0.3.2.md) and [Privacy notice](docs/privacy.md).
+Balanced runtime guidance is unchanged.
 
 ## Balanced guidance
 

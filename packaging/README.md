@@ -12,7 +12,7 @@ to install, discover the four Skills, bootstrap a project, update and uninstall.
 Generated project guidance belongs to the project and survives plugin removal.
 Workflows require explicit invocation; live measurement needs separate authorization.
 
-This package includes only the canonical Skills, platform metadata, icon and MIT
+This package includes only the canonical Skills, platform metadata, privacy notice, icon and MIT
 license. The optional graded benchmark development suite and immutable evidence
 remain in the [source repository](https://github.com/andyst-dev/contextlean).
 Python 3.11+ is needed only for the optional measurement helper, not Bootstrap.
@@ -25,4 +25,5 @@ uses the user's existing Codex authentication and provider; it is never automati
 
 [Documentation](https://github.com/andyst-dev/contextlean/tree/main/docs) ·
 [Issues](https://github.com/andyst-dev/contextlean/issues) ·
+[Privacy](https://github.com/andyst-dev/contextlean/blob/v0.3.2/docs/privacy.md) ·
 [License](https://github.com/andyst-dev/contextlean/blob/main/LICENSE)

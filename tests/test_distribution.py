@@ -47,6 +47,7 @@ class DistributionTests(unittest.TestCase):
                     in {
                         "README.md",
                         "LICENSE",
+                        "docs/privacy.md",
                         "docs/assets/contextlean.svg",
                         "benchmarks/README.md",
                     }
@@ -75,7 +76,7 @@ class DistributionTests(unittest.TestCase):
             claude = json.loads((moved / ".claude-plugin/plugin.json").read_text())
             catalog = json.loads((moved / ".claude-plugin/marketplace.json").read_text())
             self.assertEqual(codex["version"], claude["version"])
-            self.assertEqual(codex["version"], "0.3.1")
+            self.assertEqual(codex["version"], "0.3.2")
             for key in (
                 "name",
                 "description",
@@ -103,6 +104,14 @@ class DistributionTests(unittest.TestCase):
                 self.assertTrue((moved / codex["interface"][field]).is_file())
             self.assertLessEqual(len(codex["interface"]["shortDescription"]), 30)
             self.assertEqual(claude["icon"], codex["interface"]["logo"])
+            privacy_url = claude["privacyPolicyUrl"]
+            self.assertEqual(privacy_url, codex["interface"]["privacyPolicyURL"])
+            release_prefix = f"https://github.com/andyst-dev/contextlean/blob/v{claude['version']}/"
+            self.assertTrue(privacy_url.startswith(release_prefix))
+            privacy_path = privacy_url.removeprefix(release_prefix)
+            self.assertEqual(
+                (moved / privacy_path).read_bytes(), (ROOT / privacy_path).read_bytes()
+            )
             self.assertFalse(
                 any(
                     k in codex or k in claude
@@ -181,7 +190,7 @@ class NativeInstallationTests(unittest.TestCase):
         for name in (".codex-plugin/plugin.json", ".claude-plugin/plugin.json"):
             path = self.source / name
             manifest = json.loads(path.read_text())
-            manifest["version"] = "0.3.2-test"
+            manifest["version"] = "0.3.3-test"
             path.write_text(json.dumps(manifest))
         (self.source / "README.md").write_text("Updated package marker\n")
 
@@ -203,7 +212,7 @@ class NativeInstallationTests(unittest.TestCase):
         hidden.rename(self.source)
         self.prepare_update()
         updated = json.loads(run("codex", "plugin", "add", PLUGIN, "--json"))
-        self.assertEqual(updated["version"], "0.3.2-test")
+        self.assertEqual(updated["version"], "0.3.3-test")
         self.assertEqual(snapshot(Path(updated["installedPath"])), snapshot(self.source))
         self.assert_preserved()
         run("codex", "plugin", "remove", PLUGIN)
@@ -257,7 +266,7 @@ class NativeInstallationTests(unittest.TestCase):
         self.prepare_update()
         run("claude", "plugin", "update", PLUGIN, "--scope", "user")
         updated = json.loads(run("claude", "plugin", "list", "--json"))[0]
-        self.assertEqual(updated["version"], "0.3.2-test")
+        self.assertEqual(updated["version"], "0.3.3-test")
         self.assertEqual(snapshot(Path(updated["installPath"])), snapshot(self.source))
         self.assert_preserved()
         run("claude", "plugin", "uninstall", PLUGIN, "--scope", "user")

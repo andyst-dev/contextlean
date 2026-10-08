@@ -1,4 +1,4 @@
-# Install and use ContextLean v0.3.1
+# Install and use ContextLean v0.3.2
 
 Install once, then use the same four Skills in your projects. ContextLean is
 available from its repository catalog; it has not been submitted to either
@@ -93,8 +93,8 @@ claude plugin update contextlean@contextlean-local --scope user
 ```
 
 Restart your agent afterward. Claude's versioned repository installs keep their
-cached copy until the publisher changes the manifest version. **0.3.1** is the
-packaging patch that allows existing 0.3.0 installations to receive these updates.
+cached copy until the publisher changes the manifest version. **0.3.2** adds the
+privacy notice and listing links without changing the four Skill behaviors.
 The native commands above install the current version from the repository catalog.
 For an intentional same-version Claude refresh:
 

@@ -14,6 +14,7 @@ def package_files(root=ROOT):
     paths = {
         "README.md": root / "packaging/README.md",
         "LICENSE": root / "LICENSE",
+        "docs/privacy.md": root / "docs/privacy.md",
         "docs/assets/contextlean.svg": root / "docs/assets/contextlean.svg",
         "benchmarks/README.md": root / "packaging/benchmark-suite.md",
     }

@@ -1,6 +1,6 @@
 {
   "name": "contextlean",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "ContextLean creates compact maintained project guidance for coding agents so they can locate responsible code, avoid unnecessary exploration, make focused changes, and verify them proportionally.",
   "author": {
     "name": "ContextLean contributors"
@@ -29,6 +29,7 @@
       "Use $contextlean:lean-review to review my current change without editing it."
     ],
     "websiteURL": "https://github.com/andyst-dev/contextlean",
+    "privacyPolicyURL": "https://github.com/andyst-dev/contextlean/blob/v0.3.2/docs/privacy.md",
     "composerIcon": "./docs/assets/contextlean.svg",
     "logo": "./docs/assets/contextlean.svg"
   },
